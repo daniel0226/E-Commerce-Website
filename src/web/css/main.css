@@ -1,39 +1,173 @@
 nav
 {
-    position: fixed !important;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 100;
     width: 100%;
     margin: 0;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.8);
     color: white;
 }
-.navbar a
+
+.navbar
+{
+    position: absolute;
+    padding: 0;
+}
+.navbar a, .navbar button
 {
     color: white !important;
     text-decoration: none;
-    border-radius: 12.5px;
+    border-radius: 12.5px !important;
+    text-align: center;
+    box-shadow: 0 0 3.5px rgba(115, 159, 255, 1) !important;
 }
-.navbar a:hover
+.navbar a:hover, .navbar button:hover
 {
+    color: white !important;
     font-weight: bold;
-    box-shadow: 0 0 2px rgb(151, 234, 255);
+    box-shadow: 0 0 10px rgb(151, 234, 255);
 }
-
-.active
+.carousel-item
 {
-    text-decoration: underline !important;
-    text-shadow: 0px 0px 10px gray;
-    box-shadow: 0px 0px 1px gray;
-    border-radius: 12.5px;
+    background: black;
 }
+/* HOME PAGE */
 
+.homePage
+{
+    background-image: url("../images/Background/joaquin_phoenix_as_joker_2019_4k_8k.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: table;
+    top: 0;
+    left: 0;
+    padding: 25px;
+}
+.JokerBody
+{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: left;
+    padding: 15px;
+}
+.JokerBody p
+{
+    margin: 15px 0px 15px 0px;
+}
+.JokerBody a
+{
+    margin-top: 10px auto;
+    padding: 10px;
+    color: white;
+    box-shadow: 0px 0px 15px rgba(6, 80, 102, 1);
+    border-color: gray;
+    border-style: solid;
+    border-width: 1px;
+}
+.nowPlayingH
+{
+    padding: 20px;
+    text-align: left;
+    width: 100%;
+    background: black;
+    margin-bottom: 0;
+    z-index: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.w100
+{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.nowPlaying
+{
+    background-image: url("../images/Background/Background2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+.carousel hr
+{
+    margin: 0px 0px 10px 0px;
+}
 .navbar
 {
     box-shadow: 0px 1px 2px rgba(121, 224, 255, 0.3);
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
+}
+footer
+{
+    display: block;
+    position: relative;
+    background: black;
+}
+
+nav ul
+{
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    margin: 0 30px 0 30px;
+}
+.blue
+{
+    width: 100%;
+    padding: 0 !important;
+}
+.carousel button
+{
+    background: rgba(0,0,0,0.7);
+    color: white;
+    border-color: rgba(115,159,225,1);
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px 15px 5px 15px;
+    border-radius: 12.5px;
+    outline: none;
+}
+.carousel button:hover
+{
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(115, 159, 255, 1);
+    outline: none;
+}
+.carousel img
+{
+    margin: auto;
+    width: 100%;
+}
+.carousel h5{
+    text-decoration: none !important;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+    text-shadow: none;
+}
+.carousel h2
+{
+    font-size: 2rem;
+    text-decoration: none;
+}
+.nav-item
+{
+    width: 100%;
+    display: inline-block;
+    margin: 0 20px 0 20px;
 }
 body
 {
@@ -45,16 +179,6 @@ body
     height: 100%;
     width: 100%;
 }
-.backgroundImg
-{
-    background-image: url("../images/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0 100%;
-    width: 100%;
-    height: 100%;
-    display: table;
-}
 section
 {
     height: 100%;
@@ -64,28 +188,131 @@ section
     margin: 0;
     padding: 0;
 }
-.placeInMiddle
+
+
+hr
 {
-    margin: 0 auto;
-    vertical-align: middle;
+    padding: 0;
+    margin: 0 !important;
+    border-bottom: .25px solid rgba(255, 255, 255,0.2);
+    box-shadow: 0 0 1px rgba(115, 159, 255, 1);
+}
+.dropdown button
+{
     width: 100%;
 }
-.middleVertical
+.dropdown-menu
+{
+    background:rgba(0,0,0,0.7);
+}
+.dropdown-menu a
+{
+    box-shadow: none !important;
+}
+.dropdown-menu a:hover
+{
+    border-radius: 0% !important;
+    box-shadow: none !important;
+    text-decoration: underline;
+}
+hr
+{
+    box-shadow: 0 0 2px rgb(151, 234, 255);
+}
+.navbar-nav
+{
+    border-width: 0 1px 0 1px;
+    border-style: solid;
+    border-color: rgba(115, 159, 255, 1);
+    width: 100%;
+    padding: 10px;
+}
+.search-container input
+{
+    padding: 0px 0px 0px 5px;
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    line-height: 40px;
+    font-weight: bold;
+    margin: 0;
+    display: inline-block;
+}
+.search-container
+{
+    position: relative;
+    padding: 0px;
+    background: none;
+    border-radius: 12.5px;
+    box-shadow: 0 0 3.5px rgba(115, 159, 255, 1);
+}
+.search-container input::placeholder
+{
+    color: white;
+    opacity: .5;
+}
+.search-container input:focus {outline:none;}
+.borderL
+{
+    border-left: black;
+    border-style: solid;
+    border-width: 0px 1px 0px 1px;
+}
+.searchIcon
+{
+    border: none;
+    border-radius: 50%;
+    background: black;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    outline: none;
+}
+.searchIcon:focus
+{
+    outline: none;
+    border: none;
+}
+
+.red
+{
+    background-color: red;
+}
+.movieBodiesMargin
 {
     display: table-cell;
     vertical-align: middle;
 }
-.search-M
+.movieBodiesMargin h2
 {
-    margin: 0 25% 0 25%;
-    width: 50%;
-    height: 100%;
-    border-radius: 25px;
-    box-shadow: 0 0px 5px 0 white, 0 0px 1px 0 rgb(70, 181, 214);
+    text-shadow: 0 0 blue;
+    text-align: center;
 }
-.searchBody
+.mt-50
 {
-    height: 30%;
-    position: relative;
-    display: inline-block;
+margin-top: 50px;
+}
+.comingSoon
+{
+    display: table;
+    width: 100%;
+    height: 20%;
+    background: black;
+}
+.comingSoon h1
+{
+    font-size: 2rem;
+    text-align: center;
+}
+.parallax
+{
+    min-height: 50vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
