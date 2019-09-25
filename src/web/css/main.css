@@ -60,9 +60,9 @@ nav
     }
     .nav-item, .navbar-nav
     {
-        padding: 2px !important;
+        padding: 1px !important;
         margin: 0 5px 0 5px !important;
-        width: 60% !important;
+        width: 50% !important;
     }
     .JokerBody h1, h1, h5 { 
        font-size: 1.2rem !important;
@@ -239,6 +239,7 @@ body
     line-height: 1.5;
     margin: 0;
     padding: 0;
+    background-color: black;
     color: white;
     height: 100%;
     width: 100%;

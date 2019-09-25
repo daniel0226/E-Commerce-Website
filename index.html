@@ -44,9 +44,12 @@
                                 <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Movies
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
+                                    <!-- Will Redirect to Search Movie Page and autofilter with "in Theatres"-->
                                     <li><a href="#">In Theatres</a></li>
                                     <hr>
                                     <li><a href="#">Coming Soon</a></li>
+                                    <hr>
+                                    <li><a href="#">Search Movies</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -55,9 +58,10 @@
                                 <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">About
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
+                                    <!-- About Us/Contact-->
                                     <li><a href="#">About Us</a></li>
                                     <hr>
-                                    <li><a href="#">Got a Promotion?</a></li>
+                                    <li><a href="#">Contact</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -65,6 +69,11 @@
                             <!-- When Implementing full version, if we implement a "remember me"-->
                             <!-- we need to change navbar links from "login" to "profile" or something-->
                             <a id="Login" class="nav-link" href="src/web/html/login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- When Implementing full version, if we implement a "remember me"-->
+                            <!-- we need to change navbar links from "login" to "profile" or something-->
+                            <a id="Login" class="nav-link" href="src/web/html/login.html">Promotions</a>
                         </li>
                     </ul>
                     <div class="navbar-nav search-container">
@@ -114,7 +123,9 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <h5>Rambo<hr></h5>
+                                    <h5>Rambo
+                                        <hr>
+                                    </h5>
                                     <a href="#">
                                         <img class="d-block w100" src="src/web/images/Carousel/showingNow/rambo.jpg"
                                             alt="First Slide">
@@ -124,16 +135,21 @@
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <h5>Lion King<hr></h5>
-                                    <img class="d-block w100" src="src/web/images/Carousel/showingNow/LionKingShowNow.jpg"
-                                        alt="Second Slide">
+                                    <h5>Lion King
+                                        <hr>
+                                    </h5>
+                                    <img class="d-block w100"
+                                        src="src/web/images/Carousel/showingNow/LionKingShowNow.jpg" alt="Second Slide">
                                     <div class="carousel-caption d-none d-md-block">
                                         <button type="button">Get Tickets!</button>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <h5>Abominable<hr></h5>
-                                    <img class="d-block w100" src="src/web/images/Carousel/showingNow/AbominableShowNow.jpg"
+                                    <h5>Abominable
+                                        <hr>
+                                    </h5>
+                                    <img class="d-block w100"
+                                        src="src/web/images/Carousel/showingNow/AbominableShowNow.jpg"
                                         alt="Third Slide">
                                     <div class="carousel-caption d-none d-md-block">
                                         <button type="button">Get Tickets!</button>
@@ -155,64 +171,71 @@
         </div>
     </section>
     <div class="comingSoonH tl">
-            <h1>
-                Movies in Theatres soon!
-                <hr>
-            </h1>
-        </div>
+        <h1>
+            Movies in Theatres soon!
+            <hr>
+        </h1>
+    </div>
     <section class="comingSoon parallax tl">
-            <div class="container fll">
-                <div class="row">
-                    <div class="container">
-                        <div class="col-md-9 fll">
-                            <div id="indicators2" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="indicators2" data-slide-to="0" class="active"></li>
-                                    <li data-target="indicators2" data-slide-to="1"></li>
-                                    <li data-target="indicators2" data-slide-to="2"></li>
-                                </ol>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <h5>Joker<hr></h5>
-                                        <a href="#">
-                                            <img class="d-block w100" src="src/web/images/Carousel/comingSoon/JokerShowNow.jpg"
-                                                alt="First Slide">
-                                        </a>
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <button type="button">Get Tickets!</button>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <h5>Gemnini Man<hr></h5>
-                                        <img class="d-block w100" src="src/web/images/Carousel/comingSoon/GeminiMan.jpeg"
-                                            alt="Second Slide">
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <button type="button">Get Tickets!</button>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <h5>Terminator: Dark Fate<hr></h5>
-                                        <img class="d-block w100" src="src/web/images/Carousel/comingSoon/MV5BNzhlYjE5MjMtZDJmYy00MGZmLTgwN2MtZGM0NTk2ZTczNmU5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg"
-                                            alt="Third Slide">
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <button type="button">Get Tickets!</button>
-                                        </div>
+        <div class="container fll">
+            <div class="row">
+                <div class="container">
+                    <div class="col-md-9 fll">
+                        <div id="indicators2" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="indicators2" data-slide-to="0" class="active"></li>
+                                <li data-target="indicators2" data-slide-to="1"></li>
+                                <li data-target="indicators2" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <h5>Joker
+                                        <hr>
+                                    </h5>
+                                    <a href="#">
+                                        <img class="d-block w100"
+                                            src="src/web/images/Carousel/comingSoon/JokerShowNow.jpg" alt="First Slide">
+                                    </a>
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <button type="button">Get Tickets!</button>
                                     </div>
                                 </div>
-                                <a class="carousel-control-prev" href="#indicators2" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#indicators2" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
+                                <div class="carousel-item">
+                                    <h5>Gemnini Man
+                                        <hr>
+                                    </h5>
+                                    <img class="d-block w100" src="src/web/images/Carousel/comingSoon/GeminiMan.jpeg"
+                                        alt="Second Slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <button type="button">Get Tickets!</button>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <h5>Terminator: Dark Fate
+                                        <hr>
+                                    </h5>
+                                    <img class="d-block w100"
+                                        src="src/web/images/Carousel/comingSoon/terminator dark fate.jpg"
+                                        alt="Second Slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <button type="button">Get Tickets!</button>
+                                    </div>
+                                </div>
                             </div>
+                            <a class="carousel-control-prev" href="#indicators2" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#indicators2" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
     <footer>
         <div class="container">
             <div class="row justify-content-center">
