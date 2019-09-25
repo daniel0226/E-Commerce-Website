@@ -35,7 +35,7 @@ nav
 {
     background-image: url("../images/Background/joaquin_phoenix_as_joker_2019_4k_8k.jpg");
     width: 100%;
-    height: auto;
+    height: 100vh;
     position: relative;
     display: table;
     top: 0;
@@ -48,6 +48,45 @@ nav
     text-align: left;
     padding: 15px;
 }
+.JokerBody h1
+{
+    font-size: 2rem;
+}
+@media only screen and (max-width: 800px) {
+
+    .JokerBody, .navbar, .nav-item, footer
+    {
+        font-size: .8rem !important;
+    }
+    .nav-item, .navbar-nav
+    {
+        padding: 2px !important;
+        margin: 0 5px 0 5px !important;
+        width: 60% !important;
+    }
+    .JokerBody h1, h1, h5 { 
+       font-size: 1.2rem !important;
+    }
+    .parallax
+    {
+        background-repeat:no-repeat !important;
+        background-size:100% 100% !important;
+        background-position:center !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .homePage, .nowPlaying, .comingSoon{
+        width: 100% !important;
+        height: 50vh !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    footer p
+    {
+        padding: 5px;
+    }
+ 
+ }
 .JokerBody p
 {
     margin: 15px 0px 15px 0px;
@@ -87,6 +126,7 @@ nav
     padding: 30px;
     width: 100%;
     background: black;
+    display: inline-block;
     margin-bottom: 0;
     z-index: 0;
     position: relative;
@@ -133,7 +173,7 @@ nav
 }
 footer
 {
-    display: block;
+    display: inline-block;
     width: 100%;
     position: relative;
     background: black;
