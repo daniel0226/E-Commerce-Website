@@ -17,13 +17,17 @@ session_start();
 function createUser()
 {
     $Profile = new stdClass();
+    $Card = new stdClass();
     $Profile->email = $_POST['email'];
     $Profile->password = $_POST['password'];
     $Profile->confirmPassword = $_POST['confirmpassword'];
     $Profile->firstname = $_POST['firstname'];
     $Profile->lastname = $_POST['lastname'];
-    $secondName = "";
-    $phoneNumber = "";
+    $Profile->phonenumber = $_POST['phonenumber'];
+
+    $Card->cardname = $_POST['cardname'];
+    $Card->cvv = $_POST['cvv'];
+    $Card->cardnumber = $_POST['cardnumber'];
     $cardType = "";
     $cardNumber = "";
     $cardExpDate = "";
@@ -35,6 +39,8 @@ function createUser()
     $homeCity = "";
     $homeState = "";
     $homeZip = "";
+
+    $Profile->card = $Card;
 
     //If we decide to incorporate an age restriction
     $month = "";
