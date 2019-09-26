@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="../js/fields.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -124,13 +125,12 @@
                             <h3>Optional Payment method
                                 <hr>
                             </h3>
-                            <div class="signUpText">
+                            <div class="signUpText" id="optionalFields">
                                 <input class="cardOwner" type="text" placeholder="Card Holder Name" name="cardname"
-                                    value="" required>
-                                <input class="cvv" type="text" placeholder="CVV" name="cvv" maxlength=3 value=""
-                                    required>
+                                    value="">
+                                <input class="cvv" type="text" placeholder="CVV" name="cvv" maxlength=3 value="">
                                 <div>
-                                    <input type="text" placeholder="Card Number" name="cardnumber" value="" required>
+                                    <input type="text" placeholder="Card Number" name="cardnumber" value="">
                                 </div>
                                 <div id="expiration-date">
                                     <label>Expiration Date: </label>
@@ -168,7 +168,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class = "container sub">
+                    <div class="container sub">
                         <input class="signupbtn" type="submit" value="Sign Up">
                     </div>
                 </div>
@@ -178,7 +178,8 @@
     <footer>
         <div class="container ">
             <div class="row justify-content-center">
-            <p>Copyright of Daniel Kim, Oscar Lopez, Kranthi, Padmanaban</p>                </div>
+                <p>Copyright of Daniel Kim, Oscar Lopez, Kranthi, Padmanaban</p>
+            </div>
         </div>
     </footer>
 </body>

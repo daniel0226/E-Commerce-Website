@@ -42,6 +42,7 @@ function confirmLogin()
 
 /**
  * Connect to database
+ * test comment
  */
 function connectToDatabase()
 {
