@@ -19,8 +19,9 @@ function createUser()
     $Profile = new stdClass();
     $Profile->email = $_POST['email'];
     $Profile->password = $_POST['password'];
+    $Profile->confirmPassword = $_POST['confirmpassword'];
     $Profile->firstname = $_POST['firstname'];
-    $Profile->secondname = $_POST['secondname'];
+    $Profile->lastname = $_POST['lastname'];
     $secondName = "";
     $phoneNumber = "";
     $cardType = "";

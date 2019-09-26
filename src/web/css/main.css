@@ -10,6 +10,11 @@ nav
     color: white;
 }
 
+.navbarSU
+{
+    position: relative !important;
+}
+
 .navbar
 {
     position: absolute;
@@ -90,6 +95,10 @@ nav
     footer p
     {
         padding: 5px;
+    }
+    .signUpText input
+    {
+        font-size: 1rem !important;
     }
  
  }
@@ -389,17 +398,21 @@ margin-top: 50px;
     margin: 0;
     padding: 0;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
 }
 /* FORMS */
 .signUpWrapper
 {
-    width: 50%;
-    padding: 10px;
-    float: right;
+    width: 75%;
+    padding: 25px;
     background: rgba(0,0,0,0.7);
     position: relative;
     height: 100%;
+    margin: auto;
+}
+.signUpWrapper h1, h3
+{
+    text-align: center;
 }
 .loginForm
 {
@@ -419,6 +432,27 @@ margin-top: 50px;
     text-align: center;
     font-size: 5rem;
     padding: 15px 0;
+}
+.signUpText
+{
+    color: white;
+    width: 100%;
+}
+.signUpText input
+{
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 1.5rem;
+    border: 1px solid;
+    border-color: double white;
+    box-shadow:inset 0 0 5px 1.5px rgba(115, 159, 255, 1);
+    padding: 2px 2px 2px 10px;
+    border-radius: 25px;
+    margin: 10px 0px 5px 0px;
 }
 .textbox
 {
@@ -450,7 +484,8 @@ margin-top: 50px;
 {
     color: white;
 }
-.loginForm .btn
+
+.btn2
 {
     width: 100%;
     background: none;
