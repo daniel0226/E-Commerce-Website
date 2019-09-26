@@ -24,12 +24,12 @@ function confirmLogin()
     $validLogin = FALSE;
     global $loginType;
 
-    $username = $_GET["username"];
-    $password = $_GET["password"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
 
     $database = connectToDatabase();
 
-    $databaseUsername = mysqli_real_escape_string($database, $username);
+    $databaseUsername = mysqli_real_escape_string($database, $email);
     $databasePassword = mysqli_real_escape_string($database, $password);
 
     $validLogin

@@ -13,8 +13,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="src/web/css/main.css">
     <link rel="stylesheet" href="src/web/css/animation.css">
-
-    <script src="src/web/js/Header.js"></script>
+    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -32,7 +31,9 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-dark">
             <div class="container">
-                <h1 id="header" class="navbar-brand hLink st">Cinema E-Booking</h1>
+                <a href="index.html">
+                    <h1 id="header" class="navbar-brand hLink st">Cinema E-Booking</h1>
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -66,10 +67,17 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <!-- When Implementing full version, if we implement a "remember me"-->
-                            <!-- we need to change navbar links from "login" to "profile" or something-->
-                            <a id="Login" class="nav-link" href="src/web/html/login.html">Login</a>
-                        </li>
+                                <div class="dropdown">
+                                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Login
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <!-- About Us/Contact-->
+                                        <li><a href="src/web/html/login.html">Login</a></li>
+                                        <hr>
+                                        <li><a href="src/web/html/signup.html">Register</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                         <li class="nav-item">
                             <!-- When Implementing full version, if we implement a "remember me"-->
                             <!-- we need to change navbar links from "login" to "profile" or something-->
@@ -89,9 +97,9 @@
         </nav>
     </header>
     <section class="homePage parallax">
-        <div class="container">
-            <div class="row mt-50">
-                <div class="col-md-6 JokerBody">
+        <div class="container JokerBody">
+            <div class="row ">
+                <div class="col-md-6">
                     <h1>I used to think that my life was a tragedy, but now I realize, it's a comedy.</h1>
                     <hr>
                     <p>Failed comedian Arthur Fleck encounters violent thugs while wandering the streets of Gotham City

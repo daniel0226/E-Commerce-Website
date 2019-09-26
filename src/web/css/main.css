@@ -15,6 +15,10 @@ nav
     position: absolute;
     padding: 0;
 }
+.navbar h1
+{
+    margin: 5px;
+}
 .navbar a, .navbar button
 {
     color: white !important;
@@ -44,6 +48,8 @@ nav
 }
 .JokerBody
 {
+    display: table-cell;
+    vertical-align: middle;
     font-family: 'Courier New', Courier, monospace;
     text-align: left;
     padding: 15px;
@@ -96,8 +102,8 @@ nav
     margin-top: 10px auto;
     padding: 10px;
     color: white;
-    box-shadow: 0px 0px 15px rgba(6, 80, 102, 1);
-    border-color: gray;
+    box-shadow: 0 0 7.5px rgba(115, 159, 255, 1);
+    border-color: rgba(115,159,225);
     border-style: solid;
     border-width: 1px;
 }
@@ -167,9 +173,7 @@ nav
 }
 .navbar
 {
-    box-shadow: 0px 1px 2px rgba(121, 224, 255, 0.3);
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    box-shadow: 0px 1px 2px rgba(115, 159, 255, 1);
 }
 footer
 {
@@ -249,7 +253,7 @@ hr
 {
     padding: 0;
     margin: 0 !important;
-    border-bottom: .25px solid rgba(255, 255, 255,0.2);
+    border-bottom: .25px solid rgba(115,159,225,1);
     box-shadow: 0 0 1px rgba(115, 159, 255, 1);
 }
 .dropdown button
@@ -335,6 +339,8 @@ hr
 
 .red
 {
+    height: 100%;
+    width: 100%;
     background-color: red;
 }
 .movieBodiesMargin
@@ -357,4 +363,120 @@ margin-top: 50px;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+
+
+
+/* BACKGROUND IMAGES*/
+.bg-beyonce
+{
+    background-image: url("../images/Background/beyonce_as_nala_in_the_lion_king-2560x1440.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 0%;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+}
+.bg-avengers
+{
+    background-image: url("../images/Background/avengers.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+}
+/* FORMS */
+.signUpWrapper
+{
+    width: 50%;
+    padding: 10px;
+    float: right;
+    background: rgba(0,0,0,0.7);
+    position: relative;
+    height: 100%;
+}
+.loginForm
+{
+    text-align: center;
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background: rgba(0,0,0,0.2);
+    border-radius: 25px;
+}
+.loginForm h1
+{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-size: 5rem;
+    padding: 15px 0;
+}
+.textbox
+{
+    text-align: start !important;
+    width: 100%;
+    overflow: hidden;
+    font-size: 1.5rem;
+    padding: 2px;
+    margin: 3px;
+    border-bottom: 1px solid white;
+    box-shadow: 0 4px 3.5px -2px rgba(115, 159, 255, 1)
+}
+.textbox i
+{
+    float: left;
+    text-align: center;
+    margin: 7px;
+}
+.textbox input
+{
+    text-align: left;
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 1.5rem;
+}
+.textbox input::placeholder
+{
+    color: white;
+}
+.loginForm .btn
+{
+    width: 100%;
+    background: none;
+    color: white;
+    margin: 15px 0 15px 0;
+    padding: 5px;
+    box-shadow: 0 0 7.5px rgba(115, 159, 255, 1);
+    border-color: rgba(115,159,225);
+    border-style: solid;
+    border-width: 2px;
+}
+.loginForm .btn:hover
+{
+    box-shadow: 0 0 15px rgba(115, 159, 255, 1);
+    background-color: rgba(115,159,225, 0.1);
+}
+.loginForm a
+{
+    margin: 10px 0px 0px 0px;
+    color: white;
+    padding: 5px 0px 5px 0px;
+    border-bottom: 1px solid white;
+    box-shadow: 0 4px 3.5px -2px rgba(115, 159, 255, 1);
+}
+.loginForm p
+{
+    padding: 30px 0px 0px 0px;
+    margin: 0;
 }
