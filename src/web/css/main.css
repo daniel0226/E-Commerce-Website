@@ -687,3 +687,88 @@ width:350px;
 	margin-right:400px;
 	text-align:center;
 }
+
+
+/*  FOOTER  */
+.footer-Body
+{
+    width: 100%;
+    color: white;
+    font-size: 1rem;
+    padding: 20px 0px 20px 0px;
+}
+.footer-Body .row
+{
+    width: 100% !important;
+}
+.footer-Body h1
+{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.footer-Body h2
+{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    text-align: left;
+}
+.footer-Body p
+{
+    font-family: 'Courier New', Courier, monospace;
+}
+.emailUpdate
+{
+    float: left;
+    margin: 5px 0px 5px 0px;
+    width: 70%;
+    padding: 3px 0px 3px 6px;
+    color: white;
+    background: none;
+    border: rgba(115, 159, 255, 1) solid 1px;
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgb(151, 234, 255);
+}
+
+.emailSignUp
+{
+    float: right;
+    width: 25%;
+    margin: 5px 0px 5px 0px;
+    padding: 3px;
+    color: white;
+    background: rgba(115,159,225, 0.3);
+    border-radius: 25px;
+    border: rgba(115, 159, 255, 1) solid 1px;
+    box-shadow: 0 0 10px rgba(115, 159, 255, 1);
+}
+.emailSignUp:hover
+{
+    box-shadow: 0 0 12px white;
+    border-color: rgb(183, 212, 255);
+    font-weight: bold;
+}
+.Navigate
+{
+    width: 45%;
+    color: white;
+}
+.Navigate a
+{
+    display: block;
+    color: rgba(115, 159, 255, 1);
+}
+.Navigate a:hover
+{
+    color: #c1daff;
+}
+.right
+{  
+    margin: 0px 0px 0px 5px;
+    border: solid rgba(115, 159, 255, 1);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
