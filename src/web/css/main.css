@@ -679,4 +679,11 @@ width:350px;
 .dropDown{
 	padding:12px;
 	border-radius:5px;
-}	
+}
+.tickets{
+	margin-left:400px;
+	background:rgba(0,0,0,0.7);
+	padding:5px;
+	margin-right:400px;
+	text-align:center;
+}
