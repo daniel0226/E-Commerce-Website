@@ -107,19 +107,22 @@
         </nav>
     </header>
     <section class="bg-search">
-        <form action="../php/searchMovies.php" method="GET">
-            <h1 class="search-text"> Search for Movies! </h1>
-            <div class="search-box">
-                <select id="searchMovieOption" class="dropDown">
-                    <option value="By Title">By Title</option>
-                    <option value="By Date">By Date</option>
-                    <option value="By Time">By Time</option>
-                    <option value="In Theatres">In Theatres</option>
-                    <option value="Coming Soon">Coming Soon</option>
-                </select>
-                <input type="text" class="search-bar" placeholder="Search..(Default is by title)">
-                <button class="search-btn" type="submit"> Search </button>
-        </form>
+        <div class="loginWrapper">
+                <form action="../php/searchMovies.php" method="GET">
+                    <h1 class="search-text"> Search for Movies! </h1>
+                    <div class="search-box">
+                        <select id="searchMovieOption" class="dropDown">
+                            <option value="By Title">By Title</option>
+                            <option value="By Date">By Date</option>
+                            <option value="By Time">By Time</option>
+                            <option value="In Theatres">In Theatres</option>
+                            <option value="Coming Soon">Coming Soon</option>
+                        </select>
+                        <input type="text" class="search-bar" placeholder="Search..(Default is by title)">
+                        <button class="search-btn" type="submit"> Search </button>
+                </form>
+        </div>
+        
     </section>
     <footer>
             <div class="footer-Body">
