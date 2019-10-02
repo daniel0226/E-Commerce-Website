@@ -48,7 +48,8 @@
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <!-- Will Redirect to Search Movie Page and autofilter with "in Theatres"-->
-                                    <li><input class="navlogout" onclick="searchNav(0)" value="In Theatres" spellcheck="false"></li>
+                                    <li><input class="navlogout" onclick="searchNav(0)" value="In Theatres"
+                                            spellcheck="false"></li>
                                     <hr>
                                     <li><input class="navlogout" onclick="searchNav(1)" value="Coming Soon"></li>
                                     <hr>
@@ -83,16 +84,16 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                                <div class="dropdown">
-                                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Promotions
-                                        <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <!-- About Us/Contact-->
-                                        <li><a href="currentPromotions.html">Promotions</a></li>
-                                        <hr>
-                                    </ul>
-                                </div>
-                            </li>
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Promotions
+                                    <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <!-- About Us/Contact-->
+                                    <li><a href="currentPromotions.html">Promotions</a></li>
+                                    <hr>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                     <div class="navbar-nav search-container">
                         <form action="../php/searchMovies.php" method="get">
@@ -107,128 +108,137 @@
         </nav>
     </header>
     <section class="bg-avengers">
+        <div class="registerPageWrapper">
         <form action="../php/confirmEditProfile.php" method="POST">
-            <div class="signUpWrapper">
-                <div class="container">
-                    <h1>Change Account Information
-                        <hr>
-                    </h1>
-                    <div class="row">
-                        <div class="col-md-6 borderL">
-                            <h3>Profile Information
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="container">
+                            <h1>Change Account Information
                                 <hr>
-                            </h3>
-                            <div class="signUpText">
-                                <div>
-                                    <input type="text" placeholder="First Name" name="firstname" value="">
+                            </h1>
+                            <div class="row">
+                                <div class="col-md-6 borderL">
+                                    <h3>Profile Information
+                                        <hr>
+                                    </h3>
+                                    <div class="signUpText">
+                                        <div>
+                                            <input type="text" placeholder="First Name" name="firstname" value="">
+                                        </div>
+                                        <div>
+                                            <input type="text" placeholder="Last Name" name="lastname" value="">
+                                        </div>
+                                        <div>
+                                            <input type="text" placeholder="Email Address" name="emailaddress" value="">
+                                        </div>
+                                        <div>
+                                            <input type="text" placeholder="Password" name="password" value="">
+                                        </div>
+                                        <div>
+                                            <input type="text" placeholder="Confirm Password" name="confirmpassword"
+                                                value="">
+                                        </div>
+                                        <div>
+                                            <input type="tel" name="phonenumber"
+                                                placeholder="Phone Number: xxx-xxx-xxxx"
+                                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <input type="text" placeholder="Last Name" name="lastname" value="">
-                                </div>
-                                <div>
-                                    <input type="text" placeholder="Email Address" name="emailaddress" value="">
-                                </div>
-                                <div>
-                                    <input type="text" placeholder="Password" name="password" value="">
-                                </div>
-                                <div>
-                                    <input type="text" placeholder="Confirm Password" name="confirmpassword" value="">
-                                </div>
-                                <div>
-                                    <input type="tel" name="phonenumber" placeholder="Phone Number: xxx-xxx-xxxx"
-                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h3>Change Payment method
-                                <hr>
-                            </h3>
-                            <div class="signUpText" id="optionalFields">
-                                <input class="cardOwner" type="text" placeholder="Card Holder Name" name="cardname"
-                                    value="">
-                                <input class="cvv" type="text" placeholder="CVV" name="cvv" maxlength=3 value="">
-                                <div>
-                                    <input type="text" placeholder="Card Number" name="cardnumber" value="">
-                                </div>
-                                <div id="expiration-date">
-                                    <label>Expiration Date: </label>
-                                    <select>
-                                        <option value="01">January</option>
-                                        <option value="02">February </option>
-                                        <option value="03">March</option>
-                                        <option value="04">April</option>
-                                        <option value="05">May</option>
-                                        <option value="06">June</option>
-                                        <option value="07">July</option>
-                                        <option value="08">August</option>
-                                        <option value="09">September</option>
-                                        <option value="10">October</option>
-                                        <option value="11">November</option>
-                                        <option value="12">December</option>
-                                    </select>
-                                    <select>
-                                        <option value="16"> 2019</option>
-                                        <option value="17"> 2020</option>
-                                        <option value="18"> 2021</option>
-                                        <option value="19"> 2022</option>
-                                        <option value="20"> 2023</option>
-                                        <option value="21"> 2024</option>
-                                    </select>
-                                </div>
-                                <div class="cardTypeWrapper">
-                                    <label>Card Type:</label>
-                                    <div class="flr">
-                                        <img src="../images/icons/visa.png" alt="visa">
-                                        <img src="../images/icons/amex.png" alt="amex">
-                                        <img src="../images/icons/mastercard.jpg" alt="mastercard">
+                                <div class="col-md-6">
+                                    <h3>Change Payment method
+                                        <hr>
+                                    </h3>
+                                    <div class="signUpText" id="optionalFields">
+                                        <input class="cardOwner" type="text" placeholder="Card Holder Name"
+                                            name="cardname" value="">
+                                        <input class="cvv" type="text" placeholder="CVV" name="cvv" maxlength=3
+                                            value="">
+                                        <div>
+                                            <input type="text" placeholder="Card Number" name="cardnumber" value="">
+                                        </div>
+                                        <div id="expiration-date">
+                                            <label>Expiration Date: </label>
+                                            <select>
+                                                <option value="01">January</option>
+                                                <option value="02">February </option>
+                                                <option value="03">March</option>
+                                                <option value="04">April</option>
+                                                <option value="05">May</option>
+                                                <option value="06">June</option>
+                                                <option value="07">July</option>
+                                                <option value="08">August</option>
+                                                <option value="09">September</option>
+                                                <option value="10">October</option>
+                                                <option value="11">November</option>
+                                                <option value="12">December</option>
+                                            </select>
+                                            <select>
+                                                <option value="16"> 2019</option>
+                                                <option value="17"> 2020</option>
+                                                <option value="18"> 2021</option>
+                                                <option value="19"> 2022</option>
+                                                <option value="20"> 2023</option>
+                                                <option value="21"> 2024</option>
+                                            </select>
+                                        </div>
+                                        <div class="cardTypeWrapper">
+                                            <label>Card Type:</label>
+                                            <div class="flr">
+                                                <img src="../images/icons/visa.png" alt="visa">
+                                                <img src="../images/icons/amex.png" alt="amex">
+                                                <img src="../images/icons/mastercard.jpg" alt="mastercard">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="container sub">
+                                <input class="signupbtn" type="submit" value="Confirm Changes">
+                            </div>
                         </div>
-                    </div>
-                    <div class="container sub">
-                        <input class="signupbtn" type="submit" value="Confirm Changes">
                     </div>
                 </div>
             </div>
         </form>
+    </div>
     </section>
     <footer>
-            <div class="footer-Body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1>Stay up to date with Promotions!
-                                <hr>
-                            </h1>
-                            <div>
-                                <p>Join over thousands of users who recieve bi-weekly promotional updates! </p>
-                                <a href="register.html" class="emailSignUp">Sign Up!</a>
-                            </div>
+        <div class="footer-Body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>Stay up to date with Promotions!
+                            <hr>
+                        </h1>
+                        <div>
+                            <p>Join over thousands of users who recieve bi-weekly promotional updates! </p>
+                            <a href="register.html" class="emailSignUp">Sign Up!</a>
                         </div>
-                        <div class="col-md-6">
-                            <h2>NAVIGATE</h2>
-                            <div class="fll Navigate">
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                            </div>
-                            <div class="flr Navigate">
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                            </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>NAVIGATE</h2>
+                        <div class="fll Navigate">
+                            <a href="#">In Theatres<i class="right"></i></a>
+                            <a href="#">In Theatres<i class="right"></i></a>
+                            <a href="#">In Theatres<i class="right"></i></a>
+                        </div>
+                        <div class="flr Navigate">
+                            <a href="#">In Theatres<i class="right"></i></a>
+                            <a href="#">In Theatres<i class="right"></i></a>
+                            <a href="#">In Theatres<i class="right"></i></a>
                         </div>
                     </div>
                 </div>
-    
             </div>
-            <hr>
-            <div class="row justify-content-center">
-                <p>Copyright of Daniel Kim, Oscar Lopez, Kranthi, Padmanaban</p>
-            </div>
-        </footer>
+
+        </div>
+        <hr>
+        <div class="row justify-content-center">
+            <p>Copyright of Daniel Kim, Oscar Lopez, Kranthi, Padmanaban</p>
+        </div>
+    </footer>
 </body>
 
 </html>

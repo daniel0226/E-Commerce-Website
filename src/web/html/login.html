@@ -48,7 +48,8 @@
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <!-- Will Redirect to Search Movie Page and autofilter with "in Theatres"-->
-                                    <li><input class="navlogout" onclick="searchNav(0)" value="In Theatres" spellcheck="false"></li>
+                                    <li><input class="navlogout" onclick="searchNav(0)" value="In Theatres"
+                                            spellcheck="false"></li>
                                     <hr>
                                     <li><input class="navlogout" onclick="searchNav(1)" value="Coming Soon"></li>
                                     <hr>
@@ -83,16 +84,16 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                                <div class="dropdown">
-                                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Promotions
-                                        <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <!-- About Us/Contact-->
-                                        <li><a href="currentPromotions.html">Promotions</a></li>
-                                        <hr>
-                                    </ul>
-                                </div>
-                            </li>
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Promotions
+                                    <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <!-- About Us/Contact-->
+                                    <li><a href="currentPromotions.html">Promotions</a></li>
+                                    <hr>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                     <div class="navbar-nav search-container">
                         <form action="../php/searchMovies.php" method="get">
@@ -107,73 +108,81 @@
         </nav>
     </header>
     <section class="bg-beyonce">
-        <div class="loginForm">
+        <div class="loginWrapper">
             <div class="container">
-                <form action="../php/confirmLogin.php" method="POST">
-                    <h1>Login
-                        <hr>
-                    </h1>
-                    <div class="textbox">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        <input type="text" placeholder="email" name="email" value="" required>
-                    </div>
-                    <div class="textbox">
-                        <i class="fa fa-lock" aria-hidden="true"></i>
-                        <input type="password" placeholder="password" name="password" value="" required>
-                    </div>
-                    <div>
-                        <input class="btn2" type="submit" value="login">
-                    </div>
-                    <div>
-                        <a href="#">Forgot Password?</a>
-                    </div>
-                    <div>
-                        <div>
-                            <p>Don't have an account?</p>
-                        </div>
-                        <div>
-                            <a href="register.html">Sign Up!</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-    <footer>
-            <div class="footer-Body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1>Stay up to date with Promotions!
-                                <hr>
-                            </h1>
-                            <div>
-                                <p>Join over thousands of users who recieve bi-weekly promotional updates! </p>
-                                <a href="register.html" class="emailSignUp">Sign Up!</a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h2>NAVIGATE</h2>
-                            <div class="fll Navigate">
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                            </div>
-                            <div class="flr Navigate">
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        <div class="loginForm">
+                            <div class="container">
+                                <form action="../php/confirmLogin.php" method="POST">
+                                    <h1>Login
+                                        <hr>
+                                    </h1>
+                                    <div class="textbox">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <input type="text" placeholder="email" name="email" value="" required>
+                                    </div>
+                                    <div class="textbox">
+                                        <i class="fa fa-lock" aria-hidden="true"></i>
+                                        <input type="password" placeholder="password" name="password" value="" required>
+                                    </div>
+                                    <div>
+                                        <input class="btn2" type="submit" value="login">
+                                    </div>
+                                    <div>
+                                        <a href="#">Forgot Password?</a>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <p>Don't have an account?</p>
+                                        </div>
+                                        <div>
+                                            <a href="register.html">Sign Up!</a>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-    
             </div>
-            <hr>
-            <div class="row justify-content-center">
-                <p>Copyright of Daniel Kim, Oscar Lopez, Kranthi, Padmanaban</p>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-Body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>Stay up to date with Promotions!
+                            <hr>
+                        </h1>
+                        <div>
+                            <p>Join over thousands of users who recieve bi-weekly promotional updates! </p>
+                            <a href="register.html" class="emailSignUp">Sign Up!</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>NAVIGATE</h2>
+                        <div class="fll Navigate">
+                            <a href="#">In Theatres<i class="right"></i></a>
+                            <a href="#">In Theatres<i class="right"></i></a>
+                            <a href="#">In Theatres<i class="right"></i></a>
+                        </div>
+                        <div class="flr Navigate">
+                            <a href="#">In Theatres<i class="right"></i></a>
+                            <a href="#">In Theatres<i class="right"></i></a>
+                            <a href="#">In Theatres<i class="right"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </footer>
+
+        </div>
+        <hr>
+        <div class="row justify-content-center">
+            <p>Copyright of Daniel Kim, Oscar Lopez, Kranthi, Padmanaban</p>
+        </div>
+    </footer>
 </body>
 
 </html>
