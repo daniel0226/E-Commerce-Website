@@ -421,6 +421,17 @@ margin-top: 50px;
     height: 100vh;
     width: 100%;
 }
+.bg-search
+{
+    background-image: url("../images/Background/searchMoviesWallpaper.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 0%;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+}
 .bg-avengers
 {
     background-image: url("../images/Background/avengers.png");
