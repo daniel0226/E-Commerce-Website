@@ -6,16 +6,18 @@
 
     <!--Responsive design-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Kranthi">
+    <meta name="author" content="Yong Kim">
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/animation.css">
     <link rel="stylesheet" href="../css/main.css">
-
+    <link rel="stylesheet" href="../css/animation.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+    <script src="../js/fields.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -27,7 +29,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body class="bg-minions">
+<body>
     <header>
         <nav class="navbar navbar-expand-md navbar-dark">
             <div class="container">
@@ -46,27 +48,29 @@
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <!-- Will Redirect to Search Movie Page and autofilter with "in Theatres"-->
-                                    <li><a href="#">In Theatres</a></li>
+                                    <li><input class="navlogout" onclick="searchNav(0)" value="In Theatres" spellcheck="false"></li>
                                     <hr>
-                                    <li><a href="#">Coming Soon</a></li>
+                                    <li><input class="navlogout" onclick="searchNav(1)" value="Coming Soon"></li>
                                     <hr>
-                                    <li><a href="#">Search Movies</a></li>
+                                    <li><a href="SearchView.html">Search Movies</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">About
+                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Profile
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <!-- About Us/Contact-->
-                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="editProfile.html">Edit Profile</a></li>
                                     <hr>
-                                    <li><a href="#">Contact</a></li>
+                                    <form action="../php/logout.php" method="GET">
+                                        <li><input class="navlogout" type="submit" value="logout"></li>
+                                    </form>
                                 </ul>
                             </div>
-						</li>
-						<li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Login
                                     <span class="caret"></span></button>
@@ -79,13 +83,19 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <!-- When Implementing full version, if we implement a "remember me"-->
-                            <!-- we need to change navbar links from "login" to "profile" or something-->
-                            <a id="Login" class="nav-link" href="#">Promotions</a>
-                        </li>
+                                <div class="dropdown">
+                                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Promotions
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <!-- About Us/Contact-->
+                                        <li><a href="currentPromotions.html">Promotions</a></li>
+                                        <hr>
+                                    </ul>
+                                </div>
+                            </li>
                     </ul>
                     <div class="navbar-nav search-container">
-                        <form action="src/web/php/searchMovies.php" method="get">
+                        <form action="../php/searchMovies.php" method="get">
                             <input type="text" name="searchMovie" placeholder="Search for a movie">
                             <button type="submit" class="searchIcon">
                                 <i class="fas fa-search"></i>
@@ -519,44 +529,40 @@
        </select>
 	</div>
 	<footer>
-            <div class="footer-Body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1>Stay up to date with Promotions!
-                                <hr>
-                            </h1>
-                            <div>
-                                <p>Join over thousands of users who recieve bi-weekly promotional updates! </p>
-                                <form action="#" method="get">
-                                    <input class="emailUpdate" type="text" name="emailPromotionUpdate"
-                                        placeholder="Email Address">
-                                    <button class="emailSignUp">Sign Up!</button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h2>NAVIGATE</h2>
-                            <div class="fll Navigate">
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                            </div>
-                            <div class="flr Navigate">
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <hr>
-            <div class="row justify-content-center">
-                    <p>Copyright of Daniel Kim, Oscar Lopez, Kranthi, Padmanaban</p>
-            </div>
-        </footer>
+			<div class="footer-Body">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<h1>Stay up to date with Promotions!
+								<hr>
+							</h1>
+							<div>
+								<p>Join over thousands of users who recieve bi-weekly promotional updates! </p>
+								<a href="register.html" class="emailSignUp">Sign Up!</a>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<h2>NAVIGATE</h2>
+							<div class="fll Navigate">
+								<a href="#">In Theatres<i class="right"></i></a>
+								<a href="#">In Theatres<i class="right"></i></a>
+								<a href="#">In Theatres<i class="right"></i></a>
+							</div>
+							<div class="flr Navigate">
+								<a href="#">In Theatres<i class="right"></i></a>
+								<a href="#">In Theatres<i class="right"></i></a>
+								<a href="#">In Theatres<i class="right"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+			</div>
+			<hr>
+			<div class="row justify-content-center">
+				<p>Copyright of Daniel Kim, Oscar Lopez, Kranthi, Padmanaban</p>
+			</div>
+		</footer>
 </body>
 
 </html>
