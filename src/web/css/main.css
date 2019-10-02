@@ -694,6 +694,10 @@ width:350px;
     border-color: rgb(183, 212, 255);
     font-weight: bold;
 }
+.noBG
+{
+    background: none !important;
+}
 .Navigate
 {
     width: 45%;
