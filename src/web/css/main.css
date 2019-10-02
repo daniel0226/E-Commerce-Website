@@ -64,6 +64,11 @@ nav
 {
     font-size: 2rem;
 }
+footer .row
+{
+    width: 100%;
+    margin: 0;
+}
 @media only screen and (max-width: 800px) {
 
     .JokerBody, .navbar, .nav-item, footer
@@ -786,4 +791,87 @@ width:350px;
     padding: 3px;
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
+}
+.registerPage
+{
+    width: 100%;
+    height: auto;
+    padding: 0px;
+    margin: 0;
+    background-image: url("../images/Background/filmBackground.jpg");
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+    background-size: cover;
+    position: relative;
+}
+.registerPage p
+{
+    margin: 30px 0px 10px 0px;
+}
+.registerPageWrapper
+{
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.e-Body
+{
+    width: 100%;
+    height: 100%;
+}
+.registerBody
+{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    background: rgb(235, 235, 235);
+    color: black;
+    box-shadow: 0px 0px 10px rgba(115, 159, 255, 1);
+}
+.registerBody img
+{
+    margin: 0px 2.5px 0px 2.5px !important;
+    width: 35px !important;
+    height: 35px !important;
+}
+.registerBody h1, .registerBody h2
+{
+    text-align: center;
+}
+.registerBody input, .registerBody label, .registerBody select {
+    display:block;
+    width: 100%;
+}
+.registerBody input, .registerBody select
+{
+    background: white;
+    margin-bottom: 5px;
+}
+.registerBody label
+{
+    margin: 0px;
+}
+.block
+{
+    display: block;
+}
+.names
+{
+    margin: 0px;
+    padding: 2px;
+    border: rgba(115, 159, 255, 1) 1px solid;
+    box-shadow: 0px 0px 5px rgba(115, 159, 255, 1);
+}
+.namesh
+{
+    background: rgba(115, 159, 255, .3) !important;
+}
+.namesh:hover
+{
+    border: white 1px solid;
+    box-shadow: 0 0 10px rgba(115, 159, 255, 1);
+    background: white !important;
 }
