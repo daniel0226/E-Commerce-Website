@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "eCommerceBooking.Main",
+            "projectName": "CSCI4050_8198816a"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - main",
+            "request": "launch",
+            "mainClass": "eCommerceBooking.main",
+            "projectName": "CSCI4050_8198816a"
+        }
+    ]
+}
