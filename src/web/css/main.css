@@ -815,8 +815,8 @@ width:350px;
 }
 .goldB
 {
-    border: 1px solid rgba(255, 208, 0, 0.7);
-    box-shadow: 0px 0px 6px white;
+    border: .2px solid rgba(255, 208, 0, 0.7);
+    box-shadow: 0px 0px 3px white;
     padding: 10px;
     margin-bottom: 30px;
 }
