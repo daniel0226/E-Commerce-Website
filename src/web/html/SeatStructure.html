@@ -49,9 +49,9 @@
                                 <ul class="dropdown-menu">
                                     <!-- Will Redirect to Search Movie Page and autofilter with "in Theatres"-->
                                     <li><input class="navlogout" onclick="searchNav(0)" value="In Theatres" spellcheck="false"></li>
-                                    <hr>
+                                    
                                     <li><input class="navlogout" onclick="searchNav(1)" value="Coming Soon"></li>
-                                    <hr>
+                                    
                                     <li><a href="SearchView.html">Search Movies</a></li>
                                 </ul>
                             </div>
@@ -63,10 +63,10 @@
                                 <ul class="dropdown-menu">
                                     <!-- About Us/Contact-->
                                     <li><a href="editProfile.html">Edit Profile</a></li>
-                                    <hr>
+                                    <li>
                                     <form action="../php/logout.php" method="GET">
-                                        <li><input class="navlogout" type="submit" value="logout"></li>
-                                    </form>
+                                        <input class="navlogout" type="submit" value="logout">
+                                    </form></li>
                                 </ul>
                             </div>
                         </li>
@@ -77,7 +77,7 @@
                                 <ul class="dropdown-menu">
                                     <!-- About Us/Contact-->
                                     <li><a href="login.html">Login</a></li>
-                                    <hr>
+                                    
                                     <li><a href="register.html">Register</a></li>
                                 </ul>
                             </div>
@@ -89,7 +89,7 @@
                                     <ul class="dropdown-menu">
                                         <!-- About Us/Contact-->
                                         <li><a href="currentPromotions.html">Promotions</a></li>
-                                        <hr>
+                                        
                                     </ul>
                                 </div>
                             </li>
@@ -534,8 +534,9 @@
 					<div class="row">
 						<div class="col-md-6">
 							<h1>Stay up to date with Promotions!
-								<hr>
+								
 							</h1>
+							<hr>
 							<div>
 								<p>Join over thousands of users who recieve bi-weekly promotional updates! </p>
 								<a href="register.html" class="emailSignUp">Sign Up!</a>
