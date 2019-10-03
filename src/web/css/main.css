@@ -755,7 +755,7 @@ width:350px;
     background-image: url("../images/Background/fallintothelight-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
+    background-position: 0 0;
     position: relative;
     width: 100%;
     height: auto;
@@ -871,6 +871,7 @@ width:350px;
 }
 .tabActive
 {
+    background: rgb(204, 204, 204) !important;
     font-weight: bold;
 }
 .profilePicBody
