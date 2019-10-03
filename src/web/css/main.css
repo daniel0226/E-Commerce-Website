@@ -743,7 +743,36 @@ width:350px;
     height: 50vh;
     background-size: cover;
 }
-
+.profileBg
+{
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 100%;
+    background-size: cover;
+}
+.profileBackground
+{
+    background-image: url("../images/Background/fallintothelight-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.tableO
+{
+    width: 100%;
+    height: 100%;
+    display: table;
+    padding: 0px 30px 0px 30px;
+    border-left: rgb(30, 40, 60) solid 1px;
+}
+.tableI
+{
+    vertical-align: middle;
+    display: table-cell;
+}
 .promoPage
 {
     width: 100%;
@@ -824,6 +853,151 @@ width:350px;
 {
     margin: 30px 0px 10px 0px;
 }
+.profilePicWrapper
+{
+    margin: auto;
+    width: 100%;
+    padding: 100px 30px;
+    color: white;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#about
+{
+    display: block;
+}
+.tabActive
+{
+    font-weight: bold;
+}
+.profilePicBody
+{
+    margin: auto;
+    padding: 25px;
+    width: 200px;
+    height: 200px;
+    border: rgba(115, 159, 255, 1) solid 1px;
+    background: white;
+    border-radius: 50%;
+}
+.editProfileWrapper
+{
+    width: 100%;
+    padding: 10px 20px 10px 20px;
+    background: #eff5ff;
+    border: rgba(115,159,225,1) solid 1px;
+    box-shadow: 0px 0px 5px white;
+}
+.tabs
+{
+    width: 100%;
+    padding: 5px;
+    justify-content: center;
+}
+.tab {
+    overflow: hidden;
+    color: black;
+    border: rgba(115, 159, 255, 1) solid 1px;
+    padding: 5px 15px 5px 15px;
+    box-shadow: 0px 0px 6px black;
+}
+.tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    padding: 5px 15px 5px 15px;
+    transition: 0.3s;
+    font-size: 1rem;
+    color: black;
+}
+.borderL-xs
+{
+    border-left: rgba(115, 159, 255, 1) .3px solid !important;
+}
+.borderR-xs
+{
+    border-right: rgba(115, 159, 255, 1) .3px solid !important;
+}
+.tab i
+{
+    margin-right: 3px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+
+  /* Style the tab content */
+  .tabcontent {
+    padding: 20px 0px;
+    display: none;
+    color: black;
+  }
+  .tabcontent .row
+  {
+      margin-top: 8px;
+  }
+  .tabInput label, .tabInput input
+  {
+    width: 100%;
+  }
+  .tabInput input, .tabInput select
+  {
+      box-shadow: 0px 0px 6px;
+  }
+  #about, #payment, #picture
+  {
+      border-left: rgba(115, 159, 255, 1);
+      border-width: 1px;
+      border-style: solid;
+      border-right: none;
+      border-top: none;
+      border-bottom: none;
+      box-shadow: -2px 0px 6px -2px black;
+  }
+  .tabcontent a, .tabcontent button
+  {
+      text-align: center;
+      width: 100%;
+      border: 2px solid;
+      padding: 3px;
+      font-size: 1.25rem;
+      margin: 10px 0px 10px 0px;
+      background: none;
+  }
+  .tabcontent a:hover, .tabcontent button:hover
+  {
+      text-decoration: underline;
+      background: rgb(192, 212, 255);
+  }
+  .tabcontent button
+  {
+      border-color: rgb(40, 50, 70);
+      color: rgb(40,50,70);
+      box-shadow: 0px 0px 7px rgb(72, 145, 255);
+  }
+  .tabcontent a
+  {
+      display: inline-block;
+      border-color: rgba(115, 159, 255, 1);
+      color: rgba(115, 159, 255, 1);
+      box-shadow: 0px 0px 3px black;
+  }
+.profilePicture
+{
+    width: 100%;
+    height: 150px;
+    background-image: url("../images/icons/userIcon.png");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: contain;
+}
 .registerPageWrapper
 {
     width: 100%;
@@ -882,7 +1056,10 @@ width:350px;
 }
 .namesh
 {
-    background: rgba(115, 159, 255, .3) !important;
+    color: rgb(35,70,140);
+    border: rgb(35, 70, 140) 1.5px solid;
+    box-shadow: 0px 0px 5px rgba(40, 80, 160, 1);
+    background: none !important;
 }
 .namesh:hover
 {

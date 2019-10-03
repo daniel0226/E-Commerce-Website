@@ -107,102 +107,306 @@
             </div>
         </nav>
     </header>
-    <section class="bg-avengers">
-        <div class="registerPageWrapper">
-        <form action="../php/confirmEditProfile.php" method="POST">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        <div class="container">
-                            <h1>Change Account Information
-                                <hr>
-                            </h1>
-                            <div class="row">
-                                <div class="col-md-6 borderL">
-                                    <h3>Profile Information
-                                        <hr>
-                                    </h3>
-                                    <div class="signUpText">
-                                        <div>
-                                            <input type="text" placeholder="First Name" name="firstname" value="">
-                                        </div>
-                                        <div>
-                                            <input type="text" placeholder="Last Name" name="lastname" value="">
-                                        </div>
-                                        <div>
-                                            <input type="text" placeholder="Email Address" name="emailaddress" value="">
-                                        </div>
-                                        <div>
-                                            <input type="text" placeholder="Password" name="password" value="">
-                                        </div>
-                                        <div>
-                                            <input type="text" placeholder="Confirm Password" name="confirmpassword"
-                                                value="">
-                                        </div>
-                                        <div>
-                                            <input type="tel" name="phonenumber"
-                                                placeholder="Phone Number: xxx-xxx-xxxx"
-                                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <h3>Change Payment method
-                                        <hr>
-                                    </h3>
-                                    <div class="signUpText" id="optionalFields">
-                                        <input class="cardOwner" type="text" placeholder="Card Holder Name"
-                                            name="cardname" value="">
-                                        <input class="cvv" type="text" placeholder="CVV" name="cvv" maxlength=3
-                                            value="">
-                                        <div>
-                                            <input type="text" placeholder="Card Number" name="cardnumber" value="">
-                                        </div>
-                                        <div id="expiration-date">
-                                            <label>Expiration Date: </label>
-                                            <select>
-                                                <option value="01">January</option>
-                                                <option value="02">February </option>
-                                                <option value="03">March</option>
-                                                <option value="04">April</option>
-                                                <option value="05">May</option>
-                                                <option value="06">June</option>
-                                                <option value="07">July</option>
-                                                <option value="08">August</option>
-                                                <option value="09">September</option>
-                                                <option value="10">October</option>
-                                                <option value="11">November</option>
-                                                <option value="12">December</option>
-                                            </select>
-                                            <select>
-                                                <option value="16"> 2019</option>
-                                                <option value="17"> 2020</option>
-                                                <option value="18"> 2021</option>
-                                                <option value="19"> 2022</option>
-                                                <option value="20"> 2023</option>
-                                                <option value="21"> 2024</option>
-                                            </select>
-                                        </div>
-                                        <div class="cardTypeWrapper">
-                                            <label>Card Type:</label>
-                                            <div class="flr">
-                                                <img src="../images/icons/visa.png" alt="visa">
-                                                <img src="../images/icons/amex.png" alt="amex">
-                                                <img src="../images/icons/mastercard.jpg" alt="mastercard">
-                                            </div>
-                                        </div>
-                                    </div>
+    <section class="promoPage">
+        <div class="profileBackground">
+            <div class="blurB">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-5">
+                            <div class="profilePicWrapper">
+                                <div class="profilePicBody">
+                                    <div class="profilePicture"></div>
                                 </div>
                             </div>
-                            <div class="container sub">
-                                <input class="signupbtn" type="submit" value="Confirm Changes">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <div class="editProfileWrapper">
+                                <form action="../php/confirmEditProfile.php" method="POST">
+                                    <div class="tabs">
+                                        <div class="tab justify-content-center">
+                                            <button type="button" class="tablinks borderL-xs borderR-xs"
+                                                onclick="openTab(event, 'about')"><i
+                                                    class="fa fa-user-circle"></i>About</button>
+                                            <button type="button" class="tablinks borderR-xs"
+                                                onclick="openTab(event, 'payment')"><i
+                                                    class="fa fa-dollar-sign"></i>Payment</button>
+                                            <button type="button" class="tablinks borderR-xs"
+                                                onclick="openTab(event, 'picture')"><i
+                                                    class="fa fa-file-image"></i>Pictures</button>
+                                        </div>
+                                        <div id="about" class="tabcontent">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-9 tabInput">
+                                                        <h1>About You</h1>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <label for="fName">First Name</label>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <input id="fNameEdit" class="names" type="text"
+                                                                            value="Daniel" name="firstname" value="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <label for="lName">Last Name</label>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <input id="lNameEdit" class="names" type="text"
+                                                                            value="Kim" name="lastname" value="">
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <label for="Email">Email</label>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <input id="EmailEdit" class="names" type="text"
+                                                                            value="yhk18349@uga.edu" name="email"
+                                                                            value="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <label for="bday">Birth Date</label>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <input id="bdayEdit" class="names" type="date"
+                                                                            class="names" value="1996-02-26"
+                                                                            name="bday">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <label for="Pass">Password</label>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <input id="PassEdit" class="names"
+                                                                            type="password" value="123456789"
+                                                                            name="password" value="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <label for="cPass">Confirm Password</label>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <input id="cPassEdit" class="names"
+                                                                            type="password" class="names"
+                                                                            value="123456789" name="confirmpassword">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <label for="phonenumber">Phone Number</label>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <input id="phonenumberEdit" class="names"
+                                                                            type="tel" name="phonenumber"
+                                                                            value="404-723-6094"
+                                                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="tableO">
+                                                            <div class="tableI">
+                                                                <div>
+                                                                    <button type="submit" value="Save">Save</button>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="../../../index.html">Cancel</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="payment" class="tabcontent">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-9 tabInput">
+                                                        <h1>Payment Information</h1>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <label for="cardname">Card Name</label>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <input id="cardname" class="names" type="text"
+                                                                            placeholder="Card Holder Name"
+                                                                            name="cardname" value="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <label for="cvv">CVV</label>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <input id="cvv" class="names" type="text"
+                                                                            placeholder="CVV" name="cvv" maxlength=3
+                                                                            value="">
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <label for="cardnumber">Card Number</label>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <input id="cardnumber" class="names" type="text"
+                                                                            placeholder="Card Number" name="cardnumber"
+                                                                            value="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <label for="ExpirationDate">Expiration
+                                                                            Date</label>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <label for="Month">Month</label>
+                                                                        <select id="Month" class="names">
+                                                                            <option value="01">January</option>
+                                                                            <option value="02">February </option>
+                                                                            <option value="03">March</option>
+                                                                            <option value="04">April</option>
+                                                                            <option value="05">May</option>
+                                                                            <option value="06">June</option>
+                                                                            <option value="07">July</option>
+                                                                            <option value="08">August</option>
+                                                                            <option value="09">September</option>
+                                                                            <option value="10">October</option>
+                                                                            <option value="11">November</option>
+                                                                            <option value="12">December</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <label for="year">Year</label>
+                                                                        <select id="year" class="names">
+                                                                            <option value="16"> 2019</option>
+                                                                            <option value="17"> 2020</option>
+                                                                            <option value="18"> 2021</option>
+                                                                            <option value="19"> 2022</option>
+                                                                            <option value="20"> 2023</option>
+                                                                            <option value="21"> 2024</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="tableO">
+                                                            <div class="tableI">
+                                                                <div>
+                                                                    <button type="submit" value="Save">Save</button>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="../../../index.html">Cancel</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Payment-->
+                                        <div id="picture" class="tabcontent">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        <h1>Images</h1>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <div class="profilePicture"></div>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <div class="tableO">
+                                                                            <div class="tableI">
+                                                                                    <input class="names" id="profilePic" type="file" name="pic" accept="image/*">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="row">
+                                                                        <div class="col-md-4">
+                                                                            <label>Background Image</label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                                        <input class="names" id="profilePic" type="file" name="pic" accept="image/*">
+                                                                                
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>                                                    
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="tableO">
+                                                            <div class="tableI">
+                                                                <div>
+                                                                    <button type="submit" value="Save">Save</button>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="../../../index.html">Cancel</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
     </section>
     <footer>
         <div class="footer-Body">
@@ -214,7 +418,7 @@
                         </h1>
                         <div>
                             <p>Join over thousands of users who recieve bi-weekly promotional updates! </p>
-                            <a href="register.html" class="emailSignUp">Sign Up!</a>
+                            <a href="=register.html" class="emailSignUp">Sign Up!</a>
                         </div>
                     </div>
                     <div class="col-md-6">
