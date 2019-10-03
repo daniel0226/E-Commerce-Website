@@ -21,7 +21,7 @@ nav
     position: absolute;
     padding: 0;
 }
-.navbar h1
+.navbar h1, .navbar h2
 {
     margin: 5px;
 }
