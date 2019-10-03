@@ -660,7 +660,7 @@ width:350px;
 .footer-Body h1
 {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     text-align: center;
 }
 .footer-Body h2
@@ -765,6 +765,9 @@ width:350px;
     width: 100%;
     height: 100%;
     display: table;
+}
+.tableLinks
+{
     padding: 0px 30px 0px 30px;
     border-left: rgb(30, 40, 60) solid 1px;
 }
