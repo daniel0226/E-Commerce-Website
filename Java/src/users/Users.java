@@ -1,6 +1,4 @@
-package eCommerce.users;
-import eCommerce.UserData.*;
-
+import UserData.*;
 // Inheritance class for user functions and objects
 public class Users
 {
