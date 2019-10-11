@@ -564,6 +564,7 @@ margin-top: 50px;
 {
     color: white;
 }
+
 #expiration-date
 {
     margin: 10px 0px 10px 0px;
@@ -755,10 +756,7 @@ width:350px;
 }
 .profileBackground
 {
-    background-image: url("../images/Background/fallintothelight-background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0 0;
+    background: black;
     position: relative;
     width: 100%;
     height: auto;
@@ -1101,6 +1099,62 @@ width:350px;
     height: 100%;
     padding: 5px 0px 5px 0px;
 }
+.fieldWrapper label
+{
+    float: left;
+    font-size: .75rem;
+    display: block;
+    margin: 0;
+}
+.fieldWrapper select
+{
+    padding: 3px 5px 3px 20px;
+    margin-bottom: 15px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: rgb(45,69,121) solid 1px;
+}
+.submitField
+{
+    width: 100%;
+    padding: 10px;
+}
+
+.submitField input, .submitField a
+{
+    font-size: 1rem;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+#userBackground
+{
+    background: white;
+}
+.submitField input
+{
+    width: 100%;
+    border: solid 1px rgb(30, 40, 60);
+    background: rgb(225, 235, 255);
+    color: rgb(45, 69, 121);
+    box-shadow: 0px 0px 2px rgb(45, 69, 121);
+}
+.submitField input:hover
+{
+    background: rgb(197, 216, 255);
+    box-shadow: 0px 0px 10px rgba(115, 159, 255, 1);
+    font-weight: bold;
+}
+.submitField a
+{
+    color: rgb(45, 69, 121);
+}
+.submitField a:hover
+{
+    font-weight: bold;
+    text-shadow: 0px 0px 1px rgba(115, 159, 255, 1);
+}
 .fieldWrapper h2
 {
     margin-bottom: 10px;
@@ -1110,6 +1164,7 @@ width:350px;
     padding: 10px 15px 3px 15px;
     text-align: left;
     font-size: 2rem;
+    margin: 5px 0px 35px 0px;
 }
 .e-Body
 {

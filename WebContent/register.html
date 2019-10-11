@@ -31,7 +31,7 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark">
+        <nav class="navbar navbar-expand-md navbar-dark navbarSU">
             <div class="container">
                 <a href="../index.html">
                     <h1 id="header" class="navbar-brand hLink st">Cinema E-Booking</h1>
@@ -48,10 +48,11 @@
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <!-- Will Redirect to Search Movie Page and autofilter with "in Theatres"-->
-                                    <li><input class="navlogout" onclick="searchNav(0)" value="In Theatres" spellcheck="false"></li>
-                                    
+                                    <li><input class="navlogout" onclick="searchNav(0)" value="In Theatres"
+                                            spellcheck="false"></li>
+
                                     <li><input class="navlogout" onclick="searchNav(1)" value="Coming Soon"></li>
-                                    
+
                                     <li><a href="SearchView.html">Search Movies</a></li>
                                 </ul>
                             </div>
@@ -64,9 +65,10 @@
                                     <!-- About Us/Contact-->
                                     <li><a href="editProfile.html">Edit Profile</a></li>
                                     <li>
-                                    <form action="../php/logout.php" method="GET">
-                                        <input class="navlogout" type="submit" value="logout">
-                                    </form></li>
+                                        <form action="../php/logout.php" method="GET">
+                                            <input class="navlogout" type="submit" value="logout">
+                                        </form>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -77,22 +79,22 @@
                                 <ul class="dropdown-menu">
                                     <!-- About Us/Contact-->
                                     <li><a href="login.html">Login</a></li>
-                                    
+
                                     <li><a href="register.html">Register</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="nav-item">
-                                <div class="dropdown">
-                                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Promotions
-                                        <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <!-- About Us/Contact-->
-                                        <li><a href="currentPromotions.html">Promotions</a></li>
-                                        
-                                    </ul>
-                                </div>
-                            </li>
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Promotions
+                                    <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <!-- About Us/Contact-->
+                                    <li><a href="currentPromotions.html">Promotions</a></li>
+
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                     <div class="navbar-nav search-container">
                         <form action="../php/searchMovies.php" method="get">
@@ -107,172 +109,202 @@
         </nav>
     </header>
     <section class="registerPage">
-        <div class="registerPageWrapper">
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="e-Body">
-                        <h1>Cinema E-Booking</h1>
-                        <h2>Never Wait in Line Again</h2>
-                        <hr>
-                        <p>
-                            We are a revolutionary digital experience that defies the theatre
-                            experience. Join now and enjoy the benefits of being a member! "Our Website Name" allows you
-                            to checkout and book movie tickets and seatings quickly and easily! Get great deals
-                            through our promotions!
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="e-Body">
-                        <div class="registerBody">
-                            <form action="../php/confirmRegistration.php" method="POST">
-                                <h1>Create Account</h1>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label for="profilePic">Profile Picture</label>
-                                            <input class="names" id="profilePic" type="file" name="pic" accept="image/*">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="fName">First Name</label>
-                                            <input id="fName" class="names" type="text" placeholder="First Name"
-                                                name="firstname" value="" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="lName">Last Name</label>
-                                            <input id="lName" class="names" type="text" placeholder="Last Name"
-                                                name="lastname" value="" required>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="Email">Email</label>
-                                            <input id="Email" class="names" type="text" placeholder="Email" name="email"
-                                                value="" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="bday">Birth Date</label>
-                                            <input id="bday" class="names" type="date" name="bday">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="Pass">Password</label>
-                                            <input id="Pass" class="names" type="password" placeholder="Password" name="password"
-                                                value="" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="cPass">Confirm Password</label>
-                                            <input id="cPass" class="names" type="password" placeholder="Confirm Password" name="confirmpassword">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label for="phonenumber">Phone Number</label>
-                                            <input id="phonenumber" class="names" type="tel" name="phonenumber" placeholder="Phone Number: xxx-xxx-xxxx"
-                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h2>Payment Method(Optional)</h2>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <label for="cardname">Card Name</label>
-                                            <input id="cardname" class="names" type="text" placeholder="Card Holder Name" name="cardname"
-                                                value="">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label for="cvv">CVV</label>
-                                            <input id="cvv" class="names" type="text" placeholder="CVV" name="cvv" maxlength=3 value="">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label for="cardnumber">Card Number</label>
-                                                <input id="cardnumber" class="names" type="text" placeholder="Card Number" name="cardnumber" value="">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <label style="padding-left:15px;">Expiration Date</label>
-                                        <div id="ExpirationDate" class="col-md-6">
-                                            <label for="Month">Month</label>
-                                            <select id="Month" class="names">
-                                                    <option value="01">January</option>
-                                                    <option value="02">February </option>
-                                                    <option value="03">March</option>
-                                                    <option value="04">April</option>
-                                                    <option value="05">May</option>
-                                                    <option value="06">June</option>
-                                                    <option value="07">July</option>
-                                                    <option value="08">August</option>
-                                                    <option value="09">September</option>
-                                                    <option value="10">October</option>
-                                                    <option value="11">November</option>
-                                                    <option value="12">December</option>
-                                                </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="year">Year</label>
-                                            <select id="year" class="names">
-                                                    <option value="16"> 2019</option>
-                                                    <option value="17"> 2020</option>
-                                                    <option value="18"> 2021</option>
-                                                    <option value="19"> 2022</option>
-                                                    <option value="20"> 2023</option>
-                                                    <option value="21"> 2024</option>
-                                                </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container" style="margin-top:15px;">
-                                    <input class="names namesh" type="submit" value="Sign Up">
-                                </div>             
-                            </form>
+        <div class="signUpWrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-5 removeRightPadding">
+                        <div class="signUpInfo">
+                            <div class="e-Body e-Padding">
+                                <h1>Cinema E-Booking</h1>
+                                <h2>Never Wait in Line Again</h2>
+                                <hr>
+                                <p>
+                                    We are a revolutionary digital experience that defies the theatre
+                                    experience. Join now and enjoy the benefits of being a member! "Our Website Name"
+                                    allows
+                                    you
+                                    to checkout and book movie tickets and seatings quickly and easily! Get great deals
+                                    through our promotions!
+                                </p>
+                            </div>
                         </div>
+                    </div>
+                    <div class="col-md-7 removeLeftPadding">
+                        <form class="registrationForm" action="registerController" method="POST">
+                            <div class="createAccountHeader">
+                                <h2>Create Account</h2>
+                            </div>
+                            <div class="container-fluid field">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="fieldWrapper">
+                                            <h2>We Will Need..</h2>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-md-12 removeLeftPadding removeRightPadding">
+                                                        <i class="fa fa-user icon"></i>
+                                                        <input class="textFieldDes" id="First_Name" type="text"
+                                                            placeholder="First Name" name="firstname" value="" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 removeLeftPadding removeRightPadding">
+                                                        <i class="fa fa-user icon"></i>
+                                                        <input class="textFieldDes" id="Last_Name" type="text"
+                                                            placeholder="Last Name" name="lastname" value="" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 removeLeftPadding removeRightPadding">
+                                                        <i class="fa fa-lock icon"></i>
+                                                        <input class="textFieldDes" id="password" type="password"
+                                                            placeholder="Password" name="password" value="" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 removeLeftPadding removeRightPadding">
+                                                        <i class="fa fa-lock icon"></i>
+                                                        <input class="textFieldDes" id="confirmPassword" type="password"
+                                                            placeholder="Confirm Password" name="confirmPassword"
+                                                            value="" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 removeLeftPadding removeRightPadding">
+                                                        <i class="fa fa-envelope icon"></i>
+                                                        <input class="textFieldDes" id="email" type="email"
+                                                            placeholder="Email" name="email" value="" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 removeLeftPadding removeRightPadding">
+                                                        <i class="fa fa-birthday-cake icon"></i>
+                                                        <input class="textFieldDes" id="birthday" type="date"
+                                                            name="bday" value="" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--SignUp container-->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 borderL">
+                                        <div class="fieldWrapper">
+                                            <h2>Optional Payment Method</h2>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-md-12 removeLeftPadding removeRightPadding">
+                                                        <i class="fa fa-user icon"></i>
+                                                        <input id="cardname" class="textFieldDes" type="text"
+                                                            placeholder="Card Holder Name" name="cardholdername"
+                                                            value="">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 removeRightPadding removeLeftPadding">
+                                                        <i class="fa fa-credit-card icon"></i>
+                                                        <input id="creditcard" class="textFieldDes" type="text"
+                                                            placeholder="Card Number" name="cardnumber" value=""
+                                                            maxlength="16">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 removeRightPadding removeLeftPadding">
+                                                        <i class="fa fa-calendar icon"></i>
+                                                        <select id="Month">
+                                                            <option value="01">January</option>
+                                                            <option value="02">February </option>
+                                                            <option value="03">March</option>
+                                                            <option value="04">April</option>
+                                                            <option value="05">May</option>
+                                                            <option value="06">June</option>
+                                                            <option value="07">July</option>
+                                                            <option value="08">August</option>
+                                                            <option value="09">September</option>
+                                                            <option value="10">October</option>
+                                                            <option value="11">November</option>
+                                                            <option value="12">December</option>
+                                                        </select>
+                                                        <select id="Year">
+                                                            <option value="16"> 2019</option>
+                                                            <option value="17"> 2020</option>
+                                                            <option value="18"> 2021</option>
+                                                            <option value="19"> 2022</option>
+                                                            <option value="20"> 2023</option>
+                                                            <option value="21"> 2024</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6 removeLeftPadding">
+                                                        <i class="fa fa-credit-card icon"></i>
+                                                        <input id="cvv" class="textFieldDes" type="text" maxlength="3"
+                                                            name="cvv" placeholder="cvv" value="">
+                                                    </div>
+                                                    <div class="col-md-6 removeRightPadding">
+                                                        <i style="left: 15px;" class="fa fa-map-pin icon"></i>
+                                                        <input id="zipcode" class="textFieldDes" type="text"
+                                                            name="zipcode" placeholder="Zip Code" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Payment stuff-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="submitField">
+                                                <input type="submit" value="Register">
+                                                <a href="login.html">Already have an account?</a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <footer>
-            <div class="footer-Body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1>Stay up to date with Promotions!
-                            
-                            </h1>
-                            <hr>
-                            <div>
-                                <p>Join over thousands of users who recieve bi-weekly promotional updates! </p>
-                                <a href="=register.html" class="emailSignUp">Sign Up!</a>
-                            </div>
+        <div class="footer-Body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>Stay up to date with Promotions!
+
+                        </h1>
+                        <hr>
+                        <div>
+                            <p>Join over thousands of users who recieve bi-weekly promotional updates! </p>
+                            <a href="=register.html" class="emailSignUp">Sign Up!</a>
                         </div>
-                        <div class="col-md-6">
-                            <h2>NAVIGATE</h2>
-                            <div class="fll Navigate">
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                            </div>
-                            <div class="flr Navigate">
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                                <a href="#">In Theatres<i class="right"></i></a>
-                            </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>NAVIGATE</h2>
+                        <div class="fll Navigate">
+                            <a href="#">In Theatres<i class="right"></i></a>
+                            <a href="#">In Theatres<i class="right"></i></a>
+                            <a href="#">In Theatres<i class="right"></i></a>
+                        </div>
+                        <div class="flr Navigate">
+                            <a href="#">In Theatres<i class="right"></i></a>
+                            <a href="#">In Theatres<i class="right"></i></a>
+                            <a href="#">In Theatres<i class="right"></i></a>
                         </div>
                     </div>
                 </div>
-    
             </div>
-            <hr>
-            <div class="row justify-content-center">
-                <p>Copyright of Daniel Kim, Oscar Lopez, Kranthi, Padmanaban</p>
-            </div>
-        </footer>
+
+        </div>
+        <hr>
+        <div class="row justify-content-center">
+            <p>Copyright of Daniel Kim, Oscar Lopez, Kranthi, Padmanaban</p>
+        </div>
+    </footer>
 </body>
 
 </html>
