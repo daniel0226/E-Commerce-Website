@@ -361,9 +361,7 @@ hr
 .search-container input:focus {outline:none;}
 .borderL
 {
-    border-left: black;
-    border-style: solid;
-    border-width: 0px 1px 0px 1px;
+    border-left: black solid 1px;
 }
 .searchIcon
 {
@@ -675,7 +673,12 @@ width:350px;
 }
 .signUpWrapper
 {
-    padding: 100px 10px;
+    width: 100%;
+    background: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+
 }
 .emailSignUp
 {
@@ -1009,6 +1012,104 @@ width:350px;
     background: rgba(0,0,0,0.7);
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+}
+.signUpInfo
+{
+    width: 100%;
+    height: auto;
+    background-image: url("../images/Background/signUpBackground.jpg");
+    background-position: 0% 35%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.removeLeftPadding
+{
+    padding-left: 0px !important;
+}
+.removeRightPadding
+{
+    padding-right: 0px !important;
+}
+.e-Padding
+{
+    padding: 100px 15px 100px 15px;
+}
+.registrationForm
+{
+    background: white;
+    color: rgb(45, 69, 121);
+    width: 100%;
+    height: 100%;
+    padding: 10px 5px 10px 5px;
+}
+.field
+{
+    width: 100%;
+    font-size: .8rem;
+}
+.field h2
+{
+    font-size: 1.25rem;
+}
+
+.line
+{
+    width: 1px;
+    box-shadow: 0px 0px 2px rgba(115, 159, 255, 1);
+    margin: 0 auto 0 auto;
+    background: black;
+    height: 100%;
+}
+.circle
+{
+    border: black solid 1px;
+    margin: 0px;
+    border-radius: 25px;
+}
+.fieldWrapper i
+{
+    position: absolute;
+    top: 7px;
+    left: 0px;
+    min-width: 40px;
+}
+.row-verticle
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+.textFieldDes
+{
+    width: 100%;
+    padding: 3px 5px 0px 20px;
+    margin-bottom: 15px;
+    color: rgb(45, 69, 121);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1.5px solid rgb(45, 69, 121);
+}
+.textFieldDes:focus
+{
+    color: rgb(45, 69, 121);
+    box-shadow: 0px 0px 5px rgba(115, 159, 255, 1);
+}
+.fieldWrapper
+{
+    font-size: 1rem;
+    width: 100%;
+    height: 100%;
+    padding: 5px 0px 5px 0px;
+}
+.fieldWrapper h2
+{
+    margin-bottom: 10px;
+}
+.createAccountHeader
+{
+    padding: 10px 15px 3px 15px;
+    text-align: left;
+    font-size: 2rem;
 }
 .e-Body
 {

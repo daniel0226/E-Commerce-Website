@@ -1,7 +1,5 @@
 package eCommerce.Controllers;
 
-import eCommerce.Controllers.*;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServlet;
