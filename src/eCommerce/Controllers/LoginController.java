@@ -21,18 +21,38 @@ public class LoginController extends HttpServlet
     {
         response.setContentType("text/html;charset=UTF-8");
 
+        //Replace this with database stuff
         String emailLogin = request.getParameter("email");
         String passwordLogin = request.getParameter("password");
-        PrintWriter out = response.getWriter();
-        out.println("Credentials: " + emailLogin + " " + passwordLogin);
-
+        
+        //This returns "on" if checked
+        //and null if not checked
+        //String rememberMe = request.getParameter("rmCheckBox");
+     
+     
+        
+        //Debug stuff, maybe we'll use loggers and generate log files instead?
+        //PrintWriter out = response.getWriter();
+        //String dbg_str = emailLogin + " " + passwordLogin + " has tried to login.";
+        //debugOutput(out, dbg_str);
+        
         if(Validation.validateLoginCredentials(emailLogin,passwordLogin))
         {
-            out.println("Success");   
+        	
+        	//Before we redirect, possibly create user data
+        	//Create cookie data
+        	
+            response.sendRedirect("index.html");
         }else
         {
-           out.println("Failure");
+        	response.sendRedirect("loginError.html");
         }
         
+        
+    }
+    public void debugOutput(PrintWriter out, String output)
+    {
+    	System.out.println(output);
+    	out.println(output);
     }
 }
