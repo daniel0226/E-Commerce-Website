@@ -53,6 +53,6 @@ public class RegisterController extends HttpServlet {
                 
                 //Add user to database
                 //Database should handle if email already exists
-                //If(databaseController.emailExists()) -> redirect to registerError.html
+                //If(databaseController.emailExists()) -> redirect to registerEmailExists.html
         }
 }
