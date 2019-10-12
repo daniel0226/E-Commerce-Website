@@ -1,3 +1,19 @@
+$(document).ready(function() {
+    $("#confirmPassword").keyup(validatePassword);
+});
+
+function validatePassword()
+{
+    var password = $("#password").val();
+    var confPassword = $("#confirmPassword").val();
+    if(password == confPassword) {
+        $("#confStatus").text("");        
+     }
+     else {
+         $("#confStatus").text("Passwords do not match!");  
+     }
+}
+
 function searchNav(type)
 {
     var currentLocation = window.location.href;

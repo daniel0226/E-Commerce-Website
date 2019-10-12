@@ -9,7 +9,12 @@ nav
     background: rgba(0,0,0,0.5);
     color: white;
 }
-
+.errorMessage
+{
+	color: red;
+	padding: 0 !important;
+	margin: 0 !important;
+}
 .navbarSU
 {
     background: black !important;
@@ -795,6 +800,12 @@ width:350px;
     background: black;
     position: relative;
 }
+.registerTyWrapper
+{
+    width: 100%;
+    padding: 100px;
+    text-align: center;
+}
 .blurB
 {
     width: 100%;
@@ -1022,9 +1033,9 @@ width:350px;
 .signUpInfo
 {
     width: 100%;
-    height: auto;
+    height: 100%;
     background-image: url("../images/Background/signUpBackground.jpg");
-    background-position: 0% 35%;
+    background-position: 0% 50%;
     background-repeat: no-repeat;
     background-size: cover;
 }

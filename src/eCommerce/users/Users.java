@@ -6,16 +6,28 @@ public class Users
 {
     private String firstName;
     private String lastName;
-    //private String password;
-    //private String email;
-    //private String phoneNumber;
-    //private String birthDate;
-    private Card card;
+    private String password;
+    private String confirmPassword;
+    private String emailAddress;
+    private String birthday;
+    private Card paymentCard;
     
-    public Users(String fName, String lName)
+    public Users(	String fName, 
+    				String lName, 
+    				String uPassword, 
+    				String uConPassword, 
+    				String uEmail, 
+    				String uBirthday,
+    				Card card)
     {
-        firstName = fName;
-        lastName = lName;
+    	
+        firstName 		= fName;
+        lastName 		= lName;
+        password 		= uPassword;
+        confirmPassword = uConPassword;
+        emailAddress 	= uEmail;
+        birthday 		= uBirthday;
+        paymentCard 	= card;
     }
     public void setFirstName(String fName)
     {
@@ -25,11 +37,7 @@ public class Users
     {
         lastName = lName;
     }
-    public void setPaymentCard(Card C)
-    {
-        card = C;
-    }
-
+    
     //GETTERS
     public String getFirstName()
     {
@@ -44,8 +52,5 @@ public class Users
     {
         return firstName + " " + lastName;
     }
-    public Card getPaymentCard()
-    {
-        return card;
-    }
+
 }

@@ -17,16 +17,18 @@
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
-    <script src="js/fields.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+        <script src="js/fields.js"></script>
 </head>
 
 <body>
@@ -130,7 +132,7 @@
                         </div>
                     </div>
                     <div class="col-md-7 removeLeftPadding">
-                        <form class="registrationForm" action="registerController" method="POST">
+                        <form class="registrationForm" action="RegisterController" method="POST">
                             <div class="createAccountHeader">
                                 <h2>Create Account</h2>
                             </div>
@@ -162,6 +164,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
+                                                    <p id="confStatus" class="errorMessage"></p>
                                                     <div class="col-md-12 removeLeftPadding removeRightPadding">
                                                         <i class="fa fa-lock icon"></i>
                                                         <input class="textFieldDes" id="confirmPassword" type="password"
@@ -210,27 +213,27 @@
                                                 <div class="row">
                                                     <div class="col-md-12 removeRightPadding removeLeftPadding">
                                                         <i class="fa fa-calendar icon"></i>
-                                                        <select id="Month">
-                                                            <option value="01">January</option>
-                                                            <option value="02">February </option>
-                                                            <option value="03">March</option>
-                                                            <option value="04">April</option>
-                                                            <option value="05">May</option>
-                                                            <option value="06">June</option>
-                                                            <option value="07">July</option>
-                                                            <option value="08">August</option>
-                                                            <option value="09">September</option>
-                                                            <option value="10">October</option>
-                                                            <option value="11">November</option>
-                                                            <option value="12">December</option>
+                                                        <select id="Month" name = "Month">
+                                                            <option value="January">January</option>
+                                                            <option value="February">February </option>
+                                                            <option value="March">March</option>
+                                                            <option value="April">April</option>
+                                                            <option value="May">May</option>
+                                                            <option value="June">June</option>
+                                                            <option value="July">July</option>
+                                                            <option value="August">August</option>
+                                                            <option value="September">September</option>
+                                                            <option value="October">October</option>
+                                                            <option value="November">November</option>
+                                                            <option value="December">December</option>
                                                         </select>
-                                                        <select id="Year">
-                                                            <option value="16"> 2019</option>
-                                                            <option value="17"> 2020</option>
-                                                            <option value="18"> 2021</option>
-                                                            <option value="19"> 2022</option>
-                                                            <option value="20"> 2023</option>
-                                                            <option value="21"> 2024</option>
+                                                        <select id="Year" name="Year">
+                                                            <option value="2019"> 2019</option>
+                                                            <option value="2020"> 2020</option>
+                                                            <option value="2021"> 2021</option>
+                                                            <option value="2022"> 2022</option>
+                                                            <option value="2023"> 2023</option>
+                                                            <option value="2024"> 2024</option>
                                                         </select>
                                                     </div>
                                                 </div>
