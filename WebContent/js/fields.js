@@ -1,15 +1,20 @@
 $(document).ready(function() {
     $("#confirmPassword").keyup(validatePassword);
+    $("input[type=submit][name='infS']").attr("disabled", "disabled"); 
 });
 
 function validatePassword()
-{
+{ 
     var password = $("#password").val();
     var confPassword = $("#confirmPassword").val();
+    var btn = $("infS");
+    
     if(password == confPassword) {
-        $("#confStatus").text("");        
+        $("#confStatus").text("");  
+        $("input[type=submit][name='infS']").removeAttr("disabled");       
      }
      else {
+        $("input[type=submit][name='infS']").attr("disabled", "disabled"); 
          $("#confStatus").text("Passwords do not match!");  
      }
 }

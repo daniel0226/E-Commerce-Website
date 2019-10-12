@@ -34,7 +34,12 @@ public class RegisterController extends HttpServlet {
                 String emailAddress = request.getParameter("email");
                 String birthday = request.getParameter("bday");// Appears yyyy-mm-dd
                 
-                //Card info If field is blank, String returned is "".
+                //Validations
+                //Javascript handles password and confirmpassword being equal
+                //HTML handles email address syntax
+                //Add more here.
+               
+                //Card info, If field is blank, String returned is "".
                 String cardHolderName = request.getParameter("cardholdername");
                 String cardNumber = request.getParameter("cardnumber");
                 String expMonth = request.getParameter("Month");
@@ -42,10 +47,12 @@ public class RegisterController extends HttpServlet {
                 String CVV = request.getParameter("cvv");
                 String zipcode = request.getParameter("zipcode");
                 
-                     
-                // Create User
+                newPaymentCard = new Card(cardHolderName, CVV, expMonth + "-" + expYear, cardNumber, zipcode);
                 WebUser newUser = new WebUser(firstName, lastName, password, confirmPassword, emailAddress, birthday,
                                 newPaymentCard);
                 
+                //Add user to database
+                //Database should handle if email already exists
+                //If(databaseController.emailExists()) -> redirect to registerError.html
         }
 }

@@ -9,22 +9,12 @@ public class Card
 
     public Card(String cName, String cvv, String expDate, String cNumber, String uZipcode)
     {
+    	//If user left card field blank, these string values will be ""
         cardName = cName;
         CVV = cvv;
         expirationDate = expDate;
         cardNumber = cNumber;
         zipCode = uZipcode;
-    }
-
-    public Card()
-    {
-        //If user doesn't fill out payment method upon first registration
-        cardName = "";
-        CVV = "";
-        expirationDate = "";
-        cardNumber = "";
-        zipCode = "";
-
     }
 
     public String getCardName()

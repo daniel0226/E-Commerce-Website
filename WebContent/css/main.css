@@ -1083,7 +1083,7 @@ width:350px;
     margin: 0px;
     border-radius: 25px;
 }
-.fieldWrapper i
+.icon
 {
     position: absolute;
     top: 7px;
@@ -1222,6 +1222,22 @@ width:350px;
 {
     margin: 0px;
 }
+.forgotpassBody
+{
+    width: 65%;
+    margin: auto;
+    padding: 25px;
+    height: 100%;
+}
+.bodyWrapper
+{   
+    text-align: center;
+    font-size: 1.5rem;
+    display: block;
+    margin: auto;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 100px 0px 100px 0px;
+}
 .block
 {
     display: block;
@@ -1245,4 +1261,52 @@ width:350px;
     border: white 1px solid;
     box-shadow: 0 0 10px rgba(115, 159, 255, 1);
     background: white !important;
+}
+.forgetPasswordBody
+{
+    width: 100%;
+    height: 100vh;
+    color: rgba(115, 159, 255, 1);
+    background: black;
+}
+.bodyWrapper p
+{
+    font-size: 1rem;
+}
+.textFieldpw
+{
+    background: none;
+    color: rgba(115, 159, 255, 1);
+    border-bottom: solid 1px rgba(115, 159, 255, 1);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 8px 12px 8px 0px;
+    width: 100%;
+    margin: 10px auto 30px auto;
+}
+.textFieldpw::placeholder
+{
+    color: rgba(115, 159, 255, 1);
+}
+.textFieldpw:focus
+{
+    outline: none;
+}
+.pwBtn
+{
+    width: 50%;
+    padding: 1px 5px;
+    margin: auto;
+    display: block;
+    border-radius: 25px;
+    border: solid 1px rgba(115, 159, 255, 1);
+    background: rgb(141, 177, 255);
+    color: rgb(22, 32, 53);
+    box-shadow: 0px 0px 2px white;
+}
+.pwBtn:hover
+{
+    box-shadow: 0px 0px 5px white;
+    border-color: white;
 }

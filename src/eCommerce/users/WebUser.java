@@ -3,7 +3,7 @@ import eCommerce.UserData.*;
 
 public class WebUser extends Users
 {
-    //private boolean isSuspended = false;
+    private boolean suspended = false;
 
 	public WebUser(	String fName, 
 					String lName, 
@@ -14,6 +14,16 @@ public class WebUser extends Users
 					Card card)
 	{
 		super(fName, lName, uPassword, uConPassword, uEmail, uBirthday, card);
+	}
+	
+	public boolean isSuspended()
+	{
+		return suspended;
+	}
+	
+	public void setSuspension()
+	{
+		suspended = true;
 	}
 
 }
