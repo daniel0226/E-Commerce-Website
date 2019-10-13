@@ -1,13 +1,23 @@
 $(document).ready(function() {
-    $("#confirmPassword").keyup(validatePassword);
-    $("input[type=submit][name='infS']").attr("disabled", "disabled"); 
+	console.log("running");
     generateHeader();
     generateFooter();
+    //$(".js-payment").keyup(makePaymentFieldRequired());
+    $("#confirmPassword").keyup(validatePassword);
+    $("input[type=submit][name='infS']").attr("disabled", "disabled");
 });
+
+function makePaymentFieldRequired()
+{
+	var inputField = document.getElementsByClassName("js-payment");
+	for(var i = 0; i<inputField.length; i++)
+	{
+		inputField[i].required = true;
+	}
+}
 
 function generateFooter()
 {
-
     var myvar = '<div class="footer-Body">'+
     '            <div class="container">'+
     '                <div class="row">'+
@@ -17,7 +27,7 @@ function generateFooter()
     '                        <hr>'+
     '                        <div>'+
     '                            <p>Join over thousands of users who recieve bi-weekly promotional updates! </p>'+
-    '                            <a href="register.html" class="emailSignUp">Sign Up!</a>'+
+    '                            <a href="register.jsp" class="emailSignUp">Sign Up!</a>'+
     '                        </div>'+
     '                    </div>'+
     '                    <div class="col-md-6">'+
@@ -35,7 +45,6 @@ function generateFooter()
     '                    </div>'+
     '                </div>'+
     '            </div>'+
-    ''+
     '        </div>'+
     '        <hr>'+
     '        <div class="row justify-content-center">'+
@@ -67,9 +76,7 @@ function generateHeader()
     '                                    <!-- Will Redirect to Search Movie Page and autofilter with "in Theatres"-->'+
     '                                    <li><input class="navlogout" onclick="searchNav(0)" value="In Theatres"'+
     '                                            spellcheck="false"></li>'+
-    ''+
     '                                    <li><input class="navlogout" onclick="searchNav(1)" value="Coming Soon"></li>'+
-    ''+
     '                                    <li><a href="SearchView.html">Search Movies</a></li>'+
     '                                </ul>'+
     '                            </div>'+
@@ -96,8 +103,7 @@ function generateHeader()
     '                                <ul class="dropdown-menu">'+
     '                                    <!-- About Us/Contact-->'+
     '                                    <li><a href="login.html">Login</a></li>'+
-    ''+
-    '                                    <li><a href="register.html">Register</a></li>'+
+    '                                    <li><a href="register.jsp">Register</a></li>'+
     '                                </ul>'+
     '                            </div>'+
     '                        </li>'+
@@ -108,7 +114,6 @@ function generateHeader()
     '                                <ul class="dropdown-menu">'+
     '                                    <!-- About Us/Contact-->'+
     '                                    <li><a href="currentPromotions.html">Promotions</a></li>'+
-    ''+
     '                                </ul>'+
     '                            </div>'+
     '                        </li>'+
@@ -142,29 +147,6 @@ function validatePassword()
         $("input[type=submit][name='infS']").attr("disabled", "disabled"); 
          $("#confStatus").text("Passwords do not match!");  
      }
-}
-
-function searchNav(type)
-{
-    var currentLocation = window.location.href;
-    var searchField = "";
-    if(type == 0)
-    {
-        searchField = "In Theatres";
-    }else if(type == 1)
-    {
-        searchField = "Coming Soon";
-    }else
-    {
-        console.log("searchNav error: invalid parameter");
-    }
-
-    if(currentLocation.includes("index.html"))
-    {
-        location.replace("src/web/html/searchView.html");
-    }else{
-        location.replace("../html/SearchView.html");
-    }   
 }
 
 function openTab(event, TabID)

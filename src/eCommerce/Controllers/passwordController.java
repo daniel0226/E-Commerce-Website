@@ -24,7 +24,7 @@ public class passwordController extends HttpServlet {
      // If this is called, user is updating new password
      public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
          
-    	 response.setContentType("text/html;charset=UTF-8");
+    	 response.setContentType("html;charset=UTF-8");
          String password = request.getParameter("password");
          String confirmPassword = request.getParameter("confirmPassword");
     

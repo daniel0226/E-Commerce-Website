@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,24 +20,15 @@
 
 
     
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-        <script src="js/fields.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="js/fields.js"></script>
 </head>
 
 <body>
     <header id="navH"></header>
     
     <section class="registerPage">
-        <div class="signUpWrapper">
+        <div class="signUpWrapper" style="padding: 100px 0px 100px 0px;">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-5 removeRightPadding">
@@ -60,19 +53,11 @@
                             <div class="createAccountHeader">
                                 <h2>Create Account</h2>
                             </div>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                            <p class="errorMessage">Associated Email Address already has an account.</p>
-                                            <a href="forgetPassword.html">Did you forget your password?</a>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="container-fluid field">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="fieldWrapper">
-                                            <h2>We Will Need..</h2>
+                                            <h2>We Will Need</h2>
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-md-12 removeLeftPadding removeRightPadding">
@@ -105,6 +90,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
+                                                    ${errorOutput}
                                                     <div class="col-md-12 removeLeftPadding removeRightPadding">
                                                         <i class="fa fa-envelope icon"></i>
                                                         <input class="textFieldDes" id="email" type="email"
@@ -125,11 +111,12 @@
                                     <div class="col-md-6 borderL">
                                         <div class="fieldWrapper">
                                             <h2>Optional Payment Method</h2>
+                                            ${paymentErrorOutput}
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-md-12 removeLeftPadding removeRightPadding">
                                                         <i class="fa fa-user icon"></i>
-                                                        <input id="cardname" class="textFieldDes" type="text"
+                                                        <input id="cardname" class="js-payment textFieldDes" type="text"
                                                             placeholder="Card Holder Name" name="cardholdername"
                                                             value="">
                                                     </div>
@@ -137,7 +124,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12 removeRightPadding removeLeftPadding">
                                                         <i class="fa fa-credit-card icon"></i>
-                                                        <input id="creditcard" class="textFieldDes" type="text"
+                                                        <input id="creditcard" class="js-payment textFieldDes" type="text"
                                                             placeholder="Card Number" name="cardnumber" value=""
                                                             maxlength="16">
                                                     </div>
@@ -172,12 +159,12 @@
                                                 <div class="row">
                                                     <div class="col-md-6 removeLeftPadding">
                                                         <i class="fa fa-credit-card icon"></i>
-                                                        <input id="cvv" class="textFieldDes" type="text" maxlength="3"
+                                                        <input id="cvv" class="js-payment textFieldDes" type="text" maxlength="3"
                                                             name="cvv" placeholder="cvv" value="">
                                                     </div>
                                                     <div class="col-md-6 removeRightPadding">
                                                         <i style="left: 15px;" class="fa fa-map-pin icon"></i>
-                                                        <input id="zipcode" class="textFieldDes" type="text"
+                                                        <input id="zipcode" class="js-payment textFieldDes" type="text"
                                                             name="zipcode" placeholder="Zip Code" value="">
                                                     </div>
                                                 </div>
@@ -191,7 +178,7 @@
                                 <div class="row justify-content-center">
                                     <div class="col-md-6">
                                         <div class="submitField">
-                                                <input type="submit" value="Register">
+                                                <input id="infS" name="infS" type="submit" value="Register">
                                                 <a href="login.html">Already have an account?</a>
                                             
                                         </div>
