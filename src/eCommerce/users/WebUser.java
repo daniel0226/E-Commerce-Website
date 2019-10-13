@@ -4,6 +4,7 @@ import eCommerce.UserData.*;
 public class WebUser extends Users
 {
     private boolean suspended = false;
+    private String sessionType = "web";
 
 	public WebUser(	String fName, 
 					String lName, 
@@ -23,7 +24,16 @@ public class WebUser extends Users
 	
 	public void setSuspension()
 	{
-		suspended = true;
+		
+	}
+	
+	public void removeSuspension()
+	{
+		
+	}
+	public String getSessionType()
+	{
+		return sessionType;
 	}
 
 }

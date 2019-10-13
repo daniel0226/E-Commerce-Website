@@ -1,7 +1,90 @@
 $(document).ready(function() {
     $("#confirmPassword").keyup(validatePassword);
     $("input[type=submit][name='infS']").attr("disabled", "disabled"); 
+    generateHeader();
 });
+
+function generateHeader()
+{
+    var myvar = '<nav class="navbar navbar-expand-md navbar-dark">'+
+    '            <div class="container">'+
+    '                <a href="index.html">'+
+    '                    <h1 id="header" class="navbar-brand hLink st">Cinema E-Booking</h1>'+
+    '                </a>'+
+    '                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">'+
+    '                    <span class="navbar-toggler-icon"></span>'+
+    '                </button>'+
+    '                <!-- For portability, if user is using a smaller screen, collapse links-->'+
+    '                <div class="navbar-collapse collapse" id="collapsibleNavbar">'+
+    '                    <ul class="navbar-nav">'+
+    '                        <li class="nav-item">'+
+    '                            <div class="dropdown">'+
+    '                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Movies'+
+    '                                    <span class="caret"></span></button>'+
+    '                                <ul class="dropdown-menu">'+
+    '                                    <!-- Will Redirect to Search Movie Page and autofilter with "in Theatres"-->'+
+    '                                    <li><input class="navlogout" onclick="searchNav(0)" value="In Theatres"'+
+    '                                            spellcheck="false"></li>'+
+    ''+
+    '                                    <li><input class="navlogout" onclick="searchNav(1)" value="Coming Soon"></li>'+
+    ''+
+    '                                    <li><a href="SearchView.html">Search Movies</a></li>'+
+    '                                </ul>'+
+    '                            </div>'+
+    '                        </li>'+
+    '                        <li class="nav-item">'+
+    '                            <div class="dropdown">'+
+    '                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Profile'+
+    '                                    <span class="caret"></span></button>'+
+    '                                <ul class="dropdown-menu">'+
+    '                                    <!-- About Us/Contact-->'+
+    '                                    <li><a href="checkSessionController">Edit Profile</a></li>'+
+    '                                    <li>'+
+    '                                        <form action="../php/logout.php" method="GET">'+
+    '                                            <input class="navlogout" type="submit" value="logout">'+
+    '                                        </form>'+
+    '                                    </li>'+
+    '                                </ul>'+
+    '                            </div>'+
+    '                        </li>'+
+    '                        <li class="nav-item">'+
+    '                            <div class="dropdown">'+
+    '                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Login'+
+    '                                    <span class="caret"></span></button>'+
+    '                                <ul class="dropdown-menu">'+
+    '                                    <!-- About Us/Contact-->'+
+    '                                    <li><a href="login.html">Login</a></li>'+
+    ''+
+    '                                    <li><a href="register.html">Register</a></li>'+
+    '                                </ul>'+
+    '                            </div>'+
+    '                        </li>'+
+    '                        <li class="nav-item">'+
+    '                            <div class="dropdown">'+
+    '                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Promotions'+
+    '                                    <span class="caret"></span></button>'+
+    '                                <ul class="dropdown-menu">'+
+    '                                    <!-- About Us/Contact-->'+
+    '                                    <li><a href="currentPromotions.html">Promotions</a></li>'+
+    ''+
+    '                                </ul>'+
+    '                            </div>'+
+    '                        </li>'+
+    '                    </ul>'+
+    '                    <div class="navbar-nav search-container">'+
+    '                        <form action="../php/searchMovies.php" method="get">'+
+    '                            <input type="text" name="searchMovie" placeholder="Search for a movie">'+
+    '                            <button type="submit" class="searchIcon">'+
+    '                                <i class="fas fa-search"></i>'+
+    '                            </button>'+
+    '                        </form>'+
+    '                    </div>'+
+    '                </div>'+
+    '            </div>'+
+    '        </nav>';
+    $("#navH").append(myvar);
+}
+
 
 function validatePassword()
 { 

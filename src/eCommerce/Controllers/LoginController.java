@@ -3,9 +3,11 @@ package eCommerce.Controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet
@@ -17,7 +19,7 @@ public class LoginController extends HttpServlet
 		super();
     }
     
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
         response.setContentType("text/html;charset=UTF-8");
 
@@ -27,7 +29,7 @@ public class LoginController extends HttpServlet
         
         //This returns "on" if checked
         //and null if not checked
-        //String rememberMe = request.getParameter("rmCheckBox");
+        String rememberMeIsChecked = request.getParameter("rmCheckBox");
      
      
         
@@ -42,10 +44,12 @@ public class LoginController extends HttpServlet
         	//Before we redirect, possibly create user data
         	//Create cookie data
         	
-            response.sendRedirect("index.html");
+        	HttpSession session = request.getSession();
+        	session.setAttribute("email", emailLogin);
+            
         }else
         {
-        	response.sendRedirect("loginError.html");
+        	request.getRequestDispatcher("loginError.jsp").include(request, response);  
         }
         
         
