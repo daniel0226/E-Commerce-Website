@@ -1,5 +1,7 @@
 package eCommerce.Controllers;
 
+import eCommerce.Validator.*;
+
 import java.io.IOException;
 
 import javax.servlet.http.HttpServlet;
@@ -11,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import eCommerce.UserData.Card;
 import eCommerce.users.*;
-import eCommerce.Controllers.Validation;
 
 @WebServlet("/passwordController")
 public class passwordController extends HttpServlet {

@@ -2,7 +2,7 @@ package eCommerce.Controllers;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Validation
+public class Validator
 {
     public static boolean validateLoginCredentials(String email, String password)
     {

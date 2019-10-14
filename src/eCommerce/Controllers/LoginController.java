@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import eCommerce.Validator.*; 
+
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet
 {
@@ -33,22 +35,22 @@ public class LoginController extends HttpServlet
      
      
         //If user is already logged in, don't try logging in again.
-        //if(!Validation.validateSession(emailLogin));
+        //if(!Validator.validateSession(emailLogin));
         //{
         //	Check session maybe? Need to look into this.
         //}
         
-        if(!Validation.validateLoginCredentials(emailLogin,passwordLogin))
+        if(!Validator.validateLoginCredentials(emailLogin,passwordLogin))
         {
         	request.getRequestDispatcher("loginError.jsp").include(request, response);  
         }
         
-        if(!Validation.userHasConfirmedLogin(emailLogin))
+        if(!Validator.userHasConfirmedLogin(emailLogin))
         {
         	
         }
         
-        if(!Validation.userIsSuspended(emailLogin))
+        if(!Validator.userIsSuspended(emailLogin))
         {
         	
         }

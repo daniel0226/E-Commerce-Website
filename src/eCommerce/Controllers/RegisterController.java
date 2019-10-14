@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import eCommerce.UserData.Card;
 import eCommerce.users.*;
-import eCommerce.Controllers.Validation;
+import eCommerce.Validator.*;
 import eCommerce.Error.ERROR_DATA;
 
 @WebServlet("/RegisterController")
@@ -51,7 +51,7 @@ public class RegisterController extends HttpServlet {
                 
                 
                 //Validate that email isn't already used.
-                if(!Validation.validateRegistrationEmailIsUnique(emailAddress))
+                if(!Validator.validateRegistrationEmailIsUnique(emailAddress))
                 {
                 	request.setAttribute("errorOutput", ERROR_DATA.NOT_UNIQUE_EMAIL);
                     request.getRequestDispatcher("/register.jsp").forward(request, response);
@@ -60,7 +60,7 @@ public class RegisterController extends HttpServlet {
                 
                 //If user inputed some data into the payment fields, but didn't fill out all fields
                 //Ignore month and year since they are preset in HTML.
-                if(!Validation.validateAllPaymentFieldsAreSet(cardHolderName, cardNumber, CVV, zipcode))
+                if(!Validator.validateAllPaymentFieldsAreSet(cardHolderName, cardNumber, CVV, zipcode))
                 {
                 	request.setAttribute("paymentErrorOutput", ERROR_DATA.PAYMENT_METHOD_FILLED_ERROR);
                     request.getRequestDispatcher("/register.jsp").forward(request, response);

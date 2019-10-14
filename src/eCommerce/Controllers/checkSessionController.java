@@ -1,6 +1,6 @@
 package eCommerce.Controllers;
 
-import eCommerce.Controllers.Validation;
+import eCommerce.Validator.*;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
