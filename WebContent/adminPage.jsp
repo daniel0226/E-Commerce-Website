@@ -101,7 +101,7 @@
                                                 <div class="row" style="margin-top: 15px;">
                                                     <div class="col-md-12 removeLeftPadding removeRightPadding">
                                                         <div class="movieManagementBody">
-                                                            <form method="GET" action="movieController"
+                                                            <form method="GET" action="movieController" id="movieManagementForm"
                                                                 class="container">
                                                                 <div class="row"
                                                                     style="border-bottom: solid 1px rgba(115,159,225,1);">

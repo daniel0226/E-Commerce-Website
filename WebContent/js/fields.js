@@ -241,6 +241,14 @@ function showEditTab(tab, btn)
     tab.style.display = "block";
     var editButton = document.getElementById(btn);
     editButton.style.display = "none";
+    var buttons = document.getElementsByClassName("editBtn");
+    for(var i = 0; i<buttons.length; i++)
+    {
+        if(buttons[i].id != btn)
+        {
+            buttons[i].disabled = true;
+        }
+    }
 }
 function closeForm(tab, btn)
 {
@@ -248,7 +256,10 @@ function closeForm(tab, btn)
     tab.style.display = "none";
     var editButton = document.getElementById(btn);
     editButton.style.display = "block";
-    //TO DO 
-    //CLEAR ALL INPUT TEXTS
-    //DATE TAGS DON'T SEND ANYTHING IF THEY ARE SENT BACK TO DEFAULT OF MM/DD/YYYY
+    document.getElementById("movieManagementForm").reset();
+    var buttons = document.getElementsByClassName("editBtn");
+    for(var i = 0; i<buttons.length; i++)
+    {
+        buttons[i].disabled = false;
+    }
 }
