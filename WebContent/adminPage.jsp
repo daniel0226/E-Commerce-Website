@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <title>CSCI4050</title>
@@ -16,8 +18,8 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animation.css">
     <link rel="stylesheet" href="css/admin.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src="js/fields.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="js/fields.js"></script>
 
 </head>
 
@@ -122,11 +124,12 @@
                                                                 </div>
                                                                 <div class="movieObjects" id="Joker">
                                                                     <div class="row">
-                                                                        <div class="container">
+                                                                        <div class="container" style="padding-left: 10px !important;">
                                                                             <div class="row">
                                                                                 <div class="col-md-1">
                                                                                     <input type="checkbox"
-                                                                                        name="movieCheckbox">
+                                                                                        name="movieCheckbox"
+                                                                                        value="">
                                                                                 </div>
                                                                                 <div class="col-md-3">
                                                                                     <div class="moviePic">
@@ -164,17 +167,19 @@
                                                                                             placeholder="Director"
                                                                                             class="textFieldDes2">
                                                                                     </div>
+                                                                                    <div class="movieInfo">
+                                                                                            <input type="text"
+                                                                                                name="producer"
+                                                                                                placeholder="Producer"
+                                                                                                class="textFieldDes2">
+                                                                                        </div>
                                                                                 </div>
                                                                                 <div class="col-md-4">
+                                                                                    
                                                                                     <div class="movieInfo">
-                                                                                        <input type="text"
-                                                                                            name="producer"
-                                                                                            placeholder="Producer"
-                                                                                            class="textFieldDes2">
-                                                                                    </div>
-                                                                                    <div class="movieInfo">
+                                                                                        <label>Synopsis</label>
                                                                                         <textarea name="synopsis"
-                                                                                            placeholder="Synopsis"
+                                                                                            placeholder="Enter Synopsis here"
                                                                                             class="textFieldDes2"
                                                                                             style="border: 1.5px solid rgb(45,69,121);"></textarea>
                                                                                     </div>
@@ -184,24 +189,21 @@
                                                                                             class="textFieldDes2">
                                                                                     </div>
                                                                                     <div class="movieInfo">
-                                                                                        <input type="text"
-                                                                                            name="showTime"
-                                                                                            placeholder="Show Time"
-                                                                                            class="textFieldDes2">
+                                                                                        <label for="expirationDate">Expiration Date:</label>
+                                                                                        <input type="date" name="expirationDate">
                                                                                     </div>
                                                                                     <div class="movieInfo">
-                                                                                        <input type="text"
-                                                                                            name="releaseDate"
-                                                                                            placeholder="Release Date"
-                                                                                            class="textFieldDes2">
+                                                                                        <label for="releaseDate">Release Date:</label>
+                                                                                        <input type="date"
+                                                                                            name="releaseDate">
                                                                                     </div>
 
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row justify-content-center">
                                                                                 <div class="col-md-6">
-                                                                                    <button value="save" name="save"
-                                                                                        type="submit">Save</button>
+                                                                                    <button value="update" name="update"
+                                                                                        type="submit">Update</button>
                                                                                     <button value="cancel" name="cancel"
                                                                                         type="submit">Cancel</button>
                                                                                 </div>

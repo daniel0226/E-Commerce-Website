@@ -3,7 +3,6 @@ $(document).ready(function() {
     generateHeader();
     generateFooter();
     getTodaysDate();
-    //$(".js-payment").keyup(makePaymentFieldRequired());
     $("#confirmPassword").keyup(validatePassword);
     $("input[type=submit][name='infS']").attr("disabled", "disabled");
 });
@@ -202,7 +201,7 @@ function getTodaysDate()
 "October", "November", "December"];
     var Month = m_names[MonthIndex];
 
-    var day = date.getDay();
+    var day = date.getDate();
     var year = date.getFullYear();
 
     var dateToDisplay = today + ", " + Month + " " + day + ", " + year;
@@ -225,7 +224,7 @@ function adminSearchMovie()
     
     for(var i = 0; i<movies.length; i++)
     {
-        var movieId = movies[0].id.toUpperCase();
+        var movieId = movies[i].id.toUpperCase();
         var indexValue = movieId.indexOf(filter);
         if(indexValue < 0)
         {
@@ -233,8 +232,23 @@ function adminSearchMovie()
         }else{
             movies[i].style.display = "block";
         }
-        console.log(movieId);
-        console.log(filter);
-        console.log(movieId.indexOf(filter));
     }
+}
+
+function showEditTab(tab, btn)
+{
+    var tab = document.getElementById(tab);
+    tab.style.display = "block";
+    var editButton = document.getElementById(btn);
+    editButton.style.display = "none";
+}
+function closeForm(tab, btn)
+{
+    var tab = document.getElementById(tab);
+    tab.style.display = "none";
+    var editButton = document.getElementById(btn);
+    editButton.style.display = "block";
+    //TO DO 
+    //CLEAR ALL INPUT TEXTS
+    //DATE TAGS DON'T SEND ANYTHING IF THEY ARE SENT BACK TO DEFAULT OF MM/DD/YYYY
 }
