@@ -2,6 +2,7 @@ $(document).ready(function() {
 	console.log("running");
     generateHeader();
     generateFooter();
+    getTodaysDate();
     //$(".js-payment").keyup(makePaymentFieldRequired());
     $("#confirmPassword").keyup(validatePassword);
     $("input[type=submit][name='infS']").attr("disabled", "disabled");
@@ -129,6 +130,10 @@ function generateHeader()
     '                </div>'+
     '            </div>'+
     '        </nav>';
+
+    var myvarAdmin = "";
+
+    $("#adminH").append(myvarAdmin);
     $("#navH").append(myvar);
 }
 
@@ -164,4 +169,72 @@ function openTab(event, TabID)
     }
     document.getElementById(TabID).style.display = "block";
     event.currentTarget.className += " tabActive";
+}
+
+function openAdminTab(event, adminTab)
+{
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("adminTabContent");
+    for(i = 0; i<tabcontent.length; i++)
+    {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("adminTabLink");
+    for(i = 0; i<tablinks.length; i++)
+    {
+        tablinks[i].className = tablinks[i].className.replace("activeTab", "");
+    }
+    document.getElementById(adminTab).style.display = "block";
+    event.currentTarget.className += "activeTab";
+}
+
+function getTodaysDate()
+{
+    var date = new Date();
+    var todayIndex = date.getDay();
+    var d_names = ["Sunday","Monday", "Tuesday", "Wednesday", 
+"Thursday", "Friday", "Saturday"];
+    var today = d_names[todayIndex];
+
+    var MonthIndex = date.getMonth();
+    var m_names = ["January", "February", "March", 
+"April", "May", "June", "July", "August", "September", 
+"October", "November", "December"];
+    var Month = m_names[MonthIndex];
+
+    var day = date.getDay();
+    var year = date.getFullYear();
+
+    var dateToDisplay = today + ", " + Month + " " + day + ", " + year;
+    document.getElementById("js-getTodaysDate").innerHTML = dateToDisplay;
+}
+
+function toggleAll(source)
+{
+    checkboxes = document.getElementsByName('movieCheckbox');
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+      checkboxes[i].checked = source.checked;
+    }
+}
+
+function adminSearchMovie()
+{
+    var input = document.getElementById("AdmSearchMovie");
+    var filter = input.value.toUpperCase();
+    var movies = document.getElementsByClassName("movieObjects");
+    
+    for(var i = 0; i<movies.length; i++)
+    {
+        var movieId = movies[0].id.toUpperCase();
+        var indexValue = movieId.indexOf(filter);
+        if(indexValue < 0)
+        {
+            movies[i].style.display = "none";
+        }else{
+            movies[i].style.display = "block";
+        }
+        console.log(movieId);
+        console.log(filter);
+        console.log(movieId.indexOf(filter));
+    }
 }

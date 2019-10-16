@@ -687,6 +687,7 @@ width:350px;
 }
 .signUpWrapper
 {
+    border-bottom: rgba(115, 159, 255, 1) solid 1px;
     width: 100%;
     background: black;
     color: white;

@@ -1,0 +1,219 @@
+body
+{
+    background-color: rgb(236, 236, 236);
+    font-family: 'Courier New', Courier, monospace;
+}
+.adminPageWrapper
+{
+    width: 100%;
+    display: flex;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 100%;
+}
+.sideNavWrapper
+{
+    height: 100%;
+    text-align: left;
+    color: white;
+    position: relative;
+    background: rgb(10,10, 45);
+    width: 100%;
+    padding: 0px;
+}
+.adminTabContent
+{
+    width: 100%;
+    border: none;
+    padding: 0;
+    display: none;
+    color: rgb(13, 13, 65);
+    background: none;
+}
+.welcomeAdmin
+{
+    text-align: left;
+    width: 100%;
+    padding: 5px;
+    margin-top: 12px;
+    background-color: rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 3px rgba(115, 159, 255, 1);
+}
+.welcomeAdmin p
+{
+    padding: 0;
+    margin: 0;
+}
+.adminTabLinksWrapper
+{
+    text-align: center;
+    margin: 0;
+    padding: 10px 0px 10px 0px;
+    border: none;
+    background: none;
+    width: 100%;
+}
+
+.adminTabLinksWrapper button
+{
+    display: block;
+    width: 100%;
+    background: none;
+    color: white;
+    padding: 20px 15px;
+    width: 100%;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+    font-size: .8rem;
+    text-align: left;
+    margin: 10px 0px 10px 0px;
+}
+.adminTabLinksWrapper button:hover
+{
+    box-shadow: 0px 0px 5px white;
+    background: rgb(20, 20, 80);
+}
+.activeTab
+{
+    display: block;
+}
+.adminTabLinksWrapper button.active
+{
+    background: rgb(25, 25, 80);
+    box-shadow: 0px 0px 7px rgba(115, 159, 255, 1);
+}
+.adminHeader
+{
+    width: 100%;
+    background: white;
+    padding: 15px 10px 0px 10px;
+    font-size: 1.5rem;
+    box-shadow: 0px 0px 5px rgba(115, 159, 255, 1);
+}
+.logoutBtn
+{
+    padding: 0px;
+    background: none;
+    border: none;
+    outline: none;
+}
+.logoutBtn:hover
+{
+    box-shadow: 0px 0px 3px rgb(10,10, 45);
+}
+.adminHeader h3
+{
+    float: left;
+}
+.tabBody
+{
+    width: 100%;
+    padding: 25px;
+}
+
+.analytics
+{
+    background: rgba(115, 159, 255, 0.5);
+    padding: 15px;
+    text-align: center;
+}
+.pAnalytics p
+{
+    padding: 7px 10px;
+    margin: 0;
+    display: block;
+    background: rgba(115, 159, 255, 0.3);
+}
+
+.movieManagementBody
+{
+    width: 100%;
+    background: white;
+    box-shadow: 0px 0px 3px rgba(115, 159, 255, 1);
+    padding: 0;
+}
+.movieManagementBody input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  transform: scale(1.5);
+  padding: 4px;
+  margin-top: 10px;
+}
+.movieManagementBody .row
+{
+    padding: 5px;
+}
+.searchAdminMovie
+{
+    outline: none;
+    border: 1px solid rgb(25, 25, 80);
+    padding-left: 10px;
+    height: 100%;
+}
+.moviePic
+{
+    width: 100%;
+    padding: 0;
+}
+.moviePic img
+{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+}
+.movieManagementBody button
+{
+    margin: auto;
+    width: 45%;
+}
+.movieInfo
+{
+    width: 100%;
+    padding: 0px 10px 10px 10px;
+}
+.movieInfo label
+{
+    font-size: .7rem;
+}
+#my-row {
+    display: table;
+}
+.row.display-flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .row.display-flex > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+  }
+
+#my-row .panel {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
+}
+.textFieldDes2
+{
+    width: 100%;
+    padding: 3px 5px 3px 0px;
+    margin-bottom: 15px;
+    color: rgb(45, 69, 121);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1.5px solid rgb(45, 69, 121);
+}
+.textFieldDes2:focus
+{
+    color: rgb(45, 69, 121);
+    box-shadow: 0px 0px 5px rgba(115, 159, 255, 1);
+}
