@@ -3,6 +3,13 @@ body
     background-color: rgb(236, 236, 236);
     font-family: 'Courier New', Courier, monospace;
 }
+img
+{
+    min-width: 100%;
+    min-height: 100%;
+    max-width:100%;
+    max-height:100%;
+}
 .adminPageWrapper
 {
     width: 100%;
@@ -15,6 +22,23 @@ body
     flex: 1 1 auto;
     width: 100%;
 }
+.fixedNav
+{
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+    position: fixed;
+    height: 100%;
+    text-align: left;
+    color: white;
+    background: rgb(32, 33, 43);
+    display: block;
+    padding: 0px;
+    z-index: 9999;
+}
+textarea
+{
+    padding-left: 3px !important;
+}
 input[type="date"]
 {
     outline: none;
@@ -26,8 +50,7 @@ input[type="date"]
     text-align: left;
     color: white;
     position: relative;
-    background: rgb(10,10, 45);
-    width: 100%;
+    display: block;
     padding: 0px;
 }
 .adminTabContent
@@ -87,9 +110,11 @@ input[type="date"]
 {
     display: block;
 }
-.adminTabLinksWrapper button.active
+.activeAdminTab
 {
+
     background: rgb(25, 25, 80);
+    border: solid .25px white;
     box-shadow: 0px 0px 7px rgba(115, 159, 255, 1);
 }
 .adminHeader
@@ -121,6 +146,12 @@ input[type="date"]
     padding: 25px;
 }
 
+.managementHeader
+{
+    background: rgb(32, 33, 43);
+    color: white;
+}
+
 .analytics
 {
     background: rgba(115, 159, 255, 0.5);
@@ -133,10 +164,16 @@ input[type="date"]
     margin: 0;
     display: block;
     background: rgba(115, 159, 255, 0.3);
+    box-shadow: 0px 0px 2px rgb(13, 13, 65);
 }
 .movieObjects
 {
     border-bottom: 1px solid rgba(115, 159, 255, 1);
+}
+
+#addMovie
+{
+    display: none;
 }
 
 .movieManagementBody
@@ -155,7 +192,8 @@ input[type="date"]
   -o-transform: scale(1.5); /* Opera */
   transform: scale(1.5);
   padding: 4px;
-  margin-top: 10px;
+  margin: 10px auto;
+  display: block;
 }
 .movieManagementBody .row
 {
@@ -164,9 +202,17 @@ input[type="date"]
 .searchAdminMovie
 {
     outline: none;
-    border: 1px solid rgb(25, 25, 80);
-    padding-left: 10px;
+    border: rgba(115, 159, 255, 1) 1px solid;
+    color: white;
+    padding: 3px 7px;
+    box-shadow: 0px 0px 4px white;
+    border-radius: 25px;;
     height: 100%;
+    background: none;
+}
+.searchAdminMovie::placeholder
+{
+    color: white;
 }
 .moviePic
 {
@@ -181,12 +227,35 @@ input[type="date"]
 }
 .movieManagementBody button
 {
+    background: none;
+    border: rgb(20, 20, 80) solid 1px;
+    box-shadow: 0px 0px 3px rgba(115, 159, 255, 1);
     margin: auto;
     width: 45%;
+}
+.deleteBtn
+{
+    display: block;
+    margin: auto;
+    background: none;
+    color: white;
+    border: rgb(20, 20, 80) solid 1px;
+    box-shadow: 0px 0px 3px white;
+}
+.editBtn
+{
+    margin: 8px auto !important;
+    display: block;
 }
 .movieInfoDisplay
 {
     display: none;
+}
+#addBtnDe
+{
+    background: none;
+    border: rgb(20, 20, 80) solid 1px;
+    box-shadow: 0px 0px 3px rgba(115, 159, 255, 1);
 }
 .adminBtn
 {
@@ -199,11 +268,16 @@ input[type="date"]
 {
     position: relative;
     width: 100%;
-    padding: 0px 10px 10px 10px;
+    padding: 10px;
+    display: block;
 }
 .movieInfo label
 {
     font-size: .7rem;
+}
+.movieManagementBody label
+{
+    margin-bottom: 0px;
 }
 #my-row {
     display: table;

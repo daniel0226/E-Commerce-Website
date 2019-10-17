@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	console.log("running");
+	//console.log("running");
     generateHeader();
     generateFooter();
     getTodaysDate();
@@ -7,6 +7,43 @@ $(document).ready(function() {
     $("input[type=submit][name='infS']").attr("disabled", "disabled");
 });
 
+
+$(window).scroll(() => {
+    controlSideBarPos();
+});
+
+function openAddMovie(ele)
+{
+    var body = document.getElementById(ele);
+    body.style.display = "block";
+}
+
+function closeAddForm(ele)
+{
+    var body = document.getElementById(ele);
+    body.style.display = "none";
+}
+
+function controlSideBarPos()
+{
+    var footerTopOffset = $('#footer').position().top;
+    var navHeight = $("#fixedAdminNav").outerHeight();
+    var scrollDistanceFromTopOfDoc = $(document).scrollTop() + navHeight;
+    var scrollDistanceFromTopOfFooter = scrollDistanceFromTopOfDoc - footerTopOffset;
+    if(scrollDistanceFromTopOfDoc > footerTopOffset)
+    {
+        $('#fixedAdminNav').css('margin-top', 0-scrollDistanceFromTopOfFooter);
+    }else
+    {
+        $('#fixedAdminNav').css('margin-top', 0);
+    }
+}
+
+/*
+* Function makes all payment fields required
+* if a user adds any input to any payment field.
+* UPDATE: This function is obsolete, add a controller in Java files to handle this.
+*/
 function makePaymentFieldRequired()
 {
 	var inputField = document.getElementsByClassName("js-payment");
@@ -137,6 +174,10 @@ function generateHeader()
 }
 
 
+/*
+ * Validates that the password and confirmation password matches
+ * live on webpage.
+ */
 function validatePassword()
 { 
     var password = $("#password").val();
@@ -152,6 +193,7 @@ function validatePassword()
          $("#confStatus").text("Passwords do not match!");  
      }
 }
+
 
 function openTab(event, TabID)
 {
@@ -170,7 +212,7 @@ function openTab(event, TabID)
     event.currentTarget.className += " tabActive";
 }
 
-function openAdminTab(event, adminTab)
+function openAdminTab(button, adminTab)
 {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("adminTabContent");
@@ -181,10 +223,13 @@ function openAdminTab(event, adminTab)
     tablinks = document.getElementsByClassName("adminTabLink");
     for(i = 0; i<tablinks.length; i++)
     {
-        tablinks[i].className = tablinks[i].className.replace("activeTab", "");
+        if(tablinks[i].classList.contains("activeAdminTab"))
+        {
+            tablinks[i].classList.remove("activeAdminTab");
+        }
     }
     document.getElementById(adminTab).style.display = "block";
-    event.currentTarget.className += "activeTab";
+    document.getElementById(button).classList.add("activeAdminTab");
 }
 
 function getTodaysDate()
@@ -230,29 +275,29 @@ function adminSearchMovie()
         {
             movies[i].style.display = "none";
         }else{
-            movies[i].style.display = "block";
+            movies[i].style.display = "flex";
         }
     }
 }
 
-function showEditTab(tab, btn)
+function showEditTab(tab_, btn)
 {
-    var tab = document.getElementById(tab);
+    var tab = document.getElementById(tab_);
     tab.style.display = "block";
-    var editButton = document.getElementById(btn);
-    editButton.style.display = "none";
-    var buttons = document.getElementsByClassName("editBtn");
-    for(var i = 0; i<buttons.length; i++)
+    
+    var movieTabs = document.getElementsByClassName("movieInfoDisplay");
+    for(var i = 0; i<movieTabs.length; i++)
     {
-        if(buttons[i].id != btn)
+        if(movieTabs[i].id != tab.id)
         {
-            buttons[i].disabled = true;
+            movieTabs[i].style.display = "none";
         }
     }
+    document.getElementById("movieManagementForm").reset();
 }
-function closeForm(tab, btn)
+function closeForm(tab_, btn)
 {
-    var tab = document.getElementById(tab);
+    var tab = document.getElementById(tab_);
     tab.style.display = "none";
     var editButton = document.getElementById(btn);
     editButton.style.display = "block";
