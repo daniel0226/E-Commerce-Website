@@ -26,7 +26,7 @@ public class RegisterController extends HttpServlet {
         public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
         {
                 response.setContentType("html;charset=UTF-8");
-
+                
                 // Replace this with database stuff
                 // Required Fields
                 String firstName = request.getParameter("firstname");
@@ -43,6 +43,7 @@ public class RegisterController extends HttpServlet {
                 String expYear = request.getParameter("Year");
                 String CVV = request.getParameter("cvv");
                 String zipcode = request.getParameter("zipcode");
+                
                 
                 //Validations
                 //JavaScript handles password and confirm password being equal

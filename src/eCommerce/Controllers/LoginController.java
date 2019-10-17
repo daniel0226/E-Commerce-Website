@@ -65,6 +65,18 @@ public class LoginController extends HttpServlet
         //Create session
     	HttpSession session = request.getSession();
     	session.setAttribute("email", emailLogin);
+    	
+    	//If admin login
+    	//if(user is admin)
+    	/*
+    	 * 
+    	 *
+          request.setAttribute("adminName", admin name from db);
+          request.setAttribute(all of the analytics)
+          
+          request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
+        
+    	 */
     }
 
 }

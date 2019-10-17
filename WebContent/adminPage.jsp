@@ -194,7 +194,7 @@
                                                                     <div
                                                                         class="col-md-3 borderL-xs borderR-xs justify-content-center">
                                                                         <input
-                                                                            onclick="confirm('Are you sure you want to delete these movies?');"
+                                                                            onclick="confirm('Are you sure you want to delete checked movies?');"
                                                                             class="deleteBtn"
                                                                             style="height: 100%; width:45%;"
                                                                             type="submit"
@@ -312,7 +312,7 @@
                                                                                             type="submit" value="Update"
                                                                                             name="update">Update</button>
                                                                                         <button class="adminBtn"
-                                                                                            onclick="closeForm('jokerInfo', 'jokerBtn')"
+                                                                                            onclick="if(!closeForm('jokerInfo', 'jokerBtn'))return false;"
                                                                                             type="button" value="cancel"
                                                                                             name="cancel">Cancel</button>
                                                                                     </div>
