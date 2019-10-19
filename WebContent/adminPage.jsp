@@ -17,8 +17,16 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animation.css">
     <link rel="stylesheet" href="css/admin.css">
+    <link href="mdb/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="mdb/css/mdb.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src="js/fields.js"></script>
+    <script type="text/javascript" src="mdb/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="mdb/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="mdb/js/mdb.min.js"></script>
+        <script src="js/fields.js"></script>
 
 </head>
 
@@ -72,38 +80,66 @@
                                     <div class="row">
                                         <div class="tabBody">
                                             <div class="container">
-                                                <div class="row">
-                                                    <div class="col-md-6 removeLeftPadding">
-                                                        <p style="float: left;">
-                                                            Add / Edit / Remove Movies
-                                                        </p>
-                                                    </div>
-                                                    <div class="col-md-6 removeRightPadding">
-                                                        <p style="float: right;" id="js-getTodaysDate">
+                                                <div class="row analyticsBody">
+                                                    <div class="col-md-12" style="padding: 25px;">
+                                                        <div class="row">
+                                                            <div class="col-md-6 removeLeftPadding">
+                                                                <p style="float: left;">
+                                                                    Add / Edit / Remove Movies
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-6 removeRightPadding">
+                                                                <p style="float: right;" id="js-getTodaysDate">
 
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <h3><i class="fa fa-database"></i> Movies Dashboard</h3>
-                                                </div>
-                                                <div class="row pAnalytics">
-                                                    <div class="col-md-4">
-                                                        <p>${moviesInTheatres}</p>
-                                                        <p>Movies in Theatres now.</p>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <p>${moviesComingSoon}</p>
-                                                        <p>Movies Coming Soon.</p>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <p>${moviesArchived}</p>
-                                                        <p>Movies Archived.</p>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <h3><i class="fa fa-database"></i> Movies Dashboard</h3>
+                                                        </div>
+                                                        <div class="row pAnalytics">
+                                                            <div class="col-md-4 col-sm-4">
+                                                                <div class="goalBodyWrapper">
+                                                                    <h3 class="js-analytic">${moviesInTheatres}</h3>
+                                                                    <small>Movies in Theatres</small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 col-sm-4">
+                                                                 <div class="goalBodyWrapper">
+                                                                    <h3 class="js-analytic">${moviesComingSoon}</h3>
+                                                                    <small>Movies Coming Soon</small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 col-sm-4">
+                                                                 <div class="goalBodyWrapper">
+                                                                    <h3 class="js-analytic">${moviesArchived}</h3>
+                                                                    <small>Movies Archived</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row pAnalytics" style="margin-top: 30px;">
+                                                            <div class='col-md-9 col-sm-9' style="background: rgb(15, 30, 60);">
+                                                                <h3 style="text-align: center; margin-bottom: 1px;">Tickets sold per Movie</h3>
+                                                                <canvas id="pieChart"></canvas>
+                                                                <div id="js-stats" class="movieStats" style="display: none;">
+                                                                    ${movieStats};
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-3">
+                                                                <div class="goalBodyWrapper">
+                                                                    <h3>Most Popular Movie</h3>
+                                                                    ${mostPopularMovie}
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="row" style="margin-top: 15px;">
-                                                    <button id="addBtnDe" type="button" value="addMovie" name="addMovie"
-                                                        onclick="openAddMovie('addMovie')">Add Movie</button>
+                                                    <div class="col-md-12 removeLeftPadding removeRightPadding">
+                                                        <button id="addBtnDe" type="button" value="addMovie"
+                                                            name="addMovie" onclick="openAddMovie('addMovie')">Add
+                                                            Movie</button>
+                                                    </div>
                                                     <div class="col-md-12 removeLeftPadding removeRightPadding">
                                                         <div id="addMovie" class="movieManagementBody">
                                                             <form method="GET" action="movieController">
@@ -161,11 +197,12 @@
                                                                             <input type="date" name="expirationDate">
                                                                         </div>
                                                                         <div class="movieInfo">
-                                                                            <label>Release  
+                                                                            <label>Release
                                                                                 Date:</label>
                                                                             <input type="date" name="releaseDate">
                                                                         </div>
-                                                                        <div class="movieInfo" style="margin-top: 25px;">
+                                                                        <div class="movieInfo"
+                                                                            style="margin-top: 25px;">
                                                                             <button class="adminBtn" type="submit"
                                                                                 value="addBtn"
                                                                                 name="addBtn">Add</button>
@@ -193,8 +230,7 @@
                                                                     </div>
                                                                     <div
                                                                         class="col-md-3 borderL-xs borderR-xs justify-content-center">
-                                                                        <input
-                                                                            onclick="confirm('Are you sure you want to delete checked movies?');"
+                                                                        <input onclick="return confirmPost()"
                                                                             class="deleteBtn"
                                                                             style="height: 100%; width:45%;"
                                                                             type="submit"
@@ -236,7 +272,8 @@
                                                                             <button class="editBtn adminBtn"
                                                                                 id="jokerBtn"
                                                                                 onclick="showEditTab('jokerInfo', 'jokerBtn')"
-                                                                                type="button" style="display: block;"
+                                                                                type="button"
+                                                                                style="width: 100%; display: block;"
                                                                                 value="Edit">Edit</button>
                                                                         </div>
                                                                     </div>
@@ -334,7 +371,8 @@
                                                                             <img src="images/MoviePhoto/LionKing.jpg"
                                                                                 alt="lionKing">
                                                                             <button class="editBtn adminBtn"
-                                                                                id="LionKingBtn" style="display: block;"
+                                                                                id="LionKingBtn"
+                                                                                style="width: 100%; display: block;"
                                                                                 onclick="showEditTab('LionKingInfo', 'LionKingBtn')"
                                                                                 type="button" value="Edit">Edit</button>
                                                                         </div>
@@ -386,7 +424,7 @@
 
                                                                                     <div class="movieInfo">
                                                                                         <label>Synopsis</label>
-                                                                                        <textarea name="synopsis"
+                                                                                        g <textarea name="synopsis"
                                                                                             placeholder="Enter Synopsis here"
                                                                                             class="textFieldDes2"
                                                                                             style="border: 1.5px solid rgb(45,69,121);"></textarea>

@@ -1,5 +1,6 @@
 package eCommerce.Controllers;
 
+import eCommerce.debug.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +29,7 @@ public class LoginController extends HttpServlet
         //Replace this with database stuff
         String emailLogin = request.getParameter("email");
         String passwordLogin = request.getParameter("password");
-        
+           
         //This returns "on" if checked
         //and null if not checked
         String rememberMeIsChecked = request.getParameter("rmCheckBox");
@@ -63,8 +64,8 @@ public class LoginController extends HttpServlet
         	//Create cookie
         }
         //Create session
-    	HttpSession session = request.getSession();
-    	session.setAttribute("email", emailLogin);
+    	//HttpSession session = request.getSession();
+    	//session.setAttribute("email", emailLogin);
     	
     	//If admin login
     	//if(user is admin)
@@ -73,10 +74,13 @@ public class LoginController extends HttpServlet
     	 *
           request.setAttribute("adminName", admin name from db);
           request.setAttribute(all of the analytics)
-          
           request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
-        
     	 */
+        //Debug admin stuff
+        if(emailLogin.equals(Debug.getEmail()) && passwordLogin.equals(Debug.getPassword()))
+        {
+        	Debug.debugAdminPageLogin(request,response);
+        }
     }
 
 }

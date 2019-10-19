@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import eCommerce.Error.ERROR_DATA;
+import eCommerce.MovieData.Movie;
  
 @WebServlet("/movieController")
 public class movieController extends HttpServlet {
@@ -28,6 +29,9 @@ public class movieController extends HttpServlet {
 		//String releaseDate = request.getParameter("releaseDate");
 		//Only prints out if numbers are set
 		//System.out.println(releaseDate);
+		
+		//If we add or delete movies, we have to update every page that displays movies.
+		//For example, index page.
 		
 		//We received an add button request.
 		if(addButton != null)
