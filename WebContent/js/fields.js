@@ -4,9 +4,7 @@ $(document).ready(function () {
     generateFooter();
     $("#confirmPassword").keyup(validatePassword);
     $("input[type=submit][name='infS']").attr("disabled", "disabled");
-    addMovieInTheatresTest();
-
-    if(window.location.href == "../adminPage.jsp")
+    if(isAdminPage())
     {
         getTodaysDate();
         loadAnalyticsNums();
@@ -22,11 +20,15 @@ $(window).scroll(() => {
     }
 });
 
-function addMovieInTheatresTest()
+function isAdminPage()
 {
-    var body = document.getElementById("addMoviesBody");
-    var htmlText = document.getElementById("js-addMovie").innerHTML;
-    body.append(htmlText);
+	var adminConf = document.getElementById("adminPage");
+	if(adminConf != null)
+	{
+		return true;
+	}else{
+		return false;
+	}
 }
 
 function confirmPost() {

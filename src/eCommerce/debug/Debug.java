@@ -3,9 +3,11 @@ package eCommerce.debug;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import eCommerce.MovieData.*;
+import eCommerce.Controllers.generateHTMLController;
 
 /*
  * 
@@ -14,7 +16,7 @@ import eCommerce.MovieData.*;
  * 
  * */
 
-public class Debug {
+public class Debug extends HttpServlet{
 	
 	private static String debugEmail = "test@gmail.com";
 	private static String debugPassword ="12345";
@@ -56,16 +58,10 @@ public class Debug {
 								request.getParameter("Rated"), 
 								request.getParameter("expirationDate"), 
 								request.getParameter("releaseDate"));
-		System.out.println(movie.getMoviePicture());
-		System.out.println(movie.getMovieTrailer());
-		System.out.println(movie.getMovieTitle());
-		System.out.println(movie.getMovieCategory());
-		System.out.println(movie.getMovieDirectory());
-		System.out.println(movie.getMovieProducer());
-		System.out.println(movie.getMovieSynopsis());
-		System.out.println(movie.getMovieRating());
-		System.out.println(movie.getMovieExpDate());
-		System.out.println(movie.getMovieReleaseDate());
+		String addMovieToInTheatresListHtml = generateHTMLController.generateInTheatres(movie);
+		request.setAttribute("addMovie", addMovieToInTheatresListHtml);
+		request.getRequestDispatcher("/inTheatres.jsp").forward(request, response);
+		
 	}
 	
 	public static String getMovieStats()

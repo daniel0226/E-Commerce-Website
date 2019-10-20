@@ -45,8 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <p id="js-addMovie" style="display: none;">${addMovie}</p>
-                <span id="addMoviesBody">
+                <div id="addMoviesBody">
                     <!--Joker-->
                     <div class="row">
                         <div class="col-md-3">
@@ -57,7 +56,7 @@
                                 </li>
                                 <li><span>Rated: R</span></li>
                                 <li><span>Released: October 4, 2019</span></li>
-                                <li><button class="getTickets" type="submit" name="jokerBtn" value="">Get
+                                <li><button class="getTickets" type="submit" name="JokerBtn" value="">Get
                                         Tickets</button></li>
                             </ul>
                         </div>
@@ -66,7 +65,7 @@
                                 frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
                             <h3>Director: Todd Phillips</h3>
-                            <h4>Starring: Joaquin Phoenix</h4>
+                            <h4>Category: Thriller/Horror</h4>
                             <span>Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks
                                 the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job
                                 as a clown, and the guise he projects in a futile attempt to feel like he's part of the
@@ -75,8 +74,8 @@
                                 Joker.</span>
                         </div>
                     </div>
-                </span>
-
+                </div>
+				<p id="js-addMovie" style="display: none;">${addMovie}</p>
             </div>
         </form>
     </main>

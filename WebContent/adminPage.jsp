@@ -31,6 +31,7 @@
 </head>
 
 <body>
+	<span style="display: none;" id="adminPage"></span>
     <main class="adminPageWrapper">
         <div class="container-fluid">
             <div class="row">
@@ -64,6 +65,7 @@
                         </div>
                     </div>
                 </div>
+                <p id="js-addMovie" style="display: none;">${addMovie}</p>
                 <div class="col-md-10 removeLeftPadding removeRightPadding">
                     <div class="container-fluid">
                         <div class="row">
@@ -142,7 +144,7 @@
                                                     </div>
                                                     <div class="col-md-12 removeLeftPadding removeRightPadding">
                                                         <div id="addMovie" class="movieManagementBody">
-                                                            <form method="GET" action="movieController" enctype="multipart/form-data">
+                                                            <form method="get" action="movieController" enctype="multipart/form-data">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <div class="movieInfo">
@@ -157,7 +159,6 @@
                                                                             <input class="textFieldDes2" type="text" name="video" placeholder="video url" required>
                                                                         </div>
                                                                         <div class="movieInfo">
-                                                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/zAGVQLHvwOY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                                             <input type="text" name="title"
                                                                                 placeholder="Title"
                                                                                 class="textFieldDes2" required>
@@ -222,7 +223,7 @@
                                                 <div class="row" style="margin-top: 15px;">
                                                     <div class="col-md-12 removeLeftPadding removeRightPadding">
                                                         <div class="movieManagementBody">
-                                                            <form method="GET" action="movieController" enctype="multipart/form-data"
+                                                            <form method="get" action="movieController" enctype="multipart/form-data"
                                                                 id="movieManagementForm" class="container">
                                                                 <div class="row managementHeader"
                                                                     style="border-bottom: solid 1px rgba(115,159,225,1);">
@@ -260,7 +261,7 @@
                                                                 </div>
 
                                                                 <!--These will eventually be created by the Java servlet-->
-
+																<span id="addMoviesBody">
                                                                 <div class="row movieObjects" id="Joker">
                                                                     <div class="col-md-1">
                                                                         <input type="checkbox" name="movieCheckbox"
@@ -464,6 +465,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <!--LionKIng-->
+                                                                </span>
                                                             </form>
                                                         </div>
                                                     </div>

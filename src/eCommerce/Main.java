@@ -1,10 +1,4 @@
 package eCommerce;
-import eCommerce.users.*;
-import eCommerce.Error.*;
-import eCommerce.MovieData.*;
-import eCommerce.Validator.*;
-import eCommerce.UserData.*;
-import eCommerce.Controllers.*;
 
 public class Main
 {

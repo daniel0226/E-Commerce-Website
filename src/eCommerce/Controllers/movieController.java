@@ -1,6 +1,5 @@
 package eCommerce.Controllers;
 
-import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.*;
@@ -16,13 +15,16 @@ public class movieController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
+	public void init()
+	{
+		System.out.println("Movie Controller called");
+	}
 	public movieController()
 	{
 		super();
     }
 	
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-	{	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, java.io.IOException {	
 		String deleteButton = request.getParameter("deleteMoviesFromCheckBox");
 		String addButton = request.getParameter("addBtn");
 		String updateButton = request.getParameter("update");
@@ -37,6 +39,7 @@ public class movieController extends HttpServlet {
 		//We received an add button request.
 		if(addButton != null)
 		{
+			//System.out.println("add button called");
 			Debug.debugAddMovie(request, response);
 		}
 		
@@ -60,7 +63,7 @@ public class movieController extends HttpServlet {
 			//Remove all movies to Archive that are checked.
 			for(int i = 0; i<Checkboxes.length; i++)
 			{
-				String movie = Checkboxes[i];
+				String currMovie = Checkboxes[i];
 				
 			}
 			return;

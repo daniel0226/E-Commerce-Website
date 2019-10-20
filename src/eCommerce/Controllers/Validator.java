@@ -10,13 +10,14 @@ public class Validator
     	//
         String testUser = "daniel";
         String testPassword = "12345";
-        if(testUser.equals(email) && testPassword.equals(password))
-        {
-            return true;
-        }else
-        {
-            return false;
-        }
+        //if(testUser.equals(email) && testPassword.equals(password))
+        //{
+        //   return true;
+        //}else
+        //{
+        //    return false;
+        //}
+        return true;
     }
     public static boolean validateRegistrationEmailIsUnique(String email)
     {
