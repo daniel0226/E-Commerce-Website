@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import eCommerce.MovieData.*;
 
 /*
  * 
@@ -41,6 +41,31 @@ public class Debug {
 		request.setAttribute("mostPopularMovie", getMostPopularMovie());
 		request.setAttribute("movieStats",getMovieStats());
     	request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
+	}
+	
+	public static void debugAddMovie(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		//Part filePart = request.getPart("name");
+		Movie movie = new Movie(request.getParameter("pic"), 
+								request.getParameter("video"), 
+								request.getParameter("title"), 
+								request.getParameter("category"), 
+								request.getParameter("director"), 
+								request.getParameter("producer"),
+								request.getParameter("synopsis"), 
+								request.getParameter("Rated"), 
+								request.getParameter("expirationDate"), 
+								request.getParameter("releaseDate"));
+		System.out.println(movie.getMoviePicture());
+		System.out.println(movie.getMovieTrailer());
+		System.out.println(movie.getMovieTitle());
+		System.out.println(movie.getMovieCategory());
+		System.out.println(movie.getMovieDirectory());
+		System.out.println(movie.getMovieProducer());
+		System.out.println(movie.getMovieSynopsis());
+		System.out.println(movie.getMovieRating());
+		System.out.println(movie.getMovieExpDate());
+		System.out.println(movie.getMovieReleaseDate());
 	}
 	
 	public static String getMovieStats()

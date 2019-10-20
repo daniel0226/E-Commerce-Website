@@ -1311,3 +1311,91 @@ width:350px;
     box-shadow: 0px 0px 5px white;
     border-color: white;
 }
+
+.inTheatresBody
+{
+    width: 100%;
+    height: 100%;
+    background: black;
+    position: relative;
+    display: flex;
+    padding: 100px 10px;
+    font-family: sans-serif;
+    color: white;
+    margin: 0;
+    text-align: left;
+}
+.inTheatresBody img
+{
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+.inTheatresBody span
+{
+    font-size: 1rem;
+    color: rgb(150, 150, 150);
+    display: block;
+}
+.inTheatresBody .row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+}
+.inTheatresBody ul {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.inTheatresBody li
+{
+    width: 100%;
+}
+.inTheatresBody .row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+.inTheatresBody h3, h4
+{
+    font-family: 'Courier New', Courier, monospace;
+}
+.headerBody
+{
+    width: 100%;
+    margin: 10px 0px;
+    padding: 15px;
+}
+
+.inTheatresBody iframe
+{
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.getTickets
+{
+    font-size: 1rem;
+    font-weight: bold;
+    background: rgb(50, 75, 100);
+    outline: none;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    display: block;
+    padding: 8px 10px;
+    width: 60%;
+    margin: 8px 0px;
+    box-shadow: 0px 0px 10px rgba(115, 159, 255, 1);
+}

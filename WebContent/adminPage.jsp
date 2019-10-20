@@ -127,7 +127,7 @@
                                                             </div>
                                                             <div class="col-md-3 col-sm-3">
                                                                 <div class="goalBodyWrapper">
-                                                                    <h3>Most Popular Movie</h3>
+                                                                    <h3 style="text-align: center;">Most Popular Movie</h3>
                                                                     ${mostPopularMovie}
                                                                 </div>
                                                             </div>
@@ -142,40 +142,40 @@
                                                     </div>
                                                     <div class="col-md-12 removeLeftPadding removeRightPadding">
                                                         <div id="addMovie" class="movieManagementBody">
-                                                            <form method="GET" action="movieController">
+                                                            <form method="GET" action="movieController" enctype="multipart/form-data">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <div class="movieInfo">
                                                                             <label>Movie
                                                                                 Picture</label>
                                                                             <input type="file" name="pic"
-                                                                                accept="image/*">
+                                                                                accept="image/*" required>
                                                                         </div>
                                                                         <div class="movieInfo">
                                                                             <label>Movie
-                                                                                Trailer</label>
-                                                                            <input type="file" name="video"
-                                                                                accept="video/*">
+                                                                                Trailer URL</label>
+                                                                            <input class="textFieldDes2" type="text" name="video" placeholder="video url" required>
                                                                         </div>
                                                                         <div class="movieInfo">
+                                                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/zAGVQLHvwOY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                                             <input type="text" name="title"
                                                                                 placeholder="Title"
-                                                                                class="textFieldDes2">
+                                                                                class="textFieldDes2" required>
                                                                         </div>
                                                                         <div class="movieInfo">
                                                                             <input type="text" name="category"
                                                                                 placeholder="Category"
-                                                                                class="textFieldDes2">
+                                                                                class="textFieldDes2" required>
                                                                         </div>
                                                                         <div class="movieInfo">
                                                                             <input type="text" name="director"
                                                                                 placeholder="Director"
-                                                                                class="textFieldDes2">
+                                                                                class="textFieldDes2" required>
                                                                         </div>
                                                                         <div class="movieInfo">
                                                                             <input type="text" name="producer"
                                                                                 placeholder="Producer"
-                                                                                class="textFieldDes2">
+                                                                                class="textFieldDes2" required>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -183,23 +183,25 @@
                                                                             <label>Synopsis</label>
                                                                             <textarea name="synopsis"
                                                                                 placeholder="Enter Synopsis here"
+                                                                                required
                                                                                 class="textFieldDes2"
                                                                                 style="border: 1.5px solid rgb(45,69,121);"></textarea>
                                                                         </div>
                                                                         <div class="movieInfo">
                                                                             <input type="text" name="Rated"
                                                                                 placeholder="Rated"
-                                                                                class="textFieldDes2">
+                                                                                class="textFieldDes2"
+                                                                                required>
                                                                         </div>
                                                                         <div class="movieInfo">
                                                                             <label>Expiration
                                                                                 Date:</label>
-                                                                            <input type="date" name="expirationDate">
+                                                                            <input type="date" required name="expirationDate">
                                                                         </div>
                                                                         <div class="movieInfo">
                                                                             <label>Release
                                                                                 Date:</label>
-                                                                            <input type="date" name="releaseDate">
+                                                                            <input type="date" required name="releaseDate">
                                                                         </div>
                                                                         <div class="movieInfo"
                                                                             style="margin-top: 25px;">
@@ -220,7 +222,7 @@
                                                 <div class="row" style="margin-top: 15px;">
                                                     <div class="col-md-12 removeLeftPadding removeRightPadding">
                                                         <div class="movieManagementBody">
-                                                            <form method="GET" action="movieController"
+                                                            <form method="GET" action="movieController" enctype="multipart/form-data"
                                                                 id="movieManagementForm" class="container">
                                                                 <div class="row managementHeader"
                                                                     style="border-bottom: solid 1px rgba(115,159,225,1);">
@@ -290,9 +292,8 @@
                                                                                     </div>
                                                                                     <div class="movieInfo">
                                                                                         <label>Movie
-                                                                                            Trailer</label>
-                                                                                        <input type="file" name="video"
-                                                                                            accept="video/*">
+                                                                                            Trailer URL</label>
+                                                                                        <input type="text" name="video" placeholder="video url">
                                                                                     </div>
                                                                                     <div class="movieInfo">
                                                                                         <input type="text" name="title"
@@ -391,10 +392,9 @@
                                                                                     </div>
                                                                                     <div class="movieInfo">
                                                                                         <label for="trailer">Movie
-                                                                                            Trailer</label>
-                                                                                        <input id="trailer" type="file"
-                                                                                            name="video"
-                                                                                            accept="video/*">
+                                                                                            Trailer URL</label>
+                                                                                        <input id="trailer" type="text"
+                                                                                            name="video" placeholder="video url">
                                                                                     </div>
                                                                                     <div class="movieInfo">
                                                                                         <input type="text" name="title"

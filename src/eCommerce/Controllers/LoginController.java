@@ -1,16 +1,15 @@
 package eCommerce.Controllers;
 
-import eCommerce.debug.*;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.http.HttpServlet;
+
+import eCommerce.Error.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.*;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import eCommerce.Validator.*; 
+import eCommerce.debug.Debug; 
 
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet
@@ -43,7 +42,9 @@ public class LoginController extends HttpServlet
         
         if(!Validator.validateLoginCredentials(emailLogin,passwordLogin))
         {
-        	request.getRequestDispatcher("loginError.jsp").include(request, response);  
+            request.setAttribute("loginError", ERROR_DATA.INVALID_LOGIN_ERROR);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            return;
         }
         
         if(!Validator.userHasConfirmedLogin(emailLogin))

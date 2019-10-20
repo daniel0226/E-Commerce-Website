@@ -2,17 +2,32 @@ $(document).ready(function () {
     //console.log("running");
     generateHeader();
     generateFooter();
-    getTodaysDate();
-    loadAnalyticsNums();
-    generatePieChart();
     $("#confirmPassword").keyup(validatePassword);
     $("input[type=submit][name='infS']").attr("disabled", "disabled");
+    addMovieInTheatresTest();
+
+    if(window.location.href == "../adminPage.jsp")
+    {
+        getTodaysDate();
+        loadAnalyticsNums();
+        generatePieChart();
+    }
 });
 
 
 $(window).scroll(() => {
-    controlSideBarPos();
+    if(window.location.href == "../adminPage.jsp")
+    {
+        controlSideBarPos();
+    }
 });
+
+function addMovieInTheatresTest()
+{
+    var body = document.getElementById("addMoviesBody");
+    var htmlText = document.getElementById("js-addMovie").innerHTML;
+    body.append(htmlText);
+}
 
 function confirmPost() {
     if (confirm("Are you sure you want to delete checked movies?")) {
@@ -182,8 +197,7 @@ function generateHeader() {
         '                                    <span class="caret"></span></button>' +
         '                                <ul class="dropdown-menu">' +
         '                                    <!-- Will Redirect to Search Movie Page and autofilter with "in Theatres"-->' +
-        '                                    <li><input class="navlogout" onclick="searchNav(0)" value="In Theatres"' +
-        '                                            spellcheck="false"></li>' +
+        '                                    <li><a href="inTheatres.jsp">In Theatres</a></li>' +
         '                                    <li><input class="navlogout" onclick="searchNav(1)" value="Coming Soon"></li>' +
         '                                    <li><a href="SearchView.html">Search Movies</a></li>' +
         '                                </ul>' +
@@ -210,7 +224,7 @@ function generateHeader() {
         '                                    <span class="caret"></span></button>' +
         '                                <ul class="dropdown-menu">' +
         '                                    <!-- About Us/Contact-->' +
-        '                                    <li><a href="login.html">Login</a></li>' +
+        '                                    <li><a href="login.jsp">Login</a></li>' +
         '                                    <li><a href="register.jsp">Register</a></li>' +
         '                                </ul>' +
         '                            </div>' +

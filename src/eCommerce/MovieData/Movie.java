@@ -40,4 +40,32 @@ public class Movie {
 	{
 		return movieTitle;
 	}
+	public String getMovieCategory()
+	{
+		return movieCategory;
+	}
+	public String getMovieDirectory()
+	{
+		return movieDirector;
+	}
+	public String getMovieProducer()
+	{
+		return movieProducer;
+	}
+	public String getMovieSynopsis()
+	{
+		return movieSynopsis;
+	}
+	public String getMovieRating()
+	{
+		return movieRating;
+	}
+	public String getMovieExpDate()
+	{
+		return movieExpDate;	
+	}
+	public String getMovieReleaseDate()
+	{
+		return movieReleaseDate;
+	}
 }

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import eCommerce.Error.ERROR_DATA;
 import eCommerce.MovieData.Movie;
+import eCommerce.debug.Debug;
  
 @WebServlet("/movieController")
 public class movieController extends HttpServlet {
@@ -36,7 +37,7 @@ public class movieController extends HttpServlet {
 		//We received an add button request.
 		if(addButton != null)
 		{
-			return;
+			Debug.debugAddMovie(request, response);
 		}
 		
 		//We received an update movie request.
