@@ -198,8 +198,12 @@ function generateHeader() {
         '                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Movies' +
         '                                    <span class="caret"></span></button>' +
         '                                <ul class="dropdown-menu">' +
-        '                                    <!-- Will Redirect to Search Movie Page and autofilter with "in Theatres"-->' +
-        '                                    <li><a href="inTheatres.jsp">In Theatres</a></li>' +
+        '                                    <li>' +
+        '										<form action="navigationController" method="GET">' +
+        ' 											<input style="display:none" name="navigateToString" value="inTheatres.jsp">' +
+        ' 											<input class="navlogout" name="navigateTo" value="In Theatres" type="submit">' +										
+        '										</form>' +
+        '                                    </li' +
         '                                    <li><input class="navlogout" onclick="searchNav(1)" value="Coming Soon"></li>' +
         '                                    <li><a href="SearchView.html">Search Movies</a></li>' +
         '                                </ul>' +
