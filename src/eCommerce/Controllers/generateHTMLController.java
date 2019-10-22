@@ -5,7 +5,7 @@ public class generateHTMLController {
 
 	public static String generateInTheatres(Movie movie)
 	{
-		String addMovieHtml = "<div class=\"row newRow\">" +
+		String addMovieHtml = "<div class=\"row newRow movies\" id=\"" + movie.getMovieTitle()+"\">" +
 		"                        <div class=\"col-md-3\">"+
 		"                            <ul>"+
 		"                                <li><img src=\"images/MoviePhoto/" + movie.getMoviePicture() + "\" alt=\"joker\"></li>"+

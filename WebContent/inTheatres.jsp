@@ -42,17 +42,18 @@
     <main class="inTheatresBody">
         <form style="width: 100%; height: 100%;" action="GET" method="bookingController">
             <div class="container-fluid">
-                <div class="headerBody">
-                    <div class="row">
-                        <div class="col-md-12 removeLeftPadding removeRightPadding">
-                            <h2 style="font-weight: bold;">Featured Movies</h2>
-                            <hr>
-                        </div>
-                    </div>
-                </div>
-                <div id="addMoviesBody">
+                <div class="row">
+						<div class="col-md-3">
+							<h2 style="text-align: center; font-weight: bold;">Movies In Theatres</h2>
+						</div>
+						<div class="col-md-9">
+							<input id="searchMovies" class="searchMovies-c" type="text" placeholder="Search Movies" onkeyup="searchMovie()" style="width: 100%;">
+						</div>
+						<hr>
+				</div>
+                <div id="comingSoonBody">
                     <!--Joker-->
-                    <div class="row">
+                    <div class="row newRow movies" id="Joker">
                         <div class="col-md-3">
                             <ul>
                                 <li><img src="images/MoviePhoto/JokerWallpaper.jpg" alt="joker"></li>
@@ -79,8 +80,7 @@
                                 Joker.</span>
                         </div>
                     </div>
-                </div>
-				<%
+                    <%
 					//Display Java movies that are in Theatres.
 					Database db = new Database();
                     List<Movie> moviesInTheatresList = db.getMoviesFromDatabase(true, false);
@@ -95,8 +95,9 @@
                     	}
                     	pageContext.setAttribute("moviesInTheatresList", htmlcode);
                     }
-				%>
-				<c:out value="${moviesInTheatresList}" escapeXml="false"/>
+					%>
+					<c:out value="${moviesInTheatresList}" escapeXml="false"/>
+                </div>
             </div>
         </form>
     </main>

@@ -4,8 +4,7 @@ $(document).ready(function () {
     generateFooter();
     $("#confirmPassword").keyup(validatePassword);
     $("input[type=submit][name='infS']").attr("disabled", "disabled");
-    if(isAdminPage())
-    {
+    if (isAdminPage()) {
         getTodaysDate();
         loadAnalyticsNums();
         generatePieChart();
@@ -14,21 +13,18 @@ $(document).ready(function () {
 
 
 $(window).scroll(() => {
-    if(window.location.href == "../adminPage.jsp")
-    {
+    if (window.location.href == "../adminPage.jsp") {
         controlSideBarPos();
     }
 });
 
-function isAdminPage()
-{
-	var adminConf = document.getElementById("adminPage");
-	if(adminConf != null)
-	{
-		return true;
-	}else{
-		return false;
-	}
+function isAdminPage() {
+    var adminConf = document.getElementById("adminPage");
+    if (adminConf != null) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function confirmPost() {
@@ -52,22 +48,22 @@ function loadAnalyticsNums() {
 }
 
 function generatePieChart() {
-	var movies = document.getElementById("js-stats").getElementsByTagName("p");
+    var movies = document.getElementById("js-stats").getElementsByTagName("p");
     var ctxP = document.getElementById("pieChart").getContext('2d');
     var myPieChart = new Chart(ctxP, {
         type: 'pie',
         data: {
-            labels: [   movies[0].textContent.split("#")[0], 
-                        movies[1].textContent.split("#")[0],
-                        movies[2].textContent.split("#")[0], 
-                        movies[3].textContent.split("#")[0],
-                        movies[4].textContent.split("#")[0]],
+            labels: [movies[0].textContent.split("#")[0],
+            movies[1].textContent.split("#")[0],
+            movies[2].textContent.split("#")[0],
+            movies[3].textContent.split("#")[0],
+            movies[4].textContent.split("#")[0]],
             datasets: [{
-                data: [ movies[0].textContent.split("#")[1], 
-                        movies[1].textContent.split("#")[1],
-                        movies[2].textContent.split("#")[1],
-                        movies[3].textContent.split("#")[1],
-                        movies[4].textContent.split("#")[1]],
+                data: [movies[0].textContent.split("#")[1],
+                movies[1].textContent.split("#")[1],
+                movies[2].textContent.split("#")[1],
+                movies[3].textContent.split("#")[1],
+                movies[4].textContent.split("#")[1]],
                 backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
                 hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
             }]
@@ -199,7 +195,7 @@ function generateHeader() {
         '                                    <span class="caret"></span></button>' +
         '                                <ul class="dropdown-menu">' +
         '                                    <li><a href="inTheatres.jsp">In Theatres</li>' +
-        '                                    <li><input class="navlogout" onclick="searchNav(1)" value="Coming Soon"></li>' +
+        '                                    <li><a href="comingSoon.jsp">Coming Soon</li>' +
         '                                    <li><a href="SearchView.html">Search Movies</a></li>' +
         '                                </ul>' +
         '                            </div>' +
@@ -341,6 +337,38 @@ function adminSearchMovie() {
     var input = document.getElementById("AdmSearchMovie");
     var filter = input.value.toUpperCase();
     var movies = document.getElementsByClassName("movieObjects");
+
+    for (var i = 0; i < movies.length; i++) {
+        var movieId = movies[i].id.toUpperCase();
+        var indexValue = movieId.indexOf(filter);
+        if (indexValue < 0) {
+            movies[i].style.display = "none";
+        } else {
+            movies[i].style.display = "flex";
+        }
+    }
+}
+
+function searchMovies() {
+    var input = document.getElementById("searchMovies");
+    var filter = input.value.toUpperCase();
+    var movies = document.getElementsByClassName("movies");
+
+    for (var i = 0; i < movies.length; i++) {
+        var movieId = movies[i].id.toUpperCase();
+        var indexValue = movieId.indexOf(filter);
+        if (indexValue < 0) {
+            movies[i].style.display = "none";
+        } else {
+            movies[i].style.display = "flex";
+        }
+    }
+}
+function searchMovie()
+{
+	var input = document.getElementById("searchMovies");
+    var filter = input.value.toUpperCase();
+    var movies = document.getElementsByClassName("movies");
 
     for (var i = 0; i < movies.length; i++) {
         var movieId = movies[i].id.toUpperCase();
