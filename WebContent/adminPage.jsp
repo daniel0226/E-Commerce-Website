@@ -138,6 +138,7 @@
                                                 </div>
                                                 <div class="row" style="margin-top: 15px;">
                                                     <div class="col-md-12 removeLeftPadding removeRightPadding">
+                                                    	${addMovieError}
                                                         <button id="addBtnDe" type="button" value="addMovie"
                                                             name="addMovie" onclick="openAddMovie('addMovie')">Add
                                                             Movie</button>
@@ -362,109 +363,7 @@
                                                                 </div>
                                                                 <!--Joker-->
 
-                                                                <!--Lion King-->
-                                                                <div class="row movieObjects" id="LionKing">
-                                                                    <div class="col-md-1">
-                                                                        <input type="checkbox" name="movieCheckbox"
-                                                                            value="lionking" name="lionking">
-                                                                    </div>
-                                                                    <div class="col-md-3 borderL-xs borderR-xs">
-                                                                        <div class="moviePic">
-                                                                            <img src="images/MoviePhoto/LionKing.jpg"
-                                                                                alt="lionKing">
-                                                                            <button class="editBtn adminBtn"
-                                                                                id="LionKingBtn"
-                                                                                style="width: 100%; display: block;"
-                                                                                onclick="showEditTab('LionKingInfo', 'LionKingBtn')"
-                                                                                type="button" value="Edit">Edit</button>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-8 movieInfoDisplay"
-                                                                        id="LionKingInfo">
-                                                                        <div class="container">
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="movieInfo">
-                                                                                        <label for="moviepicture">Movie
-                                                                                            Picture</label>
-                                                                                        <input id="moviepicture"
-                                                                                            type="file" name="pic"
-                                                                                            accept="image/*">
-                                                                                    </div>
-                                                                                    <div class="movieInfo">
-                                                                                        <label for="trailer">Movie
-                                                                                            Trailer URL</label>
-                                                                                        <input id="trailer" type="text"
-                                                                                            name="video" placeholder="video url">
-                                                                                    </div>
-                                                                                    <div class="movieInfo">
-                                                                                        <input type="text" name="title"
-                                                                                            placeholder="Title"
-                                                                                            class="textFieldDes2">
-                                                                                    </div>
-                                                                                    <div class="movieInfo">
-                                                                                        <input type="text"
-                                                                                            name="category"
-                                                                                            placeholder="Category"
-                                                                                            class="textFieldDes2">
-                                                                                    </div>
-                                                                                    <div class="movieInfo">
-                                                                                        <input type="text"
-                                                                                            name="director"
-                                                                                            placeholder="Director"
-                                                                                            class="textFieldDes2">
-                                                                                    </div>
-                                                                                    <div class="movieInfo">
-                                                                                        <input type="text"
-                                                                                            name="producer"
-                                                                                            placeholder="Producer"
-                                                                                            class="textFieldDes2">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-
-                                                                                    <div class="movieInfo">
-                                                                                        <label>Synopsis</label>
-                                                                                        g <textarea name="synopsis"
-                                                                                            placeholder="Enter Synopsis here"
-                                                                                            class="textFieldDes2"
-                                                                                            style="border: 1.5px solid rgb(45,69,121);"></textarea>
-                                                                                    </div>
-                                                                                    <div class="movieInfo">
-                                                                                        <input type="text" name="Rated"
-                                                                                            placeholder="Rated"
-                                                                                            class="textFieldDes2">
-                                                                                    </div>
-                                                                                    <div class="movieInfo">
-                                                                                        <label
-                                                                                            for="expirationDate">Expiration
-                                                                                            Date:</label>
-                                                                                        <input type="date"
-                                                                                            name="expirationDate">
-                                                                                    </div>
-                                                                                    <div class="movieInfo">
-                                                                                        <label for="releasedate">Release
-                                                                                            Date:</label>
-                                                                                        <input id="releasedate"
-                                                                                            type="date"
-                                                                                            name="releaseDate">
-                                                                                    </div>
-                                                                                    <div class="movieInfo"
-                                                                                        style="margin-top: 20px;">
-                                                                                        <button class="adminBtn"
-                                                                                            type="submit" value="Update"
-                                                                                            name="update">Update</button>
-                                                                                        <button class="adminBtn"
-                                                                                            onclick="closeForm('LionKingInfo', 'LionKingBtn')"
-                                                                                            type="button" value="cancel"
-                                                                                            name="cancel">Cancel</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <!--LionKIng-->
+                                                                <p id="js-addMovie" style="display: none;">${addMovie}</p>
                                                                 </span>
                                                             </form>
                                                         </div>

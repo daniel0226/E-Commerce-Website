@@ -1,13 +1,15 @@
 package eCommerce.Controllers;
-import java.util.HashMap;
-import java.util.Map;
+
+import java.sql.SQLException;
+
+import eCommerce.Database.*;
+import eCommerce.MovieData.Movie;
 
 public class Validator
 {
     public static boolean validateLoginCredentials(String email, String password)
     {
-        //Connect to Database
-    	//
+    	//Get user from database
         String testUser = "daniel";
         String testPassword = "12345";
         //if(testUser.equals(email) && testPassword.equals(password))
@@ -22,7 +24,6 @@ public class Validator
     public static boolean validateRegistrationEmailIsUnique(String email)
     {
     	boolean isUnique = true;
-    	//Connect to Database
     	//Check if email exists
     	return isUnique;
     }
@@ -55,15 +56,42 @@ public class Validator
     public static boolean userHasConfirmedLogin(String email)
     {
     	boolean isConfirmed = false;
-    	//connect to DB
     	//Check if user is confirmed.
     	return isConfirmed;
     }
     public static boolean userIsSuspended(String email)
     {
     	boolean isSuspended = false;
-    	//connect to DB
     	//Check if user is suspended.
     	return isSuspended;
+    }
+    
+    public static boolean movieAlreadyExists(Movie movie) throws SQLException
+    {
+    	boolean movieExists = false;
+    	Movie duplicateMovie = Database.getMovie(movie.getMovieTitle());
+    	
+    	if(duplicateMovie != null) 
+    	{
+    		movieExists = true;
+    	}
+    	
+    	if(duplicateMovie != null)
+    	{
+    		if(duplicateMovie.getMovieTitle().equalsIgnoreCase(movie.getMovieTitle()))
+    		{
+    			movieExists = true;
+    		}
+    		if(duplicateMovie.getMoviePicture().equalsIgnoreCase(movie.getMovieTitle()))
+    		{
+    			movieExists = true;
+    		}
+    		if(duplicateMovie.getMovieTrailer().equalsIgnoreCase(movie.getMovieTrailer()))
+    		{
+    			movieExists = true;
+    		}
+    	}
+    	
+    	return movieExists;
     }
 }

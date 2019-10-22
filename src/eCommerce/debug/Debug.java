@@ -10,9 +10,7 @@ import eCommerce.MovieData.*;
 import eCommerce.Controllers.generateHTMLController;
 
 /*
- * 
- * EVENTUALLY GOING TO MAKE A COPY OF THIS
- * THE COPY WILL BE A CONTROLLER FOR ADMIN LOGIN
+ * IGNORE THIS JAVA FILE
  * 
  * */
 

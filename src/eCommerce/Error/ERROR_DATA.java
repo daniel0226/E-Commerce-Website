@@ -12,4 +12,7 @@ public class ERROR_DATA {
 	public static final String INVALID_LOGIN_ERROR =
 			"<p style=\"color:red; margin: 0; padding: 0;\">" + 
             "Invalid Email Address or Password.";
+	public static final String MOVIE_ALREADY_EXISTS =
+			"<p style=\"color:red; margin: 0; text-align: center; padding: 0;\">" + 
+            "Movie already exists in Database";
 }

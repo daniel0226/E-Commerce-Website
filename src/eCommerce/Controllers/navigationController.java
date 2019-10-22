@@ -39,7 +39,7 @@ public class navigationController extends HttpServlet {
 			System.out.println("Database connection established.");
 		}else
 		{
-			System.out.println("Database: " + db.getDatabase());
+			System.out.println("Database: " + Database.getDatabase());
 		}
 	}
 	public navigationController()
@@ -54,21 +54,7 @@ public class navigationController extends HttpServlet {
 		
 		if(navigateToString.equals("inTheatres.jsp"))
 		{
-			List<Movie> movieList = new LinkedList<Movie>();
-			//Get movies from database that are in theatres
-			movieList = db.getMoviesFromDatabase();
-			
-			//Load movies html using generateHTML in for loop
-			for(Movie movie : movieList)
-			{
-				movieHTML += generateHTMLController.generateInTheatres(movie);
-			}
-			//assign html to addMovie
-				request.setAttribute("addMovie", movieHTML);
-			//Request dispatcher
 			request.getRequestDispatcher(navigateToString).forward(request, response);
-		}else {
-			
 		}
 	}
 	

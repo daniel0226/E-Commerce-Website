@@ -184,7 +184,7 @@ function generateFooter() {
 function generateHeader() {
     var myvar = '<nav class="navbar navbar-expand-md navbar-dark">' +
         '            <div class="container">' +
-        '                <a href="index.html">' +
+        '                <a href="index.jsp">' +
         '                    <h1 id="header" class="navbar-brand hLink st">Cinema E-Booking</h1>' +
         '                </a>' +
         '                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">' +

@@ -44,7 +44,7 @@ public class Movie {
 	{
 		return movieCategory;
 	}
-	public String getMovieDirectory()
+	public String getMovieDirector()
 	{
 		return movieDirector;
 	}

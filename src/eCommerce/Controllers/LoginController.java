@@ -1,6 +1,7 @@
 package eCommerce.Controllers;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import eCommerce.Error.*;
 import javax.servlet.ServletException;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import eCommerce.debug.Debug; 
-
+import eCommerce.Database.*;
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet
 {
@@ -22,7 +23,7 @@ public class LoginController extends HttpServlet
     }
     
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-    {
+    {	
         response.setContentType("html;charset=UTF-8");
 
         //Replace this with database stuff
@@ -80,7 +81,7 @@ public class LoginController extends HttpServlet
         //Debug admin stuff
         if(emailLogin.equals(Debug.getEmail()) && passwordLogin.equals(Debug.getPassword()))
         {
-        	Debug.debugAdminPageLogin(request,response);
+        	Debug.debugAdminPageLogin(request, response);
         }
     }
 
