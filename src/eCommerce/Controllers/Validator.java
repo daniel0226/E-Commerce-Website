@@ -2,11 +2,15 @@ package eCommerce.Controllers;
 
 import java.sql.SQLException;
 
-import eCommerce.Database.*;
+import eCommerce.Database.Database;
 import eCommerce.MovieData.Movie;
 
 public class Validator
-{	
+{
+	public static boolean validateUserHasVerified(String email)
+	{
+		return true;
+	}
     public static boolean validateLoginCredentials(String email, String password)
     {
     	//Get user from database
@@ -23,9 +27,9 @@ public class Validator
     }
     public static boolean validateRegistrationEmailIsUnique(String email)
     {
-    	boolean isUnique = true;
-    	//Check if email exists
-    	return isUnique;
+    	System.out.println("Hi");
+    	return false;
+    	//return Database.getUser(email) == null;
     }
     public static boolean validateAllPaymentFieldsAreSet(String cardHolderName, String cardNumber, String CVV, String zipcode)
     {

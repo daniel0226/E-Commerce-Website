@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import eCommerce.Database.Database;
 import eCommerce.Error.ERROR_DATA;
 import eCommerce.MovieData.Movie;
-import eCommerce.debug.Debug;
 
 @WebServlet("/movieController")
 public class movieController extends HttpServlet {

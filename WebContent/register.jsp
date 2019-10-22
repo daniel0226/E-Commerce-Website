@@ -179,7 +179,7 @@
                                     <div class="col-md-6">
                                         <div class="submitField">
                                                 <input id="infS" name="infS" type="submit" value="Register">
-                                                <a href="login.html">Already have an account?</a>
+                                                <a href="login.jsp">Already have an account?</a>
                                             
                                         </div>
                                     </div>

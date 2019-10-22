@@ -12,10 +12,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 import eCommerce.Controllers.Validator;
+import eCommerce.Controllers.authenticatorController;
 import eCommerce.MovieData.*;
+import eCommerce.UserData.Card;
+import eCommerce.users.WebUser;
 
 public class Database {
-
+	
+	private static authenticatorController authenticator;
 	private static MysqlDataSource mysql = null;
 	private static Connection connection = null;
 	private static Statement statement = null;
@@ -25,9 +29,11 @@ public class Database {
 
 	public Database() throws SQLException {
 		try {
+			authenticator = new authenticatorController();
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			mysql = new MysqlDataSource();
 			createDatabase();
+			System.out.println("Database connection established.");
 		} catch (SQLException se) {
 			// Handle errors for JDBC
 			se.printStackTrace();
@@ -50,7 +56,108 @@ public class Database {
 	public static MysqlDataSource getDatabase() {
 		return mysql;
 	}
+	
+	public static Card getCard(String email)
+	{
+		Card userCard = null;
+		try {
+			String getMovieExecution = MySQL_Commands.Get_UserCard + "'" + email + "'";
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(getMovieExecution);
+			if(rs.next())
+			{
+				userCard = new Card(rs.getString(2),
+									rs.getString(3),
+									rs.getString(4),
+									rs.getString(5),
+									rs.getString(6));
+			}
+		}catch (SQLException e) {
+			System.err.println(e);
+			System.err.println("Could not get user. Perhaps user doesn't exist");
+		}
+		return userCard;
+	}
 
+	public static WebUser getUser(String email)
+	{
+		WebUser user = null;
+		try
+		{
+			System.out.println("Getting " + email + " from Database.");
+			String getMovieExecution = MySQL_Commands.Get_User + "'" + email + "'";
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(getMovieExecution);
+			if(rs.next())
+			{
+				user = new WebUser(	rs.getString(2),
+									rs.getString(3),
+									rs.getString(4),
+									rs.getString(5),
+									rs.getString(6),
+									getCard(email),
+									rs.getBoolean(7),
+									rs.getString(8),
+									rs.getString(9));
+			}
+			rs.close();
+			connection.close();
+		} catch (SQLException e) {
+			System.err.println(e);
+			System.err.println("Could not get user. Perhaps user doesn't exist");
+		}
+		return user;
+	}
+	public static boolean addCard(String email, Card card)
+	{
+		boolean addedCard = false;
+		try {
+			System.out.println("Adding " + card.getCardName() + "'s card to Database.");
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.Add_Card);
+			statement.setString(1, email);
+			statement.setString(2, card.getCardName());
+			statement.setString(3, card.getCVV());
+			statement.setString(4, card.getExpirationDate());
+			statement.setString(5, card.getCardNumber());
+			statement.setString(6, card.getZipCode());
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+			addedCard = true;
+		}catch (SQLException e) {
+			System.err.println(e);
+			System.err.println("Could not add Movie. Perhaps the movie already exists.");
+		}
+		return addedCard;
+	}
+	public static boolean addWebUser(WebUser user)
+	{
+		boolean addedUser = false;
+		try {
+			System.out.println("Adding " + user.getFullName() + " to Database.");
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.Add_User);
+			statement.setString(1, user.getFirstName());
+			statement.setString(2, user.getLastName());
+			statement.setString(3, authenticator.encryptPassword(user.getPassword()));
+			statement.setString(4, user.getEmail());
+			statement.setString(5, user.getStrBirthday());
+			statement.setBoolean(6, user.verified());
+			statement.setString(7, user.getCode());
+			statement.setString(8, user.getSessionType());
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+			addedUser = true;
+		}catch (SQLException e) {
+			System.err.println(e);
+			System.err.println("Could not add Card. Perhaps the card already exists.");
+		}
+		return addedUser;
+	}
 	public static void addMovie(Movie movie) {
 		try {
 			System.out.println("Adding movie to Database.");
@@ -71,7 +178,7 @@ public class Database {
 			connection.close();
 		} catch (SQLException e) {
 			System.err.println(e);
-			System.err.println("Could not add Movie. Perhaps the movie already exists.");
+			System.err.println("Could not add User. Perhaps the User already exists.");
 		}
 	}
 

@@ -52,34 +52,6 @@
 						<hr>
 				</div>
                 <div id="comingSoonBody">
-                    <!--Joker-->
-                    <div class="row newRow movies" id="Joker">
-                        <div class="col-md-3">
-                            <ul>
-                                <li><img src="images/MoviePhoto/JokerWallpaper.jpg" alt="joker"></li>
-                                <li>
-                                    <h3>Joker</h3>
-                                </li>
-                                <li><span>Rated: R</span></li>
-                                <li><span>Released: October 4, 2019</span></li>
-                                <li><button class="getTickets" type="submit" name="JokerBtn" value="">Get
-                                        Tickets</button></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-9">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/zAGVQLHvwOY"
-                                frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <h3>Director: Todd Phillips</h3>
-                            <h4>Category: Thriller/Horror</h4>
-                            <span>Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks
-                                the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job
-                                as a clown, and the guise he projects in a futile attempt to feel like he's part of the
-                                world around him. Isolated, bullied and disregarded by society, Fleck begins a slow
-                                descent into madness as he transforms into the criminal mastermind known as the
-                                Joker.</span>
-                        </div>
-                    </div>
                     <%
 					//Display Java movies that are in Theatres.
 					Database db = new Database();

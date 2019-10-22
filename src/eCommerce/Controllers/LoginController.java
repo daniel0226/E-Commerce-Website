@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import eCommerce.debug.Debug; 
 import eCommerce.Database.*;
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet
@@ -79,10 +78,7 @@ public class LoginController extends HttpServlet
           request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
     	 */
         //Debug admin stuff
-        if(emailLogin.equals(Debug.getEmail()) && passwordLogin.equals(Debug.getPassword()))
-        {
-        	Debug.debugAdminPageLogin(request, response);
-        }
+       
     }
 
 }

@@ -1,5 +1,8 @@
 package eCommerce.users;
+import eCommerce.Controllers.dateController;
 import eCommerce.UserData.*;
+
+import java.time.LocalDate;
 
 // Inheritance class for user functions and objects
 public class Users
@@ -11,6 +14,7 @@ public class Users
     private String emailAddress;
     private String birthday;
     private Card paymentCard;
+    private LocalDate bday;
     
     public Users(	String fName, 
     				String lName, 
@@ -28,6 +32,7 @@ public class Users
         emailAddress 	= uEmail;
         birthday 		= uBirthday;
         paymentCard 	= card;
+        bday			= dateController.convertToLocalDate(birthday);
     }
     public void setFirstName(String fName)
     {
@@ -51,6 +56,26 @@ public class Users
     public String getFullName()
     {
         return firstName + " " + lastName;
+    }
+    public String getPassword()
+    {
+    	return password;
+    }
+    public String getEmail()
+    {
+    	return emailAddress;
+    }
+    public String getStrBirthday()
+    {
+    	return birthday;
+    }
+    public LocalDate getBirthday()
+    {
+    	return bday;
+    }
+    public Card getCard()
+    {
+    	return paymentCard;
     }
 
 }
