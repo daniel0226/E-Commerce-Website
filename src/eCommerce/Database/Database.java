@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import eCommerce.Controllers.Validator;
+import eCommerce.Validator.Validator;
 import eCommerce.Controllers.authenticatorController;
 import eCommerce.MovieData.*;
 import eCommerce.UserData.Card;

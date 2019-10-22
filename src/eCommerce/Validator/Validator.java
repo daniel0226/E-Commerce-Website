@@ -1,28 +1,35 @@
 package eCommerce.Validator;
+import eCommerce.Controllers.dateController;
 
+import java.sql.SQLException;
+
+import eCommerce.Database.Database;
+import eCommerce.MovieData.Movie;
 
 public class Validator
 {
+	public static boolean validateUserHasVerified(String email)
+	{
+		return true;
+	}
     public static boolean validateLoginCredentials(String email, String password)
     {
-        //Connect to Database
-    	//
+    	//Get user from database
         String testUser = "daniel";
         String testPassword = "12345";
-        if(testUser.equals(email) && testPassword.equals(password))
-        {
-            return true;
-        }else
-        {
-            return false;
-        }
+        //if(testUser.equals(email) && testPassword.equals(password))
+        //{
+        //   return true;
+        //}else
+        //{
+        //    return false;
+        //}
+        return true;
     }
+   
     public static boolean validateRegistrationEmailIsUnique(String email)
     {
-    	boolean isUnique = true;
-    	//Connect to Database
-    	//Check if email exists
-    	return isUnique;
+    	return Database.getUser(email) == null;
     }
     public static boolean validateAllPaymentFieldsAreSet(String cardHolderName, String cardNumber, String CVV, String zipcode)
     {
@@ -53,15 +60,49 @@ public class Validator
     public static boolean userHasConfirmedLogin(String email)
     {
     	boolean isConfirmed = false;
-    	//connect to DB
     	//Check if user is confirmed.
     	return isConfirmed;
     }
     public static boolean userIsSuspended(String email)
     {
     	boolean isSuspended = false;
-    	//connect to DB
     	//Check if user is suspended.
     	return isSuspended;
+    }
+    
+    public static boolean movieAlreadyExists(Movie movie) throws SQLException
+    {
+    	boolean movieExists = false;
+    	Movie duplicateMovie = Database.getMovie(movie.getMovieTitle());
+    	
+    	if(duplicateMovie != null) 
+    	{
+    		movieExists = true;
+    	}
+    	
+    	if(duplicateMovie != null)
+    	{
+    		if(duplicateMovie.getMovieTitle().equalsIgnoreCase(movie.getMovieTitle()))
+    		{
+    			movieExists = true;
+    		}
+    		if(duplicateMovie.getMoviePicture().equalsIgnoreCase(movie.getMovieTitle()))
+    		{
+    			movieExists = true;
+    		}
+    		if(duplicateMovie.getMovieTrailer().equalsIgnoreCase(movie.getMovieTrailer()))
+    		{
+    			movieExists = true;
+    		}
+    	}
+    	return movieExists;
+    }
+    public static boolean validateMovieInTheatres(Movie movie)
+    {
+    	return dateController.movieIsInTheatres(movie);
+    }
+    public static boolean validateMovieComingSoon(Movie movie)
+    {
+    	return dateController.movieIsComingSoon(movie);
     }
 }

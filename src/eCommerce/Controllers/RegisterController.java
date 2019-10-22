@@ -72,7 +72,7 @@ public class RegisterController extends HttpServlet {
 			return;
 		}
 
-		// Validate that email isn't already used.
+		
 		if (!Validator.validateRegistrationEmailIsUnique(emailAddress)) {
 			request.setAttribute("errorOutput", ERROR_DATA.NOT_UNIQUE_EMAIL);
 			request.getRequestDispatcher("/register.jsp").forward(request, response);
@@ -84,10 +84,9 @@ public class RegisterController extends HttpServlet {
 		WebUser newUser = new WebUser(firstName, lastName, password, confirmPassword, emailAddress, birthday,
 				newPaymentCard, false, authenticator.getKey());
 
-		// if(Database.addCard(newUser.getEmail(), newPaymentCard) &&
-		// Database.addWebUser(newUser))
-		// {
-		// response.sendRedirect("registerThankyou.html");
-		// }
+		if(Database.addCard(newUser.getEmail(), newPaymentCard) && Database.addWebUser(newUser))
+		{
+			response.sendRedirect("registerThankyou.html");
+		}
 	}
 }
