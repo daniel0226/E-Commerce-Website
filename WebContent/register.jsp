@@ -168,6 +168,14 @@
                                                             name="zipcode" placeholder="Zip Code" value="">
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                	<div class="col-md-1 removeLeftPadding">
+                                                		<input type="checkbox" name="promoCheckBox" value="1">
+                                                	</div>
+                                                	<div class="col-md-11 removeRightPadding">
+                                                		Sign Up for Promotions!
+                                                	</div>
+                                                </div>
                                             </div>
                                             <!--Payment stuff-->
                                         </div>

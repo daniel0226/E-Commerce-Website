@@ -11,6 +11,7 @@ public class WebUser extends Users {
 	private String sessionType = "web";
 	private boolean accountIsConfirmed;
 	private String registrationCode;
+	private boolean receivePromoEmailUpdates;
 
 	// When creating from Form
 	public WebUser(String fName, String lName, String uPassword, String uConPassword, String uEmail, String uBirthday,
@@ -21,11 +22,12 @@ public class WebUser extends Users {
 	}
 
 	// When creating as object
-	public WebUser(String fName, String lName, String uPassword, String uEmail, String uBirthday, Card card, boolean isConfirmed, String code, String session)
+	public WebUser(String fName, String lName, String uPassword, String uEmail, String uBirthday, Card card, boolean isConfirmed, String code, String session, boolean promoUpdates)
 	{
 		super(fName, lName, uPassword,"",uEmail, uBirthday, card);
 		accountIsConfirmed = isConfirmed;
 		registrationCode = code;
+		receivePromoEmailUpdates = promoUpdates;
 	}
 
 	public boolean verified()
@@ -39,5 +41,9 @@ public class WebUser extends Users {
 	public String getSessionType()
 	{
 		return sessionType;
+	}
+	public boolean isReceivingPromoUpdates()
+	{
+		return receivePromoEmailUpdates;
 	}
 }

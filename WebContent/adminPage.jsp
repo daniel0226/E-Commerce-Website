@@ -263,10 +263,6 @@
 
                                                                 <!--These will eventually be created by the Java servlet-->
 																<span id="addMoviesBody">
-                                                                
-                                                                <!--Joker-->
-
-                                                                <p id="js-addMovie" style="display: none;">${addMovie}</p>
                                                                 </span>
                                                             </form>
                                                         </div>

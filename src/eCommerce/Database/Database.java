@@ -3,7 +3,6 @@ package eCommerce.Database;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -100,7 +99,8 @@ public class Database {
 									getCard(email),
 									rs.getBoolean(7),
 									rs.getString(8),
-									rs.getString(9));
+									rs.getString(9),
+									rs.getBoolean(10));
 			}
 			rs.close();
 			connection.close();
@@ -148,6 +148,7 @@ public class Database {
 			statement.setBoolean(6, user.verified());
 			statement.setString(7, user.getCode());
 			statement.setString(8, user.getSessionType());
+			statement.setBoolean(9, user.isReceivingPromoUpdates());
 			statement.executeUpdate();
 			statement.close();
 			connection.close();
