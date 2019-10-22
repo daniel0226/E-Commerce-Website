@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
+import eCommerce.Controllers.Validator;
 import eCommerce.MovieData.*;
 
 public class Database {
@@ -74,7 +75,7 @@ public class Database {
 		}
 	}
 
-	public List<Movie> getMoviesFromDatabase() throws SQLException {
+	public List<Movie> getMoviesFromDatabase(boolean inTheatres, boolean comingSoon) throws SQLException {
 		List<Movie> moviesList = new LinkedList<Movie>();
 		String getAllMovies = MySQL_Commands.Get_All_Movies;
 		connection = mysql.getConnection();
@@ -92,7 +93,24 @@ public class Database {
 									rs.getString(9),
 									rs.getString(10),
 									rs.getString(11));
-			moviesList.add(movie);
+			if(inTheatres)
+			{
+				if(Validator.validateMovieInTheatres(movie))
+				{
+					System.out.println(movie.getMovieTitle() + " is in theatres.");
+					moviesList.add(movie);
+				}
+			}else if(comingSoon)
+			{
+				if(Validator.validateMovieComingSoon(movie))
+				{
+					System.out.println(movie.getMovieTitle() + " is coming soon.");
+					moviesList.add(movie);
+				}
+			}else
+			{
+				moviesList.add(movie);
+			}
 		}
 		rs.close();
 		connection.close();

@@ -6,7 +6,7 @@ import eCommerce.Database.*;
 import eCommerce.MovieData.Movie;
 
 public class Validator
-{
+{	
     public static boolean validateLoginCredentials(String email, String password)
     {
     	//Get user from database
@@ -91,7 +91,14 @@ public class Validator
     			movieExists = true;
     		}
     	}
-    	
     	return movieExists;
+    }
+    public static boolean validateMovieInTheatres(Movie movie)
+    {
+    	return dateController.movieIsInTheatres(movie);
+    }
+    public static boolean validateMovieComingSoon(Movie movie)
+    {
+    	return dateController.movieIsComingSoon(movie);
     }
 }
