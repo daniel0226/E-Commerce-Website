@@ -5,26 +5,29 @@ import java.sql.SQLException;
 
 import eCommerce.Database.Database;
 import eCommerce.MovieData.Movie;
+import eCommerce.users.WebUser;
+import eCommerce.Controllers.authenticatorController;
 
 public class Validator
 {
+	private static authenticatorController authenticator;
+	
 	public static boolean validateUserHasVerified(String email)
 	{
 		return true;
 	}
     public static boolean validateLoginCredentials(String email, String password)
     {
-    	//Get user from database
-        String testUser = "daniel";
-        String testPassword = "12345";
-        //if(testUser.equals(email) && testPassword.equals(password))
-        //{
-        //   return true;
-        //}else
-        //{
-        //    return false;
-        //}
-        return true;
+        authenticator = new authenticatorController();
+        WebUser user = Database.getUser(email);
+        if(user == null) 
+        {
+        	return false;
+        }
+        byte[] passwordBytes = user.getPassword().getBytes();
+        
+        return password.equalsIgnoreCase(authenticator.decryptPassword(passwordBytes));
+        
     }
    
     public static boolean validateRegistrationEmailIsUnique(String email)
@@ -59,9 +62,7 @@ public class Validator
     
     public static boolean userHasConfirmedLogin(String email)
     {
-    	boolean isConfirmed = false;
-    	//Check if user is confirmed.
-    	return isConfirmed;
+    	return Database.getUser(email).verified();
     }
     public static boolean userIsSuspended(String email)
     {

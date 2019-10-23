@@ -263,6 +263,7 @@
 
                                                                 <!--These will eventually be created by the Java servlet-->
 																<span id="addMoviesBody">
+																	${addMovies}
                                                                 </span>
                                                             </form>
                                                         </div>

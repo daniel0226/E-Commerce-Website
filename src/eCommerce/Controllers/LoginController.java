@@ -11,12 +11,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import eCommerce.Validator.Validator;
+import eCommerce.users.Users;
+import eCommerce.users.WebUser;
 import eCommerce.Database.*;
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-
+	private Database db;
+	
+	public void init()
+	{
+		System.out.println("LoginController.java: Login was called");
+		if(db == null)
+		{
+			try {
+				db = new Database();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public LoginController()
 	{
 		super();
@@ -50,7 +67,9 @@ public class LoginController extends HttpServlet
         
         if(!Validator.userHasConfirmedLogin(emailLogin))
         {
-        	
+        	request.setAttribute("loginError", ERROR_DATA.USER_HAS_NOT_VERIFIED_EMAIL);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            return;
         }
         
         if(!Validator.userIsSuspended(emailLogin))
@@ -69,16 +88,27 @@ public class LoginController extends HttpServlet
     	//HttpSession session = request.getSession();
     	//session.setAttribute("email", emailLogin);
     	
-    	//If admin login
-    	//if(user is admin)
-    	/*
-    	 * 
-    	 *
-          request.setAttribute("adminName", admin name from db);
-          request.setAttribute(all of the analytics)
-          request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
-    	 */
-        //Debug admin stuff
+        WebUser user = Database.getUser(emailLogin);
+        if(user.getSessionType().equals("admin")) 
+        {
+        	try {
+        		request.setAttribute("adminName", user.getFullName());
+				request.setAttribute("moviesInTheatres", db.getMoviesFromDatabase(true, false).size());
+	        	request.setAttribute("moviesComingSoon", db.getMoviesFromDatabase(false, true).size());
+	        	request.setAttribute("moviesArchived", 5);
+	    		request.setAttribute("mostPopularMovie", db.getMostPopularMovie());
+	    		request.setAttribute("movieStats",db.getMovieStats());
+	    		request.setAttribute("addMovies", db.generateMovieHtml(db.getAllMovies()));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
+        }else if(user.getSessionType().equals("web"))
+        {
+        	response.sendRedirect("index.jsp");
+        	return;
+        }
        
     }
 

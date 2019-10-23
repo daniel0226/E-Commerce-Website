@@ -30,21 +30,22 @@ public class generateHTMLController {
 		return addMovieHtml;
 	}
 	
+	//Need to implement
 	public static String generateAdminPageMoviesList(Movie movie)
 	{
 		String adminPageMovieHTML = 
-		"<div class=\"row movieObjects\" id=\"Joker\">" +
+		"<div class=\"row movieObjects\" id=\"" + movie.getMovieTitle() + "\">" +
 		"    <div class=\"col-md-1\">"+
-		"        <input type=\"checkbox\" name=\"movieCheckbox\" value=\"joker\" name=\"joker\">"+
+		"        <input type=\"checkbox\" name=\"movieCheckbox\" value=\"" + movie.getMovieTitle() + "\" name=\"" + movie.getMovieTitle() + "\">"+
 		"    </div>"+
 		"    <div class=\"col-md-3 borderL-xs borderR-xs moviePicBody\">"+
 		"        <div class=\"moviePic\">"+
-		"            <img src=\"images/MoviePhoto/JokerWallpaper.jpg\" alt=\"Joker\">"+
-		"            <button class=\"editBtn adminBtn\" id=\"JokerBtn\" onclick=\"showEditTab('JokerInfo', 'JokerBtn')\" type=\"button\""+
+		"            <img src=\"images/MoviePhoto/" + movie.getMoviePicture() + "\" alt=\"" + movie.getMovieTitle() + "\">"+
+		"            <button class=\"editBtn adminBtn\" id=\"" + movie.getMovieTitle() + "Btn" + "\" onclick=\"showEditTab('"+ movie.getMovieTitle() + "Info" + "', '" + movie.getMovieTitle() + "Btn" +"')\" type=\"button\""+
 		"                style=\"width: 100%; display: block;\" value=\"Edit\">Edit</button>"+
 		"        </div>"+
 		"    </div>"+
-		"    <div class=\"col-md-8 movieInfoDisplay\" id=\"JokerInfo\">"+
+		"    <div class=\"col-md-8 movieInfoDisplay\" id=\"" + movie.getMovieTitle() + "Info" + "\">"+
 		"        <div class=\"container\">"+
 		"            <div class=\"row\">"+
 		"                <div class=\"col-md-6\">"+
@@ -56,29 +57,29 @@ public class generateHTMLController {
 		"                    <div class=\"movieInfo\">"+
 		"                        <label>Movie"+
 		"                            Trailer URL</label>"+
-		"                        <input type=\"text\" name=\"video\" placeholder=\"video url\">"+
+		"                        <input type=\"text\" name=\"video\" placeholder=\"" + movie.getMovieTrailer() +"\">"+
 		"                    </div>"+
 		"                    <div class=\"movieInfo\">"+
-		"                        <input type=\"text\" name=\"title\" placeholder=\"Title\" class=\"textFieldDes2\">"+
+		"                        <input type=\"text\" name=\"title\" placeholder=\""+ movie.getMovieTitle() +"\" class=\"textFieldDes2\">"+
 		"                    </div>"+
 		"                    <div class=\"movieInfo\">"+
-		"                        <input type=\"text\" name=\"category\" placeholder=\"Category\" class=\"textFieldDes2\">"+
+		"                        <input type=\"text\" name=\"category\" placeholder=\"" + movie.getMovieCategory() + "\" class=\"textFieldDes2\">"+
 		"                    </div>"+
 		"                    <div class=\"movieInfo\">"+
-		"                        <input type=\"text\" name=\"director\" placeholder=\"Director\" class=\"textFieldDes2\">"+
+		"                        <input type=\"text\" name=\"director\" placeholder=\"" + movie.getMovieDirector() + "\" class=\"textFieldDes2\">"+
 		"                    </div>"+
 		"                    <div class=\"movieInfo\">"+
-		"                        <input type=\"text\" name=\"producer\" placeholder=\"Producer\" class=\"textFieldDes2\">"+
+		"                        <input type=\"text\" name=\"producer\" placeholder=\"" + movie.getMovieProducer() +"\" class=\"textFieldDes2\">"+
 		"                    </div>"+
 		"                </div>" + 
 		"				 <div class=\"col-md-6\">"+
 		"                    <div class=\"movieInfo\">"+
 		"                        <label>Synopsis</label>"+
-		"                        <textarea name=\"synopsis\" placeholder=\"Enter Synopsis here\" class=\"textFieldDes2\""+
+		"                        <textarea name=\"synopsis\" placeholder=\"" + movie.getMovieSynopsis() + "\" class=\"textFieldDes2\""+
 		"                            style=\"border: 1.5px solid rgb(45,69,121);\"></textarea>" +
 		"					 </div>" +
 		"                    <div class=\"movieInfo\">"+
-		"                        <input type=\"text\" name=\"Rated\" placeholder=\"Rated\" class=\"textFieldDes2\">"+
+		"                        <input type=\"text\" name=\"Rated\" placeholder=\"" + movie.getMovieRating() + "\" class=\"textFieldDes2\">"+
 		"                    </div>"+
 		"                    <div class=\"movieInfo\">"+
 		"                        <label>Expiration"+
@@ -92,7 +93,7 @@ public class generateHTMLController {
 		"                    </div>"+
 		"                    <div class=\"movieInfo\" style=\"margin-top: 20px;\">"+
 		"                        <button class=\"adminBtn\" type=\"submit\" value=\"Update\" name=\"update\">Update</button>"+
-		"                        <button class=\"adminBtn\" onclick=\"if(!closeForm('JokerInfo', 'JokerBtn'))return false;\""+
+		"                        <button class=\"adminBtn\" onclick=\"if(!closeForm('"+ movie.getMovieTitle() + "Info" + "', '"+ movie.getMovieTitle() + "Btn" +"'))return false;\""+
 		"                            type=\"button\" value=\"cancel\" name=\"cancel\">Cancel</button>"+
 		"                    </div>"+
 		"                </div>"+
@@ -101,5 +102,11 @@ public class generateHTMLController {
 		"    </div>"+
 		"</div>";
 		return adminPageMovieHTML;
+	}
+	
+	public static String mostPopularMovieHtml(Movie movie)
+	{
+		String imgHTML = "<img src=\"images/MoviePhoto/" + movie.getMoviePicture() + "\" alt=\"" + movie.getMovieTitle() + "\">";
+		return imgHTML;
 	}
 }

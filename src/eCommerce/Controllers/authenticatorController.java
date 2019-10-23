@@ -23,7 +23,6 @@ public class authenticatorController {
 			Cipher cipher = Cipher.getInstance("AES");
 			cipher.init(Cipher.DECRYPT_MODE, aesKey);
             decrypted = new String(cipher.doFinal(encryptPassword));
-            System.err.println(decrypted);
 		}catch(Exception e) 
         {
             e.printStackTrace();

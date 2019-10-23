@@ -50,9 +50,8 @@ public class RegisterController extends HttpServlet {
 		String emailAddress = request.getParameter("email");
 		String birthday = request.getParameter("bday");// Appears yyyy-mm-dd
 		String promoUpdates = request.getParameter("promoCheckBox");
-		System.out.println(promoUpdates);
 		boolean receivePromo = false;
-		if(promoUpdates.equals("1"))
+		if(promoUpdates != null && promoUpdates.equals("1"))
 		{
 			receivePromo = true;
 		}
@@ -93,6 +92,8 @@ public class RegisterController extends HttpServlet {
 
 		if(Database.addCard(newUser.getEmail(), newPaymentCard) && Database.addWebUser(newUser))
 		{
+			//Email -> send email confirmation
+			//Email -> after confirmation send promo if user check receive promo option
 			response.sendRedirect("registerThankyou.html");
 		}
 	}

@@ -12,6 +12,7 @@ import java.util.List;
 
 import eCommerce.Validator.Validator;
 import eCommerce.Controllers.authenticatorController;
+import eCommerce.Controllers.generateHTMLController;
 import eCommerce.MovieData.*;
 import eCommerce.UserData.Card;
 import eCommerce.users.WebUser;
@@ -183,6 +184,31 @@ public class Database {
 		}
 	}
 
+	public List<Movie> getAllMovies() throws SQLException
+	{
+		List<Movie> moviesList = new LinkedList<Movie>();
+		String getAllMovies = MySQL_Commands.Get_All_Movies;
+		connection = mysql.getConnection();
+		statement = connection.createStatement();
+		ResultSet rs = statement.executeQuery(getAllMovies);
+		while(rs.next())
+		{
+			Movie movie = new Movie(rs.getString(2),
+									rs.getString(3),
+									rs.getString(4),
+									rs.getString(5),
+									rs.getString(6),
+									rs.getString(7),
+									rs.getString(8),
+									rs.getString(9),
+									rs.getString(10),
+									rs.getString(11));
+			moviesList.add(movie);
+		}
+		rs.close();
+		connection.close();
+		return moviesList;
+	}
 	public List<Movie> getMoviesFromDatabase(boolean inTheatres, boolean comingSoon) throws SQLException {
 		List<Movie> moviesList = new LinkedList<Movie>();
 		String getAllMovies = MySQL_Commands.Get_All_Movies;
@@ -248,5 +274,38 @@ public class Database {
 		rs.close();
 		connection.close();
 		return movie;
+	}
+	
+	//Need to implement
+	public String getMostPopularMovie() throws SQLException
+	{
+		Movie movie = getMovie("Joker");
+		String html = generateHTMLController.mostPopularMovieHtml(movie);
+		return html;
+	}
+	
+	//Need to implement
+	public String getMovieStats()
+	{
+		String movieStats = "<p>Joker#33</p>" + 
+				"<p>Lion King#14</p>" +
+				"<p>Gemini Man#12</p>" +
+				"<p>Maleficent#21</p>" +
+				"<p>The Addams Family#18</p>";
+		return movieStats;
+	}
+	public String generateMovieHtml(List<Movie> list)
+	{
+        String htmlcode = "";
+        if(!list.isEmpty())
+        {
+        	for(int i = 0; i<list.size(); i++)
+        	{
+        		Movie currentMovie = list.get(i);
+        		String movieHTML = generateHTMLController.generateAdminPageMoviesList(currentMovie);
+        		htmlcode += movieHTML;
+        	}
+        }
+        return htmlcode;
 	}
 }

@@ -1413,3 +1413,15 @@ width:350px;
 	border-bottom: gray solid .5px;
 	background: none;
 }
+.resendV
+{
+	background: none;
+	outline: none;
+	box-shadow: 0 0 7.5px rgba(115, 159, 255, 1);
+    border: rgba(115,159,225) solid .5px;
+	padding: 3px 6px;
+	margin: 3px;
+	font-size: .75rem;
+	color: white;
+	margin: auto;
+}

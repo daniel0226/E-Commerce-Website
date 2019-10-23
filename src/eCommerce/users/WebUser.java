@@ -3,9 +3,6 @@ package eCommerce.users;
 import eCommerce.UserData.*;
 
 public class WebUser extends Users {
-	private boolean suspended = false;
-	// In database include session type, user/web/admin
-
 	// User gets email after registration. Needs to confirm
 	// In database, include a table whether user is confirmed or not.
 	private String sessionType = "web";
@@ -28,6 +25,7 @@ public class WebUser extends Users {
 		accountIsConfirmed = isConfirmed;
 		registrationCode = code;
 		receivePromoEmailUpdates = promoUpdates;
+		sessionType = session;
 	}
 
 	public boolean verified()
