@@ -1,11 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="eCommerce.Database.*"%>
-<%@ page import="eCommerce.Controllers.generateHTMLController"%>
-<%@ page import="eCommerce.MovieData.Movie"%>
-<%@ page import="java.util.LinkedList"%>
-<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,23 +54,7 @@
 						<hr>
 				</div>
 				<div id="comingSoonBody">
-					<%
-					//Display Java movies that are in Theatres.
-					Database db = new Database();
-                    List<Movie> moviesInTheatresList = db.getMoviesFromDatabase(false, true);
-                    String htmlcode = "";
-                    if(!moviesInTheatresList.isEmpty())
-                    {
-                    	for(int i = 0; i<moviesInTheatresList.size(); i++)
-                    	{
-                    		Movie currentMovie = moviesInTheatresList.get(i);
-                    		String movieHTML = generateHTMLController.generateInTheatres(currentMovie);
-                    		htmlcode += movieHTML;
-                    	}
-                    	pageContext.setAttribute("moviesInTheatresList", htmlcode);
-                    }
-					%>
-					<c:out value="${moviesInTheatresList}" escapeXml="false" />
+					${moviesInTheatresList}
 				</div>
 			</div>
 		</form>

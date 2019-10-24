@@ -194,9 +194,9 @@ function generateHeader() {
         '                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Movies' +
         '                                    <span class="caret"></span></button>' +
         '                                <ul class="dropdown-menu">' +
-        '                                    <li><a href="inTheatres.jsp">In Theatres</li>' +
-        '                                    <li><a href="comingSoon.jsp">Coming Soon</li>' +
-        '                                    <li><a href="SearchView.html">Search Movies</a></li>' +
+        '                                    <li><a href="loadObjectsToHtmlController?type=inTheatres">In Theatres</li>' +
+        '                                    <li><a href="loadObjectsToHtmlController?type=comingSoon">Coming Soon</li>' +
+        '                                    <li><a href="loadObjectsToHtmlController?type=searchMovies">Search Movies</a></li>' +
         '                                </ul>' +
         '                            </div>' +
         '                        </li>' +
