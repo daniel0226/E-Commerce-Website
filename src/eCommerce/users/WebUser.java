@@ -9,7 +9,7 @@ public class WebUser extends Users {
 	private boolean accountIsConfirmed;
 	private String registrationCode;
 	private boolean receivePromoEmailUpdates;
-
+	private String phoneNumber = "";
 	// When creating from Form
 	public WebUser(String fName, String lName, String uPassword, String uConPassword, String uEmail, String uBirthday,
 			Card card, boolean isConfirmed, String code) {
@@ -19,15 +19,20 @@ public class WebUser extends Users {
 	}
 
 	// When creating as object
-	public WebUser(String fName, String lName, String uPassword, String uEmail, String uBirthday, Card card, boolean isConfirmed, String code, String session, boolean promoUpdates)
+	public WebUser(String fName, String lName, String uPassword, String uEmail, String uBirthday, Card card, boolean isConfirmed, String code, String session, boolean promoUpdates, String _phoneNumber)
 	{
 		super(fName, lName, uPassword,"",uEmail, uBirthday, card);
 		accountIsConfirmed = isConfirmed;
 		registrationCode = code;
 		receivePromoEmailUpdates = promoUpdates;
 		sessionType = session;
+		phoneNumber = _phoneNumber;
 	}
 
+	public String getPhoneNumber()
+	{
+		return phoneNumber;
+	}
 	public boolean verified()
 	{
 		return accountIsConfirmed;

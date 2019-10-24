@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import eCommerce.Error.ERROR_DATA;
 import eCommerce.UserData.sessionData;
+import eCommerce.users.WebUser;
 
 @WebServlet("/sessionController")
 public class sessionController extends HttpServlet {
@@ -32,8 +33,6 @@ public class sessionController extends HttpServlet {
 		
 		response.setContentType("html;charset=UTF-8");
 		String requestType = request.getParameter("type");
-		System.out.println(requestType);
-		
 		session = sessionData.getCurrentSession();
 		switch(requestType)
 		{
@@ -44,7 +43,12 @@ public class sessionController extends HttpServlet {
 		            request.getRequestDispatcher("/login.jsp").forward(request, response);
 		            return;
 				}else
-				{       
+				{   
+					WebUser user = sessionData.getCurrentSessionUser();
+					request.setAttribute("fName", user.getFirstName());
+					request.setAttribute("lName", user.getLastName());
+					request.setAttribute("email", user.getEmail());
+					request.setAttribute("password", "password");
 		        	request.getRequestDispatcher("/editProfile.jsp").forward(request, response);
 		        	return;
 		        }

@@ -49,6 +49,7 @@ public class RegisterController extends HttpServlet {
 		String emailAddress = request.getParameter("email");
 		String birthday = request.getParameter("bday");// Appears yyyy-mm-dd
 		String promoUpdates = request.getParameter("promoCheckBox");
+		String phoneNumber = request.getParameter("phonenumber");
 		boolean receivePromo = false;
 		if(promoUpdates != null && promoUpdates.equals("1"))
 		{
@@ -87,7 +88,7 @@ public class RegisterController extends HttpServlet {
 		// If all is good Add user to database.
 		newPaymentCard = new Card(cardHolderName, CVV, expMonth + "-" + expYear, cardNumber, zipcode);
 		WebUser newUser = new WebUser(firstName, lastName, password, emailAddress, birthday,
-				newPaymentCard, false, authenticator.getKey(), "web", receivePromo);
+				newPaymentCard, false, authenticator.getKey(), "web", receivePromo, phoneNumber);
 
 		if(Database.addCard(newUser.getEmail(), newPaymentCard) && Database.addWebUser(newUser))
 		{

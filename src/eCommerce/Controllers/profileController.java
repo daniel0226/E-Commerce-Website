@@ -21,6 +21,8 @@ public class profileController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
+	//This class only gets called if
+	//sessionController validates that the user is logged in.
 	public profileController()
 	{
 		super();
@@ -44,6 +46,8 @@ public class profileController extends HttpServlet {
         response.setContentType("html;charset=UTF-8");
         WebUser user = sessionData.getCurrentSessionUser();
         Card card = Database.getCard(user.getEmail());
+        
+        //A
         
         
     }

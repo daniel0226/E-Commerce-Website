@@ -4,27 +4,8 @@
             "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
-<<<<<<< HEAD
             "mainClass": "eCommerce.Main",
             "projectName": "cinemaBooking"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Main",
-            "request": "launch",
-            "mainClass": "Main",
-            "projectName": "cinemaBooking"
-=======
-            "mainClass": "eCommerceBooking.Main",
-            "projectName": "CSCI4050_8198816a"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - main",
-            "request": "launch",
-            "mainClass": "eCommerceBooking.main",
-            "projectName": "CSCI4050_8198816a"
->>>>>>> 47cc036664e856d2150d192c32b1687829c0e38b
         }
     ]
 }

@@ -101,7 +101,8 @@ public class Database {
 									rs.getBoolean(7),
 									rs.getString(8),
 									rs.getString(9),
-									rs.getBoolean(10));
+									rs.getBoolean(10),
+									rs.getString(11));
 			}
 			rs.close();
 			connection.close();
@@ -150,6 +151,7 @@ public class Database {
 			statement.setString(7, user.getCode());
 			statement.setString(8, user.getSessionType());
 			statement.setBoolean(9, user.isReceivingPromoUpdates());
+			statement.setString(10, user.getPhoneNumber());
 			statement.executeUpdate();
 			statement.close();
 			connection.close();
@@ -285,6 +287,14 @@ public class Database {
 	}
 	
 	//Need to implement
+	// FUTURE NOTES: 
+	//When we add movie database
+	//And showtime database
+	//Keep track of how many sales of certain movie
+	//Syntax is MovieTitle#NumOfTicketsSold
+	//Javascript will parse into string arr by splitting using char '#'
+	//movieTitle = arr[0]
+	//NumOfTicketsSold = arr[1]
 	public static String getMovieStats()
 	{
 		String movieStats = "<p>Joker#33</p>" + 

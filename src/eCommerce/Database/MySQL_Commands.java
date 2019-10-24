@@ -18,8 +18,8 @@ public class MySQL_Commands {
 	public static final String Get_UserCard = "SELECT * FROM termproject.card WHERE cardOwnerEmail = ";
 	
 	public static final String Add_User = 
-			"INSERT INTO users (firstname, lastname, password, email, birthday, verified, verificationCode, session, promoUpdates)" + 
-			" VALUES (? ,? ,? ,? ,? ,? ,? , ?, ?)";
+			"INSERT INTO users (firstname, lastname, password, email, birthday, verified, verificationCode, session, promoUpdates, phone)" + 
+			" VALUES (? ,? ,? ,? ,? ,? ,? , ?, ?, ?)";
 	public static final String Add_Card =
 			"INSERT INTO card (cardOwnerEmail, cardOwnerName, cvv, expDate, cardNumber, zipCode)" +
 			" VALUES (?, ?, ?, ?, ?, ?)";

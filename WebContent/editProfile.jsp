@@ -90,7 +90,7 @@
                                                                         <label>Email</label>
                                                                     </div>
                                                                     <div class="col-md-8">
-                                                                        <input id="EmailEdit" class="names" type="text"
+                                                                        <input style="background-color: rgba(0, 0, 0, 0.2);"id="EmailEdit" class="names" readonly type="text"
                                                                             value="${email}" name="email">
                                                                     </div>
                                                                 </div>
