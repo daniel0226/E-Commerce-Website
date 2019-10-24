@@ -1,7 +1,7 @@
 $(document).ready(function () {
     //console.log("running");
-    generateHeader();
     generateFooter();
+    generateHeader();
     $("#confirmPassword").keyup(validatePassword);
     $("input[type=submit][name='infS']").attr("disabled", "disabled");
     if (isAdminPage()) {
@@ -206,12 +206,8 @@ function generateHeader() {
         '                                    <span class="caret"></span></button>' +
         '                                <ul class="dropdown-menu">' +
         '                                    <!-- About Us/Contact-->' +
-        '                                    <li><a href="checkSessionController">Edit Profile</a></li>' +
-        '                                    <li>' +
-        '                                        <form action="../php/logout.php" method="GET">' +
-        '                                            <input class="navlogout" type="submit" value="logout">' +
-        '                                        </form>' +
-        '                                    </li>' +
+        '                                    <li><a name="session" href="sessionController?type=edit">Edit Profile</a></li>' +
+        '                                    <li><a name="session" href="sessionController?type=logout">Logout</a></li>' +
         '                                </ul>' +
         '                            </div>' +
         '                        </li>' +
@@ -221,8 +217,8 @@ function generateHeader() {
         '                                    <span class="caret"></span></button>' +
         '                                <ul class="dropdown-menu">' +
         '                                    <!-- About Us/Contact-->' +
-        '                                    <li><a href="login.jsp">Login</a></li>' +
-        '                                    <li><a href="register.jsp">Register</a></li>' +
+        '                                    <li><a name="session" href="sessionController?type=login">Login</a></li>' +
+        '                                    <li><a name="session" href="sessionController?type=register">Register</a></li>' +
         '                                </ul>' +
         '                            </div>' +
         '                        </li>' +
@@ -248,10 +244,6 @@ function generateHeader() {
         '                </div>' +
         '            </div>' +
         '        </nav>';
-
-    var myvarAdmin = "";
-
-    $("#adminH").append(myvarAdmin);
     $("#navH").append(myvar);
 }
 

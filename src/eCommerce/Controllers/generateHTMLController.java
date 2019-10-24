@@ -109,4 +109,11 @@ public class generateHTMLController {
 		String imgHTML = "<img src=\"images/MoviePhoto/" + movie.getMoviePicture() + "\" alt=\"" + movie.getMovieTitle() + "\">";
 		return imgHTML;
 	}
+	public static String logoutSuccessful()
+	{
+		String logoutHTML = 
+				"<p style=\"color:white; margin: 0; text-align: center; padding: 0;\">" + 
+				"Successfully logged out.";
+		return logoutHTML;
+	}
 }

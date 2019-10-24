@@ -74,8 +74,8 @@
                                     <div class="row">
                                         <div class="adminHeader">
                                             <h3>Administrator Panel</h3>
-                                            <form style="float:right" action="logoutController" method="GET">
-                                                <button class="logoutBtn">Logout</button>
+                                            <form style="float:right" action="sessionController" method="GET">
+                                                <button name="type" value="logout" class="logoutBtn">Logout</button>
                                             </form>
                                         </div>
                                     </div>

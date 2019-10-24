@@ -4,11 +4,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import eCommerce.Error.*;
+import eCommerce.UserData.sessionData;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import eCommerce.Validator.Validator;
 import eCommerce.users.Users;
@@ -18,15 +21,14 @@ import eCommerce.Database.*;
 public class LoginController extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-	private Database db;
 	
 	public void init()
 	{
 		System.out.println("LoginController.java: Login was called");
-		if(db == null)
+		if(Database.getDatabase() == null)
 		{
 			try {
-				db = new Database();
+				new Database();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -57,7 +59,7 @@ public class LoginController extends HttpServlet
         //{
         //	Check session maybe? Need to look into this.
         //}
-        
+       
         if(!Validator.validateLoginCredentials(emailLogin,passwordLogin))
         {
             request.setAttribute("loginError", ERROR_DATA.INVALID_LOGIN_ERROR);
@@ -72,9 +74,11 @@ public class LoginController extends HttpServlet
             return;
         }
         
-        if(!Validator.userIsSuspended(emailLogin))
+        if(Validator.userIsSuspended(emailLogin))
         {
-        	
+        	request.setAttribute("loginError", ERROR_DATA.BANNED);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            return;
         }
         
         
@@ -89,16 +93,20 @@ public class LoginController extends HttpServlet
     	//session.setAttribute("email", emailLogin);
     	
         WebUser user = Database.getUser(emailLogin);
+        
+        sessionData createSession = new sessionData(request, user);
+        HttpSession session = createSession.createSession();
+        System.out.println("Welcome: " + (String)session.getAttribute("email"));
         if(user.getSessionType().equals("admin")) 
         {
         	try {
         		request.setAttribute("adminName", user.getFullName());
-				request.setAttribute("moviesInTheatres", db.getMoviesFromDatabase(true, false).size());
-	        	request.setAttribute("moviesComingSoon", db.getMoviesFromDatabase(false, true).size());
+				request.setAttribute("moviesInTheatres", Database.getMoviesFromDatabase(true, false).size());
+	        	request.setAttribute("moviesComingSoon", Database.getMoviesFromDatabase(false, true).size());
 	        	request.setAttribute("moviesArchived", 5);
-	    		request.setAttribute("mostPopularMovie", db.getMostPopularMovie());
-	    		request.setAttribute("movieStats",db.getMovieStats());
-	    		request.setAttribute("addMovies", db.generateMovieHtml(db.getAllMovies()));
+	    		request.setAttribute("mostPopularMovie", Database.getMostPopularMovie());
+	    		request.setAttribute("movieStats",Database.getMovieStats());
+	    		request.setAttribute("addMovies", Database.generateMovieHtml(Database.getAllMovies()));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

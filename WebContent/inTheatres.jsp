@@ -54,8 +54,11 @@
                 <div id="comingSoonBody">
                     <%
 					//Display Java movies that are in Theatres.
-					Database db = new Database();
-                    List<Movie> moviesInTheatresList = db.getMoviesFromDatabase(true, false);
+					if(Database.getDatabase() == null)
+					{
+						new Database();
+					}
+                    List<Movie> moviesInTheatresList = Database.getMoviesFromDatabase(true, false);
                     String htmlcode = "";
                     if(!moviesInTheatresList.isEmpty())
                     {

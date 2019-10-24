@@ -14,7 +14,7 @@ public class Validator
 	
 	public static boolean validateUserHasVerified(String email)
 	{
-		return true;
+		return Database.getUser(email).verified();
 	}
     public static boolean validateLoginCredentials(String email, String password)
     {
@@ -66,9 +66,8 @@ public class Validator
     }
     public static boolean userIsSuspended(String email)
     {
-    	boolean isSuspended = false;
-    	//Check if user is suspended.
-    	return isSuspended;
+    	WebUser user = Database.getUser(email);
+    	return user.getSessionType().equals("suspended");
     }
     
     public static boolean movieAlreadyExists(Movie movie) throws SQLException

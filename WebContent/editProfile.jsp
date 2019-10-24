@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,19 +39,10 @@
         <div class="profileBackground">
             <div class="blurB">
                 <div class="container">
-                    <div id="userBackground" class="row justify-content-center">
-                        <div class="col-md-5">
-                            <div class="profilePicWrapper">
-                                <div class="profilePicBody">
-                                    <div class="profilePicture"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center" style="padding-bottom: 50px;">
+                    <div class="row justify-content-center" style="padding: 100px 0px;">
                         <div class="col-md-12 removeLeftPadding removeRightPadding">
                             <div class="editProfileWrapper">
-                                <form action="../php/confirmEditProfile.php" method="POST">
+                                <form action="sessionController" method="POST">
                                     <div class="tabs">
                                         <div class="tab justify-content-center">
                                             <button type="button" class="tablinks borderL-xs borderR-xs"
@@ -59,9 +52,6 @@
                                                 onclick="openTab(event, 'payment')"><i
                                                
                                                 class="fa fa-dollar-sign"></i>Payment</button>
-                                            <button type="button" class="tablinks borderR-xs"
-                                                onclick="openTab(event, 'picture')"><i
-                                                    class="fa fa-file-image"></i>Pictures</button>
                                         </div>
                                         <div id="about" class="tabcontent">
                                             <div class="container">
@@ -76,7 +66,7 @@
                                                                     </div>
                                                                     <div class="col-md-8">
                                                                         <input id="fNameEdit" class="names" type="text"
-                                                                            value="" name="firstname">
+                                                                            value="${fName}" name="firstname">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -87,7 +77,7 @@
                                                                     </div>
                                                                     <div class="col-md-8">
                                                                         <input id="lNameEdit" class="names" type="text"
-                                                                            value="" name="lastname">
+                                                                            value="${lname }" name="lastname">
                                                                     </div>
 
                                                                 </div>
@@ -101,7 +91,7 @@
                                                                     </div>
                                                                     <div class="col-md-8">
                                                                         <input id="EmailEdit" class="names" type="text"
-                                                                            value="" name="email">
+                                                                            value="${email}" name="email">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -112,7 +102,7 @@
                                                                     </div>
                                                                     <div class="col-md-8">
                                                                         <input id="bdayEdit" type="date" class="names"
-                                                                            value="" name="bday">
+                                                                            value="${bDay}" name="bday">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -125,7 +115,7 @@
                                                                     </div>
                                                                     <div class="col-md-8">
                                                                         <input id="PassEdit" class="names"
-                                                                            type="password" value=""
+                                                                            type="password" value="${password}"
                                                                             name="password">
                                                                     </div>
                                                                 </div>
@@ -166,7 +156,7 @@
                                                                     <button type="submit" value="Save">Save</button>
                                                                 </div>
                                                                 <div>
-                                                                    <a href="index.html">Cancel</a>
+                                                                    <a href="index.jsp">Cancel</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -262,7 +252,7 @@
                                                                     <button type="submit" value="Save">Save</button>
                                                                 </div>
                                                                 <div>
-                                                                    <a href="index.html">Cancel</a>
+                                                                    <a href="index.jsp">Cancel</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -270,62 +260,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--Payment-->
-                                        <div id="picture" class="tabcontent">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-md-9">
-                                                        <h2>Images</h2>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="row">
-                                                                    <div class="col-md-4">
-                                                                        <div class="profilePicture"></div>
-                                                                    </div>
-                                                                    <div class="col-md-8">
-                                                                        <div class="tableO">
-                                                                            <div class="tableI">
-                                                                                <input class="names" id="profilePic"
-                                                                                    type="file" name="pic"
-                                                                                    accept="image/*">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="row">
-                                                                    <div class="col-md-4" style=" text-align: center;">
-                                                                        <label>Background Image</label>
-                                                                    </div>
-                                                                    <div class="col-md-8">
-                                                                        <input class="names" id="backgroundImage"
-                                                                            type="file" name="pic" accept="image/*">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="tableO tableLinks">
-                                                            <div class="tableI">
-                                                                <div>
-                                                                    <button type="submit" value="Save">Save</button>
-                                                                </div>
-                                                                <div>
-                                                                    <a href="index.html">Cancel</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                               		</div>
                                 </form>
                             </div>
                         </div>

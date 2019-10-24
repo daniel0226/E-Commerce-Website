@@ -18,13 +18,13 @@ import eCommerce.Validator.Validator;
 public class movieController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private Database db;
 	public void init() {
 		System.out.println("movieController.java: Movie Controller called.");
-		if(db == null)
+		if(Database.getDatabase() == null)
 		{
 			try {
-				db = new Database();
+				Database db = new Database();
+				System.out.println(db.databaseConnected());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

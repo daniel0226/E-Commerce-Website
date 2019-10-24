@@ -44,4 +44,8 @@ public class WebUser extends Users {
 	{
 		return receivePromoEmailUpdates;
 	}
+	public void setSuspension()
+	{
+		sessionType = "suspended";
+	}
 }

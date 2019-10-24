@@ -21,13 +21,12 @@ public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 2L;
 	private Card newPaymentCard;
 	private authenticatorController authenticator;
-	private Database db;
 
 	public void init() {
 		System.out.println("RegisterController.java: Registration called.");
-		if (db == null) {
+		if (Database.getDatabase() == null) {
 			try {
-				db = new Database();
+				new Database();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

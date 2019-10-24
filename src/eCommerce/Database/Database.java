@@ -184,7 +184,7 @@ public class Database {
 		}
 	}
 
-	public List<Movie> getAllMovies() throws SQLException
+	public static List<Movie> getAllMovies() throws SQLException
 	{
 		List<Movie> moviesList = new LinkedList<Movie>();
 		String getAllMovies = MySQL_Commands.Get_All_Movies;
@@ -209,7 +209,7 @@ public class Database {
 		connection.close();
 		return moviesList;
 	}
-	public List<Movie> getMoviesFromDatabase(boolean inTheatres, boolean comingSoon) throws SQLException {
+	public static List<Movie> getMoviesFromDatabase(boolean inTheatres, boolean comingSoon) throws SQLException {
 		List<Movie> moviesList = new LinkedList<Movie>();
 		String getAllMovies = MySQL_Commands.Get_All_Movies;
 		connection = mysql.getConnection();
@@ -277,7 +277,7 @@ public class Database {
 	}
 	
 	//Need to implement
-	public String getMostPopularMovie() throws SQLException
+	public static String getMostPopularMovie() throws SQLException
 	{
 		Movie movie = getMovie("Joker");
 		String html = generateHTMLController.mostPopularMovieHtml(movie);
@@ -285,7 +285,7 @@ public class Database {
 	}
 	
 	//Need to implement
-	public String getMovieStats()
+	public static String getMovieStats()
 	{
 		String movieStats = "<p>Joker#33</p>" + 
 				"<p>Lion King#14</p>" +
@@ -294,7 +294,7 @@ public class Database {
 				"<p>The Addams Family#18</p>";
 		return movieStats;
 	}
-	public String generateMovieHtml(List<Movie> list)
+	public static String generateMovieHtml(List<Movie> list)
 	{
         String htmlcode = "";
         if(!list.isEmpty())
@@ -307,5 +307,9 @@ public class Database {
         	}
         }
         return htmlcode;
+	}
+	public String databaseConnected()
+	{
+		return "Connected";
 	}
 }
