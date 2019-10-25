@@ -71,7 +71,7 @@
                                         <p>Don't have an account?</p>
                                     </div>
                                     <div>
-                                        <a href="register.html">Sign Up!</a>
+                                        <a href="sessionController?type=register">Sign Up!</a>
                                     </div>
                                 </form>
                             </div>

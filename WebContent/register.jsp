@@ -204,7 +204,7 @@
                                                     <div class="col-md-12 removeLeftPadding removeRightPadding">
                                                         <i class="fa fa-building icon"></i>
                                                         <input id="state" class="js-payment textFieldDes" type="text"
-                                                            placeholder="State/Province" name="city" value="">
+                                                            placeholder="State/Province" name="state" value="">
                                                     </div>
                                                 </div>
                                                 <div class="row">

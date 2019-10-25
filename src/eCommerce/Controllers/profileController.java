@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import eCommerce.Database.Database;
 import eCommerce.Error.ERROR_DATA;
+import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
 import eCommerce.UserData.sessionData;
 import eCommerce.users.WebUser;
@@ -45,6 +46,7 @@ public class profileController extends HttpServlet {
     {	
         response.setContentType("html;charset=UTF-8");
         WebUser user = sessionData.getCurrentSessionUser();
+        Address address = user.getAddress();
         Card card = Database.getCard(user.getEmail());
         
         //A

@@ -10,6 +10,8 @@ public class WebUser extends Users {
 	private String registrationCode;
 	private boolean receivePromoEmailUpdates;
 	private String phoneNumber = "";
+	private Address address = null;
+	
 	// When creating from Form
 	public WebUser(String fName, String lName, String uPassword, String uConPassword, String uEmail, String uBirthday,
 			Card card, boolean isConfirmed, String code) {
@@ -19,7 +21,7 @@ public class WebUser extends Users {
 	}
 
 	// When creating as object
-	public WebUser(String fName, String lName, String uPassword, String uEmail, String uBirthday, Card card, boolean isConfirmed, String code, String session, boolean promoUpdates, String _phoneNumber)
+	public WebUser(String fName, String lName, String uPassword, String uEmail, String uBirthday, Card card, boolean isConfirmed, String code, String session, boolean promoUpdates, String _phoneNumber, Address _address)
 	{
 		super(fName, lName, uPassword,"",uEmail, uBirthday, card);
 		accountIsConfirmed = isConfirmed;
@@ -27,8 +29,17 @@ public class WebUser extends Users {
 		receivePromoEmailUpdates = promoUpdates;
 		sessionType = session;
 		phoneNumber = _phoneNumber;
+		address = _address;
 	}
 
+	public String getAddressString()
+	{
+		return address.toString();
+	}
+	public Address getAddress()
+	{
+		return address;
+	}
 	public String getPhoneNumber()
 	{
 		return phoneNumber;

@@ -14,6 +14,7 @@ import eCommerce.Validator.Validator;
 import eCommerce.Controllers.authenticatorController;
 import eCommerce.Controllers.generateHTMLController;
 import eCommerce.MovieData.*;
+import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
 import eCommerce.users.WebUser;
 
@@ -61,21 +62,22 @@ public class Database {
 	{
 		Card userCard = null;
 		try {
+			System.out.println("Getting " + email + "'s card from Database.");
 			String getMovieExecution = MySQL_Commands.Get_UserCard + "'" + email + "'";
 			connection = mysql.getConnection();
 			statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(getMovieExecution);
 			if(rs.next())
 			{
-				userCard = new Card(rs.getString(2),
-									rs.getString(3),
+				userCard = new Card(rs.getString(3),
 									rs.getString(4),
 									rs.getString(5),
-									rs.getString(6));
+									rs.getString(6),
+									rs.getString(7));
 			}
 		}catch (SQLException e) {
 			System.err.println(e);
-			System.err.println("Could not get user. Perhaps user doesn't exist");
+			System.err.println("Could not get card. Perhaps the card doesn't exist");
 		}
 		return userCard;
 	}
@@ -92,6 +94,7 @@ public class Database {
 			ResultSet rs = statement.executeQuery(getMovieExecution);
 			if(rs.next())
 			{
+				Address address = new Address(rs.getString(12));
 				user = new WebUser(	rs.getString(2),
 									rs.getString(3),
 									rs.getString(4),
@@ -102,7 +105,8 @@ public class Database {
 									rs.getString(8),
 									rs.getString(9),
 									rs.getBoolean(10),
-									rs.getString(11));
+									rs.getString(11),
+									address);
 			}
 			rs.close();
 			connection.close();
@@ -121,9 +125,9 @@ public class Database {
 			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.Add_Card);
 			statement.setString(1, email);
 			statement.setString(2, card.getCardName());
-			statement.setString(3, card.getCVV());
+			statement.setString(3, authenticator.encryptString(card.getCVV()));
 			statement.setString(4, card.getExpirationDate());
-			statement.setString(5, card.getCardNumber());
+			statement.setString(5, authenticator.encryptString(card.getCardNumber()));
 			statement.setString(6, card.getZipCode());
 			statement.executeUpdate();
 			statement.close();
@@ -144,7 +148,7 @@ public class Database {
 			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.Add_User);
 			statement.setString(1, user.getFirstName());
 			statement.setString(2, user.getLastName());
-			statement.setString(3, authenticator.encryptPassword(user.getPassword()));
+			statement.setString(3, authenticator.encryptString(user.getPassword()));
 			statement.setString(4, user.getEmail());
 			statement.setString(5, user.getStrBirthday());
 			statement.setBoolean(6, user.verified());
@@ -152,13 +156,14 @@ public class Database {
 			statement.setString(8, user.getSessionType());
 			statement.setBoolean(9, user.isReceivingPromoUpdates());
 			statement.setString(10, user.getPhoneNumber());
+			statement.setString(11, user.getAddress().getAddressEnc());
 			statement.executeUpdate();
 			statement.close();
 			connection.close();
 			addedUser = true;
 		}catch (SQLException e) {
 			System.err.println(e);
-			System.err.println("Could not add Card. Perhaps the card already exists.");
+			System.err.println("Could not add User. Perhaps the card already exists.");
 		}
 		return addedUser;
 	}

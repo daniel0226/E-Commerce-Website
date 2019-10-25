@@ -114,7 +114,8 @@ public class LoginController extends HttpServlet
         	request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
         }else if(user.getSessionType().equals("web"))
         {
-        	response.sendRedirect("index.jsp");
+        	request.getRequestDispatcher("/profilePage.jsp").forward(request, response);
+        	//response.sendRedirect("index.jsp");
         	return;
         }
        

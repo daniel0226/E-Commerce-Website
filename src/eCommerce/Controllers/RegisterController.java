@@ -10,6 +10,7 @@ import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
 import eCommerce.users.*;
 import eCommerce.Validator.Validator;
@@ -63,7 +64,13 @@ public class RegisterController extends HttpServlet {
 		String expYear = request.getParameter("Year");
 		String CVV = request.getParameter("cvv");
 		String zipcode = request.getParameter("zipcode");
-
+		
+		//Address field
+		String addressLine = request.getParameter("address");
+		String city = request.getParameter("city");
+		String state = request.getParameter("state");
+		String addressZipCode = request.getParameter("billingzipcode");
+		String country = request.getParameter("country");
 		// Validations
 		// JavaScript handles password and confirm password being equal
 		// HTML handles email address syntax
@@ -87,9 +94,9 @@ public class RegisterController extends HttpServlet {
 	
 		// If all is good Add user to database.
 		newPaymentCard = new Card(cardHolderName, CVV, expMonth + "-" + expYear, cardNumber, zipcode);
+		Address address = new Address(addressLine, city, state, country, addressZipCode);
 		WebUser newUser = new WebUser(firstName, lastName, password, emailAddress, birthday,
-				newPaymentCard, false, authenticator.getKey(), "web", receivePromo, phoneNumber);
-
+				newPaymentCard, false, authenticator.getKey(), "web", receivePromo, phoneNumber, address);
 		if(Database.addCard(newUser.getEmail(), newPaymentCard) && Database.addWebUser(newUser))
 		{
 			//Email -> send email confirmation

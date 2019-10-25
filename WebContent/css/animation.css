@@ -56,3 +56,51 @@
     width: 20%;
     float: left;
 }
+.text {
+    position:relative;
+    line-height:2em;
+    overflow:hidden;
+    font-size: 2rem;
+    margin:0 auto;
+}
+.fadingEffect {
+    position:absolute;
+    top:0; bottom:0; right:0;
+    width:100%;
+    background: black;
+    -moz-animation: showHide 9s; /* Firefox */
+    -webkit-animation: showHide 9s; /* Safari and Chrome */
+    -ms-animation: showHide 9s;
+    -o-animation: showHide 9s;
+    animation: showHide 9s;
+}
+@-webkit-keyframes showHide { /* Chrome, Safari */
+    0% {width:100%}
+    40% {width:0%}
+    60% {width:0%;}
+    100% {width:100%;}
+}
+@-moz-keyframes showHide { /* FF */
+    0% {width:100%}
+    40% {width:0%}
+    60% {width:0%;}
+    100% {width:100%;}
+}
+@-ms-keyframes showHide { /* IE10 */
+    0% {width:100%}
+    40% {width:0%}
+    60% {width:0%;}
+    100% {width:100%;}
+}
+@-o-keyframes showHide { /* Opera */
+    0% {width:100%}
+    40% {width:0%}
+    60% {width:0%;}
+    100% {width:100%;}
+}
+@keyframes showHide {
+    0% {width:100%}
+    40% {width:0%}
+    60% {width:0%;}
+    100% {width:100%;}
+}

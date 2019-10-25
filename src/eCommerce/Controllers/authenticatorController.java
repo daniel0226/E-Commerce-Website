@@ -12,7 +12,7 @@ public class authenticatorController {
 		key = "";
 	}
 
-	public String decryptPassword(byte[] encryptPassword)
+	public String decryptString(byte[] encryptPassword)
 	{
 		String decrypted = "";
 		
@@ -29,7 +29,7 @@ public class authenticatorController {
         }
 		return decrypted;
 	}
-	public String encryptPassword(String uPass)
+	public String encryptString(String uPass)
 	{
 		byte[] encrypted = null;
 		
@@ -43,7 +43,6 @@ public class authenticatorController {
             // encrypt the text
             cipher.init(Cipher.ENCRYPT_MODE, aesKey);
             encrypted = cipher.doFinal(text.getBytes());
-            System.out.println(new String(encrypted));
         }
         catch(Exception e) 
         {

@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import eCommerce.Database.Database;
 import eCommerce.Error.ERROR_DATA;
+import eCommerce.UserData.Address;
+import eCommerce.UserData.Card;
 import eCommerce.UserData.sessionData;
 import eCommerce.users.WebUser;
 
@@ -18,9 +21,11 @@ public class sessionController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private HttpSession session;
+	private authenticatorController authenticator;
 	
 	public void init()
 	{
+		authenticator = new authenticatorController();
 		System.out.println("SessionController Invoked.");
 	}
 	
@@ -43,13 +48,67 @@ public class sessionController extends HttpServlet {
 		            request.getRequestDispatcher("/login.jsp").forward(request, response);
 		            return;
 				}else
-				{   
-					WebUser user = sessionData.getCurrentSessionUser();
+				{   WebUser user = sessionData.getCurrentSessionUser();
+		        	Address address = user.getAddress();
+		        	Card card = Database.getCard(user.getEmail());
+		        	//User
 					request.setAttribute("fName", user.getFirstName());
-					request.setAttribute("lName", user.getLastName());
+					request.setAttribute("lname", user.getLastName());
 					request.setAttribute("email", user.getEmail());
-					request.setAttribute("password", "password");
+					request.setAttribute("phonenumber", user.getPhoneNumber());
+					request.setAttribute("bDay", user.getBirthday());
+					
+					//Payment
+					byte[] cardNumBytes = card.getCardNumber().getBytes();
+					byte[] cvvNumBytes = card.getCVV().getBytes();
+					request.setAttribute("cardname", card.getCardName());
+					request.setAttribute("CVV", authenticator.decryptString(cvvNumBytes));
+					request.setAttribute("cardnumber", authenticator.decryptString(cardNumBytes));
+					request.setAttribute("month", card.getCardMonth());
+					request.setAttribute("year", card.getCardYear());
+					
+					//Address
+					request.setAttribute("address", address.getAddressLine());
+					request.setAttribute("city", address.getCity());
+					request.setAttribute("state", address.getState());
+					request.setAttribute("country", address.getCountry());
+					request.setAttribute("billingzip", address.getZipCode());
 		        	request.getRequestDispatcher("/editProfile.jsp").forward(request, response);
+		        	return;
+		        }
+			case "profile":
+				if(session == null)
+				{
+					request.setAttribute("loginError", ERROR_DATA.LOGIN_FIRST_ERROR);
+		            request.getRequestDispatcher("/login.jsp").forward(request, response);
+		            return;
+				}else
+				{   WebUser user = sessionData.getCurrentSessionUser();
+		        	Address address = user.getAddress();
+		        	Card card = Database.getCard(user.getEmail());
+		        	//User
+					request.setAttribute("fName", user.getFirstName());
+					request.setAttribute("lname", user.getLastName());
+					request.setAttribute("email", user.getEmail());
+					request.setAttribute("phonenumber", user.getPhoneNumber());
+					request.setAttribute("bDay", user.getBirthday());
+					
+					//Payment
+					byte[] cardNumBytes = card.getCardNumber().getBytes();
+					byte[] cvvNumBytes = card.getCVV().getBytes();
+					request.setAttribute("cardname", card.getCardName());
+					request.setAttribute("CVV", authenticator.decryptString(cvvNumBytes));
+					request.setAttribute("cardnumber", authenticator.decryptString(cardNumBytes));
+					request.setAttribute("month", card.getCardMonth());
+					request.setAttribute("year", card.getCardYear());
+					
+					//Address
+					request.setAttribute("address", address.getAddressLine());
+					request.setAttribute("city", address.getCity());
+					request.setAttribute("state", address.getState());
+					request.setAttribute("country", address.getCountry());
+					request.setAttribute("billingzip", address.getZipCode());
+		        	request.getRequestDispatcher("/profileProfile.jsp").forward(request, response);
 		        	return;
 		        }
 			case "login":

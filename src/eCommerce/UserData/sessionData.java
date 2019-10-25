@@ -50,6 +50,10 @@ public class sessionData {
 	{
 		return session;
 	}
+	public static HttpSession getSession()
+	{
+		return session;
+	}
 	public static void resetData()
 	{
 		req = null;

@@ -4,6 +4,8 @@ $(document).ready(function () {
     generateHeader();
     $("#confirmPassword").keyup(validatePassword);
     $("input[type=submit][name='infS']").attr("disabled", "disabled");
+    setUpAnimation();
+    document.getElementById("p-about").style.display = "block";
     if (isAdminPage()) {
         getTodaysDate();
         loadAnalyticsNums();
@@ -17,6 +19,11 @@ $(window).scroll(() => {
         controlSideBarPos();
     }
 });
+
+function setUpAnimation()
+{
+    $(".animated").addClass("delay-1s");
+}
 
 function isAdminPage() {
     var adminConf = document.getElementById("adminPage");
@@ -202,12 +209,11 @@ function generateHeader() {
         '                        </li>' +
         '                        <li class="nav-item">' +
         '                            <div class="dropdown">' +
-        '                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Profile' +
+        '                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Account' +
         '                                    <span class="caret"></span></button>' +
         '                                <ul class="dropdown-menu">' +
-        '                                    <!-- About Us/Contact-->' +
+        '                                    <li><a name="session" href="sessionController?type=profile">My Profile</a></li>' +
         '                                    <li><a name="session" href="sessionController?type=edit">Edit Profile</a></li>' +
-        '                                    <li><a name="session" href="sessionController?type=logout">Logout</a></li>' +
         '                                </ul>' +
         '                            </div>' +
         '                        </li>' +
@@ -219,6 +225,7 @@ function generateHeader() {
         '                                    <!-- About Us/Contact-->' +
         '                                    <li><a name="session" href="sessionController?type=login">Login</a></li>' +
         '                                    <li><a name="session" href="sessionController?type=register">Register</a></li>' +
+        '									 <li><a name="session" href="sessionController?type=logout">Logout</a></li>' +
         '                                </ul>' +
         '                            </div>' +
         '                        </li>' +
@@ -267,6 +274,15 @@ function validatePassword() {
     }
 }
 
+
+function openPTab(TabID) {
+    var i, tabBody;
+    tabBody = document.getElementsByClassName("profileTab");
+    for (i = 0; i < tabBody.length; i++) {
+        tabBody[i].style.display = "none";
+    }
+    document.getElementById(TabID).style.display = "block";
+}
 
 function openTab(event, TabID) {
     var i, tabBody, tabLinks;

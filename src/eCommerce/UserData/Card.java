@@ -16,7 +16,26 @@ public class Card
         cardNumber = cNumber;
         zipCode = uZipcode;
     }
-
+    public String getCardMonth()
+    {
+    	String[] dates = {"", ""};
+    	if(expirationDate != null || expirationDate != "")
+    	{
+    		dates = expirationDate.split("-");
+    	}
+    	return dates[0];
+    }
+    public String getCardYear()
+    {
+    	String[] dates = {"", ""};
+    	if(expirationDate != null || expirationDate != "")
+    	{
+    		dates = expirationDate.split("-");
+    	}
+    	System.out.println(dates[0]);
+    	System.out.println(dates[1]);
+    	return dates[1];
+    }
     public String getCardName()
     {
         return cardName;
