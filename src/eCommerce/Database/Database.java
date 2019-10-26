@@ -24,9 +24,6 @@ public class Database {
 	private static MysqlDataSource mysql = null;
 	private static Connection connection = null;
 	private static Statement statement = null;
-	private String DB_URL = "jdbc:mysql://localhost/termproject";
-	private String USER = "root";
-	private String PASS = "12345Daniel";
 
 	public Database() throws SQLException {
 		try {

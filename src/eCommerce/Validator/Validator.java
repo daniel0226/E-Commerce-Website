@@ -24,9 +24,8 @@ public class Validator
         {
         	return false;
         }
-        byte[] passwordBytes = user.getPassword().getBytes();
         
-        return password.equalsIgnoreCase(authenticator.decryptString(passwordBytes));
+        return password.equalsIgnoreCase(authenticator.decryptString(user.getPassword()));
         
     }
    

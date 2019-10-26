@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,12 +69,12 @@
                                         </div>
                                         <div class="inputField">
                                             <label for="email">Email: </label>
-                                            <input id="email" class="p-input" readonly name="email" value="${Email}"
+                                            <input id="email" class="p-input" readonly name="email" value="${email}"
                                                 type="text">
                                         </div>
                                         <div class="inputField">
                                             <label for="bday">Birthday: </label>
-                                            <input id="bday" class="p-input" readonly name="email" value="${bDay}"
+                                            <input id="bday" class="p-input" readonly name="bDay" value="${bDay}"
                                                 type="text">
                                         </div>
                                         <div class="inputField">
@@ -87,7 +88,7 @@
                                         <div class="inputField">
                                             <label for="cardname">Name on Card</label>
                                             <input class="p-input" readonly id="cardname" type="text"
-                                            name="cardname" value="${cardHolderName}">
+                                            name="cardname" value="${cardname}">
                                         </div>
                                         <div class="inputField">
                                             <label for="cardEnding">Card Ending</label>

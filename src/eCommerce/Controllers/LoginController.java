@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import eCommerce.Error.*;
+import eCommerce.UserData.Address;
+import eCommerce.UserData.Card;
 import eCommerce.UserData.sessionData;
 
 import javax.servlet.ServletException;
@@ -114,6 +116,23 @@ public class LoginController extends HttpServlet
         	request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
         }else if(user.getSessionType().equals("web"))
         {
+        	Address address = user.getAddress();
+        	Card card = Database.getCard(user.getEmail());
+        	//User
+			request.setAttribute("fName", user.getFirstName());
+			request.setAttribute("lName", user.getLastName());
+			request.setAttribute("email", user.getEmail());
+			request.setAttribute("phonenumber", user.getPhoneNumber());
+			request.setAttribute("bDay", user.getBirthday());
+			
+			//Payment
+			request.setAttribute("cardname", card.getCardName());
+			request.setAttribute("cardEnding", card.getCardEnding());
+			request.setAttribute("cardExpDate", card.getExpirationDate());
+			
+			
+			//Address
+			request.setAttribute("addressLine", address.toString());
         	request.getRequestDispatcher("/profilePage.jsp").forward(request, response);
         	//response.sendRedirect("index.jsp");
         	return;

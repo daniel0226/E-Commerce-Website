@@ -59,11 +59,9 @@ public class sessionController extends HttpServlet {
 					request.setAttribute("bDay", user.getBirthday());
 					
 					//Payment
-					byte[] cardNumBytes = card.getCardNumber().getBytes();
-					byte[] cvvNumBytes = card.getCVV().getBytes();
 					request.setAttribute("cardname", card.getCardName());
-					request.setAttribute("CVV", authenticator.decryptString(cvvNumBytes));
-					request.setAttribute("cardnumber", authenticator.decryptString(cardNumBytes));
+					request.setAttribute("CVV", authenticator.decryptString(card.getCVV()));
+					request.setAttribute("cardnumber", authenticator.decryptString(card.getCardNumber()));
 					request.setAttribute("month", card.getCardMonth());
 					request.setAttribute("year", card.getCardYear());
 					
@@ -88,26 +86,19 @@ public class sessionController extends HttpServlet {
 		        	Card card = Database.getCard(user.getEmail());
 		        	//User
 					request.setAttribute("fName", user.getFirstName());
-					request.setAttribute("lname", user.getLastName());
+					request.setAttribute("lName", user.getLastName());
 					request.setAttribute("email", user.getEmail());
 					request.setAttribute("phonenumber", user.getPhoneNumber());
 					request.setAttribute("bDay", user.getBirthday());
 					
 					//Payment
-					byte[] cardNumBytes = card.getCardNumber().getBytes();
-					byte[] cvvNumBytes = card.getCVV().getBytes();
 					request.setAttribute("cardname", card.getCardName());
-					request.setAttribute("CVV", authenticator.decryptString(cvvNumBytes));
-					request.setAttribute("cardnumber", authenticator.decryptString(cardNumBytes));
-					request.setAttribute("month", card.getCardMonth());
-					request.setAttribute("year", card.getCardYear());
+					request.setAttribute("cardEding", card.getCardEnding());
+					request.setAttribute("cardExpDate", card.getExpirationDate());
+					
 					
 					//Address
-					request.setAttribute("address", address.getAddressLine());
-					request.setAttribute("city", address.getCity());
-					request.setAttribute("state", address.getState());
-					request.setAttribute("country", address.getCountry());
-					request.setAttribute("billingzip", address.getZipCode());
+					request.setAttribute("addressLine", address.toString());
 		        	request.getRequestDispatcher("/profileProfile.jsp").forward(request, response);
 		        	return;
 		        }

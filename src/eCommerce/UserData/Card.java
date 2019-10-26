@@ -1,4 +1,7 @@
 package eCommerce.UserData;
+
+import eCommerce.Controllers.authenticatorController;
+
 public class Card
 {
     private String  cardName;
@@ -24,6 +27,18 @@ public class Card
     		dates = expirationDate.split("-");
     	}
     	return dates[0];
+    }
+    public String getCardEnding()
+    {
+    	if(cardNumber.length() > 4)
+    	{
+    		authenticatorController control = new authenticatorController();
+    		String end = control.decryptString(cardNumber);
+    		return end.substring(end.length()-4, end.length());
+    	}else
+    	{
+    		return "";
+    	}
     }
     public String getCardYear()
     {
