@@ -42,8 +42,32 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+	public static void setDatabaseToNull()
+	{
+		mysql = null;
+		connection = null;
+		statement = null;
+		currentUser = null;
+	}
+	public static void resetDatabase()
+	{
+		try
+		{
+			setDatabaseToNull();
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			mysql = new MysqlDataSource();
+			createDatabase();
+			System.out.println("New Database connection established.");
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+		}catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
-	public void createDatabase() throws SQLException {
+	public static void createDatabase() throws SQLException {
 
 		mysql.setServerName("localhost");
 		mysql.setPort(3306);
@@ -57,6 +81,22 @@ public class Database {
 		return mysql;
 	}
 	
+	public static void updatePassword(WebUser user, String Password)
+	{
+		try
+		{
+			System.out.println("Updating " + user.getEmail() + "'s password.");
+			String updatePasswordExecution = MySQL_Commands.updatePassword(user.getEmail(), authenticator.encryptString(Password));
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(updatePasswordExecution);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+		}
+	}
 	public static Card getCard(String email)
 	{
 		Card userCard = null;

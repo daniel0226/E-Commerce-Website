@@ -41,7 +41,7 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-12">
                                 <div class="profileHeader">
-                                    <h2 style="width: 50%; margin: left;">Welcome ${name}</h2>
+                                    <h2 style="width: 50%; margin: left;">Welcome, ${name}</h2>
                                 </div>
                             </div>
                         </div>
@@ -53,6 +53,7 @@
                                     onclick="openPTab('p-payment')">Payment</button>
                                 <button class="p-tab" type="button" value="address" name="address"
                                     onclick="openPTab('p-address')">Address</button>
+                                <button onclick="window.location.href = 'sessionController?type=edit'" class="p-tab" type="button" value="edit" name="edit">Edit Profile</button>
                             </div>
                             <div class="col-md-5">
                                 <div class="row">

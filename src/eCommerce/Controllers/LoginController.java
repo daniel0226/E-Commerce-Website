@@ -118,6 +118,9 @@ public class LoginController extends HttpServlet
         {
         	Address address = user.getAddress();
         	Card card = Database.getCard(user.getEmail());
+        	
+        	request.setAttribute("name", user.getFullName());
+        	
         	//User
 			request.setAttribute("fName", user.getFirstName());
 			request.setAttribute("lName", user.getLastName());
@@ -146,7 +149,6 @@ public class LoginController extends HttpServlet
 			}
 			request.setAttribute("bookedMovies",bookedMoviesHTML);
         	request.getRequestDispatcher("/profilePage.jsp").forward(request, response);
-        	//response.sendRedirect("index.jsp");
         	return;
         }
        
