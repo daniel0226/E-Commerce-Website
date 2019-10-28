@@ -47,8 +47,6 @@ public class Card
     	{
     		dates = expirationDate.split("-");
     	}
-    	System.out.println(dates[0]);
-    	System.out.println(dates[1]);
     	return dates[1];
     }
     public String getCardName()

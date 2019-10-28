@@ -24,7 +24,8 @@ public class Database {
 	private static MysqlDataSource mysql = null;
 	private static Connection connection = null;
 	private static Statement statement = null;
-
+	private static WebUser currentUser = null;
+	
 	public Database() throws SQLException {
 		try {
 			authenticator = new authenticatorController();
@@ -81,6 +82,11 @@ public class Database {
 
 	public static WebUser getUser(String email)
 	{
+		if(currentUser != null)
+		{
+			System.out.println("User already initialized. Returning " + email);
+			return currentUser;
+		}
 		WebUser user = null;
 		try
 		{
@@ -111,6 +117,7 @@ public class Database {
 			System.err.println(e);
 			System.err.println("Could not get user. Perhaps user doesn't exist");
 		}
+		currentUser = user;
 		return user;
 	}
 	public static boolean addCard(String email, Card card)
