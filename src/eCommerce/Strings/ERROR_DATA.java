@@ -24,5 +24,9 @@ public class ERROR_DATA {
 		    "You have been suspended. Please contact an administrator ";
 	public static final String LOGIN_FIRST_ERROR =
 			"<p style=\"color:red; margin: 0; text-align: center; padding: 0;\">" + 
-			"Please login first.";		
+			"Please login first.";
+	public static final String INVALID_EMAIL =
+			"<p style=\"color:red; margin: 0; padding: 0;\">" + 
+            "Email Address was not found!</p>";
+			
 }

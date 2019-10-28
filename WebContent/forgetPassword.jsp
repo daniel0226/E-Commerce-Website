@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,6 +45,7 @@
                             <p>We'll email you a link to reset your password.</p>
                             <form action="passwordController" post="GET">
                                 <div>
+                                	${errorMsg}
                                     <input class="textFieldpw" type="email" placeholder="email" name="email" value=""
                                         required>
                                 </div>
