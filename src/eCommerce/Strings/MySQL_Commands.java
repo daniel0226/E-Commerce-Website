@@ -28,4 +28,9 @@ public class MySQL_Commands {
 		String mysqlCommand = "UPDATE termproject.users SET verified = '1' WHERE email = '" + email + "';";
 		return mysqlCommand;
 	}
+	public static String updatePassword(String email, String password)
+	{
+		String mysqlCommand = "UPDATE termproject.users SET password = '" + password + "' WHERE email = '" + email + "';";
+		return mysqlCommand;
+	}
 }

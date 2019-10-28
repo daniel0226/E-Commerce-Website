@@ -51,26 +51,27 @@ public class sessionController extends HttpServlet {
 				{   WebUser user = sessionData.getCurrentSessionUser();
 		        	Address address = user.getAddress();
 		        	Card card = Database.getCard(user.getEmail());
+		        	request.setAttribute("name", user.getFullName());
+		        	
 		        	//User
 					request.setAttribute("fName", user.getFirstName());
-					request.setAttribute("lname", user.getLastName());
-					request.setAttribute("email", user.getEmail());
+					request.setAttribute("lName", user.getLastName());
 					request.setAttribute("phonenumber", user.getPhoneNumber());
 					request.setAttribute("bDay", user.getBirthday());
 					
 					//Payment
 					request.setAttribute("cardname", card.getCardName());
 					request.setAttribute("CVV", authenticator.decryptString(card.getCVV()));
-					request.setAttribute("cardnumber", authenticator.decryptString(card.getCardNumber()));
+					request.setAttribute("cardNumber", authenticator.decryptString(card.getCardNumber()));
 					request.setAttribute("month", card.getCardMonth());
 					request.setAttribute("year", card.getCardYear());
 					
 					//Address
-					request.setAttribute("address", address.getAddressLine());
+					request.setAttribute("addressLine", address.getAddressLine());
 					request.setAttribute("city", address.getCity());
 					request.setAttribute("state", address.getState());
 					request.setAttribute("country", address.getCountry());
-					request.setAttribute("billingzip", address.getZipCode());
+					request.setAttribute("billingZipCode", address.getZipCode());
 		        	request.getRequestDispatcher("/editProfile.jsp").forward(request, response);
 		        	return;
 		        }
@@ -84,6 +85,8 @@ public class sessionController extends HttpServlet {
 				{   WebUser user = sessionData.getCurrentSessionUser();
 		        	Address address = user.getAddress();
 		        	Card card = Database.getCard(user.getEmail());
+		        	request.setAttribute("name", user.getFullName());
+		        	
 		        	//User
 					request.setAttribute("fName", user.getFirstName());
 					request.setAttribute("lName", user.getLastName());
@@ -99,7 +102,7 @@ public class sessionController extends HttpServlet {
 					
 					//Address
 					request.setAttribute("addressLine", address.toString());
-		        	request.getRequestDispatcher("/profileProfile.jsp").forward(request, response);
+		        	request.getRequestDispatcher("/profilePage.jsp").forward(request, response);
 		        	return;
 		        }
 			case "login":

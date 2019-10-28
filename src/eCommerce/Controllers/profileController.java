@@ -31,6 +31,7 @@ public class profileController extends HttpServlet {
 	
 	public void init()
 	{
+		System.out.println("Updating Profile.");
 		if(Database.getDatabase() == null)
 		{
 			try {
@@ -42,14 +43,28 @@ public class profileController extends HttpServlet {
 		}
 	}
 	
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {	
         response.setContentType("html;charset=UTF-8");
         WebUser user = sessionData.getCurrentSessionUser();
         Address address = user.getAddress();
         Card card = Database.getCard(user.getEmail());
         
-        //A
+        String updateProfile = request.getParameter("submitChange");
+        String changePassword = request.getParameter("changePassword");
+        
+        //We are updating profile.
+        if(updateProfile != null && updateProfile.equals("Changes"))
+        {
+        	System.out.println("Update profile");
+        	return;
+        }
+        
+        if(changePassword != null && changePassword.contentEquals("Password"))
+        {
+        	request.getRequestDispatcher("./passwordPrompt.jsp").forward(request, response);
+        	return;
+        }
         
         
     }

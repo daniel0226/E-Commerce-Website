@@ -70,4 +70,56 @@ public class passwordController extends HttpServlet
 		}
 	}
 	
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+	{
+		response.setContentType("html;charset=UTF-8");
+		//Button Types
+		String enterPassword = request.getParameter("enterPassword");
+		String updatePassword = request.getParameter("infS");
+		
+		//User Info
+		authenticatorController control = new authenticatorController();
+		WebUser user = sessionData.getCurrentSessionUser();
+		String userPassword = control.decryptString(user.getPassword());
+		
+		//Enter password before changing password
+		if(enterPassword != null && enterPassword.equals("Submit"))
+		{
+			String passwordInput = request.getParameter("password");
+			if(userPassword.equals(passwordInput))
+			{
+				request.getRequestDispatcher("./changePassword.jsp").forward(request, response);
+				return;
+			}else {
+				request.setAttribute("errorMsg", ERROR_DATA.INVALID_PASSWORD);
+				request.getRequestDispatcher("./passwordPrompt.jsp").forward(request, response);
+				return;
+			}
+		}
+		
+		//Change password Page
+		if(updatePassword != null && updatePassword.equals("Update Password"))
+		{
+			//HTML handles if password & confirm Password are equal.
+			String newPassword = request.getParameter("password");
+			if(newPassword.equals(userPassword))
+			{
+				request.setAttribute("errorMsg", ERROR_DATA.NOT_UNIQUE_PASSWORD);
+				request.getRequestDispatcher("./changePassword.jsp").forward(request, response);
+				return;
+			}else
+			{
+				Database.updatePassword(user, newPassword);
+				if(sessionData.logout())
+				{
+					System.out.println("Please login with new password.");
+				}
+				Database.resetDatabase();
+				request.setAttribute("loginError", generateHTMLController.passwordSuccessfullyUpdated());
+				request.getRequestDispatcher("./login.jsp").forward(request, response);
+				return;
+			}
+		}
+		
+	}
 }

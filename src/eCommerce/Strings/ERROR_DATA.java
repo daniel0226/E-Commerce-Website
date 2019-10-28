@@ -28,5 +28,11 @@ public class ERROR_DATA {
 	public static final String INVALID_EMAIL =
 			"<p style=\"color:red; margin: 0; padding: 0;\">" + 
             "Email Address was not found!</p>";
+	public static final String INVALID_PASSWORD =
+			"<p style=\"color:red; margin: 0; padding: 0;\">" + 
+		            "Password did not match our records!</p>";
+	public static final String NOT_UNIQUE_PASSWORD =
+			"<p style=\"color:red; margin: 0; padding: 0;\">" + 
+		            "Password cannot be same as previous password!</p>";
 			
 }

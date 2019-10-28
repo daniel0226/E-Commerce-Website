@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,8 +36,9 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6 justify-content-center">
-                        <form action="passwordController" post="POST">
+                        <form action="passwordController" method="POST">
                             <h2>New Password</h2>
+                            ${errorMsg}
                             <div class="row">
                                 <div class="col-md-12 removeLeftPadding removeRightPadding">
                                     <i class="fa fa-lock icon"></i>

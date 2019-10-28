@@ -38,7 +38,8 @@ public class logoutController extends HttpServlet {
 		String printLogout = generateHTMLController.logoutSuccessful();
 		sessionData.resetData();
 		request.setAttribute("loginError", printLogout);
-		request.getRequestDispatcher("/login.jsp").forward(request, response);
+		response.sendRedirect("./login.jsp");
+		return;
     }
 
 }

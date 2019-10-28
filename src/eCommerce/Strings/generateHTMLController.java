@@ -137,4 +137,11 @@ public class generateHTMLController {
 		"             </div>";	
 		return myvar;
 	}
+	public static String passwordSuccessfullyUpdated()
+	{
+
+		String html = "<p style=\"color:white; margin: 0; padding: 0;\">" + 
+	            "Password was successfully updated. Please login with new password.</p>";
+		return html;
+	}
 }
