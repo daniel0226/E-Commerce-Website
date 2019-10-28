@@ -63,7 +63,7 @@
                                                 <label for="rmCheckBox">Remember me</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <a href="forgetPassword.html">Forgot Password?</a>
+                                                <a href="forgetPassword.jsp">Forgot Password?</a>
                                             </div>
                                         </div>
                                     </div>
