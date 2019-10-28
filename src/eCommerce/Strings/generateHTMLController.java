@@ -1,4 +1,4 @@
-package eCommerce.Controllers;
+package eCommerce.Strings;
 
 import eCommerce.MovieData.Movie;
 public class generateHTMLController {

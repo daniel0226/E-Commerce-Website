@@ -5,8 +5,9 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-import eCommerce.Error.*;
 import eCommerce.MovieData.Movie;
+import eCommerce.Strings.ERROR_DATA;
+import eCommerce.Strings.generateHTMLController;
 import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
 import eCommerce.UserData.sessionData;
@@ -19,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import eCommerce.Validator.Validator;
-import eCommerce.users.Users;
 import eCommerce.users.WebUser;
 import eCommerce.Database.*;
 @WebServlet("/LoginController")

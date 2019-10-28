@@ -3,6 +3,7 @@ package eCommerce.Controllers;
 import java.sql.SQLException;
 import java.util.List;
 import eCommerce.MovieData.Movie;
+import eCommerce.Strings.generateHTMLController;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.*;
