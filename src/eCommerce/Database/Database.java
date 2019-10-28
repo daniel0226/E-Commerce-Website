@@ -12,8 +12,9 @@ import java.util.List;
 
 import eCommerce.Validator.Validator;
 import eCommerce.Controllers.authenticatorController;
-import eCommerce.Controllers.generateHTMLController;
 import eCommerce.MovieData.*;
+import eCommerce.Strings.MySQL_Commands;
+import eCommerce.Strings.generateHTMLController;
 import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
 import eCommerce.users.WebUser;

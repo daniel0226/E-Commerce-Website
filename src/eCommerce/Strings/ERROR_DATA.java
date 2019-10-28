@@ -1,4 +1,4 @@
-package eCommerce.Error;
+package eCommerce.Strings;
 
 public class ERROR_DATA {
 

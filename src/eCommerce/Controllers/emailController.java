@@ -29,6 +29,7 @@ public class EmailController
 	
 	public void sendEmail(WebUser user, String subject, String emailMsg)
 	{
+		String key = user.getCode(); // Registration code.
 		Session session = Session.getInstance(prop,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
@@ -44,7 +45,7 @@ public class EmailController
                     InternetAddress.parse(user.getEmail()));
 
             message.setSubject(subject);
-            message.setText(emailMsg);
+            message.setText(emailMsg + " " + "Here is your code" + key);
 
             Transport.send(message, message.getAllRecipients());
 

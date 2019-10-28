@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import eCommerce.Database.Database;
-import eCommerce.Error.ERROR_DATA;
+import eCommerce.Strings.ERROR_DATA;
 import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
 import eCommerce.UserData.sessionData;

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import eCommerce.Database.Database;
-import eCommerce.Error.ERROR_DATA;
 import eCommerce.MovieData.Movie;
+import eCommerce.Strings.ERROR_DATA;
 import eCommerce.Validator.Validator;
 
 @WebServlet("/movieController")

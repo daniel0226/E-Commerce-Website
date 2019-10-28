@@ -1,5 +1,6 @@
 package eCommerce.Controllers;
 
+import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -15,8 +16,8 @@ import eCommerce.UserData.Card;
 import eCommerce.users.*;
 import eCommerce.Validator.Validator;
 import eCommerce.Database.Database;
-import eCommerce.Error.ERROR_DATA;
-
+import eCommerce.Strings.ERROR_DATA;
+import eCommerce.Strings.email;
 @WebServlet("/RegisterController")
 public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 2L;
@@ -101,6 +102,8 @@ public class RegisterController extends HttpServlet {
 		{
 			//Email -> send email confirmation
 			//Email -> after confirmation send promo if user check receive promo option
+			EmailController sendEmail = new EmailController();
+			sendEmail.sendEmail(newUser, email.regConfirm, email.confirmMsg);
 			response.sendRedirect("registerThankyou.html");
 		}
 	}

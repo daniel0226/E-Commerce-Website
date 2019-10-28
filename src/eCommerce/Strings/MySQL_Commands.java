@@ -1,4 +1,4 @@
-package eCommerce.Database;
+package eCommerce.Strings;
 
 public class MySQL_Commands {
 	
