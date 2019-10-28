@@ -13,6 +13,8 @@ public class email {
 	public final static String reconfirmMsg = "Reconfirm your profile by clicking here: ";
 	public final static String forgetPassMsg = "We have sent this email in response to forgetting your password." + 
 	" Your password is: ";
+	public final static String updatedPasswordMsg ="This message is to update your recent password change. " +
+	"Your password has been successfully updated.";
 	
 	public static final String confirmationSent =
 			"<p style=\"color:white; margin: 0; text-align: center; padding: 0;\">" + 

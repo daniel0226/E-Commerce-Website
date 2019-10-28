@@ -115,6 +115,8 @@ public class passwordController extends HttpServlet
 					System.out.println("Please login with new password.");
 				}
 				Database.resetDatabase();
+				EmailController _email = new EmailController();
+				_email.sendEmail(user, email.updateProfile, email.updatedPasswordMsg);
 				request.setAttribute("loginError", generateHTMLController.passwordSuccessfullyUpdated());
 				request.getRequestDispatcher("./login.jsp").forward(request, response);
 				return;
