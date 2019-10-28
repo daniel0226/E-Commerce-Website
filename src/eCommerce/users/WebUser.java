@@ -64,4 +64,8 @@ public class WebUser extends Users {
 	{
 		sessionType = "suspended";
 	}
+	public void setVerified()
+	{
+		accountIsConfirmed = true;
+	}
 }

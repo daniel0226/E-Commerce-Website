@@ -27,12 +27,23 @@ public class Address {
 		{
 			arr = addressEnc.split("#");
 		}
-		addressLine = arr[0];
-		city = arr[1];
-		state = arr[2];
-		zipcode = arr[3];
-		country = arr[4];
-		address = addressLine + " " + city + ", " + state + " " + zipcode + ", " + country;
+		if(addressEnc.length() != 4)
+		{
+			addressLine = arr[0];
+			city = arr[1];
+			state = arr[2];
+			zipcode = arr[3];
+			country = arr[4];
+			address = addressLine + " " + city + ", " + state + " " + zipcode + ", " + country;
+		}else
+		{
+			addressLine = "";
+			city = "";
+			state = "";
+			zipcode = "";
+			country = "";
+			address = "";
+		}
 	}
 	
 	public String getAddressEnc()

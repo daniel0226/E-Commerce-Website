@@ -10,4 +10,9 @@ public class email {
 	
 	//Messages
 	public final static String confirmMsg = "Congratulations you have successfully registered!";
+	public final static String reconfirmMsg = "Reconfirm your profile by clicking here: ";
+	
+	public static final String confirmationSent =
+			"<p style=\"color:white; margin: 0; text-align: center; padding: 0;\">" + 
+					"Email confirmation sent. Please check your email.";
 }

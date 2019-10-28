@@ -23,4 +23,9 @@ public class MySQL_Commands {
 	public static final String Add_Card =
 			"INSERT INTO card (cardOwnerEmail, cardOwnerName, cvv, expDate, cardNumber, zipCode)" +
 			" VALUES (?, ?, ?, ?, ?, ?)";
+	public static String updateUser(String email)
+	{
+		String mysqlCommand = "UPDATE termproject.users SET verified = '1' WHERE email = '" + email + "';";
+		return mysqlCommand;
+	}
 }

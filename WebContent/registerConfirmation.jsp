@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="eCommerce.Database.Database, eCommerce.users.WebUser" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +34,15 @@
 
 <body>
     <header id="navH"></header>
-    
+    <% 
+    	String code = request.getParameter("code");
+    	String email = request.getParameter("email");
+    	WebUser user = Database.getUser(email);
+    	if(user.getCode().equals(code))
+    	{
+    		Database.confirmUser(user);
+    	}
+    %>
     <section class="bg-blueAbstract">
         <div class="container">
             <div class="registered">

@@ -81,6 +81,22 @@ public class Database {
 		return userCard;
 	}
 
+	public static void confirmUser(WebUser user)
+	{
+		try {
+			System.out.println("Verifying user: " + user.getEmail());
+			String confirmUserCommand = MySQL_Commands.updateUser(user.getEmail());
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(confirmUserCommand);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch (SQLException e)
+		{
+			System.err.println(e);
+		}
+	}
+	
 	public static WebUser getUser(String email)
 	{
 		if(currentUser != null && currentUser.getEmail().equals(email))

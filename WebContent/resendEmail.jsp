@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +17,6 @@
     <link rel="stylesheet" href="css/animation.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -38,10 +39,10 @@
                 <div class="col-md-12">
                     <div class="bodyWrapper">
                         <div class="forgotpassBody">
-                            <h2>Forgot your password?</h2>
+                            <h2>Re-send Verification</h2>
                             <p>Enter the Email Address associated with the account.</p>
-                            <p>We'll email you a link to reset your password.</p>
-                            <form action="passwordController" post="GET">
+                            <p>We'll email you a link to verify your account.</p>
+                            <form action="EmailController" post="GET">
                                 <div>
                                     <input class="textFieldpw" type="email" placeholder="email" name="email" value=""
                                         required>
