@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +26,7 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="mdb/js/mdb.min.js"></script>
         <script src="js/fields.js"></script>
+    <script type="text/javascript" src="js/admin.js"></script>
 
 </head>
 

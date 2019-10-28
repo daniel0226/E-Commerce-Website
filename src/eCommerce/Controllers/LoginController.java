@@ -113,6 +113,7 @@ public class LoginController extends HttpServlet
 				e.printStackTrace();
 			}
         	request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
+        	return;
         }else if(user.getSessionType().equals("web"))
         {
         	Address address = user.getAddress();

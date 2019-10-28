@@ -82,7 +82,7 @@ public class Database {
 
 	public static WebUser getUser(String email)
 	{
-		if(currentUser != null)
+		if(currentUser != null && currentUser.getEmail().equals(email))
 		{
 			System.out.println("User already initialized. Returning " + email);
 			return currentUser;
