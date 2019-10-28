@@ -2,8 +2,11 @@ package eCommerce.Controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 import eCommerce.Error.*;
+import eCommerce.MovieData.Movie;
 import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
 import eCommerce.UserData.sessionData;
@@ -47,7 +50,6 @@ public class LoginController extends HttpServlet
     {	
         response.setContentType("html;charset=UTF-8");
 
-        //Replace this with database stuff
         String emailLogin = request.getParameter("email");
         String passwordLogin = request.getParameter("password");
            
@@ -55,13 +57,10 @@ public class LoginController extends HttpServlet
         //and null if not checked
         String rememberMeIsChecked = request.getParameter("rmCheckBox");
      
-     
-        //If user is already logged in, don't try logging in again.
-        //if(!Validator.validateSession(emailLogin));
-        //{
-        //	Check session maybe? Need to look into this.
-        //}
-       
+        //Login Checks
+        //Password and password confirmation is checked in HTML
+        //Session is checked in sessionController
+        
         if(!Validator.validateLoginCredentials(emailLogin,passwordLogin))
         {
             request.setAttribute("loginError", ERROR_DATA.INVALID_LOGIN_ERROR);
@@ -96,8 +95,8 @@ public class LoginController extends HttpServlet
     	
         WebUser user = Database.getUser(emailLogin);
         
-        sessionData createSession = new sessionData(request, user);
-        HttpSession session = createSession.createSession();
+        new sessionData(request, user);
+        HttpSession session = sessionData.createSession();
         System.out.println("Welcome: " + (String)session.getAttribute("email"));
         if(user.getSessionType().equals("admin")) 
         {
@@ -133,6 +132,18 @@ public class LoginController extends HttpServlet
 			
 			//Address
 			request.setAttribute("addressLine", address.toString());
+			
+			//Eventually re placed with database.
+			List<Movie> bookedMovies = new LinkedList<Movie>();
+			Movie movie = Database.getMovie("Joker");
+			//List<Movie> bookedMovies = Database.getUserBookedMovies(user);
+			bookedMovies.add(movie);
+			String bookedMoviesHTML = "";
+			for(int i = 0; i<bookedMovies.size(); i++)
+			{
+				bookedMoviesHTML += generateHTMLController.profileMovieBooking(bookedMovies.get(i));
+			}
+			request.setAttribute("bookedMovies",bookedMoviesHTML);
         	request.getRequestDispatcher("/profilePage.jsp").forward(request, response);
         	//response.sendRedirect("index.jsp");
         	return;

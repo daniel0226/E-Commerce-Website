@@ -262,28 +262,33 @@ public class Database {
 		return moviesList;
 	}
 	
-	public static Movie getMovie(String movieName) throws SQLException
+	public static Movie getMovie(String movieName)
 	{
 		Movie movie = null;
 		String getMovieExecution = MySQL_Commands.Get_Movie + "'" + movieName + "'";
-		connection = mysql.getConnection();
-		statement = connection.createStatement();
-		ResultSet rs = statement.executeQuery(getMovieExecution);
-		if(rs.next())
-		{
-			movie = new Movie(	rs.getString(2),
-								rs.getString(3),
-								rs.getString(4),
-								rs.getString(5),
-								rs.getString(6),
-								rs.getString(7),
-								rs.getString(8),
-								rs.getString(9),
-								rs.getString(10),
-								rs.getString(11));
+		try {
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(getMovieExecution);
+			if(rs.next())
+			{
+				movie = new Movie(	rs.getString(2),
+									rs.getString(3),
+									rs.getString(4),
+									rs.getString(5),
+									rs.getString(6),
+									rs.getString(7),
+									rs.getString(8),
+									rs.getString(9),
+									rs.getString(10),
+									rs.getString(11));
+			}
+			rs.close();
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		rs.close();
-		connection.close();
 		return movie;
 	}
 	

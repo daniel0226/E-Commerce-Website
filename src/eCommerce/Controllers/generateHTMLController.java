@@ -116,4 +116,25 @@ public class generateHTMLController {
 				"Successfully logged out.";
 		return logoutHTML;
 	}
+	public static String profileMovieBooking(Movie movie)
+	{
+
+		String myvar ="<div class=\"row container\">" + 
+		"				<div class=\"col-sm-9 col-md-9 removeLeftPadding\">"+
+		"               	<img src=\"images/MoviePhoto/" + movie.getMoviePicture() + "\" alt=\"Joker\">"+
+		"               </div>"+
+		"               <div class=\"col-sm-3 col-md-3 removeRightPadding\">"+
+		"               	<div class=\"verticleAlignBody\">"+
+		"                   	<div class=\"verticle\">"+
+		"                       	<div class=\"page-break\">"+
+		"                           	<p>" + movie.getMovieTitle() + "</p>"+
+		"                               <p>" + "Booking show time" +"</p>"+
+		"                               <p>" + "Booking show date" + "</p>"+
+		"                           </div>"+
+		"                       </div>"+
+		"                  </div>"+
+		"            	</div>" + 
+		"             </div>";	
+		return myvar;
+	}
 }

@@ -116,22 +116,7 @@
                                         <h2>My Bookings</h2>
                                     </div>
                                     <div class="moviesBody">
-                                        <div class="row container">
-                                            <div class="col-sm-9 col-md-9 removeLeftPadding removeRightPadding">
-                                                <img src="images/MoviePhoto/JokerWallpaper.jpg" alt="Joker">
-                                            </div>
-                                            <div class="col-sm-3 col-md-3 removeLeftPadding removeRightPadding">
-                                                <div class="verticleAlignBody">
-                                                    <div class="verticle">
-                                                        <div class="page-break">
-                                                            <p>${movieTitle}</p>
-                                                            <p>${movieShowTime}</p>
-                                                            <p>${movieShowDate}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        ${bookedMovies}
                                     </div>
                                 </div>
                             </div>
