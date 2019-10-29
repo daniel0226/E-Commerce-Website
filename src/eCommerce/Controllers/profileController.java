@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import eCommerce.Database.Database;
 import eCommerce.Strings.ERROR_DATA;
+import eCommerce.Strings.email;
 import eCommerce.Strings.generateHTMLController;
 import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
@@ -81,6 +82,7 @@ public class profileController extends HttpServlet {
     		}
         	
         	
+    		// Checks to see if all payment and address fields are set.
         	if(!Validator.validateAllPaymentFieldsAreSet(cardHolderName, cardNumber, cardcvv, cardZip))
         	{
         		request.setAttribute("errorMsg",ERROR_DATA.PAYMENT_METHOD_FILLED_ERROR);
@@ -94,23 +96,27 @@ public class profileController extends HttpServlet {
         		return;
         	}
         	
-        	//Update card
+        	//Update card, address, and profile
         	newCard = new Card(cardHolderName, cardcvv, cardMonth + "-" + cardYear, cardNumber, cardZip);
         	Database.updateCard(newCard, user);
-        	//Update Address
         	userAddress = new Address(addressLine, city, state, country, addressZip);
         	Database.updateAddress(userAddress, user);
-        	//Update Profile
         	Database.updateProfile(user, request.getParameter("fName"), request.getParameter("lName"), request.getParameter("phonenumber"), receivePromo);
         	
+        	//Updated profile message
         	request.setAttribute("errorMsg", generateHTMLController.updatedProfile());
         	
+        	//Refresh database with new values
         	Database.resetDatabase();
         	WebUser userSession = sessionData.getCurrentSessionUser();
         	user = Database.getUser(userSession.getEmail());
-        	
         	address = user.getAddress();
         	card = Database.getCard(user.getEmail());
+        	
+        	//Send confirmation Email
+        	EmailController _email = new EmailController();
+        	_email.sendEmail(user, email.updateProfile, email.confirmProfileUpdate);
+        	
         	//User
 			request.setAttribute("fName", user.getFirstName());
 			request.setAttribute("lName", user.getLastName());

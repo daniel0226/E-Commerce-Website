@@ -56,6 +56,10 @@ public class LoginController extends HttpServlet
         //This returns "on" if checked
         //and null if not checked
         String rememberMeIsChecked = request.getParameter("rmCheckBox");
+        if(rememberMeIsChecked != null)
+        {
+        	
+        }
      
         //Login Checks
         //Password and password confirmation is checked in HTML

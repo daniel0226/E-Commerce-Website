@@ -59,7 +59,7 @@
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <input type="checkbox" id="rmCheckbox" name="rmCheckBox" checked>
+                                                <input type="checkbox" id="rmCheckbox" name="rmCheckBox">
                                                 <label for="rmCheckBox">Remember me</label>
                                             </div>
                                             <div class="col-md-6">

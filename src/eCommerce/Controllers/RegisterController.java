@@ -105,8 +105,6 @@ public class RegisterController extends HttpServlet {
 				newPaymentCard, false, authenticator.getKey(), "web", receivePromo, phoneNumber, address);
 		if(Database.addCard(newUser.getEmail(), newPaymentCard) && Database.addWebUser(newUser))
 		{
-			//Email -> send email confirmation
-			//Email -> after confirmation send promo if user check receive promo option
 			EmailController sendEmail = new EmailController();
 			sendEmail.sendEmail(newUser, email.regConfirm, email.confirmMsg);
 			response.sendRedirect("registerThankyou.html");
