@@ -31,7 +31,7 @@ public class sessionData extends HttpServlet {
 	    session = req.getSession();
 	    session.setAttribute("email", _user.getEmail());
 	    System.out.println("Successfully created new session for: " + _user.getFullName());
-	    return session;
+	    return (HttpSession)session;
 	}
 	public static boolean logout()
 	{

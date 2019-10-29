@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import eCommerce.Database.Database;
 import eCommerce.MovieData.Movie;
 import eCommerce.Strings.ERROR_DATA;
+import eCommerce.UserData.sessionData;
 import eCommerce.Validator.Validator;
+import eCommerce.users.WebUser;
 
 @WebServlet("/movieController")
 public class movieController extends HttpServlet {
@@ -72,12 +74,14 @@ public class movieController extends HttpServlet {
 				{
 					Database.addMovie(movie);
 				}
-				request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
-			    return;
+				updateAdminPage(request);
+	        	request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
+	        	return;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 		}
 
 		// We received an update movie request.
@@ -97,9 +101,27 @@ public class movieController extends HttpServlet {
 			// Remove all movies to Archive that are checked.
 			for (int i = 0; i < Checkboxes.length; i++) {
 				String currMovie = Checkboxes[i];
-
+				Database.removeMovie(currMovie);
 			}
 			return;
+		}
+	}
+	
+	public void updateAdminPage(HttpServletRequest request)
+	{
+		try {
+			Database.resetDatabase();
+			WebUser user = sessionData.getCurrentSessionUser();
+    		request.setAttribute("adminName", user.getFullName());
+			request.setAttribute("moviesInTheatres", Database.getMoviesFromDatabase(true, false).size());
+        	request.setAttribute("moviesComingSoon", Database.getMoviesFromDatabase(false, true).size());
+        	request.setAttribute("moviesArchived", Database.getMoviesArchivedCount());
+    		request.setAttribute("mostPopularMovie", Database.getMostPopularMovie());
+    		request.setAttribute("movieStats",Database.getMovieStats());
+    		request.setAttribute("addMovies", Database.generateMovieHtml(Database.getAllMovies()));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

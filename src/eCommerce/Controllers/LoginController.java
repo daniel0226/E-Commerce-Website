@@ -88,11 +88,6 @@ public class LoginController extends HttpServlet
         
         
         //If all is good
-        
-        if(rememberMeIsChecked.equals("on"))
-        {
-        	//Create cookie
-        }
         //Create session
     	//HttpSession session = request.getSession();
     	//session.setAttribute("email", emailLogin);
@@ -108,7 +103,7 @@ public class LoginController extends HttpServlet
         		request.setAttribute("adminName", user.getFullName());
 				request.setAttribute("moviesInTheatres", Database.getMoviesFromDatabase(true, false).size());
 	        	request.setAttribute("moviesComingSoon", Database.getMoviesFromDatabase(false, true).size());
-	        	request.setAttribute("moviesArchived", 5);
+	        	request.setAttribute("moviesArchived", Database.getMoviesArchivedCount());
 	    		request.setAttribute("mostPopularMovie", Database.getMostPopularMovie());
 	    		request.setAttribute("movieStats",Database.getMovieStats());
 	    		request.setAttribute("addMovies", Database.generateMovieHtml(Database.getAllMovies()));

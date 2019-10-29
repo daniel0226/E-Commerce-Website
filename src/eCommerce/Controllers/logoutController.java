@@ -33,7 +33,10 @@ public class logoutController extends HttpServlet {
 			System.out.println("Successfully logged out.");
 		}else {
 			HttpSession session = sessionData.getCurrentSession();
-			session.invalidate();
+			if(session != null)
+			{
+				session.invalidate();
+			}
 		}
 		String printLogout = generateHTMLController.logoutSuccessful();
 		sessionData.resetData();

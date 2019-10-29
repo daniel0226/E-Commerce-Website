@@ -425,6 +425,31 @@ public class Database {
 				"<p>The Addams Family#18</p>";
 		return movieStats;
 	}
+	public static void removeMovie(String movieTitle)
+	{
+		System.out.println("Deleting: " + movieTitle + " from the database.");
+		String removeMovie = MySQL_Commands.Remove_Movie + movieTitle;
+		String updateArchiveCount = MySQL_Commands.Update_Archived_Movies_Count;
+		try {
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(removeMovie);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e){
+			System.err.print(e);
+		}
+		try {
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(updateArchiveCount);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e){
+			System.err.print(e);
+		}
+		return;
+	}
 	public static String generateMovieHtml(List<Movie> list)
 	{
         String htmlcode = "";
@@ -438,6 +463,23 @@ public class Database {
         	}
         }
         return htmlcode;
+	}
+	public static int getMoviesArchivedCount()
+	{
+		int count = 0;
+		try {
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(MySQL_Commands.Get_Movie_Archived_Count);
+			if(rs.next())
+			{
+				count = rs.getInt(1);
+			}
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+		}
+		return count;
 	}
 	public String databaseConnected()
 	{
