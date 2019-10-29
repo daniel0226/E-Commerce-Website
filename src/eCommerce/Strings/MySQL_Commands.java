@@ -1,5 +1,9 @@
 package eCommerce.Strings;
 
+import eCommerce.Controllers.authenticatorController;
+import eCommerce.UserData.Card;
+import eCommerce.users.WebUser;
+
 public class MySQL_Commands {
 	
 	//Movie related
@@ -23,6 +27,13 @@ public class MySQL_Commands {
 	public static final String Add_Card =
 			"INSERT INTO card (cardOwnerEmail, cardOwnerName, cvv, expDate, cardNumber, zipCode)" +
 			" VALUES (?, ?, ?, ?, ?, ?)";
+	public static String updateCard(WebUser user, Card card)
+	{
+		authenticatorController control = new authenticatorController();
+		String number = control.encryptString(card.getCardNumber());
+		String cvv = control.encryptString(card.getCVV());
+		return "UPDATE termproject.card SET cardOwnerName = '"+ card.getCardName() +"', zipCode = '"+ card.getZipCode()+ "', cvv = '"+ cvv +"', `expDate` = '"+ card.getExpirationDate() +"', `cardNumber` = '"+ number  + "' WHERE cardOwnerEmail = '" + user.getEmail() + "';";
+	}
 	public static String updateUser(String email)
 	{
 		String mysqlCommand = "UPDATE termproject.users SET verified = '1' WHERE email = '" + email + "';";
@@ -32,5 +43,14 @@ public class MySQL_Commands {
 	{
 		String mysqlCommand = "UPDATE termproject.users SET password = '" + password + "' WHERE email = '" + email + "';";
 		return mysqlCommand;
+	}
+	public static String updateAddress(String email, String addressEn)
+	{
+		String mysqlCommand = "UPDATE termproject.users SET address = '"+ addressEn +"' WHERE email = '" + email + "';";
+		return mysqlCommand;
+	}
+	public static String updateAbout(String email, String f, String l, String t)
+	{
+		return "UPDATE termproject.users SET firstname = '"+ f +"', lastname = '"+ l +"', `phonenumber` = '"+ t + "' WHERE email = '" + email + "';";
 	}
 }

@@ -33,6 +33,7 @@ public class Validator
     {
     	return Database.getUser(email) == null;
     }
+
     public static boolean validateAllPaymentFieldsAreSet(String cardHolderName, String cardNumber, String CVV, String zipcode)
     {
 		boolean allFieldsFilled = false;
@@ -41,6 +42,7 @@ public class Validator
 		int emptyCount = 0;
 		for(int i = 0; i<strArr.length; i++)
 		{
+			System.out.println(strArr[i]);
 			if(strArr[i].equals(""))
 			{
 				emptyCount++;

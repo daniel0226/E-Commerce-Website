@@ -66,7 +66,6 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
-
 	public static void createDatabase() throws SQLException {
 
 		mysql.setServerName("localhost");
@@ -81,6 +80,57 @@ public class Database {
 		return mysql;
 	}
 	
+	public static void updateCard(Card card, WebUser user)
+	{
+		try
+		{
+			System.out.println("Updating " + user.getEmail() + "'s payment information.");
+			String updateCardExecution = MySQL_Commands.updateCard(user, card);
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(updateCardExecution);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+			return;
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+		}
+	}
+	public static void updateProfile(WebUser user, String firstName, String lastName, String phoneNumber)
+	{
+		try
+		{
+			System.out.println("Updating " + user.getEmail() + "'s about information.");
+			String updateProfileExecution = MySQL_Commands.updateAbout(user.getEmail(), firstName, lastName, phoneNumber);
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(updateProfileExecution);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+			return;
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+		}
+	}
+	public static void updateAddress(Address address, WebUser user)
+	{
+		try
+		{
+			System.out.println("Updating " + user.getEmail() + "'s address information.");
+			String updateAddressExecution = MySQL_Commands.updateAddress(user.getEmail(), address.getAddressEnc());
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(updateAddressExecution);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+			return;
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+		}
+	}
 	public static void updatePassword(WebUser user, String Password)
 	{
 		try

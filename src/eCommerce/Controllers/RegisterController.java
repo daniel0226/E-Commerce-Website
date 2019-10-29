@@ -85,6 +85,12 @@ public class RegisterController extends HttpServlet {
 			request.getRequestDispatcher("/register.jsp").forward(request, response);
 			return;
 		}
+		if(!Validator.validateAllPaymentFieldsAreSet(addressLine, city, state, addressZipCode))
+		{
+			request.setAttribute("paymentErrorOutput", ERROR_DATA.ADDRESS_FILLED_ERROR);
+			request.getRequestDispatcher("/register.jsp").forward(request, response);
+			return;
+		}
 
 		
 		if (!Validator.validateRegistrationEmailIsUnique(emailAddress)) {

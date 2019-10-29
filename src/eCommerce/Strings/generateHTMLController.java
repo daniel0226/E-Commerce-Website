@@ -144,4 +144,10 @@ public class generateHTMLController {
 	            "Password was successfully updated. Please login with new password.</p>";
 		return html;
 	}
+	public static String updatedProfile()
+	{
+		String html = "<p style=\"color:white; margin: 0; padding: 0;\">" + 
+	            "Profile was successfuly updated!</p>";
+		return html;
+	}
 }

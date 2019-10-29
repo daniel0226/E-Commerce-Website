@@ -9,6 +9,8 @@ public class ERROR_DATA {
 	public static final String PAYMENT_METHOD_FILLED_ERROR =
 			"<p class=\"errorMessage\">Please fill out all payment method fields!</p>";
 
+	public static final String ADDRESS_FILLED_ERROR =
+			"<p class=\"errorMessage\">Please fill out all address fields!</p>";
 	public static final String INVALID_LOGIN_ERROR =
 			"<p style=\"color:red; margin: 0; padding: 0;\">" + 
             "Invalid Email Address or Password.</p>";

@@ -45,6 +45,7 @@
                                 </div>
                             </div>
                         </div>
+                        ${errorMsg}
                         <div class="row profileInfoBody" style="margin-top: 25px;">
                             <div class="col-md-2">
                                 <button class="p-tab" type="button" value="about" name="about"
@@ -70,11 +71,6 @@
                                                 type="text">
                                         </div>
                                         <div class="inputField">
-                                            <label for="bday">Birthday: </label>
-                                            <input id="bday" class="p-input" name="bDay" value="${bDay}"
-                                                type="text">
-                                        </div>
-                                        <div class="inputField">
                                             <label for="phonenumber">Phone Number: </label>
                                             <input class="p-input" id="phonenumber" type="tel"
                                                 name="phonenumber" value="${phonenumber}"
@@ -89,13 +85,13 @@
                                         </div>
                                         <div class="inputField">
                                             <label for="cardEnding">Card Number</label>
-                                            <input class="p-input" id="cardEnding" type="text"
-                                            name="cardending" maxlength="16" value="${cardNumber}">
+                                            <input class="p-input" id="cardnumber" type="text"
+                                            name="cardnumber" maxlength="16" value="${cardNumber}">
                                         </div>
                                          <div class="inputField">
                                             <label for="cardEnding">Card CVV</label>
-                                            <input class="p-input" id="cardEnding" type="text"
-                                            name="cardending" maxlength="3" value="${CVV}">
+                                            <input class="p-input" id="cardVV" type="text"
+                                            name="cardcvv" maxlength="3" value="${CVV}">
                                         </div>
                                         <div class="inputField">
                                             <label for="cardExpDate">Card Expiration Date</label>
@@ -125,6 +121,11 @@
                                                             <option value="2024"> 2024</option>
                                                         </select>
                                         </div>
+                                        <div class="inputField">
+                                        	<label for="cardEnding">Card ZipCode</label>
+                                            <input class="p-input" id="cardZipCode" type="text"
+                                            name="cardzipcode" value="${cardZipCode}">
+                                        </div>
                                     </div>
                                     <div id="p-address" class="profileTab">
                                         <div class="inputField">
@@ -147,7 +148,6 @@
                                         <div class="inputField">
                                         	<label for="country">Country</label>
                                         	<select class="p-input" id="country" name="country" style="width: 100%;">
-                                                            <option value="" selected="selected">(please select a country)</option>
                                                             <option value="AF">Afghanistan</option>
                                                             <option value="AL">Albania</option>
                                                             <option value="DZ">Algeria</option>
