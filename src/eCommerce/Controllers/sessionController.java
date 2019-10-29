@@ -65,6 +65,7 @@ public class sessionController extends HttpServlet {
 					request.setAttribute("cardNumber", authenticator.decryptString(card.getCardNumber()));
 					request.setAttribute("month", card.getCardMonth());
 					request.setAttribute("year", card.getCardYear());
+					request.setAttribute("cardZipCode", card.getZipCode());
 					
 					//Address
 					request.setAttribute("addressLine", address.getAddressLine());

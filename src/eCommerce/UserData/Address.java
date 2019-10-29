@@ -23,11 +23,13 @@ public class Address {
 	public Address(String addressEnc)
 	{
 		String[] arr = {" ", " ", " ", " ", " "};
+
+		System.out.println("Address " + addressEnc);
 		if(addressEnc != "" && addressEnc != null)
 		{
 			arr = addressEnc.split("#");
 		}
-		if(addressEnc.length() != 4)
+		if(arr.length == 5)
 		{
 			addressLine = arr[0];
 			city = arr[1];
