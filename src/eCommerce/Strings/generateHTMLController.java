@@ -150,4 +150,23 @@ public class generateHTMLController {
 	            "Profile was successfuly updated!</p>";
 		return html;
 	}
+	public static String selectOptionValue(String value)
+	{
+		return "";
+	}
+	public static String promoCheckBox(boolean checked)
+	{
+		if(checked)
+		{
+			return 	"<div class=\"inputField\">\r\n" + 
+					"	<label for=\"promoCheckbox\">Receive Promotion Email</label>\r\n" + 
+					"   <input type=\"checkbox\" name=\"promoCheckBox\" checked>\r\n" + 
+					"</div>";
+		}else {
+			return 	"<div class=\"inputField\">\r\n" + 
+					"	<label for=\"promoCheckbox\">Receive Promotion Email</label>\r\n" + 
+					"   <input type=\"checkbox\" name=\"promoCheckBox\">\r\n" + 
+					"</div>";
+		}
+	}
 }

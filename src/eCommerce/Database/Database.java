@@ -97,12 +97,12 @@ public class Database {
 			System.err.println(e);
 		}
 	}
-	public static void updateProfile(WebUser user, String firstName, String lastName, String phoneNumber)
+	public static void updateProfile(WebUser user, String firstName, String lastName, String phoneNumber, boolean receivePromo)
 	{
 		try
 		{
 			System.out.println("Updating " + user.getEmail() + "'s about information.");
-			String updateProfileExecution = MySQL_Commands.updateAbout(user.getEmail(), firstName, lastName, phoneNumber);
+			String updateProfileExecution = MySQL_Commands.updateAbout(user.getEmail(), firstName, lastName, phoneNumber, receivePromo);
 			connection = mysql.getConnection();
 			PreparedStatement statement = connection.prepareStatement(updateProfileExecution);
 			statement.executeUpdate();

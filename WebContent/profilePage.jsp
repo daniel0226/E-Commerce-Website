@@ -84,6 +84,7 @@
                                                 name="phonenumber" value="${phonenumber}"
                                                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
                                         </div>
+                                        ${checkbox}
                                     </div> <!--About-->
                                     <div id="p-payment" class="profileTab">
                                         <div class="inputField">

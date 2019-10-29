@@ -73,6 +73,13 @@ public class profileController extends HttpServlet {
         	String addressZip = request.getParameter("billingZipCode");
         	String country = request.getParameter("country");
         	
+        	String promoUpdates = request.getParameter("promoCheckBox");
+    		boolean receivePromo = false;
+    		if(promoUpdates != null)
+    		{
+    			receivePromo = true;
+    		}
+        	
         	
         	if(!Validator.validateAllPaymentFieldsAreSet(cardHolderName, cardNumber, cardcvv, cardZip))
         	{
@@ -94,14 +101,14 @@ public class profileController extends HttpServlet {
         	userAddress = new Address(addressLine, city, state, country, addressZip);
         	Database.updateAddress(userAddress, user);
         	//Update Profile
-        	Database.updateProfile(user, request.getParameter("fName"), request.getParameter("lName"), request.getParameter("phonenumber"));
-        	
-        	//NEED TO ADD UPDATE PROMOTION
+        	Database.updateProfile(user, request.getParameter("fName"), request.getParameter("lName"), request.getParameter("phonenumber"), receivePromo);
         	
         	request.setAttribute("errorMsg", generateHTMLController.updatedProfile());
-        	Database.resetDatabase();
         	
-        	user = sessionData.getCurrentSessionUser();
+        	Database.resetDatabase();
+        	WebUser userSession = sessionData.getCurrentSessionUser();
+        	user = Database.getUser(userSession.getEmail());
+        	
         	address = user.getAddress();
         	card = Database.getCard(user.getEmail());
         	//User
@@ -109,6 +116,7 @@ public class profileController extends HttpServlet {
 			request.setAttribute("lName", user.getLastName());
 			request.setAttribute("phonenumber", user.getPhoneNumber());
 			request.setAttribute("bDay", user.getBirthday());
+			request.setAttribute("checkbox", generateHTMLController.promoCheckBox(user.isReceivingPromoUpdates()));
 			
 			//Payment
 			authenticatorController authenticator = new authenticatorController();

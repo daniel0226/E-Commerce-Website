@@ -3,7 +3,6 @@ $(document).ready(function () {
     generateFooter();
     generateHeader();
     $("#confirmPassword").keyup(validatePassword);
-    $("input[type=tel").keyup(formatPhonenumber);
     $("input[type=submit][name='infS']").attr("disabled", "disabled");
     setUpAnimation();
     document.getElementById("p-about").style.display = "block";
