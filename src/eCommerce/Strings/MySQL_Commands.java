@@ -49,8 +49,9 @@ public class MySQL_Commands {
 		String mysqlCommand = "UPDATE termproject.users SET address = '"+ addressEn +"' WHERE email = '" + email + "';";
 		return mysqlCommand;
 	}
-	public static String updateAbout(String email, String f, String l, String t)
+	public static String updateAbout(String email, String f, String l, String t, boolean p)
 	{
-		return "UPDATE termproject.users SET firstname = '"+ f +"', lastname = '"+ l +"', `phonenumber` = '"+ t + "' WHERE email = '" + email + "';";
+		int myInt = p ? 1 : 0;
+		return "UPDATE termproject.users SET firstname = '"+ f +"', lastname = '"+ l +"',`promoUpdates` = '" + myInt + "', `phonenumber` = '"+ t + "' WHERE email = '" + email + "';";
 	}
 }

@@ -1,19 +1,25 @@
 package eCommerce.UserData;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import eCommerce.Database.Database;
 import eCommerce.users.WebUser;
 
-public class sessionData {
+public class sessionData extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static HttpServletRequest req = null;
 	private static WebUser _user = null;
 	private static HttpSession session = null;
 	
 	public sessionData(HttpServletRequest request, WebUser user)
 	{
+		super();
 		System.out.println("Created new session for: " + user.getFullName());
 		req = request;
 		_user = user;

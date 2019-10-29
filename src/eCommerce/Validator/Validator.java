@@ -42,7 +42,6 @@ public class Validator
 		int emptyCount = 0;
 		for(int i = 0; i<strArr.length; i++)
 		{
-			System.out.println(strArr[i]);
 			if(strArr[i].equals(""))
 			{
 				emptyCount++;

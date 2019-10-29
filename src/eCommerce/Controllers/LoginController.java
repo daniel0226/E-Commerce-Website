@@ -127,6 +127,7 @@ public class LoginController extends HttpServlet
 			request.setAttribute("email", user.getEmail());
 			request.setAttribute("phonenumber", user.getPhoneNumber());
 			request.setAttribute("bDay", user.getBirthday());
+			request.setAttribute("checkbox", generateHTMLController.promoCheckBox(user.isReceivingPromoUpdates()));
 			
 			//Payment
 			request.setAttribute("cardname", card.getCardName());

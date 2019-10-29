@@ -47,13 +47,12 @@ public class RegisterController extends HttpServlet {
 		String firstName = request.getParameter("firstname");
 		String lastName = request.getParameter("lastname");
 		String password = request.getParameter("password");
-		String confirmPassword = request.getParameter("confirmPassword");
 		String emailAddress = request.getParameter("email");
 		String birthday = request.getParameter("bday");// Appears yyyy-mm-dd
 		String promoUpdates = request.getParameter("promoCheckBox");
 		String phoneNumber = request.getParameter("phonenumber");
 		boolean receivePromo = false;
-		if(promoUpdates != null && promoUpdates.equals("1"))
+		if(promoUpdates != null)
 		{
 			receivePromo = true;
 		}

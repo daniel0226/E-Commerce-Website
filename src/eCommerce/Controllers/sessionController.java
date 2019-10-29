@@ -1,7 +1,5 @@
 package eCommerce.Controllers;
 
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import eCommerce.Database.Database;
 import eCommerce.Strings.ERROR_DATA;
+import eCommerce.Strings.generateHTMLController;
 import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
 import eCommerce.UserData.sessionData;
@@ -58,6 +57,7 @@ public class sessionController extends HttpServlet {
 					request.setAttribute("lName", user.getLastName());
 					request.setAttribute("phonenumber", user.getPhoneNumber());
 					request.setAttribute("bDay", user.getBirthday());
+					request.setAttribute("checkbox", generateHTMLController.promoCheckBox(user.isReceivingPromoUpdates()));
 					
 					//Payment
 					request.setAttribute("cardname", card.getCardName());
@@ -94,6 +94,7 @@ public class sessionController extends HttpServlet {
 					request.setAttribute("email", user.getEmail());
 					request.setAttribute("phonenumber", user.getPhoneNumber());
 					request.setAttribute("bDay", user.getBirthday());
+					request.setAttribute("checkbox", generateHTMLController.promoCheckBox(user.isReceivingPromoUpdates()));
 					
 					//Payment
 					request.setAttribute("cardname", card.getCardName());
