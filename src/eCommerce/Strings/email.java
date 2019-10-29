@@ -15,6 +15,8 @@ public class email {
 	" Your password is: ";
 	public final static String updatedPasswordMsg ="This message is to update your recent password change. " +
 	"Your password has been successfully updated.";
+	public final static String confirmProfileUpdate = "This message is to update your recent profile changes. " +
+	"Your profile has been successfully updated.";
 	
 	public static final String confirmationSent =
 			"<p style=\"color:white; margin: 0; text-align: center; padding: 0;\">" + 
