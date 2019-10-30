@@ -45,33 +45,7 @@
 
 <body>
 	<header id="navH"></header>
-<% 
-				String html = "";
-				if(Database.getDatabase() == null)
-				{
-					try {
-						new Database();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				try {
-					List<Movie> inTheatres = Database.getMoviesFromDatabase(true,false);
-					if(inTheatres.size() != 0)
-					{
-						for(int i = 0; i<inTheatres.size(); i++)
-						{
-							Movie curMovie = inTheatres.get(i);
-							html += generateHTMLController.indexInTheatres(curMovie);
-						}
-					}
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				pageContext.setAttribute("movies", html);
-			%>
+
 	<section class="homePage parallax">
 		<div class="container JokerBody">
 			<div class="row ">
@@ -99,9 +73,36 @@
 	</div>
 	<section id="intheatrepage" class="indexInTheatresPage">
 		<div class="carouselInTheatre">
+			<% 
+				String html = "";
+				if(Database.getDatabase() == null)
+				{
+					try {
+						new Database();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				try {
+					List<Movie> inTheatres = Database.getMoviesFromDatabase(true,false);
+					if(inTheatres.size() != 0)
+					{
+						for(int i = 0; i<inTheatres.size(); i++)
+						{
+							Movie curMovie = inTheatres.get(i);
+							html += generateHTMLController.indexInTheatres(curMovie);
+						}
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				pageContext.setAttribute("movies", html);
+			%>
+			<c:out value="movies"/>
 			${movies}
 		</div>
-		<script type="text/javascript">setUpCarouselCenter();</script>
 	</section>
 	<footer> </footer>
 </body>

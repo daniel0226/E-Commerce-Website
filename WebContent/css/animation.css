@@ -104,3 +104,63 @@
     60% {width:0%;}
     100% {width:100%;}
 }
+
+.post
+{
+    width: 100%;
+    height: 100%;
+}
+.perspective
+{
+    width: 100%;
+    height: 300px;
+    perspective: 1000px;
+    background: none;
+    position: relative;
+}
+.carouselInTheatre
+{
+    width: 100%;
+}
+.perspective:hover .card
+{
+    transform: rotateY(180deg);
+}
+.front img
+{
+    width: 100%;
+    height: 100%;
+}
+.front, .back
+{
+    padding: 6px 3px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: none;
+}
+.back
+{
+    transform: rotateY(180deg);
+    text-align: center;
+    padding: 20px 10px;
+    background: black;
+}
+
+.card
+{
+    margin: auto;
+    background: none;
+    position: relative;
+    width: 225px;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 0 8px rgba(115, 159, 255, 1);
+}
+#intheatrepage
+{
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+}

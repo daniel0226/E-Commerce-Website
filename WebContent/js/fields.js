@@ -5,6 +5,7 @@ $(document).ready(function () {
     $("#confirmPassword").keyup(validatePassword);
     $("input[type=submit][name='infS']").attr("disabled", "disabled");
     setUpAnimation();
+    
     document.getElementById("p-about").style.display = "block";
 });
 
@@ -15,6 +16,48 @@ $(window).scroll(() => {
     }
 });
 
+function setUpCarousel()
+{
+    $('.carouselInTheatre').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        nextArrow: $('.next'),
+        prevArrow: $('.prev'),
+      });
+}
+function setUpCarouselCenter()
+{
+	console.log("Creating carousel");
+    $('.carouselInTheatre').slick({
+        centerMode: true,
+        centerPadding: '60px',
+        slidesToShow: 3,
+        nextArrow: $('.next'),
+        prevArrow: $('.prev'),
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: '40px',
+              slidesToShow: 3
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: '40px',
+              slidesToShow: 1
+            }
+          }
+        ]
+      });
+}
 function setUpAnimation()
 {
     $(".animated").addClass("delay-1s");
@@ -343,4 +386,17 @@ function closeForm(tab_, btn) {
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].disabled = false;
     }
+}
+
+function mouseOver(img)
+{
+    var imagePath = "url('images/MoviePhoto/" + img + "')";
+    var doc = document.getElementById("intheatrepage");
+    doc.style.backgroundImage = imagePath;
+    doc.style.backgroundRepeat = "no-repeat";
+    doc.style.backgroundSize = "contain";
+}
+function mouseOut()
+{
+    document.getElementById("intheatrepage").style.background = "black";
 }

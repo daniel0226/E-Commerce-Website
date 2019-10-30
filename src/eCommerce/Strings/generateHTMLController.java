@@ -169,4 +169,27 @@ public class generateHTMLController {
 					"</div>";
 		}
 	}
+	public static String indexInTheatres(Movie movie)
+	{
+
+		String myvar = "<div class=\"post\">"+
+		"                <div id=\"" + movie.getMovieTitle()+ "\" class=\"perspective\" onmouseover=\"mouseOver('"+ movie.getMoviePicture() +"')\""+
+		"                    onmouseout=\"mouseOut()\">"+
+		"                    <div class=\"card\">"+
+		"                        <div class=\"front\">"+
+		"                            <img src=\"images/MoviePhoto/"+ movie.getMoviePicture()+ "\" alt=\""+ movie.getMovieTitle()+ "\">"+
+		"                        </div>"+
+		"                        <div class=\"back\">"+
+		"                            <h2>" + movie.getMovieTitle() +"</h2>"+
+		"                            <p>"+ movie.getMovieRating() +"</p>"+
+		"                            <p>"+ movie.getMovieReleaseDate() +"</p>"+
+		"                            <p>"+ movie.getMovieCategory()+"</p>"+
+		"                        </div>"+
+		"                    </div>"+
+		"                </div>"+
+		"            </div>";
+		return myvar;
+	
+
+	}
 }
