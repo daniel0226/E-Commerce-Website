@@ -96,6 +96,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 	{
 		try {
     		request.setAttribute("adminName", user.getFullName());
+    		request.setAttribute("location", user.getAddress().getCity() + ", " + user.getAddress().getState());
 			request.setAttribute("moviesInTheatres", Database.getMoviesFromDatabase(true, false).size());
         	request.setAttribute("moviesComingSoon", Database.getMoviesFromDatabase(false, true).size());
         	request.setAttribute("moviesArchived", Database.getMoviesArchivedCount());

@@ -6,11 +6,7 @@ import javax.servlet.http.HttpSession;
 import eCommerce.users.WebUser;
 
 public class sessionData{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	private static HttpServletRequest req = null;
 	private static WebUser _user = null;
 	private static HttpSession session = null;

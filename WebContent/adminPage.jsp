@@ -43,7 +43,7 @@
                         <div class="welcomeAdmin">
                             <p style="padding-left: 10px;">Welcome, </p>
                             <p style="padding-left: 10px;">${adminName}</p>
-                            <p style="padding-left: 10px; font-size: .75rem;">Athens, GA</p>
+                            <p style="padding-left: 10px; font-size: .75rem;">${location}</p>
                         </div>
                         <div class="adminTabLinksWrapper">
                             <button id="movieBtn" type="button" class="adminTabLink activeAdminTab"
