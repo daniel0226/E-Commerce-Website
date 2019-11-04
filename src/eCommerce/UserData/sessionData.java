@@ -1,13 +1,11 @@
 package eCommerce.UserData;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import eCommerce.Database.Database;
 import eCommerce.users.WebUser;
 
-public class sessionData extends HttpServlet {
+public class sessionData{
 
 	/**
 	 * 

@@ -173,8 +173,9 @@ public class generateHTMLController {
 	{
 
 		String myvar = "<div class=\"post\">"+
-		"                <div id=\"" + movie.getMovieTitle()+ "\" class=\"perspective\" onmouseover=\"mouseOver('"+ movie.getMoviePicture() +"')\""+
-		"                    onmouseout=\"mouseOut()\">"+
+		"                <div class=\"postPic " + movie.getMovieTitle() + "\" >" +
+		"                <div class=\"perspective\" onmouseover=\"mouseOver('"+ movie.getMoviePicture() + "', '" + movie.getMovieTitle() + "')\""+
+		"                    onmouseout=\"mouseOut('" + movie.getMovieTitle() + "')\">"+
 		"                    <div class=\"card\">"+
 		"                        <div class=\"front\">"+
 		"                            <img src=\"images/MoviePhoto/"+ movie.getMoviePicture()+ "\" alt=\""+ movie.getMovieTitle()+ "\">"+
@@ -187,6 +188,7 @@ public class generateHTMLController {
 		"                        </div>"+
 		"                    </div>"+
 		"                </div>"+
+	    "              </div>" + 
 		"            </div>";
 		return myvar;
 	

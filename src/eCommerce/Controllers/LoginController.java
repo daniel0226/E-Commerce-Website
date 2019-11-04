@@ -26,9 +26,11 @@ import eCommerce.Database.*;
 public class LoginController extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
+	private loadObjectsToHtmlController loadHtml = null;
 	
 	public void init()
 	{
+		loadHtml = new loadObjectsToHtmlController();
 		System.out.println("LoginController.java: Login was called");
 		if(Database.getDatabase() == null)
 		{
@@ -93,65 +95,18 @@ public class LoginController extends HttpServlet
     	//session.setAttribute("email", emailLogin);
     	
         WebUser user = Database.getUser(emailLogin);
-        
         new sessionData(request, user);
         HttpSession session = sessionData.createSession();
         System.out.println("Welcome: " + (String)session.getAttribute("email"));
+        
         if(user.getSessionType().equals("admin")) 
         {
-        	try {
-        		request.setAttribute("adminName", user.getFullName());
-				request.setAttribute("moviesInTheatres", Database.getMoviesFromDatabase(true, false).size());
-	        	request.setAttribute("moviesComingSoon", Database.getMoviesFromDatabase(false, true).size());
-	        	request.setAttribute("moviesArchived", Database.getMoviesArchivedCount());
-	    		request.setAttribute("mostPopularMovie", Database.getMostPopularMovie());
-	    		request.setAttribute("movieStats",Database.getMovieStats());
-	    		request.setAttribute("addMovies", Database.generateMovieHtml(Database.getAllMovies()));
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-        	request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
-        	return;
-        }else if(user.getSessionType().equals("web"))
-        {
-        	Address address = user.getAddress();
-        	Card card = Database.getCard(user.getEmail());
-        	
-        	request.setAttribute("name", user.getFullName());
-        	
-        	//User
-			request.setAttribute("fName", user.getFirstName());
-			request.setAttribute("lName", user.getLastName());
-			request.setAttribute("email", user.getEmail());
-			request.setAttribute("phonenumber", user.getPhoneNumber());
-			request.setAttribute("bDay", user.getBirthday());
-			request.setAttribute("checkbox", generateHTMLController.promoCheckBox(user.isReceivingPromoUpdates()));
-			
-			//Payment
-			request.setAttribute("cardname", card.getCardName());
-			request.setAttribute("cardEnding", card.getCardEnding());
-			request.setAttribute("cardExpDate", card.getExpirationDate());
-			
-			
-			//Address
-			request.setAttribute("addressLine", address.toString());
-			
-			//Eventually re placed with database.
-			List<Movie> bookedMovies = new LinkedList<Movie>();
-			Movie movie = Database.getMovie("Joker");
-			//List<Movie> bookedMovies = Database.getUserBookedMovies(user);
-			bookedMovies.add(movie);
-			String bookedMoviesHTML = "";
-			for(int i = 0; i<bookedMovies.size(); i++)
-			{
-				bookedMoviesHTML += generateHTMLController.profileMovieBooking(bookedMovies.get(i));
-			}
-			request.setAttribute("bookedMovies",bookedMoviesHTML);
-        	request.getRequestDispatcher("/profilePage.jsp").forward(request, response);
-        	return;
+        	loadHtml.setAdminPage(request, response ,user);
         }
-       
+        else if(user.getSessionType().equals("web"))
+        {
+        	loadHtml.setProfilePage(request, response, user);
+        }
+        return;
     }
-
 }

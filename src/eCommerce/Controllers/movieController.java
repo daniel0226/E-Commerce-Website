@@ -20,8 +20,11 @@ import eCommerce.users.WebUser;
 public class movieController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private loadObjectsToHtmlController loadHtml = null;
+	
 	public void init() {
 		System.out.println("movieController.java: Movie Controller called.");
+		loadHtml = new loadObjectsToHtmlController();
 		if(Database.getDatabase() == null)
 		{
 			try {
@@ -74,7 +77,10 @@ public class movieController extends HttpServlet {
 				{
 					Database.addMovie(movie);
 				}
-				updateAdminPage(request);
+				Database.resetDatabase();
+				WebUser user = sessionData.getCurrentSessionUser();
+				loadHtml.setAdminPage(request, response, user);
+				
 	        	request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
 	        	return;
 			} catch (SQLException e) {
@@ -105,24 +111,5 @@ public class movieController extends HttpServlet {
 			}
 			return;
 		}
-	}
-	
-	public void updateAdminPage(HttpServletRequest request)
-	{
-		try {
-			Database.resetDatabase();
-			WebUser user = sessionData.getCurrentSessionUser();
-    		request.setAttribute("adminName", user.getFullName());
-			request.setAttribute("moviesInTheatres", Database.getMoviesFromDatabase(true, false).size());
-        	request.setAttribute("moviesComingSoon", Database.getMoviesFromDatabase(false, true).size());
-        	request.setAttribute("moviesArchived", Database.getMoviesArchivedCount());
-    		request.setAttribute("mostPopularMovie", Database.getMostPopularMovie());
-    		request.setAttribute("movieStats",Database.getMovieStats());
-    		request.setAttribute("addMovies", Database.generateMovieHtml(Database.getAllMovies()));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
+	}	
 }

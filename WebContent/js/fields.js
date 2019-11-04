@@ -33,7 +33,7 @@ function setUpCarouselCenter()
     $('.carouselInTheatre').slick({
         centerMode: true,
         centerPadding: '60px',
-        slidesToShow: 3,
+        slidesToShow: 4,
         nextArrow: $('.next'),
         prevArrow: $('.prev'),
         responsive: [
@@ -57,6 +57,11 @@ function setUpCarouselCenter()
           }
         ]
       });
+    setUpIDs();
+}
+function setUpIDs()
+{
+
 }
 function setUpAnimation()
 {
@@ -388,15 +393,22 @@ function closeForm(tab_, btn) {
     }
 }
 
-function mouseOver(img)
+function mouseOver(img,div)
 {
     var imagePath = "url('images/MoviePhoto/" + img + "')";
-    var doc = document.getElementById("intheatrepage");
-    doc.style.backgroundImage = imagePath;
-    doc.style.backgroundRepeat = "no-repeat";
-    doc.style.backgroundSize = "contain";
+    var doc = document.getElementsByClassName(div);
+    for(var i = 0; i<doc.length; i++)
+    {
+    	 doc[i].style.backgroundImage = imagePath;
+    	 doc[i].style.backgroundRepeat = "no-repeat";
+    	 doc[i].style.backgroundSize = "cover";
+    }
 }
-function mouseOut()
+function mouseOut(div)
 {
-    document.getElementById("intheatrepage").style.background = "black";
+	var doc = document.getElementsByClassName(div);
+	for(var i = 0; i<doc.length; i++)
+	{
+		doc[i].style.background = "black";
+	}
 }

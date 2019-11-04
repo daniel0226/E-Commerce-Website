@@ -1,9 +1,14 @@
 package eCommerce.Controllers;
 
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 import eCommerce.MovieData.Movie;
 import eCommerce.Strings.generateHTMLController;
+import eCommerce.UserData.Address;
+import eCommerce.UserData.Card;
+import eCommerce.users.WebUser;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.*;
@@ -84,6 +89,71 @@ public class loadObjectsToHtmlController extends HttpServlet {
 			default:
 				System.out.println("Tell me how you got to here you hacker :(.");
 				return;
+		}
+	}
+	
+	public void setAdminPage(HttpServletRequest request, HttpServletResponse response, WebUser user)
+	{
+		try {
+    		request.setAttribute("adminName", user.getFullName());
+			request.setAttribute("moviesInTheatres", Database.getMoviesFromDatabase(true, false).size());
+        	request.setAttribute("moviesComingSoon", Database.getMoviesFromDatabase(false, true).size());
+        	request.setAttribute("moviesArchived", Database.getMoviesArchivedCount());
+    		request.setAttribute("mostPopularMovie", Database.getMostPopularMovie());
+    		request.setAttribute("movieStats",Database.getMovieStats());
+    		request.setAttribute("addMovies", Database.generateMovieHtml(Database.getAllMovies()));
+    		
+			request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
+		} catch (ServletException | IOException e ) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return;
+	}
+	
+	public void setProfilePage(HttpServletRequest request, HttpServletResponse response, WebUser user)
+	{
+		Address address = user.getAddress();
+    	Card card = Database.getCard(user.getEmail());
+    	
+    	request.setAttribute("name", user.getFullName());
+    	
+    	//User
+		request.setAttribute("fName", user.getFirstName());
+		request.setAttribute("lName", user.getLastName());
+		request.setAttribute("email", user.getEmail());
+		request.setAttribute("phonenumber", user.getPhoneNumber());
+		request.setAttribute("bDay", user.getBirthday());
+		request.setAttribute("checkbox", generateHTMLController.promoCheckBox(user.isReceivingPromoUpdates()));
+		
+		//Payment
+		request.setAttribute("cardname", card.getCardName());
+		request.setAttribute("cardEnding", card.getCardEnding());
+		request.setAttribute("cardExpDate", card.getExpirationDate());
+		
+		
+		//Address
+		request.setAttribute("addressLine", address.toString());
+		
+		//Eventually re placed with database.
+		List<Movie> bookedMovies = new LinkedList<Movie>();
+		Movie movie = Database.getMovie("Joker");
+		//List<Movie> bookedMovies = Database.getUserBookedMovies(user);
+		bookedMovies.add(movie);
+		String bookedMoviesHTML = "";
+		for(int i = 0; i<bookedMovies.size(); i++)
+		{
+			bookedMoviesHTML += generateHTMLController.profileMovieBooking(bookedMovies.get(i));
+		}
+		request.setAttribute("bookedMovies",bookedMoviesHTML);
+    	try {
+			request.getRequestDispatcher("/profilePage.jsp").forward(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
