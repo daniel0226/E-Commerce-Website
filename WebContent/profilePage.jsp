@@ -106,12 +106,11 @@
                                     </div>
                                     <div id="p-address" class="profileTab">
                                         <div class="inputField">
-                                            <label for="addressLine">Address Linse</label>
+                                            <label for="addressLine">Address Line</label>
                                             <textarea class="p-input" readonly id="addressLine" type="text"
                                             name="addressLine">${addressLine}</textarea>
                                         </div>
                                     </div>
-                                    ${runJs}
                                 </div>
                             </div>
                             <div class="col-md-5 col-sm-5">

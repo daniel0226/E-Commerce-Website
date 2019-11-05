@@ -409,6 +409,7 @@
             </form>
         </section>
     </main>
+    ${runJs}
     <footer></footer>
 </body>
 

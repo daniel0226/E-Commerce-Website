@@ -141,8 +141,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		request.setAttribute("cardname", card.getCardName());
 		request.setAttribute("cardEnding", card.getCardEnding());
 		request.setAttribute("cardExpDate", card.getExpirationDate());
-		
-		
+	
 		//Address
 		request.setAttribute("addressLine", address.toString());
 		
@@ -185,6 +184,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		request.setAttribute("year", card.getCardYear());
 		request.setAttribute("cardZipCode", card.getZipCode());
 		
+		request.setAttribute("runJs", "<script>loadSelect('" + card.getCardMonth() + "','" + card.getCardYear() + "','" + address.getCountry() +"');</script>");
 		//Address
 		request.setAttribute("addressLine", address.getAddressLine());
 		request.setAttribute("city", address.getCity());
