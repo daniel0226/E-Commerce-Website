@@ -30,9 +30,11 @@ public class Card
     }
     public String getCardEnding()
     {
-    	if(cardNumber.length() > 4)
-    	{
-    		authenticatorController control = new authenticatorController();
+
+		authenticatorController control = new authenticatorController();
+		System.out.println(control.decryptString(cardNumber) + " " + control.decryptString(cardNumber).length()
+		if(control.decryptString(cardNumber).length() > 4)
+		{
     		String end = control.decryptString(cardNumber);
     		return end.substring(end.length()-4, end.length());
     	}else
