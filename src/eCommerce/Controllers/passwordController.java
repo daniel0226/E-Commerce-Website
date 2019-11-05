@@ -59,10 +59,12 @@ public class passwordController extends HttpServlet
 			request.getRequestDispatcher("./forgetPassword.jsp").forward(request, response);
 			return;
 		}else {
+			
 			authenticatorController control = new authenticatorController();
 			EmailController _email = new EmailController();
 			String forgetEmailPass = email.forgetPassMsg + control.decryptString(user.getPassword());
 			_email.sendEmail(user, email.forgotPassword, forgetEmailPass);
+			
 			request.setAttribute("loginError", email.forgotPasswordSent);
 			request.getRequestDispatcher("./login.jsp").forward(request, response);
 			return;

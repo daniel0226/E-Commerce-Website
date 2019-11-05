@@ -17,9 +17,11 @@ import eCommerce.UserData.sessionData;
 public class logoutController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private sessionController sessionControl;
 	
 	public void init()
 	{
+		sessionControl = new sessionController();
 		System.out.println("logoutController.java: Logout user called.");
 	}
 	public logoutController()
@@ -28,16 +30,8 @@ public class logoutController extends HttpServlet {
 	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {	
-		if(sessionData.logout())
-		{
-			System.out.println("Successfully logged out.");
-		}else {
-			HttpSession session = sessionData.getCurrentSession();
-			if(session != null)
-			{
-				session.invalidate();
-			}
-		}
+		HttpSession session = sessionData.getCurrentSession();
+		sessionControl.logoutUser(session, request);
 		String printLogout = generateHTMLController.logoutSuccessful();
 		sessionData.resetData();
 		request.setAttribute("loginError", printLogout);

@@ -27,9 +27,11 @@ public class LoginController extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 	private loadObjectsToHtmlController loadHtml = null;
+	private sessionController sessionControl = null;
 	
 	public void init()
 	{
+		sessionControl = new sessionController();
 		loadHtml = new loadObjectsToHtmlController();
 		System.out.println("LoginController.java: Login was called");
 		if(Database.getDatabase() == null)
@@ -93,11 +95,9 @@ public class LoginController extends HttpServlet
         //Create session
     	//HttpSession session = request.getSession();
     	//session.setAttribute("email", emailLogin);
-    	
+
         WebUser user = Database.getUser(emailLogin);
-        new sessionData(request, user);
-        HttpSession session = sessionData.createSession();
-        System.out.println("Welcome: " + (String)session.getAttribute("email"));
+        sessionControl.createUserSession(request, user);
         
         if(user.getSessionType().equals("admin")) 
         {

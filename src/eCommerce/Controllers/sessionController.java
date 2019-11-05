@@ -141,4 +141,23 @@ public class sessionController extends HttpServlet {
 				break;
 		}	
 	}
+	public void logoutUser(HttpSession session, HttpServletRequest request)
+	{
+		if(sessionData.logout())
+		{
+			System.out.println("Successfully logged out.");
+		}else {
+			if(session != null)
+			{
+				session.invalidate();
+			}
+		}
+	}
+	public void createUserSession(HttpServletRequest request, WebUser user)
+	{
+		new sessionData(request, user);
+        HttpSession session = sessionData.createSession();
+        System.out.println("Welcome: " + (String)session.getAttribute("email"));
+        return;
+	}
 }
