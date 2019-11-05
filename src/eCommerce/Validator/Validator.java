@@ -72,30 +72,7 @@ public class Validator
     
     public static boolean movieAlreadyExists(Movie movie) throws SQLException
     {
-    	boolean movieExists = false;
-    	Movie duplicateMovie = Database.getMovie(movie.getMovieTitle());
-    	
-    	if(duplicateMovie != null) 
-    	{
-    		movieExists = true;
-    	}
-    	
-    	if(duplicateMovie != null)
-    	{
-    		if(duplicateMovie.getMovieTitle().equalsIgnoreCase(movie.getMovieTitle()))
-    		{
-    			movieExists = true;
-    		}
-    		if(duplicateMovie.getMoviePicture().equalsIgnoreCase(movie.getMovieTitle()))
-    		{
-    			movieExists = true;
-    		}
-    		if(duplicateMovie.getMovieTrailer().equalsIgnoreCase(movie.getMovieTrailer()))
-    		{
-    			movieExists = true;
-    		}
-    	}
-    	return movieExists;
+    	return Database.getMovie(movie.getMovieTitle()) != null;
     }
     public static boolean validateMovieInTheatres(Movie movie)
     {
