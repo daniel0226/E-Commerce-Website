@@ -21,8 +21,10 @@ import eCommerce.Database.*;
 public class loadObjectsToHtmlController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private authenticatorController authenticator;
 
 	public void init() {
+		authenticator = new authenticatorController();
 		if (Database.getDatabase() == null) {
 			try {
 				new Database();
@@ -31,6 +33,11 @@ public class loadObjectsToHtmlController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+	}
+	public loadObjectsToHtmlController()
+	{
+		super();
+		authenticator = new authenticatorController();
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -156,5 +163,35 @@ public class loadObjectsToHtmlController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public void setEditPage(HttpServletRequest request, HttpServletResponse response, WebUser user) throws ServletException, IOException
+	{
+		Address address = user.getAddress();
+    	Card card = Database.getCard(user.getEmail());
+    	request.setAttribute("name", user.getFullName());
+    	
+    	//User
+		request.setAttribute("fName", user.getFirstName());
+		request.setAttribute("lName", user.getLastName());
+		request.setAttribute("phonenumber", user.getPhoneNumber());
+		request.setAttribute("bDay", user.getBirthday());
+		request.setAttribute("checkbox", generateHTMLController.promoCheckBox(user.isReceivingPromoUpdates()));
+		
+		//Payment
+		request.setAttribute("cardname", card.getCardName());
+		request.setAttribute("CVV", authenticator.decryptString(card.getCVV()));
+		request.setAttribute("cardNumber", authenticator.decryptString(card.getCardNumber()));
+		request.setAttribute("month", card.getCardMonth());
+		request.setAttribute("year", card.getCardYear());
+		request.setAttribute("cardZipCode", card.getZipCode());
+		
+		//Address
+		request.setAttribute("addressLine", address.getAddressLine());
+		request.setAttribute("city", address.getCity());
+		request.setAttribute("state", address.getState());
+		request.setAttribute("country", address.getCountry());
+		request.setAttribute("billingZipCode", address.getZipCode());
+    	request.getRequestDispatcher("/editProfile.jsp").forward(request, response);
+    	return;
 	}
 }

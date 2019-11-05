@@ -1,5 +1,7 @@
 package eCommerce.Controllers;
 
+import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,16 +23,20 @@ public class sessionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession session;
 	private authenticatorController authenticator;
+	private loadObjectsToHtmlController loadHtml;
 	
 	public void init()
 	{
 		authenticator = new authenticatorController();
+		loadHtml = new loadObjectsToHtmlController();
 		System.out.println("SessionController Invoked.");
 	}
 	
 	public sessionController()
 	{
 		super();
+		authenticator = new authenticatorController();
+		loadHtml = new loadObjectsToHtmlController();
 	}
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, java.io.IOException {
@@ -47,33 +53,8 @@ public class sessionController extends HttpServlet {
 		            request.getRequestDispatcher("/login.jsp").forward(request, response);
 		            return;
 				}else
-				{   WebUser user = sessionData.getCurrentSessionUser();
-		        	Address address = user.getAddress();
-		        	Card card = Database.getCard(user.getEmail());
-		        	request.setAttribute("name", user.getFullName());
-		        	
-		        	//User
-					request.setAttribute("fName", user.getFirstName());
-					request.setAttribute("lName", user.getLastName());
-					request.setAttribute("phonenumber", user.getPhoneNumber());
-					request.setAttribute("bDay", user.getBirthday());
-					request.setAttribute("checkbox", generateHTMLController.promoCheckBox(user.isReceivingPromoUpdates()));
-					
-					//Payment
-					request.setAttribute("cardname", card.getCardName());
-					request.setAttribute("CVV", authenticator.decryptString(card.getCVV()));
-					request.setAttribute("cardNumber", authenticator.decryptString(card.getCardNumber()));
-					request.setAttribute("month", card.getCardMonth());
-					request.setAttribute("year", card.getCardYear());
-					request.setAttribute("cardZipCode", card.getZipCode());
-					
-					//Address
-					request.setAttribute("addressLine", address.getAddressLine());
-					request.setAttribute("city", address.getCity());
-					request.setAttribute("state", address.getState());
-					request.setAttribute("country", address.getCountry());
-					request.setAttribute("billingZipCode", address.getZipCode());
-		        	request.getRequestDispatcher("/editProfile.jsp").forward(request, response);
+				{   
+					loadHtml.setEditPage(request,  response, sessionData.getCurrentSessionUser());
 		        	return;
 		        }
 			case "profile":
@@ -83,29 +64,9 @@ public class sessionController extends HttpServlet {
 		            request.getRequestDispatcher("/login.jsp").forward(request, response);
 		            return;
 				}else
-				{   WebUser user = sessionData.getCurrentSessionUser();
-		        	Address address = user.getAddress();
-		        	Card card = Database.getCard(user.getEmail());
-		        	request.setAttribute("name", user.getFullName());
-		        	
-		        	//User
-					request.setAttribute("fName", user.getFirstName());
-					request.setAttribute("lName", user.getLastName());
-					request.setAttribute("email", user.getEmail());
-					request.setAttribute("phonenumber", user.getPhoneNumber());
-					request.setAttribute("bDay", user.getBirthday());
-					request.setAttribute("checkbox", generateHTMLController.promoCheckBox(user.isReceivingPromoUpdates()));
-					
-					//Payment
-					request.setAttribute("cardname", card.getCardName());
-					request.setAttribute("cardEding", card.getCardEnding());
-					request.setAttribute("cardExpDate", card.getExpirationDate());
-					
-					
-					//Address
-					request.setAttribute("addressLine", address.toString());
-		        	request.getRequestDispatcher("/profilePage.jsp").forward(request, response);
-		        	return;
+				{   
+					loadHtml.setProfilePage(request, response, sessionData.getCurrentSessionUser());
+					return;
 		        }
 			case "login":
 				if(session != null)

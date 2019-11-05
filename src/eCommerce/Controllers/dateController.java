@@ -45,4 +45,22 @@ public class dateController {
     	
     	return movieIsComingSoon;
 	}
+	public String getCardYear(String expirationDate)
+	{
+		String[] dates = {"", ""};
+    	if(expirationDate != null || expirationDate != "")
+    	{
+    		dates = expirationDate.split("-");
+    	}
+    	return dates[1];
+	}
+	public String getCardMonth(String expirationDate)
+	{
+		String[] dates = {"", ""};
+    	if(expirationDate != null || expirationDate != "")
+    	{
+    		dates = expirationDate.split("-");
+    	}
+    	return dates[0];
+	}
 }

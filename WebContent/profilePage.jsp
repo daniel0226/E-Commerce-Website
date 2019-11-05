@@ -45,6 +45,7 @@
                                 </div>
                             </div>
                         </div>
+                        ${errorMsg}
                         <div class="row profileInfoBody" style="margin-top: 25px;">
                             <div class="col-md-2">
                                 <button class="p-tab" type="button" value="about" name="about"
@@ -105,11 +106,12 @@
                                     </div>
                                     <div id="p-address" class="profileTab">
                                         <div class="inputField">
-                                            <label for="addressLine">Address Line</label>
+                                            <label for="addressLine">Address Linse</label>
                                             <textarea class="p-input" readonly id="addressLine" type="text"
                                             name="addressLine">${addressLine}</textarea>
                                         </div>
                                     </div>
+                                    ${runJs}
                                 </div>
                             </div>
                             <div class="col-md-5 col-sm-5">

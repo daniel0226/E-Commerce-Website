@@ -80,4 +80,15 @@ public class authenticatorController {
 		key = sb.toString();
 		return key;
 	}
+	public String getCardEnding(String cardNumber)
+	{
+		if(decryptString(cardNumber).length() > 4)
+		{
+		    String end = decryptString(cardNumber);
+		    return end.substring(end.length()-4, end.length());
+		}else
+		{
+    		return "";
+		}
+	}
 }

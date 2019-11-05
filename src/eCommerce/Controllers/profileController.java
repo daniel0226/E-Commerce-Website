@@ -24,17 +24,23 @@ import eCommerce.users.WebUser;
 public class profileController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private authenticatorController authenticator;
+	private loadObjectsToHtmlController loadHtml;
 	
 	//This class only gets called if
 	//sessionController validates that the user is logged in.
 	public profileController()
 	{
 		super();
+		loadHtml = new loadObjectsToHtmlController();
+		authenticator = new authenticatorController();
 	}
 	
 	public void init()
 	{
 		System.out.println("Updating Profile.");
+		authenticator = new authenticatorController();
+		loadHtml = new loadObjectsToHtmlController();
 		if(Database.getDatabase() == null)
 		{
 			try {
@@ -110,36 +116,12 @@ public class profileController extends HttpServlet {
         	Database.resetDatabase();
         	WebUser userSession = sessionData.getCurrentSessionUser();
         	user = Database.getUser(userSession.getEmail());
-        	address = user.getAddress();
-        	card = Database.getCard(user.getEmail());
         	
         	//Send confirmation Email
         	EmailController _email = new EmailController();
         	_email.sendEmail(user, email.updateProfile, email.confirmProfileUpdate);
         	
-        	//User
-			request.setAttribute("fName", user.getFirstName());
-			request.setAttribute("lName", user.getLastName());
-			request.setAttribute("phonenumber", user.getPhoneNumber());
-			request.setAttribute("bDay", user.getBirthday());
-			request.setAttribute("checkbox", generateHTMLController.promoCheckBox(user.isReceivingPromoUpdates()));
-			
-			//Payment
-			authenticatorController authenticator = new authenticatorController();
-			request.setAttribute("cardname", card.getCardName());
-			request.setAttribute("CVV", authenticator.decryptString(card.getCVV()));
-			request.setAttribute("cardNumber", authenticator.decryptString(card.getCardNumber()));
-			request.setAttribute("month", card.getCardMonth());
-			request.setAttribute("year", card.getCardYear());
-			request.setAttribute("cardZipCode", card.getZipCode());
-			
-			//Address
-			request.setAttribute("addressLine", address.getAddressLine());
-			request.setAttribute("city", address.getCity());
-			request.setAttribute("state", address.getState());
-			request.setAttribute("country", address.getCountry());
-			request.setAttribute("billingZipCode", address.getZipCode());
-        	request.getRequestDispatcher("/editProfile.jsp").forward(request, response);
+        	loadHtml.setProfilePage(request, response, user);
         	return;
         }
         

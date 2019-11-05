@@ -1,6 +1,7 @@
 package eCommerce.UserData;
 
 import eCommerce.Controllers.authenticatorController;
+import eCommerce.Controllers.dateController;
 
 public class Card
 {
@@ -9,6 +10,8 @@ public class Card
     private String  expirationDate;
     private String  cardNumber;
     private String	zipCode;
+    private authenticatorController control;
+    private dateController date;
 
     public Card(String cName, String cvv, String expDate, String cNumber, String uZipcode)
     {
@@ -18,38 +21,20 @@ public class Card
         expirationDate = expDate;
         cardNumber = cNumber;
         zipCode = uZipcode;
+        control = new authenticatorController();
+        date = new dateController();
     }
     public String getCardMonth()
     {
-    	String[] dates = {"", ""};
-    	if(expirationDate != null || expirationDate != "")
-    	{
-    		dates = expirationDate.split("-");
-    	}
-    	return dates[0];
+    	return date.getCardMonth(expirationDate);
     }
     public String getCardEnding()
     {
-
-		authenticatorController control = new authenticatorController();
-		System.out.println(control.decryptString(cardNumber) + " " + control.decryptString(cardNumber).length()
-		if(control.decryptString(cardNumber).length() > 4)
-		{
-    		String end = control.decryptString(cardNumber);
-    		return end.substring(end.length()-4, end.length());
-    	}else
-    	{
-    		return "";
-    	}
+		return control.getCardEnding(cardNumber);
     }
     public String getCardYear()
     {
-    	String[] dates = {"", ""};
-    	if(expirationDate != null || expirationDate != "")
-    	{
-    		dates = expirationDate.split("-");
-    	}
-    	return dates[1];
+    	return date.getCardYear(expirationDate);
     }
     public String getCardName()
     {
