@@ -53,15 +53,20 @@ public class EmailController extends HttpServlet
 	}
 	
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-    {	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
 		String emailToSendConfirmation = request.getParameter("email");
 		WebUser user = Database.getUser(emailToSendConfirmation);
 		String reconfirm = email.reconfirmMsg + " http://localhost:8080/cinemaBooking/registerConfirmation.jsp?email=" + user.getEmail()+"&code="+user.getCode();
 		System.out.println(reconfirm);
 		sendEmail(user, email.confirmMsg, reconfirm);
 		request.setAttribute("loginError", email.confirmationSent);
-		request.getRequestDispatcher("/login.jsp").forward(request, response);
+		try {
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 	
 	public void sendEmail(WebUser user, String subject, String emailMsg)

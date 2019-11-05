@@ -106,7 +106,11 @@ public class RegisterController extends HttpServlet {
 		if(Database.addCard(newUser.getEmail(), newPaymentCard) && Database.addWebUser(newUser))
 		{
 			EmailController sendEmail = new EmailController();
-			sendEmail.sendEmail(newUser, email.regConfirm, email.confirmMsg);
+			String emailToSendConfirmation = request.getParameter("email");
+			WebUser user = Database.getUser(emailToSendConfirmation);
+			String reconfirm = email.reconfirmMsg + " http://localhost:8080/cinemaBooking/registerConfirmation.jsp?email=" + user.getEmail()+"&code="+user.getCode();
+			System.out.println(reconfirm);
+			sendEmail.sendEmail(newUser, email.confirmMsg, reconfirm);
 			response.sendRedirect("registerThankyou.html");
 		}
 	}
