@@ -1,6 +1,7 @@
 package eCommerce.Strings;
 
 import eCommerce.Controllers.authenticatorController;
+import eCommerce.MovieData.Movie;
 import eCommerce.UserData.Card;
 import eCommerce.users.WebUser;
 
@@ -37,6 +38,15 @@ public class MySQL_Commands {
 		return "UPDATE termproject.card SET cardOwnerName = '" + card.getCardName() + "', zipCode = '"
 				+ card.getZipCode() + "', cvv = '" + cvv + "', `expDate` = '" + card.getExpirationDate()
 				+ "', `cardNumber` = '" + number + "' WHERE cardOwnerEmail = '" + user.getEmail() + "';";
+	}
+	public static String updateMovie(Movie movie, String db_Title)
+	{
+		String synopsis = movie.getMovieSynopsis().replaceAll("'", "''");
+		return "UPDATE termproject.movies SET moviePicture = '" + movie.getMoviePicture() + "', movieTrailerUrl = '"
+				+ movie.getMovieTrailer() + "', movieTitle = '" + movie.getMovieTitle() + "', `movieCategory` = '" + movie.getMovieCategory()
+				+ "', `movieDirector` = '" + movie.getMovieDirector() + "', `movieProducer` = '" + movie.getMovieProducer() + 
+				"', `movieSynopsis` = '" + synopsis + "', `movieRating` = '" + movie.getMovieRating() + 
+				"', `movieExpDate` = '" + movie.getMovieExpDate() + "', `movieReleaseDate` = '" + movie.getMovieReleaseDate() + "' WHERE movieTitle = '" + db_Title + "';";
 	}
 
 	public static String updateUser(String email) {

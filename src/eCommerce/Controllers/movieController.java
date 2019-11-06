@@ -2,7 +2,9 @@ package eCommerce.Controllers;
 
 import javax.servlet.http.HttpServlet;
 
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.*;
@@ -57,8 +59,67 @@ public class movieController extends HttpServlet {
 
 		// We received an add button request.
 		if (addButton != null) {
-			
-			Movie movie = new Movie(request.getParameter("pic"), 
+			addMovie(request, response);
+		}
+
+		// We received an update movie request.
+		if (updateButton != null) {
+			updateMovie(request, response);
+		}
+
+		// We received a delete button request
+		if (deleteButton != null) {
+			// If checkboxes is selected, checkbox will print the value set in the HTML
+			// For example: <input type="checkbox" value ="joker"> will print joker
+			removeMovies(request, response);
+		}
+	}
+	public void updateMovie(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		Movie movieToEdit = Database.getMovie(request.getParameter("update"));
+	
+		String pictureUrl = request.getParameter("pic" + movieToEdit.getMovieTitle());
+		if(pictureUrl == null || pictureUrl.equals(""))
+		{
+			pictureUrl = movieToEdit.getMoviePicture();
+		}
+		Movie newMovieValues = new Movie(	pictureUrl,
+											request.getParameter("video" + movieToEdit.getMovieTitle()),
+											request.getParameter("title" + movieToEdit.getMovieTitle()),
+											request.getParameter("category" + movieToEdit.getMovieTitle()),
+											request.getParameter("director" + movieToEdit.getMovieTitle()),
+											request.getParameter("producer" + movieToEdit.getMovieTitle()),
+											request.getParameter("synopsis" + movieToEdit.getMovieTitle()),
+											request.getParameter("Rated" + movieToEdit.getMovieTitle()),
+											request.getParameter("expirationDate" + movieToEdit.getMovieTitle()),
+											request.getParameter("releaseDate" + movieToEdit.getMovieTitle()));
+		Database.updateMovie(newMovieValues, movieToEdit);
+		Database.resetDatabase();
+		WebUser user = sessionData.getCurrentSessionUser();
+		loadHtml.setAdminPage(request, response, user);
+    	return;
+	}
+	
+	public void removeMovies(HttpServletRequest request, HttpServletResponse response)
+	{
+		String[] Checkboxes = request.getParameterValues("movieCheckbox");
+		if (Checkboxes.length == 0) {
+			return;
+		}
+
+		// Remove all movies to Archive that are checked.
+		for (int i = 0; i < Checkboxes.length; i++) {
+			String currMovie = Checkboxes[i];
+			Database.removeMovie(currMovie);
+		}
+		Database.resetDatabase();
+		WebUser user = sessionData.getCurrentSessionUser();
+		loadHtml.setAdminPage(request, response, user);
+		return;
+	}
+	public void addMovie(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		Movie movie = new Movie(request.getParameter("pic"), 
 				request.getParameter("video"),
 				request.getParameter("title"), 
 				request.getParameter("category"),
@@ -87,29 +148,5 @@ public class movieController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-		}
-
-		// We received an update movie request.
-		if (updateButton != null) {
-			return;
-		}
-
-		// We received a delete button request
-		if (deleteButton != null) {
-			// If checkboxes is selected, checkbox will print the value set in the HTML
-			// For example: <input type="checkbox" value ="joker"> will print joker
-			String[] Checkboxes = request.getParameterValues("movieCheckbox");
-			if (Checkboxes.length == 0) {
-				return;
-			}
-
-			// Remove all movies to Archive that are checked.
-			for (int i = 0; i < Checkboxes.length; i++) {
-				String currMovie = Checkboxes[i];
-				Database.removeMovie(currMovie);
-			}
-			return;
-		}
-	}	
+	}
 }

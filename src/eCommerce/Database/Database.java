@@ -147,6 +147,23 @@ public class Database {
 			System.err.println(e);
 		}
 	}
+	public static void updateMovie(Movie movie, Movie oldMovie)
+	{
+		try
+		{
+			System.out.println("Updating " + movie.getMovieTitle() + "'s movie information.");
+			String updateMovieExecution = MySQL_Commands.updateMovie(movie, oldMovie.getMovieTitle());
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(updateMovieExecution);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+			System.out.println("Successfully updated movie: " + movie.getMovieTitle());
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+		}
+	}
 	public static Card getCard(String email)
 	{
 		Card userCard = null;
@@ -372,6 +389,7 @@ public class Database {
 	public static Movie getMovie(String movieName)
 	{
 		Movie movie = null;
+		System.out.println("Getting Movie: " + movieName + " from Database.");
 		String getMovieExecution = MySQL_Commands.Get_Movie + "'" + movieName + "'";
 		try {
 			connection = mysql.getConnection();
@@ -428,7 +446,8 @@ public class Database {
 	public static void removeMovie(String movieTitle)
 	{
 		System.out.println("Deleting: " + movieTitle + " from the database.");
-		String removeMovie = MySQL_Commands.Remove_Movie + movieTitle;
+		String removeMovie = MySQL_Commands.Remove_Movie + "'" + movieTitle + "'";
+		System.out.println(removeMovie);
 		String updateArchiveCount = MySQL_Commands.Update_Archived_Movies_Count;
 		try {
 			connection = mysql.getConnection();

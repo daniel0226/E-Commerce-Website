@@ -52,47 +52,52 @@ public class generateHTMLController {
 		"                    <div class=\"movieInfo\">"+
 		"                        <label>Movie"+
 		"                            Picture</label>"+
-		"                        <input type=\"file\" name=\"pic\" accept=\"image/*\">"+
+		"                        <input type=\"file\" name=\"pic" + movie.getMovieTitle() + "\" accept=\"image/*\" value=\""+ movie.getMoviePicture() +"\">"+
 		"                    </div>"+
 		"                    <div class=\"movieInfo\">"+
 		"                        <label>Movie"+
 		"                            Trailer URL</label>"+
-		"                        <input type=\"text\" name=\"video\" placeholder=\"" + movie.getMovieTrailer() +"\">"+
+		"                        <input type=\"text\" name=\"video" + movie.getMovieTitle() +"\" value=\"" + movie.getMovieTrailer() +"\">"+
 		"                    </div>"+
 		"                    <div class=\"movieInfo\">"+
-		"                        <input type=\"text\" name=\"title\" placeholder=\""+ movie.getMovieTitle() +"\" class=\"textFieldDes2\">"+
+		"                        <label>Title</label>" +  
+		"                        <input type=\"text\" name=\"title" + movie.getMovieTitle() + "\" value=\""+ movie.getMovieTitle() +"\" class=\"textFieldDes2\">"+
 		"                    </div>"+
 		"                    <div class=\"movieInfo\">"+
-		"                        <input type=\"text\" name=\"category\" placeholder=\"" + movie.getMovieCategory() + "\" class=\"textFieldDes2\">"+
+		"                        <label>Category</label>" +
+		"                        <input type=\"text\" name=\"category" + movie.getMovieTitle() + "\" value=\"" + movie.getMovieCategory() + "\" class=\"textFieldDes2\">"+
 		"                    </div>"+
 		"                    <div class=\"movieInfo\">"+
-		"                        <input type=\"text\" name=\"director\" placeholder=\"" + movie.getMovieDirector() + "\" class=\"textFieldDes2\">"+
+		"                        <label>Director</label>" + 
+		"                        <input type=\"text\" name=\"director" + movie.getMovieTitle() + "\" value=\"" + movie.getMovieDirector() + "\" class=\"textFieldDes2\">"+
 		"                    </div>"+
 		"                    <div class=\"movieInfo\">"+
-		"                        <input type=\"text\" name=\"producer\" placeholder=\"" + movie.getMovieProducer() +"\" class=\"textFieldDes2\">"+
+		"                        <label>Producer</label>" + 
+		"                        <input type=\"text\" name=\"producer" + movie.getMovieTitle() + "\" value=\"" + movie.getMovieProducer() +"\" class=\"textFieldDes2\">"+
 		"                    </div>"+
 		"                </div>" + 
 		"				 <div class=\"col-md-6\">"+
 		"                    <div class=\"movieInfo\">"+
-		"                        <label>Synopsis</label>"+
-		"                        <textarea name=\"synopsis\" placeholder=\"" + movie.getMovieSynopsis() + "\" class=\"textFieldDes2\""+
-		"                            style=\"border: 1.5px solid rgb(45,69,121);\"></textarea>" +
+		"                        <label for=\"syn\">Synopsis</label>"+
+		"                        <textarea name=\"synopsis" + movie.getMovieTitle() + "\" id=\"syn\" class=\"textFieldDes2\""+
+		"                            style=\"border: 1.5px solid rgb(45,69,121);\">" + movie.getMovieSynopsis() + "</textarea>" +
 		"					 </div>" +
 		"                    <div class=\"movieInfo\">"+
-		"                        <input type=\"text\" name=\"Rated\" placeholder=\"" + movie.getMovieRating() + "\" class=\"textFieldDes2\">"+
+		"                        <label>Rated</label>" +
+		"                        <input type=\"text\" name=\"Rated" + movie.getMovieTitle() + "\" value=\"" + movie.getMovieRating() + "\" class=\"textFieldDes2\">"+
 		"                    </div>"+
 		"                    <div class=\"movieInfo\">"+
 		"                        <label>Expiration"+
 		"                            Date:</label>"+
-		"                        <input type=\"date\" name=\"expirationDate\">"+
+		"                        <input type=\"date\" name=\"expirationDate" + movie.getMovieTitle() + "\" value=\"" + movie.getMovieExpDate() + "\">"+
 		"                    </div>"+
 		"                    <div class=\"movieInfo\">"+
 		"                        <label>Release"+
 		"                            Date:</label>"+
-		"                        <input type=\"date\" name=\"releaseDate\">"+
+		"                        <input type=\"date\" name=\"releaseDate" + movie.getMovieTitle() + "\" value=\"" + movie.getMovieReleaseDate() + "\">"+
 		"                    </div>"+
 		"                    <div class=\"movieInfo\" style=\"margin-top: 20px;\">"+
-		"                        <button class=\"adminBtn\" type=\"submit\" value=\"Update\" name=\"update\">Update</button>"+
+		"                        <button class=\"adminBtn\" type=\"submit\" value=\"" + movie.getMovieTitle() + "\" name=\"update" + "\">Update</button>"+
 		"                        <button class=\"adminBtn\" onclick=\"if(!closeForm('"+ movie.getMovieTitle() + "Info" + "', '"+ movie.getMovieTitle() + "Btn" +"'))return false;\""+
 		"                            type=\"button\" value=\"cancel\" name=\"cancel\">Cancel</button>"+
 		"                    </div>"+
