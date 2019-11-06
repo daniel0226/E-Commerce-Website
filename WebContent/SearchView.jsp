@@ -35,25 +35,21 @@
 
     <section class="bg-search">
         <div class="loginWrapper">
-                <form action="../php/searchMovies.php" method="GET">
+                <form action="searchMovieController" method="GET">
                     <h1 class="search-text"> Search for Movies! </h1>
                     <div class="search-box">
-                        <select id="searchMovieOption" class="dropDown">
+                        <select name="searchOption" id="searchMovieOption" class="dropDown">
                             <option value="By Title">By Title</option>
-                            <option value="By Date">By Date</option>
-                            <option value="By Time">By Time</option>
-                            <option value="In Theatres">In Theatres</option>
-                            <option value="Coming Soon">Coming Soon</option>
+                            <option value="By Category">By Category</option>
                         </select>
-                        <input type="text" class="search-bar" placeholder="Search..(Default is by title)">
+                        ${msg}
+                        <input type="text" name="search" class="search-bar" placeholder="Search..(Default is by title)">
                         <button class="search-btn" type="submit"> Search </button>
                     </div>
                 </form>
         </div>
-        
     </section>
-    <footer>
-        </footer>
+    <footer></footer>
 </body>
 
 </html>

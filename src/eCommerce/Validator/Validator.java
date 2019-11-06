@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import eCommerce.Database.Database;
 import eCommerce.MovieData.Movie;
+import eCommerce.UserData.sessionData;
 import eCommerce.users.WebUser;
 import eCommerce.Controllers.authenticatorController;
 
@@ -81,5 +82,9 @@ public class Validator
     public static boolean validateMovieComingSoon(Movie movie)
     {
     	return dateController.movieIsComingSoon(movie);
+    }
+    public static boolean validateUserIsLoggedIn()
+    {
+    	return sessionData.getCurrentSessionUser() != null;
     }
 }

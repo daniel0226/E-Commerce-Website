@@ -41,11 +41,18 @@ public class bookingController extends HttpServlet{
 		super();
 	}
 	
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		String movieToBook = request.getParameter("book");
 		String requestType = request.getParameter("type");
 		//Returns movie title
+		
+		if(!Validator.validateUserIsLoggedIn())
+		{
+			request.setAttribute("loginError", ERROR_DATA.LOGIN_FIRST_ERROR);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            return;
+		}
 		
 		if(requestType != null && !requestType.equals(""))
 		{
