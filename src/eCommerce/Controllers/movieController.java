@@ -141,8 +141,6 @@ public class movieController extends HttpServlet {
 				Database.resetDatabase();
 				WebUser user = sessionData.getCurrentSessionUser();
 				loadHtml.setAdminPage(request, response, user);
-				
-	        	request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
 	        	return;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

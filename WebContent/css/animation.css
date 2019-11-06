@@ -12,6 +12,11 @@
     left: 0 !important;
     animation: 20s slider infinite;
 }
+.back h2
+{
+	font-size: 1.25rem;
+}
+
 @keyframes slider
 {
     0%
@@ -125,7 +130,7 @@
     background: none;
     position: relative;
 }
-.carouselInTheatre
+.carouselInTheatre, .carouselComingSoon
 {
     width: 100%;
 }
@@ -142,8 +147,8 @@
 {
     padding: 6px 3px;
     position: absolute;
-    width: 100%;
     height: 100%;
+    width: 100%;
     backface-visibility: hidden;
     background: none;
 }
@@ -166,7 +171,7 @@
     transform-style: preserve-3d;
     box-shadow: 0 0 8px rgba(115, 159, 255, 1);
 }
-#intheatrepage
+#intheatrepage, #comingSoonPage
 {
     background-repeat: no-repeat !important;
     background-size: contain !important;

@@ -10,6 +10,10 @@ public class dateController {
 	//If dates are equal, returns 0
 	//if date is greater, returns positive number
 	//If date is less than, retruns negative number
+	public dateController()
+	{
+		
+	}
 	public static LocalDate convertToLocalDate(String date_str)
 	{
 		LocalDate date = LocalDate.parse(date_str, DateTimeFormatter.ofPattern("yyyy-MM-dd"));

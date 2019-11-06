@@ -9,6 +9,16 @@ nav
     background: rgba(0,0,0,0.5);
     color: white;
 }
+.bookA
+{
+	margin-top: 10px;
+	padding: 10px;
+    color: white;
+    box-shadow: 0 0 7.5px rgba(115, 159, 255, 1);
+    border-color: rgba(115,159,225);
+    border-style: solid;
+    border-width: 1px;
+}
 .errorMessage
 {
 	color: red;
@@ -130,6 +140,16 @@ footer .row
         height: 35px !important;
     }
  
+ }
+ .bookingBtn
+ {
+    padding: 10px;
+    color: white;
+    box-shadow: 0 0 7.5px rgba(115, 159, 255, 1);
+    border-color: rgba(115,159,225);
+    border-style: solid;
+    border-width: 1px;
+    background: rgba(0,0,0,0.5);
  }
  .cardTypeWrapper img
     {

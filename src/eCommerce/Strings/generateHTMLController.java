@@ -3,6 +3,30 @@ package eCommerce.Strings;
 import eCommerce.MovieData.Movie;
 public class generateHTMLController {
 
+	public static String generateComingSoon(Movie movie)
+	{
+		String addMovieHtml = "<div class=\"row newRow movies\" id=\"" + movie.getMovieTitle()+"\">" +
+				"                        <div class=\"col-md-3\">"+
+				"                            <ul>"+
+				"                                <li><img src=\"images/MoviePhoto/" + movie.getMoviePicture() + "\" alt=\"joker\"></li>"+
+				"                                <li>"+
+				"                                    <h3>" + movie.getMovieTitle() + "</h3>" +
+				"                                </li>"+
+				"                                <li><span>Rated: " + movie.getMovieRating() + "</span></li>"+
+				"                                <li><span>Releases: " + movie.getMovieReleaseDate() + "</span></li>"+
+				"                            </ul>"+
+				"                        </div>"+
+				"                        <div class=\"col-md-9\">"+
+				"                            <iframe width=\"100%\" height=\"100%\" src=\"" + movie.getMovieTrailer() + "\"" +
+				"                                frameborder=\"0\" allow=\"accelerometer; encrypted-media; gyroscope; picture-in-picture\""+
+				"                                allowfullscreen></iframe>"+
+				"                            <h3>Director: " + movie.getMovieDirector() + "</h3>"+
+				"                            <h4>Category: " + movie.getMovieCategory() + "</h4>"+
+				"                            <span>" + movie.getMovieSynopsis() + "</span>"+
+				"                        </div>"+
+				"                    </div>";
+				return addMovieHtml;
+	}
 	public static String generateInTheatres(Movie movie)
 	{
 		String addMovieHtml = "<div class=\"row newRow movies\" id=\"" + movie.getMovieTitle()+"\">" +
@@ -14,12 +38,11 @@ public class generateHTMLController {
 		"                                </li>"+
 		"                                <li><span>Rated: " + movie.getMovieRating() + "</span></li>"+
 		"                                <li><span>Released: " + movie.getMovieReleaseDate() + "</span></li>"+
-		"                                <li><button class=\"getTickets\" type=\"submit\" name=\"" + movie.getMovieTitle() + "Btn" + "\" value=\"\">Get"+
-		"                                        Tickets</button></li>"+
+		"                                <li style=\"margin-top: 15px;\"><a class=\"bookA\" name=\"booking\" href=\"bookingController?type=" +  movie.getMovieTitle() + "\">Book Now!</a></li>"+
 		"                            </ul>"+
 		"                        </div>"+
 		"                        <div class=\"col-md-9\">"+
-		"                            <iframe width=\"560\" height=\"315\" src=\"" + movie.getMovieTrailer() + "\"" +
+		"                            <iframe width=\"100%\" height=\"100%\" src=\"" + movie.getMovieTrailer() + "\"" +
 		"                                frameborder=\"0\" allow=\"accelerometer; encrypted-media; gyroscope; picture-in-picture\""+
 		"                                allowfullscreen></iframe>"+
 		"                            <h3>Director: " + movie.getMovieDirector() + "</h3>"+
@@ -174,6 +197,27 @@ public class generateHTMLController {
 					"</div>";
 		}
 	}
+	public static String indexComingSoon(Movie movie)
+	{
+		String myvar = "<div class=\"post\">"+
+				"                <div class=\"postPic " + movie.getMovieTitle() + "\" >" +
+				"                <div class=\"perspective\" onmouseover=\"mouseOver('"+ movie.getMoviePicture() + "', '" + movie.getMovieTitle() + "')\""+
+				"                    onmouseout=\"mouseOut('" + movie.getMovieTitle() + "')\">"+
+				"                    <div class=\"card\">"+
+				"                        <div class=\"front\">"+
+				"                            <img src=\"images/MoviePhoto/"+ movie.getMoviePicture()+ "\" alt=\""+ movie.getMovieTitle()+ "\">"+
+				"                        </div>"+
+				"                        <div class=\"back\">"+
+				"                            <h2>" + movie.getMovieTitle() +"</h2>"+
+				"                            <p>"+ movie.getMovieRating() +"</p>"+
+				"                            <p>"+ movie.getMovieCategory()+"</p>"+
+				"                        </div>"+
+				"                    </div>"+
+				"                </div>"+
+			    "              </div>" + 
+				"            </div>";
+				return myvar;
+	}
 	public static String indexInTheatres(Movie movie)
 	{
 
@@ -190,6 +234,9 @@ public class generateHTMLController {
 		"                            <p>"+ movie.getMovieRating() +"</p>"+
 		"                            <p>"+ movie.getMovieReleaseDate() +"</p>"+
 		"                            <p>"+ movie.getMovieCategory()+"</p>"+
+		"                            <form method=\"GET\" action=\"bookingController\">" +
+		"                            <button class=\"bookingBtn\" type=\"submit\" name=\"book\" value=\"" + movie.getMovieTitle() + "\">Book Now!</button>" +
+		"                            </form>" +
 		"                        </div>"+
 		"                    </div>"+
 		"                </div>"+

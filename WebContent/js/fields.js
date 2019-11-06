@@ -16,17 +16,6 @@ $(window).scroll(() => {
     }
 });
 
-function setUpCarousel()
-{
-    $('.carouselInTheatre').slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        nextArrow: $('.next'),
-        prevArrow: $('.prev'),
-      });
-}
 function setUpCarouselCenter()
 {
 	console.log("Creating carousel");
@@ -34,6 +23,39 @@ function setUpCarouselCenter()
         centerMode: true,
         centerPadding: '60px',
         slidesToShow: 4,
+        nextArrow: $('.Innext'),
+        prevArrow: $('.Inprev'),
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: '40px',
+              slidesToShow: 3
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: '40px',
+              slidesToShow: 1
+            }
+          }
+        ]
+      });
+    setUpIDs();
+}
+function setUpCarouselCenter2()
+{
+	console.log("Creating carousel");
+    $('.carouselComingSoon').slick({
+        centerMode: true,
+        centerPadding: '60px',
+        slidesToShow: 4,
+        infinite: true,
         nextArrow: $('.next'),
         prevArrow: $('.prev'),
         responsive: [
@@ -341,6 +363,8 @@ function searchMovies() {
     var input = document.getElementById("searchMovies");
     var filter = input.value.toUpperCase();
     var movies = document.getElementsByClassName("movies");
+    
+    var count = 0;
 
     for (var i = 0; i < movies.length; i++) {
         var movieId = movies[i].id.toUpperCase();

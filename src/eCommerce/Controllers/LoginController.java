@@ -105,7 +105,7 @@ public class LoginController extends HttpServlet
         }
         else if(user.getSessionType().equals("web"))
         {
-        	loadHtml.setProfilePage(request, response, user);
+        	request.getRequestDispatcher("/index.jsp").forward(request,response);
         }
         return;
     }

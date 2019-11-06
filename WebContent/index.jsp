@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page
-	import="java.sql.SQLException, eCommerce.Database.Database, java.util.List, eCommerce.MovieData.Movie, eCommerce.Strings.generateHTMLController"%>
+	import="java.sql.SQLException, eCommerce.Database.Database, java.util.List, eCommerce.Controllers.dateController, eCommerce.MovieData.Movie, eCommerce.Strings.generateHTMLController"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +47,7 @@
 	<header id="navH"></header>
 <% 
 				String html = "";
+				String html2 = "";
 				if(Database.getDatabase() == null)
 				{
 					try {
@@ -57,13 +58,19 @@
 					}
 				}
 				try {
-					List<Movie> inTheatres = Database.getMoviesFromDatabase(true,false);
-					if(inTheatres.size() != 0)
+					List<Movie> movies = Database.getAllMovies();
+					if(movies.size() != 0)
 					{
-						for(int i = 0; i<inTheatres.size(); i++)
+						for(int i = 0; i<movies.size(); i++)
 						{
-							Movie curMovie = inTheatres.get(i);
-							html += generateHTMLController.indexInTheatres(curMovie);
+							Movie curMovie = movies.get(i);
+							if(dateController.movieIsInTheatres(curMovie))
+							{
+								html += generateHTMLController.indexInTheatres(curMovie);
+							}else if(dateController.movieIsComingSoon(curMovie))
+							{
+								html2 += generateHTMLController.indexComingSoon(curMovie);
+							}
 						}
 					}
 				} catch (SQLException e) {
@@ -71,6 +78,7 @@
 					e.printStackTrace();
 				}
 				pageContext.setAttribute("movies", html);
+				pageContext.setAttribute("movies2", html2);
 			%>
 	<section class="homePage parallax">
 		<div class="container JokerBody">
@@ -94,16 +102,27 @@
 	</section>
 	<div class="inTheatresHeader">
 		<h2>In Theatres Now</h2>
-		<button class="next">Next</button>
-		<button class="prev">Prev</button>
+		<button class="Innext">Next</button>
+		<button class="Inprev">Prev</button>
 	</div>
 	<section id="intheatrepage" class="indexInTheatresPage">
 		<div class="carouselInTheatre">
 			${movies}
 		</div>
-		<script type="text/javascript">setUpCarouselCenter();</script>
+	</section>
+	<div class="inTheatresHeader">
+		<h2>Coming Soon</h2>
+		<button class="next">Next</button>
+		<button class="prev">Prev</button>
+	</div>
+	<section id="comingSoonPage" class="indexInTheatresPage">
+		<div class="carouselComingSoon">
+			${movies2}
+		</div>
 	</section>
 	<footer> </footer>
 </body>
 
+<script type="text/javascript">setUpCarouselCenter();</script>
+<script type="text/javascript">setUpCarouselCenter2();</script>
 </html>

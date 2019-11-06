@@ -78,7 +78,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 						for (int i = 0; i < moviesInTheatresList.size(); i++) 
 						{
 							Movie currentMovie = moviesInTheatresList.get(i);
-							String movieHTML = generateHTMLController.generateInTheatres(currentMovie);
+							String movieHTML = generateHTMLController.generateComingSoon(currentMovie);
 							htmlcode += movieHTML;
 						}
 					}
