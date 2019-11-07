@@ -15,6 +15,8 @@ import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import eCommerce.Database.*;
 
 @WebServlet("/loadObjectsToHtmlController")
@@ -22,6 +24,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private authenticatorController authenticator;
+	private sessionController sc;
 
 	public void init() {
 		authenticator = new authenticatorController();
@@ -61,7 +64,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 						}
 					}
 					request.setAttribute("moviesInTheatresList", htmlcode);
-					request.getRequestDispatcher("/inTheatres.jsp").forward(request, response);
+					sc.navigatePage(request, response, "/inTheatres.jsp");
 					return;
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -83,7 +86,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 						}
 					}
 					request.setAttribute("moviesInTheatresList", htmlcode);
-					request.getRequestDispatcher("/comingSoon.jsp").forward(request, response);
+					sc.navigatePage(request, response, "/comingSoon.jsp");
 					return;
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -91,7 +94,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 				}
 			case "searchMovies":
 				// Need to implement
-				request.getRequestDispatcher("/SearchView.jsp").forward(request, response);
+				sc.navigatePage(request, response, "/SearchView.jsp");
 				return;
 			default:
 				System.out.println("Tell me how you got to here you hacker :(.");
@@ -101,6 +104,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 	
 	public void setAdminPage(HttpServletRequest request, HttpServletResponse response, WebUser user)
 	{
+		
 		try {
     		request.setAttribute("adminName", user.getFullName());
     		request.setAttribute("location", user.getAddress().getCity() + ", " + user.getAddress().getState());
@@ -126,6 +130,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 	{
 		Address address = user.getAddress();
     	Card card = Database.getCard(user.getEmail());
+		sc = new sessionController();
     	
     	request.setAttribute("name", user.getFullName());
     	
@@ -156,18 +161,14 @@ public class loadObjectsToHtmlController extends HttpServlet {
 			bookedMoviesHTML += generateHTMLController.profileMovieBooking(bookedMovies.get(i));
 		}
 		request.setAttribute("bookedMovies",bookedMoviesHTML);
-    	try {
-			request.getRequestDispatcher("/profilePage.jsp").forward(request, response);
-		} catch (ServletException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	sc.navigatePage(request, response, "/profilePage.jsp");
 	}
 	public void setEditPage(HttpServletRequest request, HttpServletResponse response, WebUser user) throws ServletException, IOException
 	{
 		Address address = user.getAddress();
     	Card card = Database.getCard(user.getEmail());
     	request.setAttribute("name", user.getFullName());
+		sc = new sessionController();
     	
     	//User
 		request.setAttribute("fName", user.getFirstName());
@@ -191,7 +192,18 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		request.setAttribute("state", address.getState());
 		request.setAttribute("country", address.getCountry());
 		request.setAttribute("billingZipCode", address.getZipCode());
-    	request.getRequestDispatcher("/editProfile.jsp").forward(request, response);
+		sc.navigatePage(request, response, "/editProfile.jsp");
     	return;
+	}
+	public void createNav(HttpSession session, HttpServletRequest request, HttpServletResponse response)
+	{
+		if(session != null)
+		{
+			request.setAttribute("nav", generateHTMLController.nav_LI());
+		}else
+		{
+			request.setAttribute("nav", generateHTMLController.nav_LO());
+		}
+		return;
 	}
 }

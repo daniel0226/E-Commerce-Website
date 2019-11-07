@@ -22,8 +22,10 @@ import eCommerce.users.WebUser;
 public class bookingController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
+	private sessionController sessionC;
 
 	public void init() {
+		sessionC = new sessionController();
 		System.out.println("Booking Controller has been instantiated.");
 		if(Database.getDatabase() == null)
 		{
@@ -50,7 +52,7 @@ public class bookingController extends HttpServlet{
 		if(!Validator.validateUserIsLoggedIn())
 		{
 			request.setAttribute("loginError", ERROR_DATA.LOGIN_FIRST_ERROR);
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+			sessionC.navigatePage(request, response, "/login.jsp");
             return;
 		}
 		

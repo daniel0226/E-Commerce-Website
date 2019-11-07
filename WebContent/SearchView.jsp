@@ -31,24 +31,21 @@
 </head>
 
 <body>
-    <header id="navH"></header>
+    <header>${nav}</header>
+	
+	<main>
+		<section>
+		</section>  <!-- Header  -->
+		<section>
+		</section>  <!-- Search -->
+					<!-- Form  -->
+					<!-- searchMovieController -->
+		<section>
+		</section>  <!-- Movie Results -->
+					<!-- Form -->
+					<!-- searchMovieController -> inTheatres/comingSoon page, move page by ID -->
+	</main>
 
-    <section class="bg-search">
-        <div class="loginWrapper">
-                <form action="searchMovieController" method="GET">
-                    <h1 class="search-text"> Search for Movies! </h1>
-                    <div class="search-box">
-                        <select name="searchOption" id="searchMovieOption" class="dropDown">
-                            <option value="By Title">By Title</option>
-                            <option value="By Category">By Category</option>
-                        </select>
-                        ${msg}
-                        <input type="text" name="search" class="search-bar" placeholder="Search..(Default is by title)">
-                        <button class="search-btn" type="submit"> Search </button>
-                    </div>
-                </form>
-        </div>
-    </section>
     <footer></footer>
 </body>
 

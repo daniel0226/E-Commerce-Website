@@ -25,8 +25,7 @@
 </head>
 
 <body>
-    <header id="navH"></header>
-
+<header>${nav}</header>
     <section class="registerPage">
         <div class="signUpWrapper" style="padding: 100px 0px 100px 0px;">
             <div class="container-fluid">
@@ -484,7 +483,7 @@
                                     <div class="col-md-6">
                                         <div class="submitField">
                                             <input id="infS" name="infS" type="submit" value="Register">
-                                            <a href="login.jsp">Already have an account?</a>
+                                            <a href="sessionController?type=login">Already have an account?</a>
 
                                         </div>
                                     </div>

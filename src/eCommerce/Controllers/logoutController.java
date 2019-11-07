@@ -35,7 +35,7 @@ public class logoutController extends HttpServlet {
 		String printLogout = generateHTMLController.logoutSuccessful();
 		sessionData.resetData();
 		request.setAttribute("loginError", printLogout);
-		response.sendRedirect("./login.jsp");
+		sessionControl.navigatePage(request, response, "/login.jsp");
 		return;
     }
 

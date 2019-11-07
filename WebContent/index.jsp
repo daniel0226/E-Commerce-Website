@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page
-	import="java.sql.SQLException, eCommerce.Database.Database, java.util.List, eCommerce.Controllers.dateController, eCommerce.MovieData.Movie, eCommerce.Strings.generateHTMLController"%>
+	import="java.sql.SQLException, eCommerce.UserData.sessionData, eCommerce.Database.Database, java.util.List, eCommerce.Controllers.dateController, eCommerce.MovieData.Movie, eCommerce.Strings.generateHTMLController"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,8 +44,15 @@
 </head>
 
 <body>
-	<header id="navH"></header>
 <% 
+				session = sessionData.getCurrentSession();
+				if(session != null)
+				{
+					pageContext.setAttribute("nav", generateHTMLController.nav_LI());
+				}else
+				{
+					pageContext.setAttribute("nav", generateHTMLController.nav_LO());
+				}
 				String html = "";
 				String html2 = "";
 				if(Database.getDatabase() == null)
@@ -80,6 +87,8 @@
 				pageContext.setAttribute("movies", html);
 				pageContext.setAttribute("movies2", html2);
 			%>
+			
+	<header>${nav}</header>
 	<section class="homePage parallax">
 		<div class="container JokerBody">
 			<div class="row ">
@@ -104,6 +113,7 @@
 		<h2>In Theatres Now</h2>
 		<button class="Innext">Next</button>
 		<button class="Inprev">Prev</button>
+		<hr style="margin-top: 10px !important;">
 	</div>
 	<section id="intheatrepage" class="indexInTheatresPage">
 		<div class="carouselInTheatre">
@@ -114,6 +124,7 @@
 		<h2>Coming Soon</h2>
 		<button class="next">Next</button>
 		<button class="prev">Prev</button>
+		<hr style="margin-top: 10px !important;">
 	</div>
 	<section id="comingSoonPage" class="indexInTheatresPage">
 		<div class="carouselComingSoon">

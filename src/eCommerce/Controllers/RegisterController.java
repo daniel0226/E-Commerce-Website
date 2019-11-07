@@ -23,8 +23,10 @@ public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 2L;
 	private Card newPaymentCard;
 	private authenticatorController authenticator;
+	private sessionController sc;
 
 	public void init() {
+		sc = new sessionController();
 		System.out.println("RegisterController.java: Registration called.");
 		if (Database.getDatabase() == null) {
 			try {
@@ -81,20 +83,20 @@ public class RegisterController extends HttpServlet {
 		// Ignore month and year since they are preset in HTML.
 		if (!Validator.validateAllPaymentFieldsAreSet(cardHolderName, cardNumber, CVV, zipcode)) {
 			request.setAttribute("paymentErrorOutput", ERROR_DATA.PAYMENT_METHOD_FILLED_ERROR);
-			request.getRequestDispatcher("/register.jsp").forward(request, response);
+			sc.navigatePage(request, response, "/register.jsp");
 			return;
 		}
 		if(!Validator.validateAllPaymentFieldsAreSet(addressLine, city, state, addressZipCode))
 		{
 			request.setAttribute("paymentErrorOutput", ERROR_DATA.ADDRESS_FILLED_ERROR);
-			request.getRequestDispatcher("/register.jsp").forward(request, response);
+			sc.navigatePage(request, response, "/register.jsp");
 			return;
 		}
 
 		
 		if (!Validator.validateRegistrationEmailIsUnique(emailAddress)) {
 			request.setAttribute("errorOutput", ERROR_DATA.NOT_UNIQUE_EMAIL);
-			request.getRequestDispatcher("/register.jsp").forward(request, response);
+			sc.navigatePage(request, response, "/register.jsp");
 			return;
 		}
 	

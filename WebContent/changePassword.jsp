@@ -30,7 +30,7 @@
 </head>
 
 <body>
-    <header id="navH"></header>
+    <header>${nav}</header>
     <section class="forgetPasswordBody">
         <div class="bodyWrapper">
             <div class="container">

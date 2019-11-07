@@ -31,8 +31,7 @@
 </head>
 
 <body>
-    <header id="navH"></header>
-
+    <header>${nav}</header>
     <section class="bg-beyonce">
         <div class="loginWrapper">
             <div class="container">
@@ -63,7 +62,7 @@
                                                 <label for="rmCheckBox">Remember me</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <a href="forgetPassword.jsp">Forgot Password?</a>
+                                                <a href="sessionController?page=forgetPassword.jsp">Forgot Password?</a>
                                             </div>
                                         </div>
                                     </div>

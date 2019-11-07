@@ -26,6 +26,7 @@ public class profileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private authenticatorController authenticator;
 	private loadObjectsToHtmlController loadHtml;
+	private sessionController sc;
 	
 	//This class only gets called if
 	//sessionController validates that the user is logged in.
@@ -34,6 +35,7 @@ public class profileController extends HttpServlet {
 		super();
 		loadHtml = new loadObjectsToHtmlController();
 		authenticator = new authenticatorController();
+		sc = new sessionController();
 	}
 	
 	public void init()
@@ -41,6 +43,7 @@ public class profileController extends HttpServlet {
 		System.out.println("Updating Profile.");
 		authenticator = new authenticatorController();
 		loadHtml = new loadObjectsToHtmlController();
+		sc = new sessionController();
 		if(Database.getDatabase() == null)
 		{
 			try {
@@ -92,13 +95,13 @@ public class profileController extends HttpServlet {
         	if(!Validator.validateAllPaymentFieldsAreSet(cardHolderName, cardNumber, cardcvv, cardZip))
         	{
         		request.setAttribute("errorMsg",ERROR_DATA.PAYMENT_METHOD_FILLED_ERROR);
-        		request.getRequestDispatcher("./editProfile.jsp").forward(request, response);
+        		sc.navigatePage(request, response, "/editProfile.jsp");
         		return;
         	}
         	if(!Validator.validateAllPaymentFieldsAreSet(addressLine, city, state, addressZip))
         	{
         		request.setAttribute("errorMsg",ERROR_DATA.ADDRESS_FILLED_ERROR);
-        		request.getRequestDispatcher("./editProfile.jsp").forward(request, response);
+        		sc.navigatePage(request, response, "/editProfile.jsp");
         		return;
         	}
         	
@@ -127,7 +130,7 @@ public class profileController extends HttpServlet {
         
         if(changePassword != null && changePassword.contentEquals("Password"))
         {
-        	request.getRequestDispatcher("./passwordPrompt.jsp").forward(request, response);
+        	sc.navigatePage(request, response, "/passwordPrompt.jsp");
         	return;
         }
         

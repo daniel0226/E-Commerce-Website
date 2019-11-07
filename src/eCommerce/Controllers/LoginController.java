@@ -72,21 +72,21 @@ public class LoginController extends HttpServlet
         if(!Validator.validateLoginCredentials(emailLogin,passwordLogin))
         {
             request.setAttribute("loginError", ERROR_DATA.INVALID_LOGIN_ERROR);
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            sessionControl.navigatePage(request, response, "/login.jsp");
             return;
         }
         
         if(!Validator.userHasConfirmedLogin(emailLogin))
         {
         	request.setAttribute("loginError", ERROR_DATA.USER_HAS_NOT_VERIFIED_EMAIL);
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+        	sessionControl.navigatePage(request, response, "/login.jsp");
             return;
         }
         
         if(Validator.userIsSuspended(emailLogin))
         {
         	request.setAttribute("loginError", ERROR_DATA.BANNED);
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+        	sessionControl.navigatePage(request, response, "/login.jsp");
             return;
         }
         
@@ -105,7 +105,7 @@ public class LoginController extends HttpServlet
         }
         else if(user.getSessionType().equals("web"))
         {
-        	request.getRequestDispatcher("/index.jsp").forward(request,response);
+        	sessionControl.navigatePage(request, response, "/index.jsp");
         }
         return;
     }

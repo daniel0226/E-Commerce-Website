@@ -17,9 +17,11 @@ import eCommerce.MovieData.Movie;
 public class searchMovieController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
+	private sessionController sc;
 	
 	public void init()
 	{
+		sc = new sessionController();
 		System.out.println("searchMovieController.java has been instantiated.");
 		if(Database.getDatabase() == null)
 		{
@@ -58,8 +60,7 @@ public class searchMovieController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		
-		request.getRequestDispatcher("/SearchView.jsp").forward(request, response);
+		sc.navigatePage(request, response, "/SearchView.jsp");
 		return;
 	}
 

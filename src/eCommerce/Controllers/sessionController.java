@@ -43,14 +43,22 @@ public class sessionController extends HttpServlet {
 		
 		response.setContentType("html;charset=UTF-8");
 		String requestType = request.getParameter("type");
+		String requestPage = request.getParameter("page");
+		if(requestPage != null)
+		{
+			navigatePage(request, response, requestPage);
+			return;
+		}
 		session = sessionData.getCurrentSession();
+		loadHtml.createNav(session, request, response);
+		
 		switch(requestType)
 		{
 			case "edit":
 				if(session == null)
 				{
 					request.setAttribute("loginError", ERROR_DATA.LOGIN_FIRST_ERROR);
-		            request.getRequestDispatcher("/login.jsp").forward(request, response);
+					navigatePage(request, response, "/login.jsp");
 		            return;
 				}else
 				{   
@@ -61,7 +69,7 @@ public class sessionController extends HttpServlet {
 				if(session == null)
 				{
 					request.setAttribute("loginError", ERROR_DATA.LOGIN_FIRST_ERROR);
-		            request.getRequestDispatcher("/login.jsp").forward(request, response);
+					navigatePage(request, response, "/login.jsp");
 		            return;
 				}else
 				{   
@@ -71,36 +79,50 @@ public class sessionController extends HttpServlet {
 			case "login":
 				if(session != null)
 				{
-					request.getRequestDispatcher("/index.jsp").forward(request, response);
+					navigatePage(request, response, "/index.jsp");
 					return;
 				}else {
-					request.getRequestDispatcher("/login.jsp").forward(request, response);
+					navigatePage(request, response, "/login.jsp");
 					return;
 				}
 			case "logout":
 				if(session == null)
 				{
 					request.setAttribute("loginError", ERROR_DATA.LOGIN_FIRST_ERROR);
-		            request.getRequestDispatcher("/login.jsp").forward(request, response);
+					navigatePage(request, response, "/login.jsp");
 		            return;
 				}else
 				{
-					request.getRequestDispatcher("/logoutController").forward(request, response);
+					navigatePage(request, response, "/logoutController");
 					return;
 				}
 				
 			case "register":
 				if(session == null)
 				{
-					request.getRequestDispatcher("/register.jsp").forward(request, response);
+					navigatePage(request, response, "/register.jsp");
 					return;
 				}else {
-					request.getRequestDispatcher("/index.jsp").forward(request, response);
+					navigatePage(request, response, "/index.jsp");
 				}
 			default:
 				System.out.println("How did this happen???????");
 				break;
 		}	
+	}
+	public void navigatePage(HttpServletRequest request, HttpServletResponse response, String page)
+	{
+		HttpSession session = sessionData.getCurrentSession();
+		loadHtml.createNav(session, request, response);
+		try {
+			request.getRequestDispatcher(page).forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public void logoutUser(HttpSession session, HttpServletRequest request)
 	{

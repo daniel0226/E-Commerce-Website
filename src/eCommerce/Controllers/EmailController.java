@@ -30,11 +30,13 @@ public class EmailController extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	final private String username = "bookamovie1@gmail.com";
     final private String password = "Movie@gmail123";
+    private sessionController session_c;
     Properties prop = null;
 
     //If class is called by jsp
     public void init()
     {
+    	session_c = new sessionController();
     	prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "587");
@@ -61,12 +63,7 @@ public class EmailController extends HttpServlet
 		System.out.println(reconfirm);
 		sendEmail(user, email.confirmMsg, reconfirm);
 		request.setAttribute("loginError", email.confirmationSent);
-		try {
-			request.getRequestDispatcher("/login.jsp").forward(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		session_c.navigatePage(request, response, "/login.jsp");
     }
 	
 	public void sendEmail(WebUser user, String subject, String emailMsg)

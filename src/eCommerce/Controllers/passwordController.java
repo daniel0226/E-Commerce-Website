@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/passwordController")
 public class passwordController extends HttpServlet
 {
-
+	private sessionController sc;
 	private static final long serialVersionUID = 1L;
 	
 	public passwordController()
@@ -36,6 +36,7 @@ public class passwordController extends HttpServlet
 	
 	public void init()
 	{
+		sc = new sessionController();
 		if(Database.getDatabase() == null)
 		{
 			try {
@@ -56,7 +57,7 @@ public class passwordController extends HttpServlet
 		if(user == null)
 		{
 			request.setAttribute("errorMsg", ERROR_DATA.INVALID_EMAIL);
-			request.getRequestDispatcher("./forgetPassword.jsp").forward(request, response);
+			sc.navigatePage(request, response, "/forgetPassword.jsp");
 			return;
 		}else {
 			
@@ -66,7 +67,7 @@ public class passwordController extends HttpServlet
 			_email.sendEmail(user, email.forgotPassword, forgetEmailPass);
 			
 			request.setAttribute("loginError", email.forgotPasswordSent);
-			request.getRequestDispatcher("./login.jsp").forward(request, response);
+			sc.navigatePage(request, response, "/login.jsp");
 			return;
 			
 		}
@@ -88,15 +89,15 @@ public class passwordController extends HttpServlet
 		if(enterPassword != null && enterPassword.equals("Submit"))
 		{
 			String passwordInput = request.getParameter("password");
-			if(userPassword.equals(passwordInput))
+			if(!userPassword.equals(passwordInput))
 			{
-				request.getRequestDispatcher("./changePassword.jsp").forward(request, response);
-				return;
-			}else {
 				request.setAttribute("errorMsg", ERROR_DATA.INVALID_PASSWORD);
-				request.getRequestDispatcher("./passwordPrompt.jsp").forward(request, response);
-				return;
+				sc.navigatePage(request, response, "/passwordPrompt.jsp");
+			}else
+			{
+				sc.navigatePage(request, response, "/changePassword.jsp");
 			}
+			return;
 		}
 		
 		//Change password Page
@@ -107,7 +108,7 @@ public class passwordController extends HttpServlet
 			if(newPassword.equals(userPassword))
 			{
 				request.setAttribute("errorMsg", ERROR_DATA.NOT_UNIQUE_PASSWORD);
-				request.getRequestDispatcher("./changePassword.jsp").forward(request, response);
+				sc.navigatePage(request, response, "/changePassword.jsp");
 				return;
 			}else
 			{
@@ -120,7 +121,7 @@ public class passwordController extends HttpServlet
 				EmailController _email = new EmailController();
 				_email.sendEmail(user, email.updateProfile, email.updatedPasswordMsg);
 				request.setAttribute("loginError", generateHTMLController.passwordSuccessfullyUpdated());
-				request.getRequestDispatcher("./login.jsp").forward(request, response);
+				sc.navigatePage(request, response, "/login.jsp");
 				return;
 			}
 		}

@@ -39,7 +39,7 @@
 </head>
 
 <body>
-	<header id="navH"></header>
+	<header>${nav}</header>
 	<main class="inTheatresBody">
 		<form style="width: 100%; height: 100%;" action="GET"
 			method="bookingController">

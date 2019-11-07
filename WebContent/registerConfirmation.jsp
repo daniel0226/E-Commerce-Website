@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <header id="navH"></header>
+    <header>${nav}</header>
     <% 
     	String code = request.getParameter("code");
     	String email = request.getParameter("email");
