@@ -176,20 +176,20 @@ function generateFooter() {
         '                        <hr>' +
         '                        <div>' +
         '                            <p>Join over thousands of users who recieve bi-weekly promotional updates! </p>' +
-        '                            <a href="register.jsp" class="emailSignUp">Sign Up!</a>' +
+        '                            <a href="sessionController?type=promo" class="emailSignUp">Sign Up!</a>' +
         '                        </div>' +
         '                    </div>' +
         '                    <div class="col-md-6">' +
         '                        <h2>NAVIGATE</h2>' +
         '                        <div class="fll Navigate">' +
-        '                            <a href="#">In Theatres<i class="right"></i></a>' +
-        '                            <a href="#">In Theatres<i class="right"></i></a>' +
-        '                            <a href="#">In Theatres<i class="right"></i></a>' +
+        '                            <a href="sessionController?type=profile">View Profile<i class="right"></i></a>' +
+        '                            <a href="sessionController?page=/index.jsp">Home<i class="right"></i></a>' +
+        '                            <a href="#">NULL<i class="right"></i></a>' +
         '                        </div>' +
         '                        <div class="flr Navigate">' +
-        '                            <a href="#">In Theatres<i class="right"></i></a>' +
-        '                            <a href="#">In Theatres<i class="right"></i></a>' +
-        '                            <a href="#">In Theatres<i class="right"></i></a>' +
+        '                            <a href="loadObjectsToHtmlController?type=inTheatres">In Theatres<i class="right"></i></a>' +
+        '                            <a href="loadObjectsToHtmlController?type=comingSoon">Coming Soon<i class="right"></i></a>' +
+        '                            <a href="loadObjectsToHtmlController?type=searchMovies">Search Movies<i class="right"></i></a>' +
         '                        </div>' +
         '                    </div>' +
         '                </div>' +

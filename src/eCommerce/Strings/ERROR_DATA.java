@@ -36,5 +36,8 @@ public class ERROR_DATA {
 	public static final String NOT_UNIQUE_PASSWORD =
 			"<p style=\"color:red; margin: 0; padding: 0;\">" + 
 		            "Password cannot be same as previous password!</p>";
+	public static final String LOGOUT_FIRST =
+			"<p style=\"color:red; margin: 0; padding: 0;\">" + 
+		            "Please logout first!</p>";
 			
 }

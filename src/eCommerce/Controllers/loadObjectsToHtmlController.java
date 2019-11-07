@@ -46,6 +46,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, java.io.IOException {
 		response.setContentType("html;charset=UTF-8");
+		sc = new sessionController();
 		String requestType = request.getParameter("type");
 		switch (requestType) 
 		{

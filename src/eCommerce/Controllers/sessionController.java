@@ -105,6 +105,14 @@ public class sessionController extends HttpServlet {
 				}else {
 					navigatePage(request, response, "/index.jsp");
 				}
+			case "promo":
+				if(session == null)
+				{
+					navigatePage(request, response, "/register.jsp");
+				}else
+				{
+					navigatePage(request, response, "/editProfile.jsp");
+				}
 			default:
 				System.out.println("How did this happen???????");
 				break;
