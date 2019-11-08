@@ -92,7 +92,8 @@ public class movieController extends HttpServlet {
 											request.getParameter("synopsis" + movieToEdit.getMovieTitle()),
 											request.getParameter("Rated" + movieToEdit.getMovieTitle()),
 											request.getParameter("expirationDate" + movieToEdit.getMovieTitle()),
-											request.getParameter("releaseDate" + movieToEdit.getMovieTitle()));
+											request.getParameter("releaseDate" + movieToEdit.getMovieTitle()),
+											request.getParameter("cast") + movieToEdit.getMovieCast());
 		Database.updateMovie(newMovieValues, movieToEdit);
 		Database.resetDatabase();
 		WebUser user = sessionData.getCurrentSessionUser();
@@ -128,7 +129,8 @@ public class movieController extends HttpServlet {
 				request.getParameter("synopsis"), 
 				request.getParameter("Rated"),
 				request.getParameter("expirationDate"), 
-				request.getParameter("releaseDate"));
+				request.getParameter("releaseDate"),
+				request.getParameter("cast"));
 			
 			try {
 				if(Validator.movieAlreadyExists(movie))

@@ -183,6 +183,10 @@
 																				placeholder="Producer" class="textFieldDes2"
 																				required>
 																		</div>
+																		<div class="movieInfo">
+																			<input type="text" name="cast"
+																			placeholder="Cast" class="textFieldDes2" required>
+																		</div>
 																	</div>
 																	<div class="col-md-6">
 																		<div class="movieInfo">

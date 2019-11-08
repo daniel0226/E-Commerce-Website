@@ -319,6 +319,60 @@ public class Database {
 		}
 	}
 
+	public static List<Movie> getMoviesByCategory(String category) throws SQLException
+	{
+		List<Movie> moviesList = new LinkedList<Movie>();
+		String query = MySQL_Commands.getMoviesByCategory(category);
+		connection = mysql.getConnection();
+		statement = connection.createStatement();
+		ResultSet rs = statement.executeQuery(query);
+		while(rs.next())
+		{
+			Movie movie = new Movie(rs.getString(2),
+									rs.getString(3),
+									rs.getString(4),
+									rs.getString(5),
+									rs.getString(6),
+									rs.getString(7),
+									rs.getString(8),
+									rs.getString(9),
+									rs.getString(10),
+									rs.getString(11),
+									rs.getString(12));
+			moviesList.add(movie);
+		}
+		rs.close();
+		connection.close();
+		return moviesList;
+	}
+	
+	public static List<Movie> getMoviesbyTitle(String title) throws SQLException
+	{
+		List<Movie> moviesList = new LinkedList<Movie>();
+		String query = MySQL_Commands.getMoviesByTitle(title);
+		connection = mysql.getConnection();
+		statement = connection.createStatement();
+		ResultSet rs = statement.executeQuery(query);
+		while(rs.next())
+		{
+			Movie movie = new Movie(rs.getString(2),
+									rs.getString(3),
+									rs.getString(4),
+									rs.getString(5),
+									rs.getString(6),
+									rs.getString(7),
+									rs.getString(8),
+									rs.getString(9),
+									rs.getString(10),
+									rs.getString(11),
+									rs.getString(12));
+			moviesList.add(movie);
+		}
+		rs.close();
+		connection.close();
+		return moviesList;
+	}
+	
 	public static List<Movie> getAllMovies() throws SQLException
 	{
 		List<Movie> moviesList = new LinkedList<Movie>();
@@ -337,7 +391,8 @@ public class Database {
 									rs.getString(8),
 									rs.getString(9),
 									rs.getString(10),
-									rs.getString(11));
+									rs.getString(11),
+									rs.getString(12));
 			moviesList.add(movie);
 		}
 		rs.close();
@@ -361,7 +416,8 @@ public class Database {
 									rs.getString(8),
 									rs.getString(9),
 									rs.getString(10),
-									rs.getString(11));
+									rs.getString(11),
+									rs.getString(12));
 			if(inTheatres)
 			{
 				if(Validator.validateMovieInTheatres(movie))
@@ -406,7 +462,8 @@ public class Database {
 									rs.getString(8),
 									rs.getString(9),
 									rs.getString(10),
-									rs.getString(11));
+									rs.getString(11),
+									rs.getString(12));
 			}
 			rs.close();
 			connection.close();

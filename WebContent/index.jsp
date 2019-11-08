@@ -104,7 +104,7 @@
 						wandering the streets of Gotham City dressed as a clown.
 						Disregarded by society, Fleck begins a slow dissent into madness
 						as he transforms into the criminal mastermind known as the Joker.</p>
-					<a href="SearchView.html">Discover Movies</a>
+					<a href="bookingController?book=Joker">Book Now!</a>
 				</div>
 			</div>
 		</div>

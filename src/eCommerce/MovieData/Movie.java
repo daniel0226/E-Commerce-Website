@@ -11,9 +11,9 @@ public class Movie {
 	private String movieRating;
 	private String movieExpDate;
 	private String movieReleaseDate;
+	private String cast;
 	
-	
-	public Movie(String Picture, String Trailer, String Title, String Category, String Director, String Producer, String Synopsis, String rating, String expDate, String releaseDate)
+	public Movie(String Picture, String Trailer, String Title, String Category, String Director, String Producer, String Synopsis, String rating, String expDate, String releaseDate, String Cast)
 	{
 		moviePicture = Picture;
 		movieTrailer = Trailer;
@@ -25,6 +25,12 @@ public class Movie {
 		movieRating = rating;
 		movieExpDate = expDate;
 		movieReleaseDate = releaseDate;
+		cast = Cast;
+	}
+	
+	public String getMovieCast()
+	{
+		return cast;
 	}
 	
 	public String getMoviePicture()

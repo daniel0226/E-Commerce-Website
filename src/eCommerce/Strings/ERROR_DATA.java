@@ -21,6 +21,9 @@ public class ERROR_DATA {
 	public static final String MOVIE_ALREADY_EXISTS =
 			"<p style=\"color:red; margin: 0; text-align: center; padding: 0;\">" + 
             "Movie already exists in Database";
+	public static final String MOVIE_DOES_NOT_EXIST = 
+			"<p style=\"color:red; margin: 0; text-align: center; padding: 0;\">" + 
+            "We could not find that Movie!";
 	public static final String BANNED =
 			"<p style=\"color:red; margin: 0; text-align: center; padding: 0;\">" + 
 		    "You have been suspended. Please contact an administrator ";

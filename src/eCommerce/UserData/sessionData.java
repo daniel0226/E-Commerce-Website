@@ -1,8 +1,7 @@
 package eCommerce.UserData;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
+import javax.servlet.http.HttpServletRequest;
 import eCommerce.users.WebUser;
 
 public class sessionData{

@@ -8,8 +8,8 @@ import eCommerce.users.WebUser;
 public class MySQL_Commands {
 
 	// Movie related
-	public static final String Add_Movie = "INSERT INTO movies(moviePicture, movieTrailerUrl, movieTitle, movieCategory, movieDirector, movieProducer, movieSynopsis, movieRating, movieExpDate, movieReleaseDate)"
-			+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	public static final String Add_Movie = "INSERT INTO movies(moviePicture, movieTrailerUrl, movieTitle, movieCategory, movieDirector, movieProducer, movieSynopsis, movieRating, movieExpDate, movieReleaseDate, cast)"
+			+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	public static final String Get_All_Movies = "SELECT * FROM termproject.movies";
 
@@ -30,6 +30,15 @@ public class MySQL_Commands {
 			+ " VALUES (? ,? ,? ,? ,? ,? ,? , ?, ?, ?, ?)";
 	public static final String Add_Card = "INSERT INTO card (cardOwnerEmail, cardOwnerName, cvv, expDate, cardNumber, zipCode)"
 			+ " VALUES (?, ?, ?, ?, ?, ?)";
+	
+	public static String getMoviesByTitle(String title)
+	{
+		return "SELECT * FROM termproject.movies WHERE movieTitle LIKE '%" + title + "%'";
+	}
+	public static String getMoviesByCategory(String category)
+	{
+		return "SELECT * FROM termproject.movies WHERE movieCategory LIKE '%" + category + "%'";
+	}
 
 	public static String updateCard(WebUser user, Card card) {
 		authenticatorController control = new authenticatorController();
@@ -46,7 +55,7 @@ public class MySQL_Commands {
 				+ movie.getMovieTrailer() + "', movieTitle = '" + movie.getMovieTitle() + "', `movieCategory` = '" + movie.getMovieCategory()
 				+ "', `movieDirector` = '" + movie.getMovieDirector() + "', `movieProducer` = '" + movie.getMovieProducer() + 
 				"', `movieSynopsis` = '" + synopsis + "', `movieRating` = '" + movie.getMovieRating() + 
-				"', `movieExpDate` = '" + movie.getMovieExpDate() + "', `movieReleaseDate` = '" + movie.getMovieReleaseDate() + "' WHERE movieTitle = '" + db_Title + "';";
+				"', `movieExpDate` = '" + movie.getMovieExpDate() + "', `movieReleaseDate` = '" + movie.getMovieReleaseDate() + "', `cast` = '" + movie.getMovieCast() + "' WHERE movieTitle = '" + db_Title + "';";
 	}
 
 	public static String updateUser(String email) {

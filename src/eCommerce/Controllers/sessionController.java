@@ -5,15 +5,11 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
-import eCommerce.Database.Database;
 import eCommerce.Strings.ERROR_DATA;
-import eCommerce.Strings.generateHTMLController;
-import eCommerce.UserData.Address;
-import eCommerce.UserData.Card;
 import eCommerce.UserData.sessionData;
 import eCommerce.users.WebUser;
 
@@ -22,12 +18,10 @@ public class sessionController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private HttpSession session;
-	private authenticatorController authenticator;
 	private loadObjectsToHtmlController loadHtml;
 	
 	public void init()
 	{
-		authenticator = new authenticatorController();
 		loadHtml = new loadObjectsToHtmlController();
 		System.out.println("SessionController Invoked.");
 	}
@@ -35,7 +29,6 @@ public class sessionController extends HttpServlet {
 	public sessionController()
 	{
 		super();
-		authenticator = new authenticatorController();
 		loadHtml = new loadObjectsToHtmlController();
 	}
 	

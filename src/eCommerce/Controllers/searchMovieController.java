@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import eCommerce.Database.Database;
 import eCommerce.MovieData.Movie;
+import eCommerce.Strings.ERROR_DATA;
+import eCommerce.Strings.generateHTMLController;
 
 @WebServlet("/searchMovieController")
 public class searchMovieController extends HttpServlet{
@@ -40,21 +42,44 @@ public class searchMovieController extends HttpServlet{
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		String userSearch = request.getParameter("search");
+		String userSearch = request.getParameter("input");
 		String searchOption = request.getParameter("searchOption");
+		System.out.println(userSearch + " " + searchOption);
 		
-		if(searchOption.equals("By Category"))
+		if(searchOption == null || searchOption.equals(""))
+		{
+			searchOption = "title";
+		}
+		
+		if(searchOption.equals("category"))
 		{
 			try {
-				searchByCategory(request, response);
+				searchByCategory(request, response, userSearch);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else if(searchOption.equals("By Title"))
+		}else if(searchOption.equals("title"))
 		{
 			try {
-				searchByTitle(request, response);
+				searchByTitle(request, response, userSearch);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}else if(searchOption.equals("comingSoon"))
+		{
+			try {
+				searchComingSoon(request, response, userSearch);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		else if(searchOption.equals("inTheatres"))
+		{
+			try {
+				searchInTheatres(request, response, userSearch);
 			}catch(SQLException e)
 			{
 				e.printStackTrace();
@@ -64,13 +89,101 @@ public class searchMovieController extends HttpServlet{
 		return;
 	}
 
-	public void searchByCategory(HttpServletRequest request, HttpServletResponse response) throws SQLException
+	public void searchByCategory(HttpServletRequest request, HttpServletResponse response, String query) throws SQLException
 	{
-		List<Movie> moviesList = Database.getAllMovies();
+		List<Movie> moviesList = Database.getMoviesByCategory(query);
+		if(moviesList.size() == 0)
+		{
+			NO_MOVIES_FOUND(request, response);
+		}else
+		{
+			String html = "";
+			for(int i = 0; i<moviesList.size(); i++)
+			{
+				html += generateHTMLController.generateInTheatres(moviesList.get(i));
+			}
+			if(html.equals(""))
+			{
+				NO_MOVIES_FOUND(request, response);
+			}else {
+				request.setAttribute("movieResults", html);
+			}
+		}
 	}
 	
-	public void searchByTitle(HttpServletRequest request, HttpServletResponse response) throws SQLException
+	public void searchByTitle(HttpServletRequest request, HttpServletResponse response, String query) throws SQLException
 	{
-		List<Movie> moviesList = Database.getAllMovies();
+		List<Movie> moviesList = Database.getMoviesbyTitle(query);
+		if(moviesList.size() == 0)
+		{
+			NO_MOVIES_FOUND(request, response);
+		}else
+		{
+			String html = "";
+			for(int i = 0; i<moviesList.size(); i++)
+			{
+				html += generateHTMLController.generateInTheatres(moviesList.get(i));
+			}
+			if(html.equals(""))
+			{
+				NO_MOVIES_FOUND(request, response);
+			}else {
+				request.setAttribute("movieResults", html);
+			}
+		}
+	}
+	public void searchComingSoon(HttpServletRequest request, HttpServletResponse response, String query) throws SQLException
+	{
+		List<Movie> moviesList = Database.getMoviesbyTitle(query);
+		if(moviesList.size() == 0)
+		{
+			NO_MOVIES_FOUND(request, response);
+		}else
+		{
+			String html = "";
+			for(int i = 0; i<moviesList.size(); i++)
+			{
+				if(dateController.movieIsComingSoon(moviesList.get(i)))
+				{
+					html += generateHTMLController.generateInTheatres(moviesList.get(i));
+				}
+			}
+			if(html.equals(""))
+			{
+				NO_MOVIES_FOUND(request, response);
+			}else {
+				request.setAttribute("movieResults", html);
+			}
+		}
+	}
+	public void searchInTheatres(HttpServletRequest request, HttpServletResponse response, String query) throws SQLException
+	{
+		List<Movie> moviesList = Database.getMoviesbyTitle(query);
+		if(moviesList.size() == 0)
+		{
+			NO_MOVIES_FOUND(request, response);
+		}else
+		{
+			String html = "";
+			for(int i = 0; i<moviesList.size(); i++)
+			{
+				if(dateController.movieIsInTheatres(moviesList.get(i))) 
+				{
+					html += generateHTMLController.generateInTheatres(moviesList.get(i));
+				}
+			}
+			if(html.equals(""))
+			{
+				NO_MOVIES_FOUND(request, response);
+			}else {
+				request.setAttribute("movieResults", html);
+			}
+		}
+	}
+	
+	public void NO_MOVIES_FOUND(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("errorMsg", ERROR_DATA.MOVIE_DOES_NOT_EXIST);
+		return;
 	}
 }
