@@ -256,13 +256,20 @@ input[type="date"]
 .searchAdminMovie
 {
     outline: none;
-    padding: 3px 0px;
-    border-bottom: 1px solid rgb(6, 6, 12);
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    height: 100%;
+    padding: 8px;
+    position: relative;
+    border: 1px solid rgb(6, 6, 12);
     background: none;
+}
+.admLable
+{
+	position: absolute;
+    top: -10px;
+    left: 24px;
+    z-index: 10;
+    background: rgb(236, 236, 236);
+    font-weight: 500;
+    letter-spacing: 1.5px;
 }
 .moviePic
 {

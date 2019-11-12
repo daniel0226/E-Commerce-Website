@@ -115,14 +115,11 @@ public class movieController extends HttpServlet {
 	public void removeMovies(HttpServletRequest request, HttpServletResponse response)
 	{
 		String[] Checkboxes = request.getParameterValues("movieCheckbox");
-		if (Checkboxes.length == 0) {
-			return;
-		}
-
-		// Remove all movies to Archive that are checked.
-		for (int i = 0; i < Checkboxes.length; i++) {
-			String currMovie = Checkboxes[i];
-			Database.removeMovie(currMovie);
+		if (Checkboxes != null && Checkboxes.length != 0) {
+			for (int i = 0; i < Checkboxes.length; i++) {
+				String currMovie = Checkboxes[i];
+				Database.removeMovie(currMovie);
+			}
 		}
 		Database.resetDatabase();
 		WebUser user = sessionData.getCurrentSessionUser();

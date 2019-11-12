@@ -97,6 +97,7 @@ public class sessionController extends HttpServlet {
 					return;
 				}else {
 					navigatePage(request, response, "/index.jsp");
+					return;
 				}
 			case "promo":
 				if(session == null)
@@ -104,8 +105,9 @@ public class sessionController extends HttpServlet {
 					navigatePage(request, response, "/register.jsp");
 				}else
 				{
-					navigatePage(request, response, "/editProfile.jsp");
+					loadHtml.setEditPage(request, response, sessionData.getCurrentSessionUser());
 				}
+				return;
 			default:
 				System.out.println("How did this happen???????");
 				break;

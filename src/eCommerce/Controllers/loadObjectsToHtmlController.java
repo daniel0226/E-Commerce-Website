@@ -98,6 +98,15 @@ public class loadObjectsToHtmlController extends HttpServlet {
 				// Need to implement
 				sc.navigatePage(request, response, "/SearchView.jsp");
 				return;
+			case "admin":
+				if(sessionData.getCurrentSessionUser() != null)
+				{
+					setAdminPage(request, response, sessionData.getCurrentSessionUser());
+				}
+				else {
+					sc.navigatePage(request, response, "/login.jsp");
+				}
+				return;
 			default:
 				loadMoviePage(request, response, requestType);
 				return;

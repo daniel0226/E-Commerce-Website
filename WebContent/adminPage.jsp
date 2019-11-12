@@ -42,8 +42,8 @@
 				<div id="parentNav"
 					class="col-md-2 removeLeftPadding removeRightPadding">
 					<div class="fixedNav" id="fixedAdminNav" style="width: 100%;">
-						<div>
-							<h1 style="font-size: 1.5rem; padding: 15px 0px 0px 15px;">E-Booking</h1>
+						<div style="padding: 13px 0px 0px 13px;">
+							<a href="index.jsp" style="font-size: 1.5rem;">9C ADMIN</a>
 						</div>
 						<div class="welcomeAdmin">
 							<p style="padding-left: 10px;">Welcome,</p>
@@ -242,12 +242,9 @@
 																	</div>
 																	<div class="col-md-8">
 																		<div class="container">
-																			<div class="row">
-																				<div class="col-md-4">
-																					<Label style="float: right;" for="AdmSearchMovie">Search:
-																					</Label>
-																				</div>
+																			<div class="row justify-content-center">
 																				<div class="col-md-8">
+																					<label class="admLable" for="AdmSearchMovie">Search</label>
 																					<input id="AdmSearchMovie" class="searchAdminMovie"
 																						type="text" placeholder="search"
 																						onkeyup="adminSearchMovie()" style="width: 100%;">
