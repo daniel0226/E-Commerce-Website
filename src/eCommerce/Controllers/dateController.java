@@ -2,6 +2,8 @@ package eCommerce.Controllers;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+
 import eCommerce.MovieData.Movie;
 
 public class dateController {
@@ -13,6 +15,10 @@ public class dateController {
 	public dateController()
 	{
 		
+	}
+	public String getTodaysDate()
+	{
+		return LocalDate.now().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
 	}
 	public static LocalDate convertToLocalDate(String date_str)
 	{

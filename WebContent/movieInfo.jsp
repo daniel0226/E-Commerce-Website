@@ -86,11 +86,17 @@
     					${Book}			
 		       		</div>
     			</div>
+    			<hr>
     			<div class="row">
-    				<div class="col-md-12">
+    				<div class="col-md-3">
+    					<h2 style="font-size: 2.5rem;">Reviews: </h2>
+    				</div>
+    				<div class="col-md-9">
     					${Reviews}
     				</div>
     			</div>
+    			<hr>
+    			${addReview}
     		</div>
     	</section>
     </main>

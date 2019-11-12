@@ -8,6 +8,7 @@ import eCommerce.MovieData.Movie;
 import eCommerce.Strings.generateHTMLController;
 import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
+import eCommerce.UserData.sessionData;
 import eCommerce.users.WebUser;
 
 import javax.servlet.ServletException;
@@ -118,7 +119,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		sc.navigatePage(request, response, "/movieInfo.jsp" + "?" + movieToLoad.getMovieTitle());
 	}
 	
-	public void setMoviePage(HttpServletRequest request, HttpServletResponse resposnse, Movie movie)
+	public void setMoviePage(HttpServletRequest request, HttpServletResponse response, Movie movie)
 	{
 		request.setAttribute("movieTrailer", generateHTMLController.movieInfoTrailer(movie));
 		request.setAttribute("movieTitle", movie.getMovieTitle());
@@ -129,9 +130,19 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		request.setAttribute("Category", movie.getMovieCategory());
 		request.setAttribute("ReleaseDate", movie.getMovieReleaseDate());
 		request.setAttribute("Synopsis", movie.getMovieSynopsis());
+		request.setAttribute("Reviews", generateHTMLController.movieReviews(movie));
 		if(dateController.movieIsInTheatres(movie))
 		{
 			request.setAttribute("Book", generateHTMLController.bookMovieForm(movie));
+		}
+		if(sessionData.getCurrentSessionUser() != null)
+		{
+			//int maxLength = 255 - sessionData.getCurrentSessionUser().getFullName().length();
+			request.setAttribute("addReview", generateHTMLController.movieReviewForm(movie));
+			//request.setAttribute("writeReview", generateHTMLController.writeReview());
+		}else
+		{
+			request.setAttribute("addReview", "<a href=\"sessionController?type=login\">Sign in to add a review</a>");
 		}
 		return;
 	}

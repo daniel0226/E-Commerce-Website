@@ -21,6 +21,9 @@ public class MySQL_Commands {
 	public static final String Get_Movie_Archived_Count =
 			"SELECT moviesArchived FROM termproject.analytics";
 	
+	public static final String addMovieReview = "INSERT INTO moviereviews(title, review, user, date)" +
+			" VALUES (?, ?, ?, ?)";
+	
 	// User related
 	public static final String Get_User = "SELECT * FROM termproject.users WHERE email = ";
 
@@ -30,6 +33,14 @@ public class MySQL_Commands {
 			+ " VALUES (? ,? ,? ,? ,? ,? ,? , ?, ?, ?, ?)";
 	public static final String Add_Card = "INSERT INTO card (cardOwnerEmail, cardOwnerName, cvv, expDate, cardNumber, zipCode)"
 			+ " VALUES (?, ?, ?, ?, ?, ?)";
+	
+	
+	//Functions 
+	
+	public static String movieReviews(Movie movie)
+	{
+		return "SELECT * FROM termproject.moviereviews WHERE title = '" + movie.getMovieTitle() + "'";
+	}
 	
 	public static String getMoviesByTitle(String title)
 	{

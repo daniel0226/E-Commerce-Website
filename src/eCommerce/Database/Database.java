@@ -12,6 +12,7 @@ import java.util.List;
 
 import eCommerce.Validator.Validator;
 import eCommerce.Controllers.authenticatorController;
+import eCommerce.Controllers.dateController;
 import eCommerce.MovieData.*;
 import eCommerce.Strings.MySQL_Commands;
 import eCommerce.Strings.generateHTMLController;
@@ -164,6 +165,7 @@ public class Database {
 			System.err.println(e);
 		}
 	}
+	
 	public static Card getCard(String email)
 	{
 		Card userCard = null;
@@ -244,6 +246,52 @@ public class Database {
 		currentUser = user;
 		return user;
 	}
+	
+	public static List<movieReviews> getMovieReviews(Movie movie)
+	{
+		List<movieReviews> reviewsList = new LinkedList<>();
+		try
+		{
+			String getMovieReviews = MySQL_Commands.movieReviews(movie);
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(getMovieReviews);
+			if(rs.next())
+			{
+				movieReviews reviews = new movieReviews(rs.getString(1),
+														rs.getString(2),
+														rs.getString(3),
+														rs.getString(4));
+				reviewsList.add(reviews);
+			}
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+		}
+		return reviewsList;
+	}
+	
+	public static void addMovieReview(String title, String review, String usersName)
+	{
+		dateController dc = new dateController();
+		try {
+			System.out.println(usersName + " has added movie review to: " + title);
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.addMovieReview);
+			statement.setString(1, title);
+			statement.setString(2, review);
+			statement.setString(3, usersName);
+			statement.setString(4, dc.getTodaysDate());
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+			return;
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+		}
+	}
+	
 	public static boolean addCard(String email, Card card)
 	{
 		boolean addedCard = false;

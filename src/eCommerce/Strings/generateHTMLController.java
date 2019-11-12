@@ -1,6 +1,11 @@
 package eCommerce.Strings;
 
-import eCommerce.MovieData.Movie;
+import java.util.LinkedList;
+import java.util.List;
+
+import eCommerce.Controllers.dateController;
+import eCommerce.Database.Database;
+import eCommerce.MovieData.*;
 public class generateHTMLController {
 
 	public static String generateComingSoon(Movie movie)
@@ -43,6 +48,53 @@ public class generateHTMLController {
 		"			<button class=\"bookingBtn\" type=\"submit\" name=\"book\" value=\"" + movie.getMovieTitle() + "\">Book Now!</button>"+
 		"		</form>";
 	}
+	
+	public static String movieReviews(Movie movie)
+	{
+		List<movieReviews> reviewsList = Database.getMovieReviews(movie);
+		if(reviewsList.size() == 0)
+		{
+			return "<h2 style=\"font-size: 2.5rem;\">No Reviews currently!</h2>";
+			
+		}else
+		{
+			String html = "";
+			for(int i = 0; i<reviewsList.size(); i++)
+			{
+				html += movieReviewsHTML(reviewsList.get(i));
+			}
+			return html;
+		}
+	}
+	
+	public static String movieReviewsHTML(movieReviews movie)
+	{
+		return "<div class=\"movieReviewBody\">"+
+		"    		<div class=\"reviewBody\">"+
+		"    			<label>By: " + movie.getUserName()  + " on " + movie.getDate() + " </label>"+
+		"    			<p>" + movie.getReview() + "</p>"+
+		"    		</div>" +
+		"       </div>";
+	}
+	
+	public static String movieReviewForm(Movie movie)
+	{
+
+		return "		<div class=\"row justify-content-center\">"+
+		"    				<div class=\"col-md-6\">"+
+		"    					<div class=\"userMovieReview\">"+
+		"    						<h2>Add a Review!</h2>"+
+		"	    					<form method=\"GET\" action=\"movieController\">" +
+		"                           	<textarea maxlength=\"255\" required name=\"movieReview\" placeholder=\"Review\"></textarea>" +
+		"								<button class=\"submitBtn\" type=\"submit\" name=\"reviewSubmit\" value=\"" + movie.getMovieTitle() + "\">Submit</button>"+
+		"	    					</form>"+
+		"    					</div>"+
+		"    				</div>"+
+		"    			</div>";
+			
+
+	}
+	
 	public static String generateInTheatres(Movie movie)
 	{
 		String addMovieHtml = "<div class=\"row newRow movies\" id=\"" + movie.getMovieTitle()+"\">" +

@@ -48,6 +48,17 @@ public class movieController extends HttpServlet {
 		String deleteButton = request.getParameter("deleteMoviesFromCheckBox");
 		String addButton = request.getParameter("addBtn");
 		String updateButton = request.getParameter("update");
+		
+		String userMovieReview = request.getParameter("movieReview");
+		
+		if(userMovieReview != null)
+		{
+			String movieReviewTitle = request.getParameter("reviewSubmit");
+			String usersName = sessionData.getCurrentSessionUser().getFullName();
+			Database.addMovieReview(movieReviewTitle, userMovieReview, usersName);
+			Database.resetDatabase();
+			loadHtml.loadMoviePage(request, response, movieReviewTitle);
+		}
 
 		// String releaseDate = request.getParameter("releaseDate");
 		// Only prints out if numbers are set
