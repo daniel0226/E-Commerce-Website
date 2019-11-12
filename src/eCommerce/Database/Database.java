@@ -256,12 +256,12 @@ public class Database {
 			connection = mysql.getConnection();
 			statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(getMovieReviews);
-			if(rs.next())
+			while(rs.next())
 			{
-				movieReviews reviews = new movieReviews(rs.getString(1),
-														rs.getString(2),
+				movieReviews reviews = new movieReviews(rs.getString(2),
 														rs.getString(3),
-														rs.getString(4));
+														rs.getString(4),
+														rs.getString(5));
 				reviewsList.add(reviews);
 			}
 		}catch(SQLException e)

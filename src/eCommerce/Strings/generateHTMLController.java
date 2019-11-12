@@ -1,9 +1,7 @@
 package eCommerce.Strings;
 
-import java.util.LinkedList;
 import java.util.List;
 
-import eCommerce.Controllers.dateController;
 import eCommerce.Database.Database;
 import eCommerce.MovieData.*;
 public class generateHTMLController {
@@ -25,11 +23,6 @@ public class generateHTMLController {
 				"                            <iframe width=\"100%\" height=\"100%\" src=\"" + movie.getMovieTrailer() + "\"" +
 				"                                frameborder=\"0\" allow=\"accelerometer; encrypted-media; gyroscope; picture-in-picture\""+
 				"                                allowfullscreen></iframe>"+
-				"                            <h3>Director: " + movie.getMovieDirector() + "</h3>"+
-				"                            <h4>Category: " + movie.getMovieCategory() + "</h4>"+
-				"                            <h4>Producer: " + movie.getMovieProducer() + "</h4>"+
-				"                            <h4>Category: " + movie.getMovieCategory() + "</h4>"+
-				"                            <h4>Cast: " + movie.getMovieCast() + "</h4>" + 
 				"                            <span>" + movie.getMovieSynopsis() + "</span>"+
 				"                        </div>"+
 				"                    </div>";
@@ -52,6 +45,7 @@ public class generateHTMLController {
 	public static String movieReviews(Movie movie)
 	{
 		List<movieReviews> reviewsList = Database.getMovieReviews(movie);
+		System.out.println(reviewsList.size());
 		if(reviewsList.size() == 0)
 		{
 			return "<h2 style=\"font-size: 2.5rem;\">No Reviews currently!</h2>";
@@ -114,10 +108,6 @@ public class generateHTMLController {
 		"                            <iframe width=\"100%\" height=\"100%\" src=\"" + movie.getMovieTrailer() + "\"" +
 		"                                frameborder=\"0\" allow=\"accelerometer; encrypted-media; gyroscope; picture-in-picture\""+
 		"                                allowfullscreen></iframe>"+
-		"                            <h3>Director: " + movie.getMovieDirector() + "</h3>"+
-		"                            <h4>Producer: " + movie.getMovieProducer() + "</h4>"+
-		"                            <h4>Category: " + movie.getMovieCategory() + "</h4>"+
-		"                            <h4>Cast: " + movie.getMovieCast() + "</h4>" + 
 		"                            <span>" + movie.getMovieSynopsis() + "</span>"+
 		"                        </div>"+
 		"                    </div>";
