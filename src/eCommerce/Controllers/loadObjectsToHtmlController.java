@@ -98,9 +98,42 @@ public class loadObjectsToHtmlController extends HttpServlet {
 				sc.navigatePage(request, response, "/SearchView.jsp");
 				return;
 			default:
-				System.out.println("Tell me how you got to here you hacker :(.");
+				loadMoviePage(request, response, requestType);
 				return;
 		}
+	}
+	
+	public void loadMoviePage(HttpServletRequest request, HttpServletResponse response, String movieTitle)
+	{
+		Movie movieToLoad = Database.getMovie(movieTitle);
+		sc = new sessionController();
+		
+		if(movieToLoad == null)
+		{
+			sc.navigatePage(request, response, "/index.jsp");
+			return;
+		}
+		
+		setMoviePage(request,response,movieToLoad);
+		sc.navigatePage(request, response, "/movieInfo.jsp" + "?" + movieToLoad.getMovieTitle());
+	}
+	
+	public void setMoviePage(HttpServletRequest request, HttpServletResponse resposnse, Movie movie)
+	{
+		request.setAttribute("movieTrailer", generateHTMLController.movieInfoTrailer(movie));
+		request.setAttribute("movieTitle", movie.getMovieTitle());
+		request.setAttribute("Director", movie.getMovieDirector());
+		request.setAttribute("Producer", movie.getMovieProducer());
+		request.setAttribute("Cast", movie.getMovieCast());
+		request.setAttribute("Rating", movie.getMovieRating());
+		request.setAttribute("Category", movie.getMovieCategory());
+		request.setAttribute("ReleaseDate", movie.getMovieReleaseDate());
+		request.setAttribute("Synopsis", movie.getMovieSynopsis());
+		if(dateController.movieIsInTheatres(movie))
+		{
+			request.setAttribute("Book", generateHTMLController.bookMovieForm(movie));
+		}
+		return;
 	}
 	
 	public void setAdminPage(HttpServletRequest request, HttpServletResponse response, WebUser user)

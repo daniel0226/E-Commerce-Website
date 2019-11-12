@@ -105,6 +105,7 @@
 						Disregarded by society, Fleck begins a slow dissent into madness
 						as he transforms into the criminal mastermind known as the Joker.</p>
 					<a href="bookingController?book=Joker">Book Now!</a>
+					<a href="loadObjectsToHtmlController?type=Joker">Learn More</a>
 				</div>
 			</div>
 		</div>
