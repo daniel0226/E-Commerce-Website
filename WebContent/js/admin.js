@@ -21,7 +21,11 @@ function getTodaysDate() {
     var year = date.getFullYear();
 
     var dateToDisplay = today + ", " + Month + " " + day + ", " + year;
-    document.getElementById("js-getTodaysDate").innerHTML = dateToDisplay;
+    var date = document.getElementsByClassName("js-getTodaysDate");
+    for(var i = 0; i < date.length; i++)
+    {
+    	date[i].innerHTML = dateToDisplay;
+    }
 }
 function loadAnalyticsNums() {
     var pTags = document.getElementsByClassName("js-analytic");

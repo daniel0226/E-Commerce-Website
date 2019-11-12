@@ -56,6 +56,11 @@
 								onclick="openAdminTab('movieBtn', 'Movies')">
 								<i class="fa fa-film"></i> Manage Movies
 							</button>
+							<button id="showtimeBtn" type="button"
+								class="adminTabLink"
+								onclick="openAdminTab('showtimeBtn','Showtimes')">
+								<i class="fa fa-bookmark"></i> Manage Show Times
+							</button>
 							<button id="userBtn" type="button" class="adminTabLink"
 								onclick="openAdminTab('userBtn', 'Users')">
 								<i class="fa fa-user"></i> Manage Users
@@ -96,7 +101,7 @@
 																<p style="float: left;">Add / Edit / Remove Movies</p>
 															</div>
 															<div class="col-md-6 removeRightPadding">
-																<p style="float: right;" id="js-getTodaysDate"></p>
+																<p style="float: right;" class="js-getTodaysDate"></p>
 															</div>
 														</div>
 														<div class="row">
@@ -257,6 +262,76 @@
 																<!--These will eventually be created by the Java servlet-->
 																<span id="addMoviesBody"> ${addMovies} </span>
 															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- SHow Times  -->
+							<div id="Showtimes" class="adminTabContent">
+								<div class="container">
+									<div class="row">
+										<div class="adminHeader">
+											<h3>Administrator Panel</h3>
+											<form style="float: right" action="sessionController"
+												method="GET">
+												<button name="type" value="logout" class="logoutBtn">Logout</button>
+											</form>
+										</div>
+									</div>
+									<div class="row">
+										<div class="tabBody">
+											<div class="container">
+												<div class="row analyticsBody">
+													<div class="col-md-12" style="padding: 25px;">
+														<div class="row">
+															<div class="col-md-6 removeLeftPadding">
+																<p style="float: left;">Add / Edit / Remove Showtimes</p>
+															</div>
+															<div class="col-md-6 removeRightPadding">
+																<p style="float: right;" class="js-getTodaysDate"></p>
+															</div>
+														</div>
+														<div class="row">
+															<h3>
+																<i class="fa fa-database"></i>Dashboard
+															</h3>
+														</div>
+														<div class="row pAnalytics">
+															<div class="col-sm-4 col-md-4">
+																<div class="goalBodyWrapper">
+																	<h3 class="js-analytic">${showtimeCount}</h3>
+																	<small>Number of Show Times today</small>
+																</div>
+																<div class="goalBodyWrapper">
+																	<h3 class="js-analytic">${showingsCount}</h3>
+																	<small>Number of Showings Today</small>
+																</div>
+																<div class="goalBodyWrapper">
+																	<h3 class="js-analytic">${moviesInTheatres}</h3>
+																	<small>Movies In Theatres</small>
+																</div>
+															</div>
+															<div class="col-sm-8 col-md-8">
+																<div class="goalBodyWrapper">
+																	<h3 style="text-align: center;">Today's Show Times</h3>
+																	<p style="text-align: center;" class="js-getTodaysDate"></p>
+																	<div class="container-fluid" style="text-align: center; margin-top: 10px;">
+																		<div class="row">
+																			<div class="col-sm-6 col-md-6">
+																				<h3>Theatre Room 1</h3>
+																			</div>
+																			<div class="col-sm-6 col-md-6">
+																				<h3>Theatre Room 2</h3>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
 														</div>
 													</div>
 												</div>

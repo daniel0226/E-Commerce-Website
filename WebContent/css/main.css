@@ -255,7 +255,6 @@ footer
     width: 100%;
     background: black;
     position: relative;
-    z-index: 9999999;
     color: white;
 }
 

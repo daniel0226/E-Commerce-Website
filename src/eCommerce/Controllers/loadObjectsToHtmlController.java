@@ -162,12 +162,16 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		try {
     		request.setAttribute("adminName", user.getFullName());
     		request.setAttribute("location", user.getAddress().getCity() + ", " + user.getAddress().getState());
-			request.setAttribute("moviesInTheatres", Database.getMoviesFromDatabase(true, false).size());
+			
+    		//Movies Tab
+    		request.setAttribute("moviesInTheatres", Database.getMoviesFromDatabase(true, false).size());
         	request.setAttribute("moviesComingSoon", Database.getMoviesFromDatabase(false, true).size());
         	request.setAttribute("moviesArchived", Database.getMoviesArchivedCount());
     		request.setAttribute("mostPopularMovie", Database.getMostPopularMovie());
     		request.setAttribute("movieStats",Database.getMovieStats());
     		request.setAttribute("addMovies", Database.generateMovieHtml(Database.getAllMovies()));
+    		
+    		//Showtimes Tab
     		
 			request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
 		} catch (ServletException | IOException e ) {

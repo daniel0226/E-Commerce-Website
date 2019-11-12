@@ -332,6 +332,7 @@ function openAdminTab(button, adminTab) {
     }
     document.getElementById(adminTab).style.display = "block";
     document.getElementById(button).classList.add("activeAdminTab");
+    loadAnalyticsNums()
 }
 
 
