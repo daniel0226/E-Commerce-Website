@@ -2,6 +2,7 @@ package eCommerce.Strings;
 
 import eCommerce.Controllers.authenticatorController;
 import eCommerce.MovieData.Movie;
+import eCommerce.MovieData.ShowTimes;
 import eCommerce.UserData.Card;
 import eCommerce.users.WebUser;
 
@@ -36,7 +37,19 @@ public class MySQL_Commands {
 	
 	
 	//Functions 
-	
+	public static String ADD_SHOWTIME(ShowTimes st)
+	{
+		return "INSERT INTO showtime(title, CinemaID, Showtime, Date)"
+				+ " VALUES (?, ?, ?, ?)";
+	}
+	public static String REMOVE_SHOWTIME(ShowTimes st)
+	{
+		return "DELETE FROM termproject.showtime WHERE title = '" + st.getMovieTitle() + "' AND CinemaID = '" + st.getCinemaID() + "' AND Showtime = '" + st.getShowTimes() + "' AND Date = '" + st.getDate() + "'";
+	}
+	public static String getShowTimes(Movie movie)
+	{
+		return "SELECT * FROM termproject.showtime WHERE title = '" + movie.getMovieTitle() + "'";
+	}
 	public static String movieReviews(Movie movie)
 	{
 		return "SELECT * FROM termproject.moviereviews WHERE title = '" + movie.getMovieTitle() + "'";
@@ -49,6 +62,11 @@ public class MySQL_Commands {
 	public static String getMoviesByCategory(String category)
 	{
 		return "SELECT * FROM termproject.movies WHERE movieCategory LIKE '%" + category + "%'";
+	}
+	public static String updateShowTime(ShowTimes st)
+	{
+		return "UPDATE termproject.showtime SET title= '" + st.getMovieTitle() + "', CinemaID = '" + st.getCinemaID() + "'" +
+				", Showtime = '" + st.getShowTimes() + "', Date = '" + st.getDate() + "' WHERE (`Key` = '" + st.getID() + "')";
 	}
 
 	public static String updateCard(WebUser user, Card card) {

@@ -1,6 +1,8 @@
 package eCommerce.Controllers;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
@@ -38,6 +40,23 @@ public class dateController {
     		movieIsInTheatres = true;
     	}
     	return movieIsInTheatres;
+	}
+	public static String convertToTwelve(String time)
+	{
+		//param comes as 19:30 -> 7:30 pm
+		return LocalTime.parse(time).format(DateTimeFormatter.ofPattern("h:mma"));
+	}
+	public static boolean dateIsToday(String date)
+	{
+		boolean isToday = false;
+		String today = LocalDate.now().toString();
+		String todaysDate = LocalDate.parse(date,DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
+		if(today.equals(todaysDate))
+		{
+			isToday = true;
+		}
+		
+		return isToday;
 	}
 	
 	public static boolean movieIsComingSoon(Movie movie)

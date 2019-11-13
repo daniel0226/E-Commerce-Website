@@ -447,6 +447,11 @@ function loadSelect(month, year, country)
 	ySelect.value = year;
 	mSelect.value = month;
 }
+function selectOption(div, option)
+{
+	var select = document.getElementById(div);
+	select.value = option;
+}
 var isoCountries = {
 	    'AF' : 'Afghanistan',
 	    'AX' : 'Aland Islands',

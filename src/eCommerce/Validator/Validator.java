@@ -2,17 +2,75 @@ package eCommerce.Validator;
 import eCommerce.Controllers.dateController;
 
 import java.sql.SQLException;
+import java.time.LocalTime;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 import eCommerce.Database.Database;
 import eCommerce.MovieData.Movie;
+import eCommerce.MovieData.ShowTimes;
 import eCommerce.UserData.sessionData;
 import eCommerce.users.WebUser;
 import eCommerce.Controllers.authenticatorController;
-
+import static java.time.temporal.ChronoUnit.HOURS;
 public class Validator
 {
 	private static authenticatorController authenticator;
 	
+	public static boolean isValidateShowTime(ShowTimes st, String oldTime)
+	{
+		System.out.println("Validating Show Time");
+		boolean validShowTime = true;
+		//Check date first
+		List<ShowTimes> st_l = Database.getAllShowTimes();
+		if(st_l == null)
+		{
+			validShowTime = true;
+		}else {
+			List<ShowTimes> byId_Date = new LinkedList<ShowTimes>();
+			//System.out.println(st.getMovieTitle() + " " + st.getCinemaID() + " " + st.getShowTimes() + " " + st.getDate());
+			for(int i = 0; i<st_l.size(); i++)
+			{
+				ShowTimes currentST = st_l.get(i);
+				//System.out.println(currentST.getMovieTitle() + " " + currentST.getCinemaID() + " " + currentST.getShowTimes() + " " + currentST.getDate());
+				if(currentST.getCinemaID() == st.getCinemaID())
+				{
+					if(currentST.getDate().equals(st.getDate()))
+					{
+						if(!currentST.getShowTimes().equals(oldTime))
+						{
+							byId_Date.add(currentST);	
+						}
+					}
+				}
+			}
+			if(byId_Date.size() == 0)
+			{
+				validShowTime = true;
+			}else
+			{ 
+				List<LocalTime> tC = new LinkedList<LocalTime>();
+				tC.add(LocalTime.parse(st.getShowTimes()));
+				for(int i = 0; i<byId_Date.size(); i++)
+				{
+					tC.add(LocalTime.parse(byId_Date.get(i).getShowTimes()));
+				}
+				Collections.sort(tC);
+				for(int i = 1; i<tC.size(); i++)
+				{
+					System.out.println(tC.get(i-1) + " - " + tC.get(i));
+					long Difference = Math.abs(tC.get(i).until(tC.get(i-1), HOURS));
+					System.out.println(Difference);
+					if(Difference < 2)
+					{
+						validShowTime = false;
+					}
+				}
+			}
+		}
+		return validShowTime;
+	}
 	public static boolean validateUserHasVerified(String email)
 	{
 		return Database.getUser(email).verified();

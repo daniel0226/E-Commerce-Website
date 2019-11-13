@@ -14,6 +14,7 @@ import eCommerce.Database.Database;
 import eCommerce.MovieData.Movie;
 import eCommerce.Strings.ERROR_DATA;
 import eCommerce.Strings.generateHTMLController;
+import eCommerce.UserData.sessionData;
 
 @WebServlet("/searchMovieController")
 public class searchMovieController extends HttpServlet{
@@ -44,7 +45,15 @@ public class searchMovieController extends HttpServlet{
 	{
 		String userSearch = request.getParameter("input");
 		String searchOption = request.getParameter("searchOption");
+		String adminShowTimeSearch = request.getParameter("showtimesearch");
 		System.out.println(userSearch + " " + searchOption);
+		
+		if(adminShowTimeSearch != null && !adminShowTimeSearch.equals(""))
+		{
+			displayShowTimeResults(request, response, adminShowTimeSearch);
+			return;
+		}
+		
 		
 		if(searchOption == null || searchOption.equals(""))
 		{
@@ -89,6 +98,15 @@ public class searchMovieController extends HttpServlet{
 		return;
 	}
 
+	public void displayShowTimeResults(HttpServletRequest request, HttpServletResponse response, String userInput)
+	{
+		loadObjectsToHtmlController load = new loadObjectsToHtmlController();
+		request.setAttribute("Results", generateHTMLController.adminShowTimeResults(userInput));
+		request.setAttribute("js", generateHTMLController.navigateDiv("showtimeBtn","Showtimes"));
+		load.setAdminPage(request, response, sessionData.getCurrentSessionUser());
+		return;
+	}
+	
 	public void searchByCategory(HttpServletRequest request, HttpServletResponse response, String query) throws SQLException
 	{
 		List<Movie> moviesList = Database.getMoviesByCategory(query);

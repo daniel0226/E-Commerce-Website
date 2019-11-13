@@ -30,7 +30,7 @@ function getTodaysDate() {
 function loadAnalyticsNums() {
     var pTags = document.getElementsByClassName("js-analytic");
     var start = 0;
-    var duration = 1250;
+    var duration = 750;
 
     for (var i = 0; i < pTags.length; i++) {
         var end = pTags[i].innerHTML;

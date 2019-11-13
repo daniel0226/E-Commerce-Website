@@ -172,7 +172,9 @@ public class loadObjectsToHtmlController extends HttpServlet {
     		request.setAttribute("addMovies", Database.generateMovieHtml(Database.getAllMovies()));
     		
     		//Showtimes Tab
-    		
+    		request.setAttribute("showtimes", generateHTMLController.adminShowTimeBody());
+    		request.setAttribute("showingsCount", Database.getNumberOfShowingsCount());
+    		request.setAttribute("showtimeCount", Database.getMovieShowTimesCount());
 			request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
 		} catch (ServletException | IOException e ) {
 			// TODO Auto-generated catch block

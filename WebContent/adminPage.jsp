@@ -305,11 +305,11 @@
 															<div class="col-sm-4 col-md-4">
 																<div class="goalBodyWrapper">
 																	<h3 class="js-analytic">${showtimeCount}</h3>
-																	<small>Number of Show Times today</small>
+																	<small>Number of Show Times Today</small>
 																</div>
 																<div class="goalBodyWrapper">
 																	<h3 class="js-analytic">${showingsCount}</h3>
-																	<small>Number of Showings Today</small>
+																	<small>Number of Movies Playing Today</small>
 																</div>
 																<div class="goalBodyWrapper">
 																	<h3 class="js-analytic">${moviesInTheatres}</h3>
@@ -322,17 +322,36 @@
 																	<p style="text-align: center;" class="js-getTodaysDate"></p>
 																	<div class="container-fluid" style="text-align: center; margin-top: 10px;">
 																		<div class="row">
-																			<div class="col-sm-6 col-md-6">
-																				<h3>Theatre Room 1</h3>
-																			</div>
-																			<div class="col-sm-6 col-md-6">
-																				<h3>Theatre Room 2</h3>
+																			<div class="col-sm-12 col-md-12">
+																				<div class="showtimeSchedule">
+																					${showtimes}
+																				</div>
 																			</div>
 																		</div>
 																	</div>
 																</div>
 															</div>
 														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="showTimeFormBody">
+												<div class="showTimeWrapper">
+													<div class="container-fluid">
+														<div class="row">
+															<div class="col-md-12">
+																${ErrorMsg}
+																<form class="search" method="GET" action="searchMovieController">
+																	<label for="searchShowTimes">Search</label>
+																	<input type="text" required name="showtimesearch" placeholder="Search A Movie To Edit Show Times">
+																</form>
+															</div>
+														</div>
+														${Results}
 													</div>
 												</div>
 											</div>
@@ -355,6 +374,7 @@
 			</div>
 		</div>
 	</main>
+	${js}
 	<footer id="footer"></footer>
 </body>
 

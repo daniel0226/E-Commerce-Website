@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -393,6 +394,155 @@ public class Database {
 		connection.close();
 		return moviesList;
 	}
+	public static int getNumberOfShowingsCount()
+	{
+		HashSet<String> movies = new HashSet<String>();
+		try {
+			String query = "SELECT * FROM termproject.showtime";
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(query);
+			
+			while(rs.next()) 
+			{
+				ShowTimes showtime = new ShowTimes(	rs.getString(2),
+													rs.getInt(3),
+													rs.getString(4),
+													rs.getString(5),
+													rs.getInt(1));
+				movies.add(showtime.getMovieTitle());
+			}
+			return movies.size();
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+			return 0;
+		}
+	}
+	public static int getMovieShowTimesCount()
+	{
+		int count = 0;
+		try {
+			String query = "SELECT * FROM termproject.showtime";
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(query);
+			
+			while(rs.next()) 
+			{
+				ShowTimes showtime = new ShowTimes(	rs.getString(2),
+													rs.getInt(3),
+													rs.getString(4),
+													rs.getString(5),
+													rs.getInt(1));
+				
+				count++;
+			}
+			return count;
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+			return 0;
+		}
+	}
+	public static void updateShowTime(ShowTimes st)
+	{
+		try {
+			String updateShowTime = MySQL_Commands.updateShowTime(st);
+			System.out.println(updateShowTime);
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(updateShowTime);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.print(e);
+		}
+	}
+	public static void addShowTime(ShowTimes st)
+	{
+		try
+		{
+			String a_ST = MySQL_Commands.ADD_SHOWTIME(st);
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(a_ST);
+			statement.setString(1, st.getMovieTitle());
+			statement.setInt(2, st.getCinemaID());
+			statement.setString(3, st.getShowTimes());
+			statement.setString(4, st.getDate());
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.print(e);
+		}
+	}
+	public static void removeShowTime(ShowTimes st)
+	{
+		try {
+			String removeShowTime = MySQL_Commands.REMOVE_SHOWTIME(st);
+			System.out.println(removeShowTime);
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(removeShowTime);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.print(e);
+		}
+	}
+	public static List<ShowTimes> getAllShowTimes()
+	{
+		try {
+			List<ShowTimes> list = new LinkedList<ShowTimes>();
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM termproject.showtime");
+			while(rs.next())
+			{
+				ShowTimes showtime = new ShowTimes(	rs.getString(2),
+													rs.getInt(3),
+													rs.getString(4),
+													rs.getString(5),
+													rs.getInt(1));
+				list.add(showtime);
+			}
+			return list;
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+			return null;
+		}
+	}
+	public static List<ShowTimes> getMovieShowTimes(Movie movie)
+	{
+		try {
+			List<ShowTimes> moviesShowTimeList = new LinkedList<ShowTimes>();
+			String query = MySQL_Commands.getShowTimes(movie);
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(query);
+			
+			while(rs.next()) 
+			{
+				ShowTimes showtime = new ShowTimes(	rs.getString(2),
+													rs.getInt(3),
+													rs.getString(4),
+													rs.getString(5),
+													rs.getInt(1));
+				moviesShowTimeList.add(showtime);
+			}
+			return moviesShowTimeList;
+			
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+			return null;
+		}
+	}
 	
 	public static List<Movie> getMoviesbyTitle(String title) throws SQLException
 	{
@@ -489,7 +639,7 @@ public class Database {
 		connection.close();
 		return moviesList;
 	}
-	
+
 	public static Movie getMovie(String movieName)
 	{
 		Movie movie = null;
