@@ -30,18 +30,23 @@
         crossorigin="anonymous"></script>
     <script src="js/fields.js"></script>
 </head>
-
+<style>
+	nav
+	{
+		background: rgba(0,0,0,0.9);
+	}
+</style>
 <body>
    <header>${nav}</header>
     <main style="width: 100%; height: 100%; min-height: 100vh;">
         <section class="profileBackground">
             <div class="profileBackgroundWrapper">
                 <div class="profileBody">
-                    <div class="container-fluid removeLeftPadding removeRightPadding">
+                    <div class="container-fluid removeLeftPadding">
                         <div class="row">
                             <div class="col-sm-12 col-md-12">
                                 <div class="profileHeader">
-                                    <h2 style="width: 50%; margin: left;">Welcome, ${name}</h2>
+                                    <h2>Welcome, ${name}</h2>
                                 </div>
                             </div>
                         </div>
@@ -110,16 +115,6 @@
                                             <textarea class="p-input" readonly id="addressLine" type="text"
                                             name="addressLine">${addressLine}</textarea>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-5 col-sm-5">
-                                <div class="myUpcomingMoviesBody">
-                                    <div class="upcomingHeader">
-                                        <h2>My Bookings</h2>
-                                    </div>
-                                    <div class="moviesBody">
-                                        ${bookedMovies}
                                     </div>
                                 </div>
                             </div>

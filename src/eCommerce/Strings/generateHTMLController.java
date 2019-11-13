@@ -52,7 +52,7 @@ public class generateHTMLController {
 		System.out.println(reviewsList.size());
 		if(reviewsList.size() == 0)
 		{
-			return "<h2 style=\"font-size: 2.5rem;\">No Reviews currently!</h2>";
+			return "<h2>No Reviews currently!</h2>";
 			
 		}else
 		{
@@ -468,6 +468,76 @@ public class generateHTMLController {
 			System.err.println(e);
 			return "";
 		}
+	}
+	public static String generateMovieInfoShowTimeBody(Movie movie)
+	{
+		List<ShowTimes> list = Database.getMovieShowTimes(movie);
+		list.sort((o1, o2) -> o1.getShowTimes().compareTo(o2.getShowTimes()));
+		if(list == null || list.size() == 0)
+		{
+			return "<h3>No Bookings Available At This Time</h3>";
+		}
+		
+		String html = "";
+		String class_Label = "<div class=\"schedule\">";
+		String ending_Div = "</div>";
+		String theatre1 = "	<div>" +
+								"<p>Theatre 1:</p>";
+		String theatre2 = "	<div>" + 
+								"<p>Theatre 2:</p>";
+		String theatre3 = " <div>" +
+								"<p>Theatre 3:</p>";
+		boolean theatre1IsShowing = false;
+		boolean theatre2IsShowing = false;
+		boolean theatre3IsShowing = false;
+		
+		for(int i = 0; i<list.size(); i++)
+		{
+			ShowTimes currentMovie = list.get(i);
+			if(!dateController.dateIsToday(currentMovie.getDate()))
+			{
+				continue;
+			}
+			Movie m = Database.getMovie(currentMovie.getMovieTitle());
+			//Make sure movie is in Theaters
+			if(!dateController.movieIsInTheatres(m))
+			{
+				continue;
+			}
+			
+			String times = currentMovie.getShowTimes();
+			String p = "<p>" + dateController.convertToTwelve(times) + "</p>";
+			if(currentMovie.getCinemaID() == 1)
+			{	
+				theatre1IsShowing = true;
+				theatre1 += p;
+			}
+			else if(currentMovie.getCinemaID() == 2)
+			{
+				theatre2IsShowing = true;
+				theatre2 += p;
+			}else if(currentMovie.getCinemaID() == 3)
+			{
+				theatre3IsShowing = true;
+				theatre3 += p;
+			}
+		}
+		
+		if(!theatre1IsShowing)
+		{
+			theatre1 += "<p> NOT SHOWING </p>";
+		}
+		if(!theatre2IsShowing)
+		{
+			theatre2 += "<p> NOT SHOWING </p>";
+		}
+		if(!theatre3IsShowing)
+		{
+			theatre3 += "<p> NOT SHOWING </p>";
+		}
+		
+		html += class_Label + theatre1 + ending_Div + theatre2 + ending_Div +  theatre3 + ending_Div + ending_Div;	
+		return html;
 	}
 	public static String generateAdminShowTimeBody(Movie movie)
 	{

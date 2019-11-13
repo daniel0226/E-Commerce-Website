@@ -140,6 +140,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		request.setAttribute("ReleaseDate", movie.getMovieReleaseDate());
 		request.setAttribute("Synopsis", movie.getMovieSynopsis());
 		request.setAttribute("Reviews", generateHTMLController.movieReviews(movie));
+		request.setAttribute("showTimes", generateHTMLController.generateMovieInfoShowTimeBody(movie));
 		if(dateController.movieIsInTheatres(movie))
 		{
 			request.setAttribute("Book", generateHTMLController.bookMovieForm(movie));

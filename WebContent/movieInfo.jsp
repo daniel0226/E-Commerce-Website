@@ -87,9 +87,16 @@
 		       		</div>
     			</div>
     			<hr>
+    			<div class="row" style="margin-top: 10px;">
+    				<div class="col-md-12 movieSchedule">
+    					<h2>Show Times:</h2>
+    					${showTimes}
+    				</div>
+    			</div>
+    			<hr>
     			<div class="row">
     				<div class="col-md-3">
-    					<h2 style="font-size: 2.5rem;">Reviews: </h2>
+    					<h2>Reviews: </h2>
     				</div>
     				<div class="col-md-9">
     					${Reviews}
