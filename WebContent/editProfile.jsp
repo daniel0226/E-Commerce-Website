@@ -37,7 +37,7 @@
         <section class="profileBackground">
             <form method="POST" action="profileController" class="profileBackgroundWrapper">
                 <div class="profileBody">
-                    <div class="container-fluid removeLeftPadding">
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-12 col-md-12">
                                 <div class="profileHeader">
@@ -46,21 +46,28 @@
                             </div>
                         </div>
                         ${errorMsg}
-                        <div class="row profileInfoBody" style="margin-top: 25px;">
-                            <div class="col-md-2">
-                                <button class="p-tab" type="button" value="about" name="about"
-                                    onclick="openPTab('p-about')">About</button>
-                                <button class="p-tab" type="button" value="payment" name="payment"
-                                    onclick="openPTab('p-payment')">Payment</button>
-                                <button class="p-tab" type="button" value="address" name="address"
-                                    onclick="openPTab('p-address')">Address</button>
-                                <button class="p-tab" type="button" value="booking" name="booking"
-                                	onclick="openPTab('p-booking')">Booking</button>
-                               	<button type="submit" class="p-tab" value="Password" name="changePassword">Change Password</button>
+                        <div class="row profileInfoBody">
+	                        <div class="col-md-2">
+	                        	<button class="p-tab" type="button" value="about" name="about"
+		                                    onclick="openPTab('p-about')">About</button>
+	                        </div>
+	                        <div class="col-md-2">
+		                       	<button class="p-tab" type="button" value="payment" name="payment"
+			                                    onclick="openPTab('p-payment')">Payment</button>
+			                </div>
+			                <div class="col-md-2">
+			                    <button class="p-tab" type="button" value="address" name="address"
+			                                    onclick="openPTab('p-address')">Address</button>
+			               	</div>
+			                <div class="col-md-4">
+			                	<button type="submit" class="p-tab" value="Password" name="changePassword">Change Password</button>
+			                </div>
+			                <div class="col-md-2">
                             	<button type="submit" class="p-tab" value="Changes" name="submitChange">Submit Changes</button>
                             </div>
-                            <div class="col-md-5">
-                                <div class="row">
+                        </div>
+                        <div class="row profileInfoBody">
+                            <div class="col-md-6">
                                     <div id="p-about" class="profileTab">
                                         <div class="inputField">
                                             <label for="fName">First Name: </label>
@@ -397,7 +404,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>

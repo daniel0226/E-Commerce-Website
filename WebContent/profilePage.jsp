@@ -37,7 +37,7 @@
         <section class="profileBackground">
             <div class="profileBackgroundWrapper">
                 <div class="profileBody">
-                    <div class="container-fluid removeLeftPadding">
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-12 col-md-12">
                                 <div class="profileHeader">
@@ -46,18 +46,25 @@
                             </div>
                         </div>
                         ${errorMsg}
-                        <div class="row profileInfoBody" style="margin-top: 25px;">
-                            <div class="col-md-2">
-	                           	<button class="p-tab" type="button" value="about" name="about"
+                        <div class="row profileInfoBody">
+                        	<div class="col-md-2">
+                        		<button class="p-tab" type="button" value="about" name="about"
 	                                    onclick="openPTab('p-about')">About</button>
-		                        <button class="p-tab" type="button" value="payment" name="payment"
+                        	</div>
+                        	<div class="col-md-2">
+	                        	<button class="p-tab" type="button" value="payment" name="payment"
 		                                    onclick="openPTab('p-payment')">Payment</button>
+		                    </div>
+		                    <div class="col-md-2">
 		                        <button class="p-tab" type="button" value="address" name="address"
 		                                    onclick="openPTab('p-address')">Address</button>
+		                    </div>
+		                    <div class="col-md-2">
 		                    	<button onclick="window.location.href = 'sessionController?type=edit'" class="p-tab" type="button" value="edit" name="edit">Edit Profile</button>
                             </div>
-                            <div class="col-md-5">
-                                <div class="row">
+                        </div>
+                        <div class="row profileInfoBody">
+                            <div class="col-md-6">
                                     <div id="p-about" class="profileTab">
                                         <div class="inputField">
                                             <label for="fName">First Name: </label>
@@ -108,10 +115,9 @@
                                         <div class="inputField">
                                             <label for="addressLine">Address Line</label>
                                             <textarea class="p-input" readonly id="addressLine" type="text"
-                                            name="addressLine">${addressLine}</textarea>
-                                        </div>
-                                    </div>
-                                </div>
+                                    	name="addressLine">${addressLine}</textarea>
+                        	        </div>
+                            	</div>
                             </div>
                         </div>
                     </div>

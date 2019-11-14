@@ -69,7 +69,7 @@ nav
     letter-spacing: 2px;
     font-weight: 500;
     font-size: 1rem;
-    text-shadow: 0px 0px 4px black;
+    text-shadow: 0px 0px 20px black, 0px 0px 2px black, 0px 1px 1px black;
 }
 .navbar a:hover, .navbar button:hover
 {
@@ -232,7 +232,7 @@ footer .row
 }
 .profileHeader h2
 {
-	padding: 10px;
+	padding: 10px 0px;
     font-weight: 900;
     width: 100%;
     text-shadow: 0px 0px 3px black;
@@ -803,6 +803,12 @@ width:350px;
     background-position: 50% 50%;
     width: 100%;
     background-size: cover;
+}
+.profileBackground2
+{
+	width: 100%;
+	background: black;
+	min-height: 100vh;
 }
 .profileBackground
 {
@@ -1478,7 +1484,7 @@ width:350px;
     padding: 100px 10px 100px 0px;
     margin: 0;
     color: white;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.15);
 }
 
 .profileBody
@@ -1503,19 +1509,22 @@ width:350px;
     width: 100%;
     
 }
+.profileInfoBody
+{
+	padding: 25px 0px;
+}
 .profileInfoBody button
 {
     padding: 10px 0px;
-    background: rgba(0,0,0,0.7);
-    border: 2px solid black;
-    border-radius: 4px;
+    background: none;
+    border: solid .5px black;
     font-size: 1.25rem;
     color: white;
-    border-top: none;
-    display: block;
     width: 100%;
     margin-bottom: 8px;
-    box-shadow: 0px 0px 6px white;
+    box-shadow: 0px 0px 1px white, 0px 0px 6px white;
+    font-weight: 500;
+    text-shadow: 0px 0px 5px black, 0px 1px 1px black;
 }
 .profileInfoBody button:hover
 {
@@ -1575,7 +1584,7 @@ width:350px;
     text-shadow: 0px 0px 3px black;
     outline: none;
     border: none;
-    box-shadow: 0px 0px 1px white;
+    box-shadow: 0px 1px 2px white;
     border-radius: 4px;
     background: none;
     background: rgba(0,0,0,0.4);
