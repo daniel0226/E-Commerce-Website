@@ -17,6 +17,7 @@ import static java.time.temporal.ChronoUnit.HOURS;
 public class Validator
 {
 	private static authenticatorController authenticator;
+	private static long MAX_DIFFERENCE = 2;
 	
 	public static boolean isValidateShowTime(ShowTimes st, String oldTime)
 	{
@@ -28,7 +29,7 @@ public class Validator
 		{
 			validShowTime = true;
 		}else {
-			List<ShowTimes> byId_Date = new LinkedList<ShowTimes>();
+			List<LocalTime> tC = new LinkedList<LocalTime>();
 			//System.out.println(st.getMovieTitle() + " " + st.getCinemaID() + " " + st.getShowTimes() + " " + st.getDate());
 			for(int i = 0; i<st_l.size(); i++)
 			{
@@ -40,29 +41,22 @@ public class Validator
 					{
 						if(!currentST.getShowTimes().equals(oldTime))
 						{
-							byId_Date.add(currentST);	
+							tC.add(LocalTime.parse(currentST.getShowTimes()));	
 						}
 					}
 				}
 			}
-			if(byId_Date.size() == 0)
+			if(tC.size() == 0)
 			{
 				validShowTime = true;
 			}else
 			{ 
-				List<LocalTime> tC = new LinkedList<LocalTime>();
 				tC.add(LocalTime.parse(st.getShowTimes()));
-				for(int i = 0; i<byId_Date.size(); i++)
-				{
-					tC.add(LocalTime.parse(byId_Date.get(i).getShowTimes()));
-				}
 				Collections.sort(tC);
 				for(int i = 1; i<tC.size(); i++)
 				{
-					System.out.println(tC.get(i-1) + " - " + tC.get(i));
 					long Difference = Math.abs(tC.get(i).until(tC.get(i-1), HOURS));
-					System.out.println(Difference);
-					if(Difference < 2)
+					if(Difference < MAX_DIFFERENCE)
 					{
 						validShowTime = false;
 					}

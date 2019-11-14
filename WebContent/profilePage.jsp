@@ -30,12 +30,7 @@
         crossorigin="anonymous"></script>
     <script src="js/fields.js"></script>
 </head>
-<style>
-	nav
-	{
-		background: rgba(0,0,0,0.9);
-	}
-</style>
+
 <body>
    <header>${nav}</header>
     <main style="width: 100%; height: 100%; min-height: 100vh;">
@@ -53,13 +48,13 @@
                         ${errorMsg}
                         <div class="row profileInfoBody" style="margin-top: 25px;">
                             <div class="col-md-2">
-                                <button class="p-tab" type="button" value="about" name="about"
-                                    onclick="openPTab('p-about')">About</button>
-                                <button class="p-tab" type="button" value="payment" name="payment"
-                                    onclick="openPTab('p-payment')">Payment</button>
-                                <button class="p-tab" type="button" value="address" name="address"
-                                    onclick="openPTab('p-address')">Address</button>
-                                <button onclick="window.location.href = 'sessionController?type=edit'" class="p-tab" type="button" value="edit" name="edit">Edit Profile</button>
+	                           	<button class="p-tab" type="button" value="about" name="about"
+	                                    onclick="openPTab('p-about')">About</button>
+		                        <button class="p-tab" type="button" value="payment" name="payment"
+		                                    onclick="openPTab('p-payment')">Payment</button>
+		                        <button class="p-tab" type="button" value="address" name="address"
+		                                    onclick="openPTab('p-address')">Address</button>
+		                    	<button onclick="window.location.href = 'sessionController?type=edit'" class="p-tab" type="button" value="edit" name="edit">Edit Profile</button>
                             </div>
                             <div class="col-md-5">
                                 <div class="row">

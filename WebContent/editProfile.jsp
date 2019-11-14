@@ -30,12 +30,7 @@
         crossorigin="anonymous"></script>
     <script src="js/fields.js"></script>
 </head>
-<style>
-	nav
-	{
-		background: rgba(0,0,0,0.8);
-	}
-</style>
+
 <body>
     <header>${nav}</header>
     <main style="width: 100%; height: 100%; min-height: 100vh;">

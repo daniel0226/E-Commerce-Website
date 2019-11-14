@@ -95,16 +95,13 @@
 				<div class="col-md-6">
 					<h1 class="movieTitle">
 						JOKER
-						<hr>
 					</h1>
 					<h2>"I used to think that my life was a tragedy, but now I
 						realize, it's a comedy."</h2>
-					<hr>
 					<p>Failed comedian Arthur Fleck encounters violent thugs while
 						wandering the streets of Gotham City dressed as a clown.
 						Disregarded by society, Fleck begins a slow dissent into madness
 						as he transforms into the criminal mastermind known as the Joker.</p>
-					<a href="bookingController?book=Joker">Book Now!</a>
 					<a href="loadObjectsToHtmlController?type=Joker">Learn More</a>
 				</div>
 			</div>
@@ -114,7 +111,6 @@
 		<h2>In Theatres Now</h2>
 		<button class="Innext">Next</button>
 		<button class="Inprev">Prev</button>
-		<hr style="margin-top: 10px !important;">
 	</div>
 	<section id="intheatrepage" class="indexInTheatresPage">
 		<div class="carouselInTheatre">
@@ -125,7 +121,6 @@
 		<h2>Coming Soon</h2>
 		<button class="next">Next</button>
 		<button class="prev">Prev</button>
-		<hr style="margin-top: 10px !important;">
 	</div>
 	<section id="comingSoonPage" class="indexInTheatresPage">
 		<div class="carouselComingSoon">

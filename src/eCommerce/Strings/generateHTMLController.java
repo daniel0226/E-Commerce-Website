@@ -258,12 +258,12 @@ public class generateHTMLController {
 		if(checked)
 		{
 			return 	"<div class=\"inputField\">\r\n" + 
-					"	<label for=\"promoCheckbox\">Receive Promotion Email</label>\r\n" + 
+					"	<label style=\"margin-left: 10px;\"for=\"promoCheckbox\">Receive Promotion Email</label>\r\n" + 
 					"   <input type=\"checkbox\" name=\"promoCheckBox\" checked>\r\n" + 
 					"</div>";
 		}else {
 			return 	"<div class=\"inputField\">\r\n" + 
-					"	<label for=\"promoCheckbox\">Receive Promotion Email</label>\r\n" + 
+					"	<label style=\"margin-left: 10px;\" for=\"promoCheckbox\">Receive Promotion Email</label>\r\n" + 
 					"   <input type=\"checkbox\" name=\"promoCheckBox\">\r\n" + 
 					"</div>";
 		}
