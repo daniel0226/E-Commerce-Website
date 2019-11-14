@@ -48,18 +48,22 @@
                         ${errorMsg}
                         <div class="row profileInfoBody">
                         	<div class="col-md-2">
+                        		<div class="blur"></div>
                         		<button class="p-tab" type="button" value="about" name="about"
 	                                    onclick="openPTab('p-about')">About</button>
                         	</div>
                         	<div class="col-md-2">
+                        		<div class="blur"></div>
 	                        	<button class="p-tab" type="button" value="payment" name="payment"
 		                                    onclick="openPTab('p-payment')">Payment</button>
 		                    </div>
 		                    <div class="col-md-2">
+		                    	<div class="blur"></div>
 		                        <button class="p-tab" type="button" value="address" name="address"
 		                                    onclick="openPTab('p-address')">Address</button>
 		                    </div>
 		                    <div class="col-md-2">
+		                    	<div class="blur"></div>
 		                    	<button onclick="window.location.href = 'sessionController?type=edit'" class="p-tab" type="button" value="edit" name="edit">Edit Profile</button>
                             </div>
                         </div>
@@ -67,6 +71,7 @@
                             <div class="col-md-6">
                                     <div id="p-about" class="profileTab">
                                         <div class="inputField">
+                                        	<div class="blur"></div>
                                             <label for="fName">First Name: </label>
                                             <input id="fName" class="p-input" readonly name="fName" value="${fName}"
                                                 type="text">

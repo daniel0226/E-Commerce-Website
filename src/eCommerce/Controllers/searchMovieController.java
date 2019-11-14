@@ -132,16 +132,19 @@ public class searchMovieController extends HttpServlet{
 	public void searchByTitle(HttpServletRequest request, HttpServletResponse response, String query) throws SQLException
 	{
 		List<Movie> moviesList = Database.getMoviesbyTitle(query);
+		String html = "";
+		
 		if(moviesList.size() == 0)
 		{
 			NO_MOVIES_FOUND(request, response);
-		}else
+		}
+		else
 		{
-			String html = "";
 			for(int i = 0; i<moviesList.size(); i++)
 			{
 				html += generateHTMLController.generateInTheatres(moviesList.get(i));
 			}
+			
 			if(html.equals(""))
 			{
 				NO_MOVIES_FOUND(request, response);
