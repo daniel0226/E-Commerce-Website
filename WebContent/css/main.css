@@ -375,7 +375,7 @@ hr
 }
 .search-container input
 {
-    padding: 0px 0px 0px 5px;
+    padding: 0px 0px 0px 7px;
     background: none;
     border: none;
     outline: none;
@@ -389,7 +389,7 @@ hr
 {
     position: relative;
     padding: 0px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.3);
     border: solid 1px white;
     border-radius: 25px;
     box-shadow: 0 0 3.5px black;
@@ -1484,7 +1484,7 @@ width:350px;
     padding: 100px 10px 100px 0px;
     margin: 0;
     color: white;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .profileBody
@@ -1521,10 +1521,11 @@ width:350px;
     font-size: 1.25rem;
     color: white;
     width: 100%;
+    border-radius: 8px;
     margin-bottom: 8px;
-    box-shadow: 0px 0px 1px white, 0px 0px 6px white;
+    box-shadow: 0px 0px 3px white, 0px 0px 6px white, 0px 1px 5px black;
     font-weight: 500;
-    text-shadow: 0px 0px 5px black, 0px 1px 1px black;
+    text-shadow: 0px 0px 15px black, 0px 1px 2px black;
 }
 .profileInfoBody button:hover
 {
@@ -1554,16 +1555,12 @@ width:350px;
     font-weight: 900;
     color: white;
     background: none;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-image: initial;
-    border-bottom: 1px solid white;
     padding: 8px 20px;
+    border: none;
     width: 100px;
  	font-size: 1rem;
-    box-shadow: white 0px 0px 3px;
-    border-radius: 25px;
+    box-shadow: 0px 0px 4px white, 0px 1px 1px white;
+    border-radius: 4px;
     margin: 6px 12px;
 }
 .inTheatresHeader button:hover
@@ -1719,6 +1716,12 @@ width:350px;
 	background: black;
 	position: relative;
 	color: white;
+}
+.moviesPageBody .row
+{
+	margin-top: 10px !important;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
 }
 .movieInfoBtn
 {
