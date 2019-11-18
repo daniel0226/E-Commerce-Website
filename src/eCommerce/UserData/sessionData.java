@@ -7,28 +7,28 @@ import eCommerce.users.WebUser;
 public class sessionData{
 	
 	private static HttpServletRequest req = null;
-	private static WebUser _user = null;
+	private static WebUser s_user = null;
 	private static HttpSession session = null;
-	
+			
 	public sessionData(HttpServletRequest request, WebUser user)
 	{
 		super();
 		System.out.println("Created new session for: " + user.getFullName());
 		req = request;
-		_user = user;
+		s_user = user;
 		session = req.getSession();
 	}
 
 	public static HttpSession createSession()
 	{
 	    session = req.getSession();
-	    session.setAttribute("email", _user.getEmail());
-	    System.out.println("Successfully created new session for: " + _user.getFullName());
+	    session.setAttribute("email", s_user.getEmail());
+	    System.out.println("Successfully created new session for: " + s_user.getFullName());
 	    return (HttpSession)session;
 	}
 	public static boolean logout()
 	{
-		System.out.println("Logging out user: " + _user.getFullName());
+		System.out.println("Logging out user: " + s_user.getFullName());
 		session = req.getSession();
 		if(session != null)
 		{
@@ -43,7 +43,7 @@ public class sessionData{
 	}
 	public static WebUser getCurrentSessionUser()
 	{
-		return _user;
+		return s_user;
 	}
 	public static HttpSession getCurrentSession()
 	{
@@ -52,7 +52,7 @@ public class sessionData{
 	public static void resetData()
 	{
 		req = null;
-		_user = null;
+		s_user = null;
 		session = null;
 	}
 }
