@@ -1,6 +1,7 @@
 package eCommerce.Strings;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -609,5 +610,28 @@ public class generateHTMLController {
 		
 		html += class_Label + theatre1 + ending_Div + theatre2 + ending_Div +  theatre3 + ending_Div + ending_Div;	
 		return html;
+	}
+	public static String Theatre(Movie movie, int theatreID)
+	{
+		List<ShowTimes> list = Database.getMovieShowTimes(movie);
+		String topHalf = "<section class=\"container s-bd\">"+
+				"       	<div class=\"row justify-content-center\">"+
+				"        		<div class=\"col-sm-3 col-md-3\">"+
+				"        			<h2>Theater " + theatreID + "</h2>"+
+				"        		</div> "+
+				"        		<div class=\"col-sm-9 col-md-9 removeLeftPadding removeRightPadding\">"+
+				"        			<ul>";
+		String bottomHalf = "       </ul>"+
+				"        		</div>"+
+				"        	</div>"+
+				"        </section>";
+		for(int i = 0; i<list.size(); i++)
+		{
+			if(list.get(i).getCinemaID() == theatreID)
+			{
+				topHalf += "<li><a href=\"bookingController?type=" + list.get(i).getID() + "\">" + list.get(i).getDate() + "</a></li>";
+			}
+		}
+		return topHalf + bottomHalf;
 	}
 }

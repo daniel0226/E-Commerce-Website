@@ -367,6 +367,32 @@ public class Database {
 			System.err.println("Could not add User. Perhaps the User already exists.");
 		}
 	}
+	
+	public static ShowTimes getShowTimeByID(String id)
+	{
+		try {
+		ShowTimes st = null;
+		String query = "SELECT * FROM termproject.showtime WHERE id = " + id;
+		connection = mysql.getConnection();
+		statement = connection.createStatement();
+		ResultSet rs = statement.executeQuery(query);
+		if(rs.next())
+		{
+			st = new ShowTimes(	rs.getString(2),
+					rs.getInt(3),
+					rs.getString(4),
+					rs.getString(5),
+					rs.getInt(1));
+		}
+		rs.close();
+		connection.close();
+		return st;
+		}catch(SQLException e)
+		{
+			System.err.print(e);
+			return null;
+		}
+	}
 
 	public static List<Movie> getMoviesByCategory(String category) throws SQLException
 	{
