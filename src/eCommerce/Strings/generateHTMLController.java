@@ -1,9 +1,14 @@
 package eCommerce.Strings;
 
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.TreeSet;
 
 import eCommerce.Controllers.dateController;
 import eCommerce.Database.Database;
@@ -611,9 +616,47 @@ public class generateHTMLController {
 		html += class_Label + theatre1 + ending_Div + theatre2 + ending_Div +  theatre3 + ending_Div + ending_Div;	
 		return html;
 	}
-	public static String Theatre(Movie movie, int theatreID)
+	public static String loadDates(Movie movie)
 	{
 		List<ShowTimes> list = Database.getMovieShowTimes(movie);
+		List<ShowTimes> uniqueList = new ArrayList<>();
+		Set<String> dates = new HashSet<String>();
+		for(int i = 0; i<list.size(); i++)
+		{
+			String currentDate = list.get(i).getDate();
+			if(!dates.contains(currentDate))
+			{
+				uniqueList.add(list.get(i));
+			}
+			dates.add(currentDate);
+		}
+		if(uniqueList.size() == 0)
+		{
+			return "<h2> NO SHOW TIMES AVAILABLE </h2>";
+		}
+		String topHalf = "<section class=\"container s-bd\">"+
+				"       	<div class=\"row justify-content-center\">"+
+				"        		<div class=\"col-sm-3 col-md-3\">"+
+				"        			<h2>Theater Dates</h2>"+
+				"        		</div> "+
+				"        		<div class=\"col-sm-9 col-md-9 removeLeftPadding removeRightPadding\">"+
+				"        			<ul>";
+		String bottomHalf = "       </ul>"+
+				"        		</div>"+
+				"        	</div>"+
+				"        </section>";
+		List<ShowTimes> l = new ArrayList<>(uniqueList);
+		l.sort((o1, o2) -> o1.getDate().compareTo(o2.getDate()));
+		for(int i = 0; i<l.size(); i++)
+		{
+			topHalf += "<li><a href=\"bookingController?date=" + l.get(i).getID() + "\">" + dateController.convertToLocalDate(l.get(i).getDate()) + "</a></li>";
+		}
+		return topHalf + bottomHalf;
+	}
+	public static String Theatre(Movie movie, int theatreID, String Date)
+	{
+		List<ShowTimes> list = Database.getMovieShowTimes(movie);
+		list.sort((o1, o2) -> o1.getShowTimes().compareTo(o2.getShowTimes()));
 		String topHalf = "<section class=\"container s-bd\">"+
 				"       	<div class=\"row justify-content-center\">"+
 				"        		<div class=\"col-sm-3 col-md-3\">"+
@@ -627,9 +670,9 @@ public class generateHTMLController {
 				"        </section>";
 		for(int i = 0; i<list.size(); i++)
 		{
-			if(list.get(i).getCinemaID() == theatreID)
+			if(list.get(i).getCinemaID() == theatreID && list.get(i).getDate().equals(Date))
 			{
-				topHalf += "<li><a href=\"bookingController?type=" + list.get(i).getID() + "\">" + list.get(i).getDate() + "</a></li>";
+				topHalf += "<li><a href=\"bookingController?type=" + list.get(i).getID() + "\">" + dateController.convertToTwelve(list.get(i).getShowTimes()) + "</a></li>";
 			}
 		}
 		return topHalf + bottomHalf;

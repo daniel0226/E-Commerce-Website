@@ -48,6 +48,7 @@ public class bookingController extends HttpServlet{
 	{
 		String movieToBook = request.getParameter("book");
 		String requestID = request.getParameter("type");
+		String date = request.getParameter("date");
 		//Returns movie title
 		
 		if(!Validator.validateUserIsLoggedIn())
@@ -55,6 +56,11 @@ public class bookingController extends HttpServlet{
 			//request.setAttribute("loginError", ERROR_DATA.LOGIN_FIRST_ERROR);
 			//sessionC.navigatePage(request, response, "/login.jsp");
             //return;
+		}
+		
+		if(date != null && !date.equals(""))
+		{
+			selectingQuery(request, response, date);
 		}
 		
 		if(requestID != null && !requestID.equals(""))
@@ -71,17 +77,28 @@ public class bookingController extends HttpServlet{
 		
 		return;
 	}
+	public void selectingQuery(HttpServletRequest request, HttpServletResponse response, String id)
+	{
+		sessionController sc = new sessionController();
+		loadObjectsToHtmlController loadHtml = new loadObjectsToHtmlController();
+		ShowTimes st = Database.getShowTimeByID(id);
+		Movie movie = Database.getMovie(st.getMovieTitle());
+		loadHtml.setSelectShowTimesPage(request, response, movie, st.getDate());
+		sc.navigatePage(request, response, "selectView.jsp");
+	}
+	
 	public void bookingQuery(HttpServletRequest request, HttpServletResponse response, String movieTitle)
 	{
 		sessionController sc = new sessionController();
 		loadObjectsToHtmlController loadHtml = new loadObjectsToHtmlController();
 		Movie movie = Database.getMovie(movieTitle);
-		loadHtml.setSelectShowTimesPage(request, response, movie);
+		loadHtml.setDateSelect(request, response, movie);
 		sc.navigatePage(request, response, "selectView.jsp");
 	}
+	
 	public void queryTypes(HttpServletRequest request, HttpServletResponse response, String id)
 	{
 		ShowTimes st = Database.getShowTimeByID(id);
-		System.out.println(st.getDate());
+		System.out.println(st.getID());
 	}
 }

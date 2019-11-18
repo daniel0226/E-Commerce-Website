@@ -43,11 +43,12 @@
         				</div>
         				<div class="col-sm-10 col-md-10">
         					<h2>${title}</h2>
-        					<p>${rating}</p>
+        					<p style="font-size: 1.25rem; font-weight: 700;">${rating}</p>
         					<p>${synopsis} <a href="${url}">Learn More</a></p>
         				</div>
         			</div>
         		</section>
+        		${Dates}
         		${Theatre1}
         		${Theatre2}
         		${Theatre3}

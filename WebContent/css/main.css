@@ -1891,7 +1891,7 @@ width:350px;
 	border: solid 2px #00aeef;
 	box-shadow: 0px 0px 3px white;
 	border-radius: 8px;
-	margin-left: 10px;
+	margin: 10px 10px 10px 10px;
 	display: block;
 	float: left;
 }
@@ -1903,6 +1903,7 @@ width:350px;
 	padding: 15px 3px;
 	position: relative;
 	width: 100%;
+	text-decoration: none;
 	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 	color: white;
 }

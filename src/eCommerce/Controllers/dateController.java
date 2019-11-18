@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
 import eCommerce.MovieData.Movie;
+import eCommerce.MovieData.ShowTimes;
 
 public class dateController {
 	
@@ -21,6 +22,12 @@ public class dateController {
 	public String getTodaysDate()
 	{
 		return LocalDate.now().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
+	}
+	public static boolean showTimeIsValidDate(ShowTimes st)
+	{
+		LocalDate todaysDate = LocalDate.now();
+		LocalDate showDate = LocalDate.parse(st.getDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		return todaysDate.compareTo(showDate) >= 0;
 	}
 	public static LocalDate convertToLocalDate(String date_str)
 	{

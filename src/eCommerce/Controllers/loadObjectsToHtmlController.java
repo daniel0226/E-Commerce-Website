@@ -267,16 +267,26 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		}
 		return;
 	}
-	public void setSelectShowTimesPage(HttpServletRequest request, HttpServletResponse response, Movie movie)
+	public void setDateSelect(HttpServletRequest request, HttpServletResponse response, Movie movie)
 	{
 		request.setAttribute("moviePhoto", movie.getMoviePicture());
 		request.setAttribute("title", movie.getMovieTitle());
 		request.setAttribute("rating", movie.getMovieRating());
 		request.setAttribute("synopsis", movie.getMovieSynopsis());
 		request.setAttribute("url", "loadObjectsToHtmlController?type=" + movie.getMovieTitle());
-		request.setAttribute("Theatre1", generateHTMLController.Theatre(movie, 1));
-		request.setAttribute("Theatre2", generateHTMLController.Theatre(movie, 2));
-		request.setAttribute("Theatre3", generateHTMLController.Theatre(movie, 3));
+		request.setAttribute("Dates", generateHTMLController.loadDates(movie));
+		return;
+	}
+	public void setSelectShowTimesPage(HttpServletRequest request, HttpServletResponse response, Movie movie, String Date)
+	{
+		request.setAttribute("moviePhoto", movie.getMoviePicture());
+		request.setAttribute("title", movie.getMovieTitle());
+		request.setAttribute("rating", movie.getMovieRating());
+		request.setAttribute("synopsis", movie.getMovieSynopsis());
+		request.setAttribute("url", "loadObjectsToHtmlController?type=" + movie.getMovieTitle());
+		request.setAttribute("Theatre1", generateHTMLController.Theatre(movie, 1, Date));
+		request.setAttribute("Theatre2", generateHTMLController.Theatre(movie, 2, Date));
+		request.setAttribute("Theatre3", generateHTMLController.Theatre(movie, 3, Date));
 		return;
 	}
 }
