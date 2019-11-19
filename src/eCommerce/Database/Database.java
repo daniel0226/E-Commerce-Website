@@ -546,8 +546,10 @@ public class Database {
 	public static List<ShowTimes> getMovieShowTimes(Movie movie)
 	{
 		try {
+			System.out.println("Getting Show Times for Movie: " + movie.getMovieTitle());
 			List<ShowTimes> moviesShowTimeList = new LinkedList<ShowTimes>();
 			String query = MySQL_Commands.getShowTimes(movie);
+			System.out.println(query);
 			connection = mysql.getConnection();
 			statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(query);
@@ -784,5 +786,62 @@ public class Database {
 	public String databaseConnected()
 	{
 		return "Connected";
+	}
+	public static ShowTimes getLastShowTime()
+	{
+		ShowTimes st = null;
+		try {
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(MySQL_Commands.GET_LAST_SHOWTIME_ROW);
+			if(rs.next())
+			{
+				st = new ShowTimes(	rs.getString(2),
+						rs.getInt(3),
+						rs.getString(4),
+						rs.getString(5),
+						rs.getInt(1));
+			}
+			rs.close();
+			connection.close();
+			return st;
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+			return null;
+		}
+	}
+	public static void addSeatings(ShowTimes st)
+	{
+		ShowTimes a = Database.getLastShowTime();
+		try
+		{
+			String addSeats = MySQL_Commands.ADD_SEATS(a);
+			System.out.println(addSeats);
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(addSeats);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.print(e);
+		}
+	}
+	public static void removeSeatings(ShowTimes st)
+	{
+		try
+		{
+			String removeSeats = MySQL_Commands.REMOVE_SEATS(st);
+			System.out.println(removeSeats);
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(removeSeats);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.print(e);
+		}
 	}
 }

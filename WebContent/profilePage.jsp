@@ -39,7 +39,7 @@
                 <div class="profileBody">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-sm-12 col-md-12">
+                            <div class="col-sm-6 col-md-6">
                                 <div class="profileHeader">
                                     <h2>Welcome, ${name}</h2>
                                 </div>

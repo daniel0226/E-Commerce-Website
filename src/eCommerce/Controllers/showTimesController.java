@@ -55,6 +55,7 @@ public class showTimesController extends HttpServlet{
 			int id = Integer.parseInt(request.getParameter("id"));
 			ShowTimes st = new ShowTimes(movie.getMovieTitle(), cinemaID, time, date, id);
 			Database.removeShowTime(st);
+			Database.removeSeatings(st);
 			Database.resetDatabase();
 			loadObjectsToHtmlController lh = new loadObjectsToHtmlController();
 			request.setAttribute("ErrorMsg", "<p>Successfully removed ShowTime</p>");
@@ -97,6 +98,7 @@ public class showTimesController extends HttpServlet{
 				return;
 			}
 			Database.addShowTime(st);
+			Database.addSeatings(st);
 			Database.resetDatabase();
 			request.setAttribute("ErrorMsg", "<p>Successfully updated ShowTime</p>");
 			request.setAttribute("js", generateHTMLController.navigateDiv("showtimeBtn","Showtimes"));

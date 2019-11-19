@@ -551,6 +551,7 @@ public class generateHTMLController {
 		list.sort((o1, o2) -> o1.getShowTimes().compareTo(o2.getShowTimes()));
 		if(list == null || list.size() == 0)
 		{
+			System.out.println("ADMIN: NO SHOWTIMES FOUND: " + list.size());
 			return "";
 		}
 		
@@ -584,6 +585,7 @@ public class generateHTMLController {
 			
 			String times = currentMovie.getShowTimes();
 			String p = "<p>" + dateController.convertToTwelve(times) + "</p>";
+			System.out.println("Current Movie: " + currentMovie.getMovieTitle() + " " + currentMovie.getCinemaID());
 			if(currentMovie.getCinemaID() == 1)
 			{	
 				theatre1IsShowing = true;

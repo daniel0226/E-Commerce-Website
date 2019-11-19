@@ -34,9 +34,17 @@ public class MySQL_Commands {
 			+ " VALUES (? ,? ,? ,? ,? ,? ,? , ?, ?, ?, ?)";
 	public static final String Add_Card = "INSERT INTO card (cardOwnerEmail, cardOwnerName, cvv, expDate, cardNumber, zipCode)"
 			+ " VALUES (?, ?, ?, ?, ?, ?)";
-	
+	public static String GET_LAST_SHOWTIME_ROW = "SELECT * FROM termproject.showtime ORDER BY id DESC LIMIT 1";
 	
 	//Functions 
+	public static String REMOVE_SEATS(ShowTimes st)
+	{
+		return "DELETE FROM termproject.seatings WHERE showtimeId = '" + st.getID() + "'";
+	}
+	public static String ADD_SEATS(ShowTimes st)
+	{
+		return "INSERT INTO termproject.seatings (showtimeId) VALUES ('" + st.getID() + "')";
+	}
 	public static String ADD_SHOWTIME(ShowTimes st)
 	{
 		return "INSERT INTO showtime(title, CinemaID, Showtime, Date)"

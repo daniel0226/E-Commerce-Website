@@ -49,6 +49,7 @@ public class bookingController extends HttpServlet{
 		String movieToBook = request.getParameter("book");
 		String requestID = request.getParameter("type");
 		String date = request.getParameter("date");
+		String ticket = request.getParameter("submitTicket");
 		//Returns movie title
 		
 		if(!Validator.validateUserIsLoggedIn())
@@ -56,6 +57,11 @@ public class bookingController extends HttpServlet{
 			//request.setAttribute("loginError", ERROR_DATA.LOGIN_FIRST_ERROR);
 			//sessionC.navigatePage(request, response, "/login.jsp");
             //return;
+		}
+		
+		if(ticket != null && !ticket.equals(""))
+		{
+			ticketQuery(request, response, ticket);
 		}
 		
 		if(date != null && !date.equals(""))
@@ -77,6 +83,16 @@ public class bookingController extends HttpServlet{
 		
 		return;
 	}
+	public void ticketQuery(HttpServletRequest request, HttpServletResponse response, String id)
+	{
+		sessionController sc = new sessionController();
+		loadObjectsToHtmlController loadHtml = new loadObjectsToHtmlController();
+		int SeniorCount = Integer.parseInt(request.getParameter("senior"));
+		int AdultCount = Integer.parseInt(request.getParameter("adult"));
+		int ChildCount = Integer.parseInt(request.getParameter("child"));
+		System.out.println(id);
+	}
+	
 	public void selectingQuery(HttpServletRequest request, HttpServletResponse response, String id)
 	{
 		sessionController sc = new sessionController();
@@ -99,6 +115,10 @@ public class bookingController extends HttpServlet{
 	public void queryTypes(HttpServletRequest request, HttpServletResponse response, String id)
 	{
 		ShowTimes st = Database.getShowTimeByID(id);
-		System.out.println(st.getID());
+		sessionController sc = new sessionController();
+		loadObjectsToHtmlController loadHtml = new loadObjectsToHtmlController();
+		Movie movie = Database.getMovie(st.getMovieTitle());
+		loadHtml.setTicketPage(request, response, movie, st);
+		sc.navigatePage(request, response, "selectTicket.jsp");
 	}
 }

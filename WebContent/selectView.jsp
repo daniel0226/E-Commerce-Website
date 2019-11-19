@@ -39,7 +39,7 @@
         		<section class="container s-bd">
         			<div class="row justify-content-center">
         				<div class="col-sm-2 col-md-2">
-        					<img src="images/MoviePhoto/${moviePhoto}" alt="Joker">
+        					<img src="images/MoviePhoto/${moviePhoto}" alt="moviePic">
         				</div>
         				<div class="col-sm-10 col-md-10">
         					<h2>${title}</h2>

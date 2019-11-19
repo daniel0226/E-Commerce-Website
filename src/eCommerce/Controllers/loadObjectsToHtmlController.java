@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 import eCommerce.MovieData.Movie;
+import eCommerce.MovieData.ShowTimes;
+import eCommerce.MovieData.Ticket;
 import eCommerce.Strings.generateHTMLController;
 import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
@@ -287,6 +289,20 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		request.setAttribute("Theatre1", generateHTMLController.Theatre(movie, 1, Date));
 		request.setAttribute("Theatre2", generateHTMLController.Theatre(movie, 2, Date));
 		request.setAttribute("Theatre3", generateHTMLController.Theatre(movie, 3, Date));
+		return;
+	}
+	public void setTicketPage(HttpServletRequest request, HttpServletResponse response, Movie movie, ShowTimes showtime)
+	{
+		request.setAttribute("moviePhoto", movie.getMoviePicture());
+		request.setAttribute("cinemaID", "Theatre " + showtime.getCinemaID());
+		request.setAttribute("Date", dateController.convertToLocalDate(showtime.getDate()));
+		request.setAttribute("Time", dateController.convertToTwelve(showtime.getShowTimes()));
+		request.setAttribute("title", movie.getMovieTitle());
+		request.setAttribute("id", showtime.getID());
+		Ticket ticket = new Ticket(9.50, 11.50, 7.50);
+		request.setAttribute("senior", ticket.seniorToString());
+		request.setAttribute("adult", ticket.adultToString());
+		request.setAttribute("child", ticket.childToString());
 		return;
 	}
 }

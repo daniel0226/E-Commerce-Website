@@ -707,3 +707,29 @@ var isoCountries = {
 	        return countryCode;
 	    }
 	}
+	
+function decreaseCount(id)
+{
+	var input = document.getElementById(id);
+	var currentVal = input.value;
+	if(currentVal == 0)
+	{
+		return;
+	}else
+	{
+		input.stepDown(1);
+	}
+}
+function increaseCount(id)
+{
+	var input = document.getElementById(id);
+	var currentVal = input.value;
+	if(currentVal >= 25)
+	{
+		return;
+	}else
+	{
+		input.stepUp(1);
+		return;
+	}
+}
