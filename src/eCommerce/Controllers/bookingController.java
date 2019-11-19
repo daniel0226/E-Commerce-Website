@@ -4,7 +4,9 @@ import javax.servlet.http.HttpServlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.*;
@@ -13,7 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import eCommerce.Database.Database;
 import eCommerce.MovieData.Movie;
+import eCommerce.MovieData.Seatings;
 import eCommerce.MovieData.ShowTimes;
+import eCommerce.MovieData.TicketCount;
 import eCommerce.Strings.ERROR_DATA;
 import eCommerce.UserData.sessionData;
 import eCommerce.Validator.Validator;
@@ -50,6 +54,7 @@ public class bookingController extends HttpServlet{
 		String requestID = request.getParameter("type");
 		String date = request.getParameter("date");
 		String ticket = request.getParameter("submitTicket");
+		String book = request.getParameter("bookShowTime");
 		//Returns movie title
 		
 		if(!Validator.validateUserIsLoggedIn())
@@ -57,6 +62,11 @@ public class bookingController extends HttpServlet{
 			//request.setAttribute("loginError", ERROR_DATA.LOGIN_FIRST_ERROR);
 			//sessionC.navigatePage(request, response, "/login.jsp");
             //return;
+		}
+		
+		if(book != null && !book.equals(""))
+		{
+			bookMovie(request, response, book);
 		}
 		
 		if(ticket != null && !ticket.equals(""))
@@ -83,16 +93,54 @@ public class bookingController extends HttpServlet{
 		
 		return;
 	}
+	public void bookMovie(HttpServletRequest request, HttpServletResponse response, String id)
+	{
+		sessionController sc = new sessionController();
+		String[] seats = request.getParameterValues("seat");
+		List<String> seatIds = new ArrayList<>();
+		int seatsClicked = 0;
+		for(int i = 0; i<seats.length; i++)
+		{
+			if(Integer.parseInt(seats[i]) != -1)
+			{
+				//Returns clicked ID's
+				seatIds.add(seats[i]);
+				System.out.println(seats[i]);
+				seatsClicked++;
+			}
+		}
+		if(Integer.parseInt(request.getParameter("max")) != seatsClicked)
+		{
+			Seatings s = Database.getSeats(id);
+			ShowTimes st = Database.getShowTimeByID(Integer.toString(s.getShowTimeId()));
+			Movie movie = Database.getMovie(st.getMovieTitle());
+			loadObjectsToHtmlController loadHtml = new loadObjectsToHtmlController();
+			loadHtml.setTicketPage(request, response, movie, st);
+			request.setAttribute("errorMsg", "<p style=\"text-align: center; color:red;\">Number of seats selected does not match tickets.</p>");
+			sc.navigatePage(request, response, "selectTicket.jsp");
+			return;
+		}
+	}
 	public void ticketQuery(HttpServletRequest request, HttpServletResponse response, String id)
 	{
 		sessionController sc = new sessionController();
 		loadObjectsToHtmlController loadHtml = new loadObjectsToHtmlController();
-		int SeniorCount = Integer.parseInt(request.getParameter("senior"));
-		int AdultCount = Integer.parseInt(request.getParameter("adult"));
-		int ChildCount = Integer.parseInt(request.getParameter("child"));
-		System.out.println(id);
+		TicketCount tc = new TicketCount(	Integer.parseInt(request.getParameter("senior")),
+											Integer.parseInt(request.getParameter("adult")),
+											Integer.parseInt(request.getParameter("child")));
+		if(tc.totalCount() == 0)
+		{
+			ShowTimes st = Database.getShowTimeByID(id);
+			Movie movie = Database.getMovie(st.getMovieTitle());
+			loadHtml.setTicketPage(request, response, movie, st);
+			request.setAttribute("errorMsg", "<p style=\"text-align: center; color:red;\">Please select a quantity.</p>");
+			sc.navigatePage(request, response, "selectTicket.jsp");
+			return;
+		}
+		Seatings seats = Database.getSeats(id);
+		loadHtml.setSeatingPage(request, response, tc, seats);
+		sc.navigatePage(request, response, "selectSeats.jsp");
 	}
-	
 	public void selectingQuery(HttpServletRequest request, HttpServletResponse response, String id)
 	{
 		sessionController sc = new sessionController();

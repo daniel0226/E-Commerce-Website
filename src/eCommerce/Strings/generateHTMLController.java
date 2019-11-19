@@ -574,12 +574,14 @@ public class generateHTMLController {
 			ShowTimes currentMovie = list.get(i);
 			if(!dateController.dateIsToday(currentMovie.getDate()))
 			{
+				System.out.println("ADMIN DATE ISSUE: " + currentMovie.getDate());
 				continue;
 			}
 			Movie m = Database.getMovie(currentMovie.getMovieTitle());
 			//Make sure movie is in Theaters
 			if(!dateController.movieIsInTheatres(m))
 			{
+				System.out.println("IN THEATRES ISSUE: " + currentMovie.getDate());
 				continue;
 			}
 			
@@ -601,7 +603,6 @@ public class generateHTMLController {
 				theatre3 += p;
 			}
 		}
-		
 		if(!theatre1IsShowing)
 		{
 			theatre1 += "<p> NOT SHOWING </p>";
@@ -678,5 +679,39 @@ public class generateHTMLController {
 			}
 		}
 		return topHalf + bottomHalf;
+	}
+	public static String seatStructure(Seatings seats)
+	{
+		String row = "		<div class=\"row justify-content-center\">";
+		String endingDiv = "</div>";
+		String html = row;
+		List<Boolean> arr = seats.getSeatArray();
+		for(int i = 0, counter = 1; i<arr.size(); i++, counter++)
+		{
+			html += addRow(arr.get(i), i+1); //4 9
+			if(counter != 0 && counter != 25 && counter%5 == 0)
+			{
+				html += endingDiv;
+				html += row;
+			}
+		}
+		html += endingDiv;
+		return html;
+	}
+	public static String addRow(boolean seatAvailable, int num)
+	{
+		String blue = "color: #00aeef;";
+		String gray = "color: #484848;";
+		String color = seatAvailable ? blue : gray;
+		String disable = seatAvailable ? " " : " disabled ";
+		
+		String seat =		"	<div class=\"col-md-2 col-md-offset-1\">"+
+				"        			<button" + disable + " onclick=\"selectSeat(" + num + ", " + (double)(num + .1) + ")\"type=\"button\">"+
+				"        				<i style=\"" + color + "\" id=\"" + num + "\" class=\"fas fa-couch\"></i>"+
+				"        				<p>Seat " +  num + "</p>"+
+				"                       <input type=\"text\" id=\"" + (double)(num+.1) + "\" style=\"display: none;\" name=\"seat\" value=\"-1\">" +
+				"        			</button>"+
+				"        		</div>";
+		return seat;
 	}
 }

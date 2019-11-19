@@ -37,6 +37,10 @@ public class MySQL_Commands {
 	public static String GET_LAST_SHOWTIME_ROW = "SELECT * FROM termproject.showtime ORDER BY id DESC LIMIT 1";
 	
 	//Functions 
+	public static String GET_SEATS_BY_ID(String id)
+	{
+		return "SELECT * FROM termproject.seatings WHERE showtimeId = '" + id + "'";
+	}
 	public static String REMOVE_SEATS(ShowTimes st)
 	{
 		return "DELETE FROM termproject.seatings WHERE showtimeId = '" + st.getID() + "'";

@@ -52,6 +52,7 @@
         							<div class="col-sm-12 col-md-12">
         								<div class="ticketMovieInfo">
         									<h2 style="font-size: 2rem; text-align: center;">${title}</h2>
+        									${errorMsg}
         								</div>
         							</div>
         						</div>

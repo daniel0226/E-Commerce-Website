@@ -2025,3 +2025,77 @@ input[type='number']::-webkit-outer-spin-button {
 	padding: 0;
 	margin: 2.5px 0px;
 }
+.seating button
+{
+	position: relative;
+	display: inline-block;
+	outline: none;
+	border: none;
+	background: none;
+	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	border-radius: 25px;
+}
+.seating button:hover
+{
+	box-shadow: 0px 0px 8px white;
+}
+.seating p
+{
+	position: relative;
+	text-align: center;
+	color: white;
+	font-size: 1rem;
+}
+.sbmS
+{
+	width: 100%;
+	padding: 4px 16px;
+	color: white;
+	text-align: center;
+	font-size: 1.25rem;
+	border-radius: 25px;
+	box-shadow: 0px 0px 8px #00aeef, 0px 0px 4px white;
+	font-weight: 600;
+}
+.sbmS:hover
+{
+	box-shadow: 0px 0px 16px #00aeef, 0px 0px 8px white !important;
+}
+.seating i
+{
+	font-size: 5rem;
+	position: relative;
+}
+.b
+{
+	background: #00aeef;
+	width: 100%;
+	height: 50px;
+	position: relative;
+}
+.g
+{
+	margin-left: 15px;
+	margin-right: 15px;
+	background: #484848;
+	width: 100%;
+	height: 50px;
+	position: relative;
+}
+.seating p
+{
+	font-size: 1.15rem;
+	font-weight: 700;
+	text-shadow: 0px 0px 3px black;
+}
+.seating label
+{
+	display: block;
+}
+.w
+{
+	background: white;
+	width: 100%;
+	height: 50px;
+	position: relative;
+}

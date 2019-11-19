@@ -648,14 +648,12 @@ public class Database {
 			{
 				if(Validator.validateMovieInTheatres(movie))
 				{
-					System.out.println(movie.getMovieTitle() + " is in theatres.");
 					moviesList.add(movie);
 				}
 			}else if(comingSoon)
 			{
 				if(Validator.validateMovieComingSoon(movie))
 				{
-					System.out.println(movie.getMovieTitle() + " is coming soon.");
 					moviesList.add(movie);
 				}
 			}else
@@ -827,6 +825,58 @@ public class Database {
 		{
 			System.err.print(e);
 		}
+	}
+	public static Seatings getSeats(String id)
+	{	
+		try {
+			System.out.println("Getting Seats for ID: " + id);
+			Seatings seats = null;
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(MySQL_Commands.GET_SEATS_BY_ID(id));
+			if(rs.next())
+			{
+				System.out.println("Creating Seats Class.");
+				Row row1 = new Row(	rs.getBoolean(3),
+									rs.getBoolean(4),
+									rs.getBoolean(5),
+									rs.getBoolean(6),
+									rs.getBoolean(7));
+				Row row2 = new Row(	rs.getBoolean(8),
+									rs.getBoolean(9),
+									rs.getBoolean(10),
+									rs.getBoolean(11),
+									rs.getBoolean(12));
+				Row row3 = new Row(	rs.getBoolean(13),
+									rs.getBoolean(14),
+									rs.getBoolean(15),
+									rs.getBoolean(16),
+									rs.getBoolean(17));
+				Row row4 = new Row(	rs.getBoolean(18),
+									rs.getBoolean(19),
+									rs.getBoolean(20),
+									rs.getBoolean(21),
+									rs.getBoolean(22));
+				Row row5 = new Row(	rs.getBoolean(23),
+									rs.getBoolean(24),
+									rs.getBoolean(25),
+									rs.getBoolean(26),
+									rs.getBoolean(27));
+				seats = new Seatings(row1, row2, row3, row4, row5, rs.getInt(1), rs.getInt(2));
+				System.out.println(seats.getSeatingId());
+			}else
+			{
+				System.out.println("SEAT NOT FOUND.");
+			}
+			rs.close();
+			connection.close();
+			return seats;
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+			return null;
+		}
+		
 	}
 	public static void removeSeatings(ShowTimes st)
 	{

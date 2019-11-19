@@ -733,3 +733,10 @@ function increaseCount(id)
 		return;
 	}
 }
+function selectSeat(div, btn)
+{
+	var i = document.getElementById(div);
+	i.style.color = "white";
+	var j = document.getElementById(btn).value = div;
+	document.getElementById(btn).setAttribute('value', div);
+}

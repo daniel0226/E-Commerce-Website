@@ -5,8 +5,10 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 import eCommerce.MovieData.Movie;
+import eCommerce.MovieData.Seatings;
 import eCommerce.MovieData.ShowTimes;
 import eCommerce.MovieData.Ticket;
+import eCommerce.MovieData.TicketCount;
 import eCommerce.Strings.generateHTMLController;
 import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
@@ -304,5 +306,14 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		request.setAttribute("adult", ticket.adultToString());
 		request.setAttribute("child", ticket.childToString());
 		return;
+	}
+	public void setSeatingPage(HttpServletRequest request, HttpServletResponse response, TicketCount tc, Seatings seats)
+	{
+		//ShowTimes st = Database.getShowTimeByID(Integer.toString(seats.getShowTimeId()));
+		//WebUser user = sessionData.getCurrentSessionUser();
+		//Movie movie = Database.getMovie(st.getMovieTitle());
+		request.setAttribute("id", seats.getShowTimeId());
+		request.setAttribute("max", tc.totalCount());
+		request.setAttribute("seatStructure", generateHTMLController.seatStructure(seats));
 	}
 }
