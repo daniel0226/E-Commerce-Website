@@ -119,6 +119,10 @@ public class bookingController extends HttpServlet{
 			request.setAttribute("errorMsg", "<p style=\"text-align: center; color:red;\">Number of seats selected does not match tickets.</p>");
 			sc.navigatePage(request, response, "selectTicket.jsp");
 			return;
+		}else
+		{
+			//Order summary -> checkout -> Check if card on file -> Order confirmation
+			//->Edit Profile by adding order history
 		}
 	}
 	public void ticketQuery(HttpServletRequest request, HttpServletResponse response, String id)

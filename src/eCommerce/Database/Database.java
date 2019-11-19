@@ -359,12 +359,13 @@ public class Database {
 			statement.setString(8, movie.getMovieRating());
 			statement.setString(9, movie.getMovieExpDate());
 			statement.setString(10, movie.getMovieReleaseDate());
+			statement.setString(11, movie.getMovieCast());
 			statement.executeUpdate();
 			statement.close();
 			connection.close();
 		} catch (SQLException e) {
 			System.err.println(e);
-			System.err.println("Could not add User. Perhaps the User already exists.");
+			System.err.println("Could not add Movie. Perhaps the Movie already exists.");
 		}
 	}
 	
