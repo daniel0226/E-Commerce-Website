@@ -974,4 +974,52 @@ public class Database {
 		}
 		return count;
 	}
+	public static void addPromotion(String date, Double discount)
+	{
+		try
+		{
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.ADD_PROMOTION(date, discount));
+			System.out.println(MySQL_Commands.ADD_PROMOTION(date, discount));
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.println("ERROR: COULD NOT ADD PROMOTION.");
+			System.err.println(e);
+		}
+	}
+	public static void updatePromotion(String date, Double discount, String ID)
+	{
+		try
+		{
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.UPDATE_PROMOTION(date, discount,ID));
+			System.out.println(MySQL_Commands.UPDATE_PROMOTION(date, discount, ID));
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.println("ERROR: COULD NOT UPDATE PROMOTION.");
+			System.err.println(e);
+		}
+	}
+	public static void deletePromotion(String ID)
+	{
+		try
+		{
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.DELETE_PROMOTION(ID));
+			System.out.println(MySQL_Commands.DELETE_PROMOTION(ID));
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.println("ERROR: COULD NOT DELETE PROMOTION.");
+			System.err.println(e);
+		}
+	}
 }

@@ -189,7 +189,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
     		request.setAttribute("promoCount", analytics.getNumberOfPromotionAvailable());
     		request.setAttribute("promoUsage", analytics.getNumberOfPromotionTransactions());
     		request.setAttribute("promosArchived", analytics.getPromosArchivedCount());
-    		
+    		request.setAttribute("promoUpdate", generateHTMLController.adminPromoBody());
     		
 			request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
 		} catch (ServletException | IOException e ) {

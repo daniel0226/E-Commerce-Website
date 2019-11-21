@@ -714,4 +714,40 @@ public class generateHTMLController {
 				"        		</div>";
 		return seat;
 	}
+	public static String adminPromoBody()
+	{
+		List<Promotions> list = Database.getAllPromotions();
+		if(list == null || list.size() == 0)
+		{
+			return "";
+		}else
+		{
+			String html = "";
+			for(int i = 0; i<list.size(); i++)
+			{
+				html += adminPromoBodyGenerator(list.get(i));
+			}
+			return html;
+		}
+	}
+	public static String adminPromoBodyGenerator(Promotions p)
+	{
+
+		String myvar = "<form method=\"GET\" action=\"promotionController\" class=\"promoBody\">"+
+		"					<h2>Promotion ID: " + p.getID() + "</h2>"+
+		"						<div class=\"promoField\">"+
+		"							<label for=\"addDate\">Expiration Date</label>"+
+		"							<input id=\"addDate\" required type=\"date\" name=\"date\" value=\"" + p.getExpirationDate() + "\">"+
+		"						</div>"+
+		"						<div class=\"promoField\">"+
+		"							<label for=\"addDiscount\">Discount Amount</label>"+
+		"							<input id=\"addDiscount\" step=\"0.01\" min=\"0.00\" placeholder=\"0.00\" required type=\"number\" name=\"discount\" value=\"" + p.getDiscountAmountString() + "\">"+
+		"						</div>		"+
+		"						<div class=\"buttons\">"+
+		"							<button type=\"submit\" value=\"" + p.getID() + "\" name=\"update\">UPDATE</button>"+
+		"							<button type=\"submit\" value=\"" + p.getID() + "\" name=\"delete\">DELETE</button>"+
+		"						</div>"+
+		"				</form>";
+		return myvar;
+	}
 }

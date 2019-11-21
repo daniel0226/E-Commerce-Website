@@ -406,12 +406,32 @@
 																</div>
 																<div class="goalBodyWrapper">
 																	<h3 class="js-analytic">${promosArchived}</h3>
-																	<small>Movies In Theatres</small>
+																	<small>Promotions Archived</small>
 																</div>
 															</div>
-															<div class="col-sm-8 col-md-8">
-																<div class="adminPromoBody">
-																	Test
+															<div class="col-sm-4 col-md-4">
+																<div class="goalBodyWrapper">
+																	${addMsg}
+																	<form method="GET" action="promotionController" class="promoBody">
+																		<h2>Add a Promotion</h2>
+																		<div class="promoField">
+																			<label for="addDate">Expiration Date</label>
+																			<input id="addDate" required type="date" name="date" value="">
+																		</div>
+																		<div class="promoField">
+																			<label for="addDiscount">Discount Amount</label>
+																			<input id="addDiscount" step="0.01" min="0.00" placeholder="0.00" required type="number" name="discount" value="">
+																		</div>
+																		<div class="buttons">
+																			<button type="submit" value="add" name="add">ADD</button>
+																		</div>
+																	</form>
+																</div>
+															</div>
+															<div class="col-sm-4 col-md-4">
+																<div class="goalBodyWrapper">
+																	${errorMsg}
+																	${promoUpdate}
 																</div>
 															</div>
 														</div>
@@ -422,7 +442,7 @@
 									</div>
 								</div>
 							</div>
-							<!--  pROMOTIONS  -->
+							<!--  PROMOTIONS  -->
 						</div>
 					</div>
 				</div>

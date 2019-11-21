@@ -28,7 +28,11 @@ public class Promotions {
 	{
 		return discountAmount;
 	}
-	public LocalDate getLocalDateExpiratioNDate()
+	public String getDiscountAmountString()
+	{
+		return String.format("%.2f", discountAmount);
+	}
+	public LocalDate getLocalDateExpirationDate()
 	{
 		return dateController.convertToLocalDate(expirationDate);
 	}

@@ -9,6 +9,7 @@ import java.util.List;
 
 import eCommerce.Database.Database;
 import eCommerce.MovieData.Movie;
+import eCommerce.MovieData.Promotions;
 import eCommerce.MovieData.ShowTimes;
 import eCommerce.UserData.sessionData;
 import eCommerce.users.WebUser;
@@ -112,7 +113,24 @@ public class Validator
 		
 		return allFieldsFilled;
     }
-    
+    public static boolean promotionIsUnique(Double discount)
+    {
+    	List<Promotions> list = Database.getAllPromotions();
+    	if(list == null || list.size() == 0)
+    	{
+    		return true;
+    	}else
+    	{
+    		for(int i = 0; i<list.size(); i++)
+    		{
+    			if(list.get(i).getDiscountAmount() == discount)
+    			{
+    				return false;
+    			}
+    		}
+    	}
+    	return true;
+    }
     public static boolean userHasConfirmedLogin(String email)
     {
     	return Database.getUser(email).verified();
@@ -121,6 +139,11 @@ public class Validator
     {
     	WebUser user = Database.getUser(email);
     	return user.getSessionType().equals("suspended");
+    }
+    
+    public static boolean dateIsPassedToday(String date)
+    {
+    	return dateController.dateIsGreaterThanToday(date);
     }
     
     public static boolean movieAlreadyExists(Movie movie) throws SQLException
