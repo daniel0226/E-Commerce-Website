@@ -61,6 +61,11 @@
         				</div>
         			</div>
         		</section>
+        		<section style="display: none;">
+        			<input style="display: none;" name="child" value="${child}">
+        			<input style="display: none;" name="adult" value="${adult}">
+        			<input style="display: none;" name="senior" value="${senior}">
+        		</section>
         	</form>
         </main>
     </body>

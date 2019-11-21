@@ -314,6 +314,9 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		//Movie movie = Database.getMovie(st.getMovieTitle());
 		request.setAttribute("id", seats.getShowTimeId());
 		request.setAttribute("max", tc.totalCount());
+		request.setAttribute("adult", tc.getAdultCount());
+		request.setAttribute("child", tc.getChildCount());
+		request.setAttribute("senior", tc.getSeniorCount());
 		request.setAttribute("seatStructure", generateHTMLController.seatStructure(seats));
 	}
 }

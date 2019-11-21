@@ -736,7 +736,14 @@ function increaseCount(id)
 function selectSeat(div, btn)
 {
 	var i = document.getElementById(div);
-	i.style.color = "white";
-	var j = document.getElementById(btn).value = div;
-	document.getElementById(btn).setAttribute('value', div);
+	if(i.style.color == "white")
+	{
+		i.style.color = "#00aeef";
+		document.getElementById(btn).setAttribute('value', -1);
+	}else
+	{
+		i.style.color = "white";
+		var j = document.getElementById(btn).value = div;
+		document.getElementById(btn).setAttribute('value', div);
+	}
 }
