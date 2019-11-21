@@ -19,11 +19,16 @@ public class MySQL_Commands {
 	public static final String Remove_Movie = "DELETE FROM termproject.movies WHERE movieTitle = ";
 	public static final String Update_Archived_Movies_Count = 
 			"UPDATE termproject.analytics SET moviesArchived = moviesArchived + 1 WHERE moviesArchived = moviesArchived;";
-	public static final String Get_Movie_Archived_Count =
-			"SELECT moviesArchived FROM termproject.analytics";
+	public static final String UPDATE_PROMO_TRANSACTIONS =
+			"UPDATE termproject.analytics SET promoTransaction = promoTransaction + 1;";
+	public static final String UPDATE_PROMO_ARCHIVE_COUNT =
+			"UPDATE termproject.analytics SET promosArchived = promosArchived + 1;";
+	public static final String GET_ANALYTICS =
+			"SELECT * FROM termproject.analytics";
 	
 	public static final String addMovieReview = "INSERT INTO moviereviews(title, review, user, date)" +
 			" VALUES (?, ?, ?, ?)";
+	public static final String GET_ALL_PROMOS = "SELECT * FROM termproject.promotions";
 	
 	// User related
 	public static final String Get_User = "SELECT * FROM termproject.users WHERE email = ";
