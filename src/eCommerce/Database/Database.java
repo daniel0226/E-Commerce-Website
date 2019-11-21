@@ -729,21 +729,13 @@ public class Database {
 	{
 		System.out.println("Deleting: " + movieTitle + " from the database.");
 		String removeMovie = MySQL_Commands.Remove_Movie + "'" + movieTitle + "'";
-		System.out.println(removeMovie);
 		String updateArchiveCount = MySQL_Commands.Update_Archived_Movies_Count;
 		try {
 			connection = mysql.getConnection();
 			PreparedStatement statement = connection.prepareStatement(removeMovie);
+			PreparedStatement statement2 = connection.prepareStatement(updateArchiveCount);
 			statement.executeUpdate();
-			statement.close();
-			connection.close();
-		}catch(SQLException e){
-			System.err.print(e);
-		}
-		try {
-			connection = mysql.getConnection();
-			PreparedStatement statement = connection.prepareStatement(updateArchiveCount);
-			statement.executeUpdate();
+			statement2.executeUpdate();
 			statement.close();
 			connection.close();
 		}catch(SQLException e){
