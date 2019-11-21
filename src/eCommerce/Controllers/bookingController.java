@@ -97,6 +97,9 @@ public class bookingController extends HttpServlet{
 	{
 		sessionController sc = new sessionController();
 		String[] seats = request.getParameterValues("seat");
+		String showTimeID = request.getParameter("bookShowTime");
+		Seatings seat_obj = Database.getSeats(showTimeID);
+		
 		List<String> seatIds = new ArrayList<>();
 		int seatsClicked = 0;
 		for(int i = 0; i<seats.length; i++)
@@ -105,7 +108,7 @@ public class bookingController extends HttpServlet{
 			{
 				//Returns clicked ID's
 				seatIds.add(seats[i]);
-				System.out.println(seats[i]);
+				System.out.println("Seat ID: " + seats[i]);
 				seatsClicked++;
 			}
 		}

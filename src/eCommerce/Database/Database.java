@@ -827,6 +827,8 @@ public class Database {
 			System.err.print(e);
 		}
 	}
+	
+	//Show Time ID
 	public static Seatings getSeats(String id)
 	{	
 		try {
@@ -864,7 +866,7 @@ public class Database {
 									rs.getBoolean(26),
 									rs.getBoolean(27));
 				seats = new Seatings(row1, row2, row3, row4, row5, rs.getInt(1), rs.getInt(2));
-				System.out.println(seats.getSeatingId());
+				//System.out.println(seats.getSeatingId());
 			}else
 			{
 				System.out.println("SEAT NOT FOUND.");

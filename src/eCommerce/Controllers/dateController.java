@@ -34,6 +34,18 @@ public class dateController {
 		LocalDate date = LocalDate.parse(date_str, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		return date;
 	}
+	public static boolean dateIsGreaterThanToday(String date)
+	{
+		LocalDate showtimeDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		LocalDate todaysDate = LocalDate.now();
+		if(showtimeDate.compareTo(todaysDate) >= 0)
+		{
+			return true;
+		}else {
+			return false;
+		}
+
+	}
 	public static boolean movieIsInTheatres(Movie movie)
 	{
 		boolean movieIsInTheatres = false;

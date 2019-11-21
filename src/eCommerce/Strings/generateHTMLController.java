@@ -500,10 +500,9 @@ public class generateHTMLController {
 		for(int i = 0; i<list.size(); i++)
 		{
 			ShowTimes currentMovie = list.get(i);
-			System.out.println(currentMovie.getCinemaID() + " " + currentMovie.getID() + "@@@@@@@@");
 			if(!dateController.dateIsToday(currentMovie.getDate()))
 			{
-				//continue;
+				continue;
 			}
 			Movie m = Database.getMovie(currentMovie.getMovieTitle());
 			//Make sure movie is in Theaters
@@ -516,18 +515,15 @@ public class generateHTMLController {
 			String p = "<p>" + dateController.convertToTwelve(times) + "</p>";
 			if(currentMovie.getCinemaID() == 1)
 			{	
-				System.out.println(currentMovie.getCinemaID() + " " + currentMovie.getID() + "#############");
 				theatre1IsShowing = true;
 				theatre1 += p;
 			}
 			else if(currentMovie.getCinemaID() == 2)
 			{
-				System.out.println(currentMovie.getCinemaID() + " " + currentMovie.getID() + "#############");
 				theatre2IsShowing = true;
 				theatre2 += p;
 			}else if(currentMovie.getCinemaID() == 3)
 			{
-				System.out.println(currentMovie.getCinemaID() + " " + currentMovie.getID() + "#############");
 				theatre3IsShowing = true;
 				theatre3 += p;
 			}
