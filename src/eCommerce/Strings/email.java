@@ -7,8 +7,12 @@ public class email {
 	public final static String newPassword = "New Password";
 	public final static String forgotPassword = "Forgot Password";
 	public final static String updateProfile = "Your Profile has Been Updated.";
+	public final static String newPromotion = "A new Promotion has been Added!";
 	
 	//Messages
+	public final static String promotionMsg = "A new promotion has been added. " + 
+			"Come check the current promotions in our promotions page! " +
+			"You are receiving this e-mail because you are currently registered to receive promotion updates.";
 	public final static String confirmMsg = "Congratulations you have successfully registered!";
 	public final static String reconfirmMsg = "Reconfirm your profile by clicking here: ";
 	public final static String forgetPassMsg = "We have sent this email in response to forgetting your password." + 

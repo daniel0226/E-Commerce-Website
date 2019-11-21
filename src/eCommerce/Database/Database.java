@@ -207,7 +207,39 @@ public class Database {
 			System.err.println(e);
 		}
 	}
-	
+	public static List<WebUser> getAllUsers()
+	{
+		List<WebUser> list = null;
+		try {
+			list = new LinkedList<>();
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(MySQL_Commands.GET_ALL_USERS);
+			while(rs.next())
+			{
+				Address address = new Address(rs.getString(12));
+				WebUser user = new WebUser(	rs.getString(2),
+									rs.getString(3),
+									rs.getString(4),
+									rs.getString(5),
+									rs.getString(6),
+									getCard(rs.getString(5)),
+									rs.getBoolean(7),
+									rs.getString(8),
+									rs.getString(9),
+									rs.getBoolean(10),
+									rs.getString(11),
+									address);
+				list.add(user);
+			}
+			rs.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+		}
+		return list;
+	}
 	public static WebUser getUser(String email)
 	{
 		if(currentUser != null && currentUser.getEmail().equals(email))
@@ -897,6 +929,7 @@ public class Database {
 		{
 			list = new ArrayList<Promotions>();
 			connection = mysql.getConnection();
+			statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(MySQL_Commands.GET_ALL_PROMOS);
 			while(rs.next()) 
 			{
@@ -904,6 +937,8 @@ public class Database {
 										rs.getString(2),
 										rs.getDouble(3)));
 			}
+			rs.close();
+			connection.close();
 		}catch(SQLException e)
 		{
 			System.err.println("ERROR: COULD NOT GET PROMOTIONS.");

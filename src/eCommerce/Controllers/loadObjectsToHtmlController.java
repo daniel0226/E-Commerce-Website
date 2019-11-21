@@ -239,6 +239,13 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		request.setAttribute("bookedMovies",bookedMoviesHTML);
     	sc.navigatePage(request, response, "/profilePage.jsp");
 	}
+	public void setPromotionsPage(HttpServletRequest request, HttpServletResponse response)
+	{
+		sc = new sessionController();
+		request.setAttribute("promos", generateHTMLController.promotionsBody());
+		sc.navigatePage(request, response, "/currentPromotions.jsp");
+    	return;
+	}
 	public void setEditPage(HttpServletRequest request, HttpServletResponse response, WebUser user) throws ServletException, IOException
 	{
 		Address address = user.getAddress();
