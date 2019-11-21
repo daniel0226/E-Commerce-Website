@@ -108,6 +108,9 @@ public class sessionController extends HttpServlet {
 					loadHtml.setEditPage(request, response, sessionData.getCurrentSessionUser());
 				}
 				return;
+			case "promotion":
+				loadHtml.setPromotionsPage(request, response);
+				return;
 			default:
 				System.out.println("How did this happen???????");
 				break;

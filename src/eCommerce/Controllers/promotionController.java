@@ -3,6 +3,7 @@ package eCommerce.Controllers;
 import java.io.IOException;
 import java.sql.SQLException;
 import eCommerce.Strings.ERROR_DATA;
+import eCommerce.Strings.email;
 import eCommerce.Strings.generateHTMLController;
 import eCommerce.UserData.sessionData;
 
@@ -77,6 +78,8 @@ public class promotionController extends HttpServlet
 			request.setAttribute("addMsg","<p style=\"text-align:center; color: red;\">Discount already exists in system.</p>");
 			return;
 		}
+		EmailController sendEmail = new EmailController();
+		sendEmail.updateUsers(email.newPromotion, email.promotionMsg);
 		request.setAttribute("addMsg", "<p style=\"text-align:center; color: white;\">Successfully added Promotion</p>");
 		System.out.println(date);
 		Database.addPromotion(date, discount);
@@ -95,6 +98,8 @@ public class promotionController extends HttpServlet
 			request.setAttribute("errorMsg","<p style=\"text-align:center; color: red;\">Discount already exists in system.</p>");
 			return;
 		}
+		EmailController sendEmail = new EmailController();
+		sendEmail.updateUsers(email.newPromotion, email.promotionMsg);
 		Database.updatePromotion(date, discount, id);
 		request.setAttribute("errorMsg", "<p style=\"text-align:center; color: white;\">Successfully updated Promotion</p>");
 	}

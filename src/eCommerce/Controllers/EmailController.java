@@ -17,6 +17,7 @@ import eCommerce.Database.Database;
 import eCommerce.users.WebUser;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 import eCommerce.Strings.email;
 
@@ -92,5 +93,23 @@ public class EmailController extends HttpServlet
         } catch (MessagingException e) {
             e.printStackTrace();
         }
+	}
+	public void updateUsers(String subject, String message)
+	{
+		List<WebUser> list = Database.getAllUsers();
+		if(list == null || list.size() == 0)
+		{
+			return;
+		}
+		for(int i = 0; i<list.size(); i++)
+		{
+			WebUser currentUser = list.get(i);
+			if(currentUser.isReceivingPromoUpdates())
+			{
+				sendEmail(currentUser,subject, message);
+			}else {
+				continue;
+			}
+		}
 	}
 }

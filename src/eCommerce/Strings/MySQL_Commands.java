@@ -31,6 +31,7 @@ public class MySQL_Commands {
 	public static final String GET_ALL_PROMOS = "SELECT * FROM termproject.promotions";
 	
 	// User related
+	public static final String GET_ALL_USERS = "SELECT * FROM termproject.users";
 	public static final String Get_User = "SELECT * FROM termproject.users WHERE email = ";
 
 	public static final String Get_UserCard = "SELECT * FROM termproject.card WHERE cardOwnerEmail = ";
