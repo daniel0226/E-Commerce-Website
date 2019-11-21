@@ -946,6 +946,25 @@ public class Database {
 		}
 		return list;
 	}
+	public static Promotions getPromotion(String ID)
+	{
+		Promotions promo = null;
+		try {
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(MySQL_Commands.GET_PROMOTION(ID));
+			if(rs.next()) {
+				promo = new Promotions(	rs.getInt(1),
+										rs.getString(2),
+										rs.getDouble(3));
+			}
+		}catch(SQLException e)
+		{
+			System.err.println("ERROR: COULD NOT GET PROMOTION.");
+			System.err.println(e);
+		}
+		return promo;
+	}
 	public static void addPromoTransactionCount()
 	{
 		try {

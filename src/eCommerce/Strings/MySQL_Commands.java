@@ -43,6 +43,10 @@ public class MySQL_Commands {
 	public static String GET_LAST_SHOWTIME_ROW = "SELECT * FROM termproject.showtime ORDER BY id DESC LIMIT 1";
 	
 	//Functions 
+	public static String GET_PROMOTION(String ID)
+	{
+		return "SELECT * FROM termproject.promotions WHERE id = " + ID + ";";
+	}
 	public static String ADD_PROMOTION(String date, Double discount)
 	{
 		return "INSERT INTO termproject.promotions(expirationDate,discountAmount) VALUES ('" + date + "','" + discount + "')";
