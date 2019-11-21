@@ -19,11 +19,16 @@ public class MySQL_Commands {
 	public static final String Remove_Movie = "DELETE FROM termproject.movies WHERE movieTitle = ";
 	public static final String Update_Archived_Movies_Count = 
 			"UPDATE termproject.analytics SET moviesArchived = moviesArchived + 1 WHERE moviesArchived = moviesArchived;";
-	public static final String Get_Movie_Archived_Count =
-			"SELECT moviesArchived FROM termproject.analytics";
+	public static final String UPDATE_PROMO_TRANSACTIONS =
+			"UPDATE termproject.analytics SET promoTransaction = promoTransaction + 1;";
+	public static final String UPDATE_PROMO_ARCHIVE_COUNT =
+			"UPDATE termproject.analytics SET promosArchived = promosArchived + 1;";
+	public static final String GET_ANALYTICS =
+			"SELECT * FROM termproject.analytics";
 	
 	public static final String addMovieReview = "INSERT INTO moviereviews(title, review, user, date)" +
 			" VALUES (?, ?, ?, ?)";
+	public static final String GET_ALL_PROMOS = "SELECT * FROM termproject.promotions";
 	
 	// User related
 	public static final String Get_User = "SELECT * FROM termproject.users WHERE email = ";
@@ -37,6 +42,10 @@ public class MySQL_Commands {
 	public static String GET_LAST_SHOWTIME_ROW = "SELECT * FROM termproject.showtime ORDER BY id DESC LIMIT 1";
 	
 	//Functions 
+	public static String ADD_PROMOTION(String date, Double discount)
+	{
+		return "INSERT INTO termproject.promotions(expirationDate,discountAmount) VALUES ('" + date + "','" + discount + "')";
+	}
 	public static String GET_SEATS_BY_ID(String id)
 	{
 		return "SELECT * FROM termproject.seatings WHERE showtimeId = '" + id + "'";
@@ -88,6 +97,14 @@ public class MySQL_Commands {
 		return "UPDATE termproject.card SET cardOwnerName = '" + card.getCardName() + "', zipCode = '"
 				+ card.getZipCode() + "', cvv = '" + cvv + "', `expDate` = '" + card.getExpirationDate()
 				+ "', `cardNumber` = '" + number + "' WHERE cardOwnerEmail = '" + user.getEmail() + "';";
+	}
+	public static String UPDATE_PROMOTION(String date, Double discount, String ID)
+	{
+		return "UPDATE termproject.promotions SET expirationDate = '" + date + "', discountAmount = '" + discount + "' WHERE id = " + ID + "";
+	}
+	public static String DELETE_PROMOTION(String ID)
+	{
+		return "DELETE FROM termproject.promotions WHERE id = " + ID + "";
 	}
 	public static String updateMovie(Movie movie, String db_Title)
 	{

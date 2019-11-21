@@ -14,6 +14,7 @@ import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
 import eCommerce.UserData.sessionData;
 import eCommerce.users.WebUser;
+import eCommerce.analytics.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.*;
@@ -30,8 +31,10 @@ public class loadObjectsToHtmlController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private authenticatorController authenticator;
 	private sessionController sc;
+	private Analytics analytics;
 
 	public void init() {
+		analytics = new Analytics();
 		authenticator = new authenticatorController();
 		if (Database.getDatabase() == null) {
 			try {
@@ -46,6 +49,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 	{
 		super();
 		authenticator = new authenticatorController();
+		analytics = new Analytics();
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -180,6 +184,13 @@ public class loadObjectsToHtmlController extends HttpServlet {
     		request.setAttribute("showtimes", generateHTMLController.adminShowTimeBody());
     		request.setAttribute("showingsCount", Database.getNumberOfShowingsCount());
     		request.setAttribute("showtimeCount", Database.getMovieShowTimesCount());
+    		
+    		//Promotions Tab
+    		request.setAttribute("promoCount", analytics.getNumberOfPromotionAvailable());
+    		request.setAttribute("promoUsage", analytics.getNumberOfPromotionTransactions());
+    		request.setAttribute("promosArchived", analytics.getPromosArchivedCount());
+    		request.setAttribute("promoUpdate", generateHTMLController.adminPromoBody());
+    		
 			request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
 		} catch (ServletException | IOException e ) {
 			// TODO Auto-generated catch block

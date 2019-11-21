@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -729,21 +730,13 @@ public class Database {
 	{
 		System.out.println("Deleting: " + movieTitle + " from the database.");
 		String removeMovie = MySQL_Commands.Remove_Movie + "'" + movieTitle + "'";
-		System.out.println(removeMovie);
 		String updateArchiveCount = MySQL_Commands.Update_Archived_Movies_Count;
 		try {
 			connection = mysql.getConnection();
 			PreparedStatement statement = connection.prepareStatement(removeMovie);
+			PreparedStatement statement2 = connection.prepareStatement(updateArchiveCount);
 			statement.executeUpdate();
-			statement.close();
-			connection.close();
-		}catch(SQLException e){
-			System.err.print(e);
-		}
-		try {
-			connection = mysql.getConnection();
-			PreparedStatement statement = connection.prepareStatement(updateArchiveCount);
-			statement.executeUpdate();
+			statement2.executeUpdate();
 			statement.close();
 			connection.close();
 		}catch(SQLException e){
@@ -771,7 +764,7 @@ public class Database {
 		try {
 			connection = mysql.getConnection();
 			statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery(MySQL_Commands.Get_Movie_Archived_Count);
+			ResultSet rs = statement.executeQuery(MySQL_Commands.GET_ANALYTICS);
 			if(rs.next())
 			{
 				count = rs.getInt(1);
@@ -895,6 +888,138 @@ public class Database {
 		}catch(SQLException e)
 		{
 			System.err.print(e);
+		}
+	}
+	public static List<Promotions> getAllPromotions()
+	{
+		List<Promotions> list = null;
+		try
+		{
+			list = new ArrayList<Promotions>();
+			connection = mysql.getConnection();
+			ResultSet rs = statement.executeQuery(MySQL_Commands.GET_ALL_PROMOS);
+			while(rs.next()) 
+			{
+				list.add(new Promotions(rs.getInt(1),
+										rs.getString(2),
+										rs.getDouble(3)));
+			}
+		}catch(SQLException e)
+		{
+			System.err.println("ERROR: COULD NOT GET PROMOTIONS.");
+			System.err.println(e);
+		}
+		return list;
+	}
+	public static void addPromoTransactionCount()
+	{
+		try {
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.UPDATE_PROMO_TRANSACTIONS);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.println("ERROR: CANNOT ADD PROMOTION TRANSACTION COUNT");
+			System.err.println(e);
+		}
+	}
+	public static void addPromosArchivedCount()
+	{
+		try
+		{
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.UPDATE_PROMO_ARCHIVE_COUNT);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.println("ERROR: CANNOT ADD PROMOTION ARCHIVE COUNT");
+			System.err.println(e);
+		}
+	}
+	public static int getPromoTransactions()
+	{
+		int count = 0;
+		try {
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(MySQL_Commands.GET_ANALYTICS);
+			if(rs.next())
+			{
+				count = rs.getInt(3);
+			}
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+		}
+		return count;
+	}
+	public static int getPromoArchivedCount()
+	{
+		int count = 0;
+		try {
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(MySQL_Commands.GET_ANALYTICS);
+			if(rs.next())
+			{
+				count = rs.getInt(2);
+			}
+		}catch(SQLException e)
+		{
+			System.err.println(e);
+		}
+		return count;
+	}
+	public static void addPromotion(String date, Double discount)
+	{
+		try
+		{
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.ADD_PROMOTION(date, discount));
+			System.out.println(MySQL_Commands.ADD_PROMOTION(date, discount));
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.println("ERROR: COULD NOT ADD PROMOTION.");
+			System.err.println(e);
+		}
+	}
+	public static void updatePromotion(String date, Double discount, String ID)
+	{
+		try
+		{
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.UPDATE_PROMOTION(date, discount,ID));
+			System.out.println(MySQL_Commands.UPDATE_PROMOTION(date, discount, ID));
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.println("ERROR: COULD NOT UPDATE PROMOTION.");
+			System.err.println(e);
+		}
+	}
+	public static void deletePromotion(String ID)
+	{
+		try
+		{
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.DELETE_PROMOTION(ID));
+			System.out.println(MySQL_Commands.DELETE_PROMOTION(ID));
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.println("ERROR: COULD NOT DELETE PROMOTION.");
+			System.err.println(e);
 		}
 	}
 }

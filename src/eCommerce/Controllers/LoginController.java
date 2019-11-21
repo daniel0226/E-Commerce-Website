@@ -2,22 +2,13 @@ package eCommerce.Controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.LinkedList;
-import java.util.List;
-
-import eCommerce.MovieData.Movie;
 import eCommerce.Strings.ERROR_DATA;
-import eCommerce.Strings.generateHTMLController;
-import eCommerce.UserData.Address;
-import eCommerce.UserData.Card;
-import eCommerce.UserData.sessionData;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import eCommerce.Validator.Validator;
 import eCommerce.users.WebUser;

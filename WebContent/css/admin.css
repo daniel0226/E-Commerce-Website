@@ -576,3 +576,66 @@ input[type="date"]
     left: 32px;
     z-index: 2;
 }
+.promoField
+{
+	display: block;
+	position: relative;
+	width: 100%;
+	margin: 15px 0px;
+}
+.promoField label
+{
+	font-weight: 900;
+	letter-spacing: 1px;
+	color: white;
+	position: absolute;
+	background: rgb(15, 30, 60);
+	top: -15px;
+	left: 5px;
+}
+.promoBody
+{
+	width: 100%;
+	padding: 16px 8px;	
+	margin: 25px 0px;
+	position: relative;
+	display: block;
+	border: none;
+	border-bottom: solid .5px #00aeef;
+}
+.promoBody h2
+{
+	text-align: center;
+	font-size: 1.75rem;
+}
+.promoBody input
+{
+	margin: 25px 0px;
+	width: 100%;
+	display: block;
+	position: releative;
+	background: none;
+	color: white;
+	border: none;
+	box-shadow: 0px 0px 3px white, 0px 0px 3px #00aeef;
+	padding: 12px 10px;
+	text-align: center;
+}
+.buttons button
+{
+	width: 100%;
+	background: none;
+	outline: none;
+	border: 1px solid #00aeef;
+	box-shadow: 0px 0px 5px white, 0px 0px 3px #00aeef;
+	color: white;
+	font-weight: 900;
+	border-radius: 25px;
+	padding: 6px 8px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+.buttons button:hover
+{
+	box-shadow: 0px 0px 10px white, 0px 0px 6px #00aeef;
+}
