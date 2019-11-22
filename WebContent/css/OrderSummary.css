@@ -1,0 +1,13 @@
+html, body {
+	background-image: url("../images/Background/frozen-image.png");
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  	height: 100%;
+}
+
+.see-thru {
+	opacity: 0.75;
+}

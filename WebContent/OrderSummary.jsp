@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang = "en">
 	<head>
@@ -8,13 +10,13 @@
 
     	<!-- Bootstrap CSS -->
     	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	 	<link rel="stylesheet" type="text/css" href="./css/orderSummary.css">
+	 	<link rel="stylesheet" type="text/css" href="./css/OrderSummary.css">
 		
 		<title>CSCI 4050</title>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  			<a class="navbar-brand" href="#">Return to Home Page</a>
+  			<a class="navbar-brand" href="http://localhost:8080/cinemaBooking/index.jsp">Return to Home Page</a>
   			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     			<span class="navbar-toggler-icon"></span>
   			</button>
@@ -23,12 +25,14 @@
     			</ul>
   			</div>
 		</nav>
-		
 		<div class="container center mt-5">
 			<div class="card text-center bg-dark text-white see-thru">
   				<div class="card-body">
     				<h5 class="card-title display-3">Order Summary</h5>
-   					<p class="card-text"><em>Enjoy the show!</em></p>
+   					<p class="card-text"><em>Enjoy the show, ${userName}!</em></p>
+   					
+   					
+   					<!--
    					
    					<div class="row lead font-weight-bold">
    						<div class="col"><u>Movie Title</u></div>
@@ -57,6 +61,9 @@
    						<div class="col"><p>#orderNumberHere</p></div>
    					</div>
     				<button onclick="printPage()" class="btn btn-primary">Print this page</button>
+    				
+    				-->
+    				
   				</div>
 			</div>
 		</div>

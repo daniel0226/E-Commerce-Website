@@ -74,7 +74,8 @@ public class Database {
 		mysql.setPort(3306);
 		mysql.setDatabaseName("termproject");
 		mysql.setUser("root");
-		mysql.setPassword("12345Daniel");
+		//Remember to change back to 12345Daniel
+		mysql.setPassword("root");
 		mysql.setServerTimezone("EST");
 	}
 
