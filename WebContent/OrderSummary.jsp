@@ -1,16 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.sql.SQLException, eCommerce.UserData.sessionData, eCommerce.users.WebUser, eCommerce.Database.Database, java.util.List, eCommerce.Controllers.dateController, eCommerce.MovieData.Movie, eCommerce.Strings.generateHTMLController"%>
+<%@ page import="java.sql.SQLException, eCommerce.UserData.sessionData, eCommerce.users.WebUser, eCommerce.Database.Database, java.util.List, eCommerce.Controllers.dateController, eCommerce.Controllers.loadObjectsToHtmlController,eCommerce.MovieData.Movie, eCommerce.Strings.generateHTMLController"%>
 	
 <%
-	if(Database.getDatabase() == null) {
-   		try {
-   			new Database();
-   		} catch (SQLException e) {
-   			// TODO Auto-generated catch block
-   			e.printStackTrace();
-   		}
-   	}
 
    	WebUser user = sessionData.getCurrentSessionUser();
    	
@@ -19,6 +11,7 @@
    	}
    	
    	pageContext.setAttribute("userName",user);
+   	pageContext.setAttribute("date",(new java.util.Date()).toLocaleString());
 %>
 	
 <!DOCTYPE html>
@@ -62,8 +55,8 @@
    						<div class="col"><u>Tickets</u></div>   						
    					</div>
    					<div class="row lead">
-   						<div class="col"><p>#movieTitleHere</p></div>
-   						<div class="col"><p>#selectedTicketsHere</p></div>
+   						<div class="col"><p>${movieTitle}</p></div>
+   						<div class="col"><p>${purchasedTickets}</p></div>
    					</div>
    					
    					<div class="row lead font-weight-bold">
@@ -71,8 +64,8 @@
    						<div class="col"><u>Total Price</u></div>
    					</div>
    					<div class="row lead">   					
-   					   	<div class="col"><p>#movieRatingHere</p></div>
-   						<div class="col"><p>#totalPriceHere</p></div>
+   					   	<div class="col"><p>${movieRating}</p></div>
+   						<div class="col"><p>${total}</p></div>
    					</div>
    					
    					<div class="row lead font-weight-bold">
@@ -80,8 +73,12 @@
    						<div class="col"><u>Order Number</u></div>
    					</div>
    					<div class="row lead">				
-   					   	<div class="col"><p>#movieShowtimeHere</p></div>
-   						<div class="col"><p>#orderNumberHere</p></div>
+   					   	<div class="col"><p>${showtime}</p></div>
+   						<div class="col"><p>${orderNumber}</p></div>
+   					</div>
+   					
+   					<div class = "row lead">
+   						<div class="col"><p>${date}</p></div>
    					</div>
     				<button onclick="printPage()" class="btn btn-primary">Print this page</button>
     				

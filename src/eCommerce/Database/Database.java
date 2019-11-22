@@ -69,13 +69,12 @@ public class Database {
 		}
 	}
 	public static void createDatabase() throws SQLException {
-
 		mysql.setServerName("localhost");
 		mysql.setPort(3306);
 		mysql.setDatabaseName("termproject");
 		mysql.setUser("root");
 		//Remember to change back to 12345Daniel
-		mysql.setPassword("root");
+		mysql.setPassword("12345Daniel");
 		mysql.setServerTimezone("EST");
 	}
 
