@@ -74,7 +74,7 @@ public class Database {
 		mysql.setDatabaseName("termproject");
 		mysql.setUser("root");
 		//Remember to change back to 12345Daniel
-		mysql.setPassword("12345Daniel");
+		mysql.setPassword("root");
 		mysql.setServerTimezone("EST");
 	}
 

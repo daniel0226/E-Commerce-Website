@@ -1,17 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.sql.SQLException, eCommerce.UserData.sessionData, eCommerce.users.WebUser, eCommerce.Database.Database, java.util.List, eCommerce.Controllers.dateController, eCommerce.Controllers.loadObjectsToHtmlController,eCommerce.MovieData.Movie, eCommerce.Strings.generateHTMLController"%>
-	
+<%@ page import="eCommerce.Controllers.*,java.sql.SQLException, eCommerce.UserData.sessionData, eCommerce.users.WebUser, eCommerce.Database.Database, java.util.List, eCommerce.Controllers.dateController, eCommerce.Controllers.loadObjectsToHtmlController,eCommerce.MovieData.Movie, eCommerce.Strings.generateHTMLController"%>
 <%
 
+	//Get user object for current session
    	WebUser user = sessionData.getCurrentSessionUser();
    	
-   	if (user == null){
+   	//Check if user exists
+   	//If user does not exist, display appropriate message on front end 
+	if (user == null){
    		System.out.println("User was not found");
+   	   	pageContext.setAttribute("userName","");
    	}
+ 	//Else, user does exist, display a greeting with their first name
+   	else {
+   		pageContext.setAttribute("userName",(", "+user.getFirstName()));
+   		pageContext.setAttribute("date",(new java.util.Date()).toLocaleString());
+   	}
+
+   	//Get most recently made order number. The orders table should be tied to the user with a userid foreign key
+   	//Getting most recent order number because that should be the one the user just created for their new order
+   	//Use the unique order number to get order details
    	
-   	pageContext.setAttribute("userName",user);
-   	pageContext.setAttribute("date",(new java.util.Date()).toLocaleString());
+   	//Get & Show Movie Title
+   	//Get & Show Movie Rating
+   	//Get & Show Movie Showtime
+   	//Get & Show Selected Tickets
+   	//Get & Show Total Price
+   	//Get & Show OrderNumber
+   	
+   	
 %>
 	
 <!DOCTYPE html>
@@ -43,7 +61,7 @@
 			<div class="card text-center bg-dark text-white see-thru">
   				<div class="card-body">
     				<h5 class="card-title display-3">Order Summary</h5>
-   					<p class="card-text"><em>Enjoy the show, ${userName}!</em></p>
+   					<p class="card-text"><em>Enjoy the show${userName}!</em></p>
    					
    					
 
