@@ -27,10 +27,8 @@ import eCommerce.users.WebUser;
 public class bookingController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
-	private sessionController sessionC;
 
 	public void init() {
-		sessionC = new sessionController();
 		System.out.println("Booking Controller has been instantiated.");
 		if(Database.getDatabase() == null)
 		{
@@ -55,6 +53,14 @@ public class bookingController extends HttpServlet{
 		String date = request.getParameter("date");
 		String ticket = request.getParameter("submitTicket");
 		String book = request.getParameter("bookShowTime");
+		
+		if(sessionData.getCurrentSession() == null)
+		{
+			sessionController sc = new sessionController();
+			request.setAttribute("loginError", ERROR_DATA.LOGIN_FIRST_ERROR);
+			sc.navigatePage(request, response, "/login.jsp");
+			return;
+		}
 		//Returns movie title
 		
 		if(!Validator.validateUserIsLoggedIn())
@@ -155,6 +161,12 @@ public class bookingController extends HttpServlet{
 	public void selectingQuery(HttpServletRequest request, HttpServletResponse response, String id)
 	{
 		sessionController sc = new sessionController();
+		if(sessionData.getCurrentSession() == null)
+		{
+			request.setAttribute("loginError", ERROR_DATA.LOGIN_FIRST_ERROR);
+			sc.navigatePage(request, response, "/login.jsp");
+			return;
+		}
 		loadObjectsToHtmlController loadHtml = new loadObjectsToHtmlController();
 		ShowTimes st = Database.getShowTimeByID(id);
 		Movie movie = Database.getMovie(st.getMovieTitle());
