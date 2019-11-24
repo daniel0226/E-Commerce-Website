@@ -92,7 +92,7 @@ public class MySQL_Commands {
 	public static String updateShowTime(ShowTimes st)
 	{
 		return "UPDATE termproject.showtime SET title= '" + st.getMovieTitle() + "', CinemaID = '" + st.getCinemaID() + "'" +
-				", Showtime = '" + st.getShowTimes() + "', Date = '" + st.getDate() + "' WHERE (`Key` = '" + st.getID() + "')";
+				", Showtime = '" + st.getShowTimes() + "', Date = '" + st.getDate() + "' WHERE (`id` = '" + st.getID() + "')";
 	}
 
 	public static String updateCard(WebUser user, Card card) {

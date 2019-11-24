@@ -29,11 +29,16 @@ public class Database {
 	private static Connection connection = null;
 	private static Statement statement = null;
 	private static WebUser currentUser = null;
+	private static String url = "com.mysql.cj.jdbc.Driver";
+	private static String username = "root";
+	private static String serverName = "localhost";
+	private static String databaseName = "termproject";
+	private static String password ="12345Daniel";
 	
 	public Database() throws SQLException {
 		try {
 			authenticator = new authenticatorController();
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName(url);
 			mysql = new MysqlDataSource();
 			createDatabase();
 			System.out.println("Database connection established.");
@@ -71,11 +76,11 @@ public class Database {
 	}
 	public static void createDatabase() throws SQLException {
 
-		mysql.setServerName("localhost");
+		mysql.setServerName(serverName);
 		mysql.setPort(3306);
-		mysql.setDatabaseName("termproject");
-		mysql.setUser("root");
-		mysql.setPassword("12345Daniel");
+		mysql.setDatabaseName(databaseName);
+		mysql.setUser(username);
+		mysql.setPassword(password);
 		mysql.setServerTimezone("EST");
 	}
 
