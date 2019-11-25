@@ -111,9 +111,9 @@ public class bookingController extends HttpServlet{
 		String showTimeID = request.getParameter("bookShowTime");
 		ShowTimes showtime = Database.getShowTimeByID(showTimeID);
 		Seatings seat_obj = Database.getSeats(showTimeID);
-		TicketCount tc = new TicketCount(	Integer.parseInt(request.getParameter("adult")),
-											Integer.parseInt(request.getParameter("child")),
-											Integer.parseInt(request.getParameter("senior")));
+		TicketCount tc = new TicketCount(	Integer.parseInt(request.getParameter("senior")),
+											Integer.parseInt(request.getParameter("adult")),
+											Integer.parseInt(request.getParameter("child")));
 		//System.out.print(tc.getAdultCount() + " " + tc.getSeniorCount() + " " + tc.getChildCount());
 		
 		List<Boolean> seatArray = new LinkedList<>();

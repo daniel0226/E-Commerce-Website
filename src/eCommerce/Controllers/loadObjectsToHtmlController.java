@@ -33,6 +33,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 	private authenticatorController authenticator;
 	private sessionController sc;
 	private Analytics analytics;
+	Ticket ticket = new Ticket(7.50, 11.50, 9.50);
 
 	public void init() {
 		analytics = new Analytics();
@@ -337,7 +338,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		request.setAttribute("Time", dateController.convertToTwelve(showtime.getShowTimes()));
 		request.setAttribute("title", movie.getMovieTitle());
 		request.setAttribute("id", showtime.getID());
-		Ticket ticket = new Ticket(7.50, 11.50, 9.50);
+		//Ticket ticket = new Ticket(7.50, 11.50, 9.50);
 		request.setAttribute("senior", ticket.seniorToString());
 		request.setAttribute("adult", ticket.adultToString());
 		request.setAttribute("child", ticket.childToString());
@@ -373,7 +374,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 			}
 		}
 		seatStr = seatStr.substring(0, seatStr.length()-1);
-		Ticket ticket = new Ticket(9.50, 11.50, 7.50);
+		//Ticket ticket = new Ticket(7.50, 11.50, 9.50);
 		double total = (tc.getAdultCount() * ticket.getAdultTicketCost()) + (tc.getSeniorCount() * ticket.getSeniorTicketCost()) + (tc.getChildCount() * ticket.getChildTicketCost());
 		String totalCost = "$" + String.format("%.2f", total);
 		request.setAttribute("aT", tc.getAdultCount());
@@ -400,7 +401,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		String html = "";
 		for(int i = 0; i<list.size(); i++)
 		{
-			if(!list.get(i).getSessionType().equals("web"))
+			if(list.get(i).getSessionType().equals("admin"))
 			{
 				continue;
 			}else if(list.get(i).getFullName().toLowerCase().contains(userSearch.toLowerCase())) {
