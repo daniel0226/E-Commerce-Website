@@ -379,4 +379,22 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		sc.navigatePage(request, response, "OrderConfirmationPage.jsp");
 		return;
 	}
+	public void setAdminUserSearchPage(HttpServletRequest request, HttpServletResponse response, String userSearch)
+	{
+		List<WebUser> list = Database.getAllUsers();
+		if(list == null || list.size() == 0)
+		{
+			request.setAttribute("userList", "<p style=\"color: red; text-align: center; font-size: 1.5rem;\">NO USERS FOUND</p>");
+		}else
+		{
+			String html = "";
+			for(int i = 0; i<list.size(); i++)
+			{
+				if(list.get(i).getFullName().contains(userSearch)) {
+					html += generateHTMLController.adminUserSearchBody(list.get(i));
+				}
+			}
+			request.setAttribute("userList", html);
+		}
+	}
 }

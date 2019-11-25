@@ -1152,4 +1152,55 @@ public class Database {
 		}
 		return list;
 	}
+	public static void suspendUser(WebUser user)
+	{
+		try
+		{
+			String updateProfileExecution = MySQL_Commands.SUSPEND_USER(user.getEmail());
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(updateProfileExecution);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+			return;
+		}catch(SQLException e)
+		{
+			System.err.println("Could not suspend user");
+			System.err.println(e);
+		}
+	}
+	public static void unSuspendUser(WebUser user)
+	{
+		try
+		{
+			String updateProfileExecution = MySQL_Commands.UNSUSPEND_USER(user.getEmail());
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(updateProfileExecution);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+			return;
+		}catch(SQLException e)
+		{
+			System.err.println("Could not un-suspend user");
+			System.err.println(e);
+		}
+	}
+	public static void deleteUser(WebUser user)
+	{
+		try
+		{
+			String updateProfileExecution = MySQL_Commands.DELETE_USER(user.getEmail());
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(updateProfileExecution);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+			return;
+		}catch(SQLException e)
+		{
+			System.err.println("Could not delete user");
+			System.err.println(e);
+		}
+	}
 }
