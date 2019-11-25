@@ -193,6 +193,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
     		request.setAttribute("promoUpdate", generateHTMLController.adminPromoBody());
     		
     		//Users tba
+    		request.setAttribute("employees", generateHTMLController.employeeBody());
     		request.setAttribute("userCount", Database.getAllUsers().size());
     		
 			request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
@@ -209,7 +210,16 @@ public class loadObjectsToHtmlController extends HttpServlet {
 	public void setProfilePage(HttpServletRequest request, HttpServletResponse response, WebUser user)
 	{
 		Address address = user.getAddress();
+		if(address == null)
+		{
+			address = new Address("");
+		}
+		
     	Card card = Database.getCard(user.getEmail());
+    	if(card == null)
+		{
+			card = new Card();
+		}
 		sc = new sessionController();
     	
     	request.setAttribute("name", user.getFullName());
@@ -327,7 +337,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		request.setAttribute("Time", dateController.convertToTwelve(showtime.getShowTimes()));
 		request.setAttribute("title", movie.getMovieTitle());
 		request.setAttribute("id", showtime.getID());
-		Ticket ticket = new Ticket(9.50, 11.50, 7.50);
+		Ticket ticket = new Ticket(7.50, 11.50, 9.50);
 		request.setAttribute("senior", ticket.seniorToString());
 		request.setAttribute("adult", ticket.adultToString());
 		request.setAttribute("child", ticket.childToString());
@@ -390,7 +400,10 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		String html = "";
 		for(int i = 0; i<list.size(); i++)
 		{
-			if(list.get(i).getFullName().toLowerCase().contains(userSearch.toLowerCase())) {
+			if(!list.get(i).getSessionType().equals("web"))
+			{
+				continue;
+			}else if(list.get(i).getFullName().toLowerCase().contains(userSearch.toLowerCase())) {
 				html += generateHTMLController.adminUserSearchBody(list.get(i));
 			}
 		}

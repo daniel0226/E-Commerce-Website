@@ -15,6 +15,7 @@ import eCommerce.Database.Database;
 import eCommerce.MovieData.*;
 import eCommerce.UserData.Order;
 import eCommerce.UserData.sessionData;
+import eCommerce.users.Administrator;
 import eCommerce.users.WebUser;
 public class generateHTMLController {
 
@@ -870,6 +871,30 @@ public class generateHTMLController {
 						"																			</div>"+
 						"																		</div>"+
 						"																	</form>";
+							
+
+	}
+	public static String employeeBody()
+	{
+		List<Administrator> list = Database.getAllAdmins();
+		if(list == null)
+		{
+			return "";
+		}
+		String html = "";
+		for(int i = 0; i<list.size(); i++)
+		{
+			html += generateEmployeeBody(list.get(i));
+		}
+		return html;
+	}
+	public static String generateEmployeeBody(Administrator admin)
+	{
+		return  "<div style=\"float: left; margin: 15px; width: auto; padding: 8px 16px; box-shadow: 0px 0px 3px white;\" class=\"promotions\">"+
+						"													<p>Name: " + admin.getFullName() + "</p>"+
+						"													<p>Email: " + admin.getEmail() + "</p>"+
+						"													<p>Phone Number: " + admin.getPhoneNumber() + "</p>"+
+						"												</div>";
 							
 
 	}

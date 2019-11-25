@@ -720,7 +720,59 @@ input[type="date"]
 	padding: 0px !important;
 	text-align: center;
 }
+#Employees
+{
+	min-height: 100vh;
+	
+}
 .userForm button:hover
 {
 	box-shadow: 0px 0px 6px white, 0px 0px 3px #00aeef;
+}
+.addForm
+{
+	width: 100%;
+	padding: 8px 16px;
+	margin: auto;
+	text-align: center;
+	color: white;
+	display: inline-block;
+	position: relative;
+	box-shadow: 0px 0px 4px #00aeef;
+}
+.addForm input
+{
+	border: none;
+	box-shadow: 0px 0px 4px white;
+	border-radius: 8px;
+	padding: 8px 16px;
+	outline: none;
+	background: none;
+	width: 100%;
+	color: white;
+	position: relative;
+}
+.addForm label
+{
+	background: rgb(15, 30, 60);
+	position: absolute;
+	top: -12px;
+	z-index: 5;
+    left: 4px;
+}
+.addForm button
+{
+	width: 100%;
+	padding: 4px 16px;
+	background: none;
+	border: solid 2px #00aeef;
+	box-shadow: 0px 0px 3px white;
+	outline: none;
+	color: white;
+	border-radius: 8px;
+}
+.addForm button:hover
+{
+	box-shadow: 0px 0px 8px white;
+	font-weight: 900;
 }

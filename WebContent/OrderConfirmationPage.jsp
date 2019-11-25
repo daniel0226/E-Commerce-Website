@@ -38,6 +38,7 @@
             <div class="registered">
                 <h1>Congratulations! Your order is confirmed.</h1>
                 <h1>Your Order confirmation is: ${confirmation}</h1>
+                <h2>Total: ${Total}</h2>
             </div>
         </div>
     </section>

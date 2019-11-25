@@ -24,6 +24,16 @@ public class Card
         control = new authenticatorController();
         date = new dateController();
     }
+    public Card()
+    {
+    	cardName = "";
+        CVV = "";
+        expirationDate = "";
+        cardNumber = "";
+        zipCode = "";
+        control = new authenticatorController();
+        date = new dateController();
+    }
     public String getCardMonth()
     {
     	return date.getCardMonth(expirationDate);

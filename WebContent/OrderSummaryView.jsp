@@ -32,13 +32,13 @@
 </head>
 
 <style>
-	p{
+	.s-2 p{
 		border: solid 1px #4C79D3;
 	    box-shadow: 0px 0px 3px white;
 	    padding: .5rem !important;
 	    position: relative;
 	}
-	label
+	.s-2 label
 	{
 		position: absolute;
 	    top: -12px;
@@ -46,7 +46,7 @@
 	    z-index: 5;
 	    background: #131822;
 	}
-	button
+	.s-2 button
 	{
 	    font-size: 1.25rem;
 	    font-weight: 600;
@@ -61,14 +61,14 @@
     	background: none;
     	border-radius: 8px;
 	}
-	button:hover
+	.s-2 button:hover
 	{
 		box-shadow: 0px 0px 8px white;
 	}
 </style>
 <body>
     <header>${nav}</header>
-    <main class="showTimesBody">
+    <main class="showTimesBody s-2">
         <div class="wrapper">
        		<section class="container">
        			<div class="row justify-content-center">
@@ -98,6 +98,9 @@
 								</div>
 								<div class="promotions">
 									<p>Using card ending with: ${CardEnding}</p>
+								</div>
+								<div class="promotios">
+									<input class="p-input-promo" type="text" name="promo" placeholder="Promotion ID">
 								</div>
 								<div class="promotions">
 									<div class="fluid-container removeLeftPadding removeRightPadding">

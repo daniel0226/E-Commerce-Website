@@ -377,7 +377,7 @@
 													<div class="col-md-12" style="padding: 25px;">
 														<div class="row">
 															<div class="col-md-6 removeLeftPadding">
-																<p style="float: left;">Add / Edit / Remove Showtimes</p>
+																<p style="float: left;">Suspend / UnSuspend / Remove Users</p>
 															</div>
 															<div class="col-md-6 removeRightPadding">
 																<p style="float: right;" class="js-getTodaysDate"></p>
@@ -417,8 +417,73 @@
 									</div>
 								</div>
 							</div>
-							<div id="Employees" class="adminTabContent">
-								<h3>Manage Employees</h3>
+							<div id="Employees" class="adminTabContent analyticsBody">
+								<div class="container">
+									<div class="row">
+										<div class="adminHeader">
+											<h3>Administrator Panel</h3>
+											<form style="float: right" action="sessionController"
+												method="GET">
+												<button name="type" value="logout" class="logoutBtn">Logout</button>
+											</form>
+										</div>
+									</div>
+									<div class="row">
+										<div class="tabBody">
+											<div class="container">
+												<div class="row analyticsBody">
+													<div class="col-md-12" style="padding: 25px;">
+														<div class="row">
+															<div class="col-md-6 removeLeftPadding">
+																<p style="float: left;">Add / View Employees</p>
+															</div>
+															<div class="col-md-6 removeRightPadding">
+																<p style="float: right;" class="js-getTodaysDate"></p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="goalBodyWrapper">
+												<form class="addForm" action="employeeController" method="POST">
+													${msg}
+													<h2>Add Employee</h2>
+													<div class="promotions">
+														<label>First Name</label>
+														<input required type="text" name="fName" placeholder="First Name">
+													</div>
+													<div class="promotions">
+														<label>Last Name</label>
+														<input required type="text" name="lName" placeholder="Last Name">
+													</div>
+													<div class="promotions">
+														<label>Email</label>
+														<input required type="text" name="email" placeholder="Email">
+													</div>
+													<div class="promotions">
+														<label>Password</label>
+														<input required type="password" name="password" placeholder="Password">
+													</div>
+													<div class="promotions">
+														<label>Phone Number</label>
+														<input required type="tel" placeholder="xxx-xxx-xxxx" name="phonenumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+													</div>
+													<button type="submit" value="Submit" name="addEmployee">Submit</button>
+												</form>
+											</div>
+										</div>
+										<div class="col-md-8">
+											<div style="display: block; width: 100%; height: 100%; padding: 10px 15px;" class="goalBodyWrapper">
+												<h2 style="text-align: center;">Current Employees</h2>
+												${employees}
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 							<div id="Promotions" class="adminTabContent">
 								<div class="container">

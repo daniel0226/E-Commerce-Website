@@ -34,6 +34,14 @@ public class Users
         paymentCard 	= card;
         bday			= dateController.convertToLocalDate(birthday);
     }
+    public Users(String fName, String lName, String Password, String Email)
+    {
+    	firstName = fName;
+    	lastName = lName;
+    	password = Password;
+    	emailAddress = Email;
+    	
+    }
     public void setFirstName(String fName)
     {
         firstName = fName;

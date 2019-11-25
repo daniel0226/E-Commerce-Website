@@ -1,20 +1,23 @@
 package eCommerce.users;
 
-import eCommerce.UserData.Card;
-
 public class Administrator extends Users
 {
-	private String sessionType = "Admin";
+	private String sessionType = "admin";
+	private String PhoneNumber;
 
-	public Administrator(String fName, String lName, String uPassword, String uConPassword, String uEmail,
-			String uBirthday, Card card) {
-		super(fName, lName, uPassword, uConPassword, uEmail, uBirthday, card);
-		// TODO Auto-generated constructor stub
+	public Administrator(String fName, String lName, String Password, String Email, String phoneNumber)
+	{
+		super(fName, lName, Password, Email);
+		PhoneNumber = phoneNumber; 
 	}
 	
 	public String getSessionType()
 	{
 		return sessionType;
+	}
+	public String getPhoneNumber()
+	{
+		return PhoneNumber;
 	}
 
 }

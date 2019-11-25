@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import eCommerce.Database.Database;
 import eCommerce.MovieData.Movie;
+import eCommerce.MovieData.Promotions;
 import eCommerce.MovieData.Seatings;
 import eCommerce.MovieData.ShowTimes;
 import eCommerce.MovieData.Ticket;
@@ -63,12 +64,19 @@ public class orderController extends HttpServlet {
 		}
 		if(checkout != null && !checkout.equals(""))
 		{
+			String promotionId = request.getParameter("promo");
+			Promotions promo = Database.getPromotion(promotionId);
+			
 			Seatings seat = Database.getSeats(checkout);
 			TicketCount tc = new TicketCount(	Integer.parseInt(request.getParameter("senior")),
 												Integer.parseInt(request.getParameter("adult")),
 												Integer.parseInt(request.getParameter("child")));
-			Ticket ticket = new Ticket(9.50, 11.50, 7.50);
+			Ticket ticket = new Ticket(7.50, 11.50, 9.50);
 			double total = (tc.getAdultCount() * ticket.getAdultTicketCost()) + (tc.getSeniorCount() * ticket.getSeniorTicketCost()) + (tc.getChildCount() * ticket.getChildTicketCost());
+			if(promo != null)
+			{
+				total = total - promo.getDiscountAmount();
+			}
 			WebUser user = sessionData.getCurrentSessionUser();
 			ShowTimes showtime = Database.getShowTimeByID(checkout);
 			String[] seatArr = request.getParameter("seatsEnc").split(",");
@@ -87,6 +95,7 @@ public class orderController extends HttpServlet {
 			Database.resetDatabase();
 			loadObjectsToHtmlController loadHtml = new loadObjectsToHtmlController();
 			request.setAttribute("confirmation", order.getOrderID());
+			request.setAttribute("Total", order.getTotalString());
 			loadHtml.setOrderConfirmationPage(request, response, order);
 			return;
 			//Update seatings

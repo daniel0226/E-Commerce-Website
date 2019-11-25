@@ -7,6 +7,7 @@ import eCommerce.MovieData.Movie;
 import eCommerce.MovieData.ShowTimes;
 import eCommerce.UserData.Card;
 import eCommerce.UserData.Order;
+import eCommerce.users.Administrator;
 import eCommerce.users.WebUser;
 
 public class MySQL_Commands {
@@ -44,6 +45,7 @@ public class MySQL_Commands {
 	public static final String Add_Card = "INSERT INTO card (cardOwnerEmail, cardOwnerName, cvv, expDate, cardNumber, zipCode)"
 			+ " VALUES (?, ?, ?, ?, ?, ?)";
 	public static String GET_LAST_SHOWTIME_ROW = "SELECT * FROM termproject.showtime ORDER BY id DESC LIMIT 1";
+	public static String GET_ALL_ADMINS = "SELECT * FROM termproject.employee";
 	
 	//Functions 
 	public static String SUSPEND_USER(String email)
@@ -61,6 +63,12 @@ public class MySQL_Commands {
 	public static String GET_ORDER(String email)
 	{
 		return "SELECT * FROM termproject.orders WHERE email = '" + email + "';";
+	}
+	public static String ADD_ADMIN(Administrator admin)
+	{
+		authenticatorController auth = new authenticatorController();
+		return "INSERT INTO termproject.employee(firstName, lastName, email, password, phonenumber) VALUES "
+				+ "('" + admin.getFirstName() + "','" + admin.getLastName() + "','" + admin.getEmail() + "','" + auth.encryptString(admin.getPassword())  + "','" + admin.getPhoneNumber() + "')";
 	}
 	public static String ADD_ORDER(Order order)
 	{

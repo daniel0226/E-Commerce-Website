@@ -21,6 +21,7 @@ import eCommerce.Strings.generateHTMLController;
 import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
 import eCommerce.UserData.Order;
+import eCommerce.users.Administrator;
 import eCommerce.users.WebUser;
 
 public class Database {
@@ -354,6 +355,29 @@ public class Database {
 			System.err.println("Could not add Movie. Perhaps the movie already exists.");
 		}
 		return addedCard;
+	}
+	public static void addAdminToUsers(Administrator admin)
+	{
+		try {
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.Add_User);
+			statement.setString(1, admin.getFirstName());
+			statement.setString(2, admin.getLastName());
+			statement.setString(3, authenticator.encryptString(admin.getPassword()));
+			statement.setString(4, admin.getEmail());
+			statement.setString(5, "1111-11-11");
+			statement.setBoolean(6, true);
+			statement.setString(7, "");
+			statement.setString(8, admin.getSessionType());
+			statement.setBoolean(9, true);
+			statement.setString(10, admin.getPhoneNumber());
+			statement.setString(11, "");
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		}catch (SQLException e) {
+			System.err.println(e);System.err.println("Could not add . Perhaps the card already exists.");
+		}
 	}
 	public static boolean addWebUser(WebUser user)
 	{
@@ -1202,5 +1226,46 @@ public class Database {
 			System.err.println("Could not delete user");
 			System.err.println(e);
 		}
+	}
+	public static void addAdmin(Administrator Admin)
+	{
+		try {
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.ADD_ADMIN(Admin));
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		} catch (SQLException e) {
+			System.err.println(e);
+			System.err.println("Could not add Admin. Perhaps the Admin already exists.");
+		}
+	}
+	public static List<Administrator> getAllAdmins()
+	{
+		authenticatorController ac = new authenticatorController();
+		List<Administrator> list = null;
+		try
+		{
+			list = new ArrayList<Administrator>();
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(MySQL_Commands.GET_ALL_ADMINS);
+			while(rs.next()) 
+			{
+				Administrator admin = new Administrator(rs.getString(2),
+														rs.getString(3),
+														ac.decryptString(rs.getString(5)),
+														rs.getString(4),
+														rs.getString(6));
+				list.add(admin);
+			}
+			rs.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.println("ERROR: COULD NOT GET ADMINS");
+			System.err.println(e);
+		}
+		return list;
 	}
 }
