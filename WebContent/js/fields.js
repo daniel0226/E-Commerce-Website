@@ -170,7 +170,7 @@ function generateFooter() {
     var myvar = '<div class="footer-Body">' +
         '            <div class="container">' +
         '                <div class="row">' +
-        '                    <div class="col-md-6">' +
+        '                    <div class="col-md-5">' +
         '                        <h1>Stay up to date with Promotions!' +
         '                        </h1>' +
         '                        <hr>' +
@@ -179,17 +179,10 @@ function generateFooter() {
         '                            <a href="sessionController?type=promo" class="emailSignUp">Sign Up!</a>' +
         '                        </div>' +
         '                    </div>' +
-        '                    <div class="col-md-6">' +
-        '                        <h2>NAVIGATE</h2>' +
+        '                    <div class="col-md-7">' +
+        '                        <h2>CONTACT</h2>' +
         '                        <div class="fll Navigate">' +
-        '                            <a href="sessionController?type=profile">View Profile<i class="right"></i></a>' +
-        '                            <a href="sessionController?page=/index.jsp">Home<i class="right"></i></a>' +
-        '                            <a href="#">NULL<i class="right"></i></a>' +
-        '                        </div>' +
-        '                        <div class="flr Navigate">' +
-        '                            <a href="loadObjectsToHtmlController?type=inTheatres">In Theatres<i class="right"></i></a>' +
-        '                            <a href="loadObjectsToHtmlController?type=comingSoon">Coming Soon<i class="right"></i></a>' +
-        '                            <a href="loadObjectsToHtmlController?type=searchMovies">Search Movies<i class="right"></i></a>' +
+        '                        	<a href="#">Email: Daniel1996k@icloud.com<i class="right"></i></a>' +
         '                        </div>' +
         '                    </div>' +
         '                </div>' +
