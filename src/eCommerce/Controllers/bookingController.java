@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -65,9 +66,9 @@ public class bookingController extends HttpServlet{
 		
 		if(!Validator.validateUserIsLoggedIn())
 		{
-			//request.setAttribute("loginError", ERROR_DATA.LOGIN_FIRST_ERROR);
-			//sessionC.navigatePage(request, response, "/login.jsp");
-            //return;
+			request.setAttribute("loginError", ERROR_DATA.LOGIN_FIRST_ERROR);
+			sessionC.navigatePage(request, response, "/login.jsp");
+            return;
 		}
 		
 		if(book != null && !book.equals(""))
@@ -101,25 +102,32 @@ public class bookingController extends HttpServlet{
 	}
 	public void bookMovie(HttpServletRequest request, HttpServletResponse response, String id)
 	{
+		loadObjectsToHtmlController loadHtml = new loadObjectsToHtmlController();
 		sessionController sc = new sessionController();
 		String[] seats = request.getParameterValues("seat");
 		String showTimeID = request.getParameter("bookShowTime");
+		ShowTimes showtime = Database.getShowTimeByID(showTimeID);
 		Seatings seat_obj = Database.getSeats(showTimeID);
 		TicketCount tc = new TicketCount(	Integer.parseInt(request.getParameter("adult")),
 											Integer.parseInt(request.getParameter("child")),
 											Integer.parseInt(request.getParameter("senior")));
 		//System.out.print(tc.getAdultCount() + " " + tc.getSeniorCount() + " " + tc.getChildCount());
 		
+		List<Boolean> seatArray = new LinkedList<>();
+		System.out.println(seatArray.size());
 		List<String> seatIds = new ArrayList<>();
 		int seatsClicked = 0;
 		for(int i = 0; i<seats.length; i++)
 		{
 			if(Integer.parseInt(seats[i]) != -1)
 			{
+				seatArray.add(true);
 				//Returns clicked ID's
 				seatIds.add(seats[i]);
 				System.out.println("Seat ID: " + seats[i]);
 				seatsClicked++;
+			}else {
+				seatArray.add(false);
 			}
 		}
 		if(Integer.parseInt(request.getParameter("max")) != seatsClicked)
@@ -127,13 +135,21 @@ public class bookingController extends HttpServlet{
 			Seatings s = Database.getSeats(id);
 			ShowTimes st = Database.getShowTimeByID(Integer.toString(s.getShowTimeId()));
 			Movie movie = Database.getMovie(st.getMovieTitle());
-			loadObjectsToHtmlController loadHtml = new loadObjectsToHtmlController();
+			//loadObjectsToHtmlController loadHtml = new loadObjectsToHtmlController();
 			loadHtml.setTicketPage(request, response, movie, st);
 			request.setAttribute("errorMsg", "<p style=\"text-align: center; color:red;\">Number of seats selected does not match tickets.</p>");
 			sc.navigatePage(request, response, "selectTicket.jsp");
 			return;
 		}else
 		{
+			WebUser user = sessionData.getCurrentSessionUser();
+			if(!Validator.validateUserHasCardOnFile(user))
+			{
+				request.setAttribute("errorMsg", "<p style=\"text-align: center; color:red;\">Please add a Payment Option to your account.</p>");
+				sc.navigatePage(request, response, "editProfile.jsp");
+			}
+			loadHtml.setOrderSummary(request, response, tc, showtime, seatArray, seat_obj);
+			sc.navigatePage(request, response, "OrderSummaryView.jsp");
 			//Order summary -> checkout -> Check if card on file -> Order confirmation
 			//->Edit Profile by adding order history
 		}

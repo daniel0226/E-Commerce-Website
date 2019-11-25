@@ -360,7 +360,62 @@
 								</div>
 							</div>
 							<div id="Users" class="adminTabContent">
-								<h3>Manage Users</h3>
+								<div class="container">
+									<div class="row">
+										<div class="adminHeader">
+											<h3>Administrator Panel</h3>
+											<form style="float: right" action="sessionController"
+												method="GET">
+												<button name="type" value="logout" class="logoutBtn">Logout</button>
+											</form>
+										</div>
+									</div>
+									<div class="row">
+										<div class="tabBody">
+											<div class="container">
+												<div class="row analyticsBody" style="min-height: 100vh;">
+													<div class="col-md-12" style="padding: 25px;">
+														<div class="row">
+															<div class="col-md-6 removeLeftPadding">
+																<p style="float: left;">Add / Edit / Remove Showtimes</p>
+															</div>
+															<div class="col-md-6 removeRightPadding">
+																<p style="float: right;" class="js-getTodaysDate"></p>
+															</div>
+														</div>
+														<div class="row">
+															<h3>
+																<i class="fa fa-database"></i>Dashboard
+															</h3>
+														</div>
+														<div class="row pAnalytics">
+															<div class="col-sm-3 col-md-3">
+																<div class="goalBodyWrapper">
+																	<h3 class="js-analytic">${userCount}</h3>
+																	<small>Number of Users</small>
+																</div>
+															</div>
+															<form action="userController" method="GET" class="col-sm-9 col-md-9">
+																<div class="goalBodyWrapper searchName">
+																	<label for="nameInput">Search</label>
+																	<i class="fas fa-search"></i>
+																	<input id="nameInput" type="text" required name="searchName" placeholder="Search User Name">
+																</div>
+															</form>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 col-md-12">
+																<div class="goalBodyWrapper" style="display: inline-block; position: relative;">
+																	${userList}
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 							<div id="Employees" class="adminTabContent">
 								<h3>Manage Employees</h3>

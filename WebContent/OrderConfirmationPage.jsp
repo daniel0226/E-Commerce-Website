@@ -17,6 +17,7 @@
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -30,20 +31,12 @@
 </head>
 
 <body>
-    <header id="navH"></header>
+    <header>${nav}</header>
 
     <section class="bg-blueAbstract">
         <div class="container">
             <div class="registered">
-                <h1> Order Summary </h1>
-				<h3> Movie Title: </h3>
-				<h3> Date: </h3>
-				<h3> Time: </h3>
-				<h3> Seats: </h3>
-				<h3> Total Price: </h3>
-				<button type="button"> Update the order </button>
-				<button type="button"> Delete Tickets </button>
-				<button type="button"> Confirm </button>
+                <h1>Congratulations! Your order is confirmed.</h1>
             </div>
         </div>
     </section>

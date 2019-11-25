@@ -20,6 +20,7 @@ import eCommerce.Strings.MySQL_Commands;
 import eCommerce.Strings.generateHTMLController;
 import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
+import eCommerce.UserData.Order;
 import eCommerce.users.WebUser;
 
 public class Database {
@@ -1078,6 +1079,127 @@ public class Database {
 		}catch(SQLException e)
 		{
 			System.err.println("ERROR: COULD NOT DELETE PROMOTION.");
+			System.err.println(e);
+		}
+	}
+	public static void addOrder(Order order)
+	{
+		try {
+			System.out.println("Adding Order to Database.");
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(MySQL_Commands.ADD_ORDER(order));
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+		} catch (SQLException e) {
+			System.err.println(e);
+			System.err.println("Could not add Order. Perhaps the Movie already exists.");
+		}
+	}
+	public static void updateSeats(Order order)
+	{
+		try
+		{
+			String updateProfileExecution = MySQL_Commands.UPDATE_SEATS(order);
+			System.out.println(MySQL_Commands.UPDATE_SEATS(order));
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(updateProfileExecution);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+			return;
+		}catch(SQLException e)
+		{
+			System.err.println("Could not update Seats");
+			System.err.println(e);
+		}
+	}
+	public static List<Order> getOrderByEmail(String email)
+	{
+		List<Order> list = null;
+		try
+		{
+			list = new ArrayList<Order>();
+			connection = mysql.getConnection();
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(MySQL_Commands.GET_ORDER(email));
+			while(rs.next()) 
+			{
+				TicketCount tc = new TicketCount(	rs.getInt(7),
+													rs.getInt(5),
+													rs.getInt(6));
+				String[] seats = rs.getString(9).split(",");
+				List<Integer> seatList = new LinkedList<>();
+				for(String s : seats)
+				{
+					seatList.add(Integer.parseInt(s));
+				}
+				Order order = new Order(rs.getInt(1),
+										rs.getString(2),
+										rs.getInt(3),
+										rs.getInt(4),
+										tc,
+										rs.getDouble(8),
+										seatList);
+				list.add(order);
+			}
+			rs.close();
+			connection.close();
+		}catch(SQLException e)
+		{
+			System.err.println("ERROR: COULD NOT GET ORDERS");
+			System.err.println(e);
+		}
+		return list;
+	}
+	public static void suspendUser(WebUser user)
+	{
+		try
+		{
+			String updateProfileExecution = MySQL_Commands.SUSPEND_USER(user.getEmail());
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(updateProfileExecution);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+			return;
+		}catch(SQLException e)
+		{
+			System.err.println("Could not suspend user");
+			System.err.println(e);
+		}
+	}
+	public static void unSuspendUser(WebUser user)
+	{
+		try
+		{
+			String updateProfileExecution = MySQL_Commands.UNSUSPEND_USER(user.getEmail());
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(updateProfileExecution);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+			return;
+		}catch(SQLException e)
+		{
+			System.err.println("Could not un-suspend user");
+			System.err.println(e);
+		}
+	}
+	public static void deleteUser(WebUser user)
+	{
+		try
+		{
+			String updateProfileExecution = MySQL_Commands.DELETE_USER(user.getEmail());
+			connection = mysql.getConnection();
+			PreparedStatement statement = connection.prepareStatement(updateProfileExecution);
+			statement.executeUpdate();
+			statement.close();
+			connection.close();
+			return;
+		}catch(SQLException e)
+		{
+			System.err.println("Could not delete user");
 			System.err.println(e);
 		}
 	}

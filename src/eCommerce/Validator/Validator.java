@@ -11,6 +11,7 @@ import eCommerce.Database.Database;
 import eCommerce.MovieData.Movie;
 import eCommerce.MovieData.Promotions;
 import eCommerce.MovieData.ShowTimes;
+import eCommerce.UserData.Card;
 import eCommerce.UserData.sessionData;
 import eCommerce.users.WebUser;
 import eCommerce.Controllers.authenticatorController;
@@ -130,6 +131,22 @@ public class Validator
     		}
     	}
     	return true;
+    }
+    public static boolean validateUserHasCardOnFile(WebUser user)
+    {
+    	Card card = user.getCard();
+    	if(card == null)
+    	{
+    		return false;
+    	}
+    	else if(card.getCardName() == null || card.getCardName().equals(""))
+    	{
+    		return false;
+    	}
+    	else
+    	{
+    		return true;
+    	}
     }
     public static boolean userHasConfirmedLogin(String email)
     {
