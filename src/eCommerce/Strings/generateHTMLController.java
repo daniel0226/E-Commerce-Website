@@ -837,4 +837,40 @@ public class generateHTMLController {
 		"									</div>";
 	
 	}
+	public static String adminUserSearchBody(WebUser user)
+	{
+		String suspendButtonType = "";
+		if(user.getSessionType().equals("suspended"))
+		{
+			suspendButtonType = "<button type=\"submit\" value=\"UnSuspend\" name=\"UnSuspend\">UnSuspend</button>";
+		}
+		else
+		{
+			suspendButtonType = "<button type=\"submit\" value=\"Suspend\" name=\"Suspend\">Suspend</button>";
+		}
+		return  "<form method=\"GET\" action=\"userController\" class=\"userForm\">"+
+						"																		<div class=\"promotions\">"+
+						"																			<label>Name</label>"+
+						"																			<input type=\"text\" name=\"Name\" value=\"" + user.getFullName() + "\" readonly>"+
+						"																		</div>"+
+						"																		<div class=\"promotions\">"+
+						"																			<label>Email</label>"+
+						"																			<input type=\"text\" name=\"Email\" value=\"" + user.getEmail() + "\" readonly>"+
+						"																		</div>"+
+						"																		<div class=\"promotions\">"+
+						"																			<div class=\"container removeLeftPadding removeRightPadding\">"+
+						"																				<div class = \"row\">"+
+						"																					<div class=\"col-sm-6\">"+
+																												suspendButtonType +
+						"                                                                                   </div>"+
+						"																					<div class=\"col-sm-6\">"+
+						"																						<button type=\"submit\" value=\"Delete\" name=\"Delete\">Delete</button>"+
+						"																					</div>"+
+						"																				</div>"+
+						"																			</div>"+
+						"																		</div>"+
+						"																	</form>";
+							
+
+	}
 }

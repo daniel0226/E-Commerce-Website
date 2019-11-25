@@ -46,6 +46,18 @@ public class MySQL_Commands {
 	public static String GET_LAST_SHOWTIME_ROW = "SELECT * FROM termproject.showtime ORDER BY id DESC LIMIT 1";
 	
 	//Functions 
+	public static String SUSPEND_USER(String email)
+	{
+		return "UPDATE termproject.users SET session = 'suspended' WHERE email = '" + email + "';";
+	}
+	public static String UNSUSPEND_USER(String email)
+	{
+		return "UPDATE termproject.users SET session = 'web' WHERE email = '" + email + "';";
+	}
+	public static String DELETE_USER(String email)
+	{
+		return "DELETE FROM termproject.users WHERE email = '" + email + "';";
+	}
 	public static String GET_ORDER(String email)
 	{
 		return "SELECT * FROM termproject.orders WHERE email = '" + email + "';";
