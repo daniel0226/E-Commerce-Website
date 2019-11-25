@@ -8,8 +8,10 @@ public class email {
 	public final static String forgotPassword = "Forgot Password";
 	public final static String updateProfile = "Your Profile has Been Updated.";
 	public final static String newPromotion = "A new Promotion has been Added!";
+	public final static String orderConfirmed = "Your order has been confirmed";
 	
 	//Messages
+	public final static String orderConfirmationMsg = "Your order has been successfully placed!";
 	public final static String promotionMsg = "A new promotion has been added. " + 
 			"Come check the current promotions in our promotions page! " +
 			"You are receiving this e-mail because you are currently registered to receive promotion updates.";

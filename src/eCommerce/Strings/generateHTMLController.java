@@ -13,7 +13,9 @@ import java.util.TreeSet;
 import eCommerce.Controllers.dateController;
 import eCommerce.Database.Database;
 import eCommerce.MovieData.*;
+import eCommerce.UserData.Order;
 import eCommerce.UserData.sessionData;
+import eCommerce.users.WebUser;
 public class generateHTMLController {
 
 	public static String generateComingSoon(Movie movie)
@@ -779,5 +781,60 @@ public class generateHTMLController {
 		"						</div>"+
 		"				</form>";
 		return myvar;
+	}
+	public static String orderHistory(WebUser user)
+	{
+		List<Order> list = Database.getOrderByEmail(user.getEmail());
+		if(list == null || list.size() == 0)
+		{
+			return "<div style=\"width: 85%;\" class=\"inputField orderHistoryProfile\">"+
+			"										<h2>No Orders!</h2>"+
+			"									</div>";
+		}else
+		{
+			String html = "";
+			for(int i = 0; i<list.size(); i++)
+			{
+				html += orderHistoryGenerator(list.get(i));
+			}
+			return html;
+		} 
+	}
+	public static String orderHistoryGenerator(Order order)
+	{
+		
+		ShowTimes st = Database.getShowTimeByID(Integer.toString(order.getShowTimeID()));
+		String seatStr = "Seat ";
+		List<Integer> seats = order.getSeatArray();
+		for(int i = 0; i<seats.size(); i++)
+		{
+			seatStr += Integer.toString(seats.get(i)) + ", ";
+		}
+		String total = "$" + String.format("%.2f", order.getTotal());
+		seatStr = seatStr.substring(0, seatStr.length()-2);
+		return 								"<div class=\"inputField orderHistoryProfile\">"+
+		"										<h2>Order ID: " + order.getOrderID() + "</h2>"+
+		"										<div class=\"promotions\">"+
+		"											<label for=\"movieTitle\">Movie Title</label>"+
+		"											<p id=\"movieTitle\">" + st.getMovieTitle() + "</p>"+
+		"										</div>"+
+		"										<div class=\"promotions\">"+
+		"											<label for=\"Theatre\">Theatre</label>"+
+		"											<p id=\"Theatre\">Cinema " + st.getCinemaID() + "</p>"+
+		"										</div>"+
+		"										<div class=\"promotions\">"+
+		"											<label for=\"ShowTime\">ShowTime</label>"+
+		"											<p id=\"ShowTime\">" + dateController.convertToTwelve(st.getShowTimes()) + " at " + st.getDate() + "</p>"+
+		"										</div>"+
+		"										<div class=\"promotions\">"+
+		"											<label for=\"Seats\">Seats</label>"+
+		"											<p id=\"Seats\">" + seatStr + "</p>"+
+		"										</div>"+
+		"										<div class=\"promotions\">"+
+		"											<label for=\"Total\">Total</label>"+
+		"											<p id=\"Total\">" + total + "</p>"+
+		"										</div>"+
+		"									</div>";
+	
 	}
 }
