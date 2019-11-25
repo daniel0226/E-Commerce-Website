@@ -1,9 +1,12 @@
 package eCommerce.Strings;
 
+import java.util.List;
+
 import eCommerce.Controllers.authenticatorController;
 import eCommerce.MovieData.Movie;
 import eCommerce.MovieData.ShowTimes;
 import eCommerce.UserData.Card;
+import eCommerce.UserData.Order;
 import eCommerce.users.WebUser;
 
 public class MySQL_Commands {
@@ -43,6 +46,22 @@ public class MySQL_Commands {
 	public static String GET_LAST_SHOWTIME_ROW = "SELECT * FROM termproject.showtime ORDER BY id DESC LIMIT 1";
 	
 	//Functions 
+	public static String GET_ORDER(String email)
+	{
+		return "SELECT * FROM termproject.orders WHERE email = '" + email + "';";
+	}
+	public static String ADD_ORDER(Order order)
+	{
+		String seats = "";
+		List<Integer> list = order.getSeatArray();
+		for(int i = 0; i<list.size(); i++)
+		{
+			seats += list.get(i) + ",";
+		}
+		return "INSERT INTO termproject.orders(email,showTimeID,seatingID,adultCount,childCount,seniorCount,Total,Seats) VALUES "
+				+ "('" +  order.getEmail() + "','" + order.getShowTimeID() + "','" + order.getSeatingID() + "','" + order.getTickets().getAdultCount() + "','" + order.getTickets().getChildCount() + "','" + order.getTickets().getSeniorCount() + "','" + order.getTotal()  + "','" + seats + "')";
+	}
+	
 	public static String GET_PROMOTION(String ID)
 	{
 		return "SELECT * FROM termproject.promotions WHERE id = " + ID + ";";
@@ -93,6 +112,20 @@ public class MySQL_Commands {
 	{
 		return "UPDATE termproject.showtime SET title= '" + st.getMovieTitle() + "', CinemaID = '" + st.getCinemaID() + "'" +
 				", Showtime = '" + st.getShowTimes() + "', Date = '" + st.getDate() + "' WHERE (`id` = '" + st.getID() + "')";
+	}
+	public static String UPDATE_SEATS(Order order)
+	{
+		String set = " SET ";
+		List<Integer> list = order.getSeatArray();
+		for(int i = 0; i<list.size(); i++)
+		{
+			String seat = "seat" + list.get(i);
+			String setStr = seat + " = " + "'0', ";
+			set += setStr;
+		}
+		set = set.substring(0, set.length()-2);
+		System.out.println(set);
+		return "UPDATE termproject.seatings" + set + " WHERE (id = '" + order.getSeatingID() + "')";
 	}
 
 	public static String updateCard(WebUser user, Card card) {

@@ -12,6 +12,7 @@ import eCommerce.MovieData.TicketCount;
 import eCommerce.Strings.generateHTMLController;
 import eCommerce.UserData.Address;
 import eCommerce.UserData.Card;
+import eCommerce.UserData.Order;
 import eCommerce.UserData.sessionData;
 import eCommerce.users.WebUser;
 import eCommerce.analytics.*;
@@ -226,6 +227,10 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		//Address
 		request.setAttribute("addressLine", address.toString());
 		
+		//Order History
+		request.setAttribute("orderHistory", generateHTMLController.orderHistory(user));
+		
+		
 		//Eventually re placed with database.
 		List<Movie> bookedMovies = new LinkedList<Movie>();
 		Movie movie = Database.getMovie("Joker");
@@ -336,5 +341,42 @@ public class loadObjectsToHtmlController extends HttpServlet {
 		request.setAttribute("child", tc.getChildCount());
 		request.setAttribute("senior", tc.getSeniorCount());
 		request.setAttribute("seatStructure", generateHTMLController.seatStructure(seats));
+	}
+	public void setOrderSummary(HttpServletRequest request, HttpServletResponse response, TicketCount tc, ShowTimes showtime, List<Boolean> seats, Seatings seat)
+	{
+		request.setAttribute("title", showtime.getMovieTitle());
+		request.setAttribute("Theatre", showtime.getCinemaID());
+		String showTimeStr = dateController.convertToTwelve(showtime.getShowTimes()) + " at " + showtime.getDate();
+		request.setAttribute("ShowTime", showTimeStr);
+		String seatStr = "Seat ";
+		String seatEnc = "";
+		for(int i = 0; i<seats.size(); i++)
+		{
+			if(seats.get(i) == true)
+			{
+				int seatNumber = i+1;
+				seatStr += Integer.toString(seatNumber) + ", ";
+				seatEnc += Integer.toString(seatNumber) + ",";
+			}
+		}
+		seatStr = seatStr.substring(0, seatStr.length()-1);
+		Ticket ticket = new Ticket(9.50, 11.50, 7.50);
+		double total = (tc.getAdultCount() * ticket.getAdultTicketCost()) + (tc.getSeniorCount() * ticket.getSeniorTicketCost()) + (tc.getChildCount() * ticket.getChildTicketCost());
+		String totalCost = "$" + String.format("%.2f", total);
+		request.setAttribute("aT", tc.getAdultCount());
+		request.setAttribute("sT", tc.getSeniorCount());
+		request.setAttribute("cT", tc.getChildCount());
+		request.setAttribute("seatingID", seat.getSeatingId());
+		request.setAttribute("Seats", seatStr);
+		request.setAttribute("seatsEnc", seatEnc);
+		request.setAttribute("Total", totalCost);
+		request.setAttribute("CardEnding", sessionData.getCurrentSessionUser().getCard().getCardEnding());
+		request.setAttribute("showtimeId", showtime.getID());
+	}
+	public void setOrderConfirmationPage(HttpServletRequest request, HttpServletResponse response, Order order)
+	{
+		sessionController sc = new sessionController();
+		sc.navigatePage(request, response, "OrderConfirmationPage.jsp");
+		return;
 	}
 }
