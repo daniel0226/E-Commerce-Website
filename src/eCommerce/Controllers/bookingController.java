@@ -28,6 +28,7 @@ import eCommerce.users.WebUser;
 public class bookingController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
+	private static sessionController sessionC;
 
 	public void init() {
 		System.out.println("Booking Controller has been instantiated.");
@@ -41,10 +42,12 @@ public class bookingController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		sessionC = new sessionController();
 	}
 	public bookingController()
 	{
 		super();
+		sessionC = new sessionController();
 	}
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -170,6 +173,7 @@ public class bookingController extends HttpServlet{
 			sc.navigatePage(request, response, "selectTicket.jsp");
 			return;
 		}
+		Database.resetDatabase();
 		Seatings seats = Database.getSeats(id);
 		loadHtml.setSeatingPage(request, response, tc, seats);
 		sc.navigatePage(request, response, "selectSeats.jsp");

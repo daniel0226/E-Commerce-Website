@@ -81,9 +81,12 @@ public class orderController extends HttpServlet {
 										tc, total, seats);
 			Database.addOrder(order);
 			Database.updateSeats(order);
-			Email.sendEmail(user, email.orderConfirmed, email.orderConfirmationMsg);
+			List<Order> list = Database.getOrderByEmail(order.getEmail());
+			order = list.get(list.size() -1);
+			Email.sendEmail(user, email.orderConfirmed, email.orderConfirmationMsg(order));
 			Database.resetDatabase();
 			loadObjectsToHtmlController loadHtml = new loadObjectsToHtmlController();
+			request.setAttribute("confirmation", order.getOrderID());
 			loadHtml.setOrderConfirmationPage(request, response, order);
 			return;
 			//Update seatings

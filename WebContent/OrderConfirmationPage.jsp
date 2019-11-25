@@ -37,6 +37,7 @@
         <div class="container">
             <div class="registered">
                 <h1>Congratulations! Your order is confirmed.</h1>
+                <h1>Your Order confirmation is: ${confirmation}</h1>
             </div>
         </div>
     </section>

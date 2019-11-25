@@ -64,7 +64,8 @@ public class userController extends HttpServlet{
 		
 		Database.resetDatabase();
 		request.setAttribute("js", generateHTMLController.navigateDiv("userBtn", "Users"));
-		sc.navigatePage(request, response, "adminPage.jsp");
+		loadHtml.setAdminPage(request, response, sessionData.getCurrentSessionUser());
+		//sc.navigatePage(request, response, "adminPage.jsp");
 		
 	}
 }

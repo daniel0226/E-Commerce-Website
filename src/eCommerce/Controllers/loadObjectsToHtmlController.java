@@ -192,6 +192,9 @@ public class loadObjectsToHtmlController extends HttpServlet {
     		request.setAttribute("promosArchived", analytics.getPromosArchivedCount());
     		request.setAttribute("promoUpdate", generateHTMLController.adminPromoBody());
     		
+    		//Users tba
+    		request.setAttribute("userCount", Database.getAllUsers().size());
+    		
 			request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
 		} catch (ServletException | IOException e ) {
 			// TODO Auto-generated catch block
@@ -382,18 +385,19 @@ public class loadObjectsToHtmlController extends HttpServlet {
 	public void setAdminUserSearchPage(HttpServletRequest request, HttpServletResponse response, String userSearch)
 	{
 		List<WebUser> list = Database.getAllUsers();
-		if(list == null || list.size() == 0)
+		//System.out.println("ADMIN SEARCH: " + userSearch + " | ADMIN FOUND COUNT: " + list.size());
+		
+		String html = "";
+		for(int i = 0; i<list.size(); i++)
+		{
+			if(list.get(i).getFullName().toLowerCase().contains(userSearch.toLowerCase())) {
+				html += generateHTMLController.adminUserSearchBody(list.get(i));
+			}
+		}
+		if(html.equals(""))
 		{
 			request.setAttribute("userList", "<p style=\"color: red; text-align: center; font-size: 1.5rem;\">NO USERS FOUND</p>");
-		}else
-		{
-			String html = "";
-			for(int i = 0; i<list.size(); i++)
-			{
-				if(list.get(i).getFullName().contains(userSearch)) {
-					html += generateHTMLController.adminUserSearchBody(list.get(i));
-				}
-			}
+		}else {
 			request.setAttribute("userList", html);
 		}
 	}
