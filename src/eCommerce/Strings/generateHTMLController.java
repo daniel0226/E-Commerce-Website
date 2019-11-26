@@ -113,7 +113,6 @@ public class generateHTMLController {
 		"                                </li>"+
 		"                                <li><span>Rated: " + movie.getMovieRating() + "</span></li>"+
 		"                                <li><span>Released: " + movie.getMovieReleaseDate() + "</span></li>"+
-		"                                <li style=\"margin-top: 15px;\"><a class=\"bookA\" name=\"booking\" href=\"bookingController?type=" +  movie.getMovieTitle() + "\">Book Now!</a></li>"+
 		"                                <li style=\"margin-top: 30px;\"><a class=\"bookA\" href=\"loadObjectsToHtmlController?type=" +  movie.getMovieTitle() + "\">Learn More!</a></li>"+
 		"                            </ul>"+
 		"                        </div>"+
