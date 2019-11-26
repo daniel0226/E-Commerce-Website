@@ -822,7 +822,6 @@ width:350px;
 {
     background-repeat: no-repeat;
     background-position: 0% 0%;
-    background-image: url("../images/Background/wp1867349.jpg");
     width: 100%;
     background-size: cover;
     min-height: 100vh;
@@ -1492,7 +1491,7 @@ width:350px;
     padding: 100px 10px 100px 0px;
     margin: 0;
     color: white;
-    background: rgba(0, 0, 0, 0.3);
+    background: black;
 }
 
 .profileBody

@@ -125,7 +125,7 @@
 															<div class="col-md-4 col-sm-4">
 																<div class="goalBodyWrapper">
 																	<h3 class="js-analytic">${moviesArchived}</h3>
-																	<small>Movies Archived</small>
+																	<small>Movies Deleted</small>
 																</div>
 															</div>
 														</div>
