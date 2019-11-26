@@ -41,6 +41,7 @@
     	if(user.getCode().equals(code))
     	{
     		Database.confirmUser(user);
+    		Database.resetDatabase();
     	}
     %>
     <section class="bg-blueAbstract">
