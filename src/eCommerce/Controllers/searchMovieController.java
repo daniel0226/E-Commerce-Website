@@ -26,15 +26,7 @@ public class searchMovieController extends HttpServlet{
 	{
 		sc = new sessionController();
 		System.out.println("searchMovieController.java has been instantiated.");
-		if(Database.getDatabase() == null)
-		{
-			try {
-				new Database();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		Database.validateDatabase(Database.getDatabase());
 	}
 	public searchMovieController()
 	{

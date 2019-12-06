@@ -28,14 +28,7 @@ public class RegisterController extends HttpServlet {
 	public void init() {
 		sc = new sessionController();
 		System.out.println("RegisterController.java: Registration called.");
-		if (Database.getDatabase() == null) {
-			try {
-				new Database();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		Database.validateDatabase(Database.getDatabase());
 		authenticator = new authenticatorController();
 	}
 

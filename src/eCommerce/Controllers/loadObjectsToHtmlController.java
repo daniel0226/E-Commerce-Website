@@ -38,14 +38,7 @@ public class loadObjectsToHtmlController extends HttpServlet {
 	public void init() {
 		analytics = new Analytics();
 		authenticator = new authenticatorController();
-		if (Database.getDatabase() == null) {
-			try {
-				new Database();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		Database.validateDatabase(Database.getDatabase());
 	}
 	public loadObjectsToHtmlController()
 	{

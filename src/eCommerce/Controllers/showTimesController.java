@@ -28,16 +28,7 @@ public class showTimesController extends HttpServlet{
 
 	public void init() {
 		System.out.println("Show Times Controller has been instantiated.");
-		if(Database.getDatabase() == null)
-		{
-			try {
-				Database db = new Database();
-				System.out.println(db.databaseConnected());
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		Database.validateDatabase(Database.getDatabase());
 	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	{

@@ -32,16 +32,7 @@ public class bookingController extends HttpServlet{
 
 	public void init() {
 		System.out.println("Booking Controller has been instantiated.");
-		if(Database.getDatabase() == null)
-		{
-			try {
-				Database db = new Database();
-				System.out.println(db.databaseConnected());
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		Database.validateDatabase(Database.getDatabase());
 		sessionC = new sessionController();
 	}
 	public bookingController()

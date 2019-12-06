@@ -37,15 +37,7 @@ public class passwordController extends HttpServlet
 	public void init()
 	{
 		sc = new sessionController();
-		if(Database.getDatabase() == null)
-		{
-			try {
-				new Database();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		Database.validateDatabase(Database.getDatabase());
 	}
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException

@@ -27,16 +27,7 @@ public class movieController extends HttpServlet {
 	public void init() {
 		System.out.println("movieController.java: Movie Controller called.");
 		loadHtml = new loadObjectsToHtmlController();
-		if(Database.getDatabase() == null)
-		{
-			try {
-				Database db = new Database();
-				System.out.println(db.databaseConnected());
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		Database.validateDatabase(Database.getDatabase());
 	}
 
 	public movieController() {

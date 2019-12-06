@@ -29,15 +29,7 @@ public class promotionController extends HttpServlet
 	
 	public void init()
 	{
-		try {
-			if(Database.getDatabase() == null)
-			{
-				new Database();
-			}
-		}catch(SQLException e)
-		{
-			System.err.println(e);
-		}
+		Database.validateDatabase(Database.getDatabase());
 	}
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -55,15 +55,7 @@
 				}
 				String html = "";
 				String html2 = "";
-				if(Database.getDatabase() == null)
-				{
-					try {
-						new Database();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
+				Database.validateDatabase(Database.getDatabase());
 				try {
 					List<Movie> movies = Database.getAllMovies();
 					if(movies.size() != 0)

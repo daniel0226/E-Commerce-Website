@@ -44,15 +44,7 @@ public class profileController extends HttpServlet {
 		authenticator = new authenticatorController();
 		loadHtml = new loadObjectsToHtmlController();
 		sc = new sessionController();
-		if(Database.getDatabase() == null)
-		{
-			try {
-				new Database();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		Database.validateDatabase(Database.getDatabase());
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException

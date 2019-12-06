@@ -36,8 +36,9 @@ public class Database {
 	private static String serverName = "localhost";
 	private static String databaseName = "termproject";
 	private static String password ="12345Daniel";
-	
-	public Database() throws SQLException {
+	private static Database db = null;
+
+	private Database() throws SQLException {
 		try {
 			authenticator = new authenticatorController();
 			Class.forName(url);
@@ -86,8 +87,32 @@ public class Database {
 		mysql.setServerTimezone("EST");
 	}
 
-	public static MysqlDataSource getDatabase() {
-		return mysql;
+	public static Database getDatabase() {
+		if(db == null)
+		{
+			try {
+				db = new Database();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return db;
+	}
+	public static void validateDatabase(Database d)
+	{
+		if(d == null)
+		{
+			try {
+				db = new Database();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else
+		{
+			return;
+		}
 	}
 	
 	public static void updateCard(Card card, WebUser user)

@@ -19,16 +19,7 @@ public class employeeController extends HttpServlet{
 	
 	public void init()
 	{
-		try
-		{
-			if(Database.getDatabase() == null)
-			{
-				new Database();
-			}
-		}catch(SQLException e)
-		{
-			System.err.println(e);
-		}
+		Database.validateDatabase(Database.getDatabase());
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -25,15 +25,7 @@ public class LoginController extends HttpServlet
 		sessionControl = new sessionController();
 		loadHtml = new loadObjectsToHtmlController();
 		System.out.println("LoginController.java: Login was called");
-		if(Database.getDatabase() == null)
-		{
-			try {
-				new Database();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		Database.validateDatabase(Database.getDatabase());
 	}
 	
 	public LoginController()

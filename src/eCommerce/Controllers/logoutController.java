@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import eCommerce.Database.Database;
 import eCommerce.Strings.generateHTMLController;
 import eCommerce.UserData.sessionData;
 
@@ -21,6 +22,7 @@ public class logoutController extends HttpServlet {
 	
 	public void init()
 	{
+		Database.validateDatabase(Database.getDatabase());
 		sessionControl = new sessionController();
 		System.out.println("logoutController.java: Logout user called.");
 	}
