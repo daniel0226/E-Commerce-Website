@@ -1,5 +1,6 @@
-# eCommerce movie Website
-An eCommerce movie booking website. Currently meant to be used with Tomcat 9.0 servers and Eclipse.
+# eCommerce Movie Website
+An eCommerce movie booking website created for Software Engineering at UGA. Movies, Showtimes, and prices are based on the administrator database. Currently meant to be used with Tomcat 9.0 servers and Eclipse.
+
 ## Installation
 ### Required Technologies
 Eclipse for Java EE Developers or add in the Java EE portion
@@ -11,3 +12,6 @@ Apache Tomcat Download
 #### Validate Java EE Installed
 You can validate if you have Java EE by going to File -> New -> Other and search for Dynamic Web Project<br>
 If you don't have Java EE installed, ask Seth for more info because managed to install just the plugin. It should be in the Eclipse Marketplace under the name Maven Java EE for Luna or something similar.
+
+##### Need Valid database installed.
+To test the website, please contact me for the MySQL databases. The movies displayed, showtimes, seatings, users, administrators, and other key functionalities are dependent on the databases.
