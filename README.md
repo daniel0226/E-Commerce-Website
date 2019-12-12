@@ -9,14 +9,14 @@ Apache Tomcat Download
 * [Apache Tomcat 9.0](https://tomcat.apache.org/download-90.cgi)
 * [Adding Tomcat to Eclipse:](https://stackoverflow.com/questions/8046871/how-to-add-tomcat-server-in-eclipse)
 
-#### Validate Java EE Installed
+### Validate Java EE Installed
 You can validate if you have Java EE by going to File -> New -> Other and search for Dynamic Web Project<br>
 If you don't have Java EE installed, ask Seth for more info because managed to install just the plugin. It should be in the Eclipse Marketplace under the name Maven Java EE for Luna or something similar.
 
-##### Need Valid database installed.
+### Need Valid database installed.
 To test the website, please contact me for the MySQL databases. The movies displayed, showtimes, seatings, users, administrators, and other key functionalities are dependent on the databases.
 
-###### What I would do different
+### What I would do different
 The project was developed with scrum methodology. The user stories were first generated. Based on the user stories, the user interface and database was then created using HTML/CSS/Bootstrap/MySQL/MySQLWorkbench. Next, using the Model-View-Controller pattern, generated functionalities for each user story.
 
 If I could redo this project, 
