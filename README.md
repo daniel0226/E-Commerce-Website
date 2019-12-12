@@ -15,3 +15,13 @@ If you don't have Java EE installed, ask Seth for more info because managed to i
 
 ##### Need Valid database installed.
 To test the website, please contact me for the MySQL databases. The movies displayed, showtimes, seatings, users, administrators, and other key functionalities are dependent on the databases.
+
+###### What I would do different
+The project was developed with scrum methodology. The user stories were first generated. Based on the user stories, the user interface and database was then created using HTML/CSS/Bootstrap/MySQL/MySQLWorkbench. Next, using the Model-View-Controller pattern, generated functionalities for each user story.
+
+If I could redo this project, 
+1) I would add more identification or unique keys to each database table For example, rather than connecting a user's cord by email in the database, the user's card would be correlated by a unique key. <br/>
+2) Next, rather than creating a static Database and session class, I would implement the singleton pattern as singleton is more flexible. <br/>
+3) A lot of the models generated would be through a factory method. There was a lot of models generated that made reading the code messy. This could have been simplified. <br/>
+4) Reduce the number of functions within utilities or queries. The database.java class has a lot of functions that have repeated code/functions that could have been simplified. <br/>
+5) Increase cohesion. There were some java classes that had functions that didn't belong within the class. Organizing the cohesion would have increased readability and maintainability.
