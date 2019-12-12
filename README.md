@@ -17,7 +17,7 @@ If you don't have Java EE installed, ask Seth for more info because managed to i
 To test the website, please contact me for the MySQL databases. The movies displayed, showtimes, seatings, users, administrators, and other key functionalities are dependent on the databases.
 
 ### What I would do different
-The project was developed with scrum methodology. The user stories were first generated. Based on the user stories, the user interface and database was then created using HTML/CSS/Bootstrap/MySQL/MySQLWorkbench. Next, using the Model-View-Controller pattern, generated functionalities for each user story.
+The project was developed with scrum methodology. The user stories were first generated. Based on the user stories, the user interface and database was then created using HTML/CSS/Bootstrap/MySQL/MySQLWorkbench. Next, using the Model-View-Controller pattern, the functionalities were then generated for each user story.
 
 If I could redo this project, 
 1) I would add more identification or unique keys to each database table For example, rather than connecting a user's cord by email in the database, the user's card would be correlated by a unique key. <br/>
